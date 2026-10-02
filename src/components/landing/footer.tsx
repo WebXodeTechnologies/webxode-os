@@ -15,7 +15,12 @@ export function Footer() {
           <div className="space-y-4 md:col-span-2">
             <div className="flex items-center space-x-3">
               <div className="relative flex h-12 w-12 items-center justify-center overflow-hidden">
-                <Image src={logo} alt="Webxode Technologies Logo" fill className="object-contain" />
+                <Image
+                  src="/logos/webxodelogocropped-removebg-preview.png"
+                  alt="Webxode Technologies Logo"
+                  fill
+                  className="object-contain"
+                />
               </div>
               <span className="text-lg font-semibold tracking-tight text-white">Webxode OS</span>
             </div>
