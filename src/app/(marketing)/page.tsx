@@ -1,7 +1,13 @@
-import React from "react";
+import { Navbar } from "@/components/landing/navbar";
 
-const page = () => {
-  return <div>page</div>;
-};
+import { Footer } from "@/components/landing/footer";
 
-export default page;
+export default function Home() {
+  return (
+    <div className="flex min-h-screen flex-col text-slate-50 antialiased">
+      <Navbar />
+      <main className="flex-1"></main>
+      <Footer />
+    </div>
+  );
+}
