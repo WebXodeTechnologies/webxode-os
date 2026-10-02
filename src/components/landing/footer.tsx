@@ -1,6 +1,5 @@
 import Link from "next/link";
 import { Heart } from "lucide-react";
-import logo from "../../../public/logos/webxodelogocropped-removebg-preview.png";
 import Image from "next/image";
 
 export function Footer() {
