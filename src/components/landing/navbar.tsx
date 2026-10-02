@@ -1,7 +1,6 @@
 // src/components/landing/navbar.tsx
 import Link from "next/link";
 import Image from "next/image";
-import logo from "../../../public/logos/webxodelogocropped-removebg-preview.png";
 
 export function Navbar() {
   return (
@@ -11,7 +10,7 @@ export function Navbar() {
           <Link href="/" className="flex items-center space-x-2.5">
             <div className="relative flex h-12 w-12 items-center justify-center overflow-hidden">
               <Image
-                src={logo}
+                src="/logos/webxodelogocropped-removebg-preview.png"
                 alt="Webxode Technologies Logo"
                 unoptimized
                 className="object-contain"
