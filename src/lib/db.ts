@@ -11,7 +11,7 @@ export async function connectDB() {
   const MONGODB_URI = process.env.MONGODB_URI;
 
   if (!MONGODB_URI) {
-    throw new Error("Please define the MONGODB_URI environment variable inside .env.local");
+    throw new Error("Please define the MONGODB_URI environment variable inside .env");
   }
 
   if (cached.conn) {
@@ -21,6 +21,7 @@ export async function connectDB() {
   if (!cached.promise) {
     const opts = {
       bufferCommands: false,
+      dbName: process.env.MONGODB_DB_NAME || "webxode_os",
     };
 
     cached.promise = mongoose.connect(MONGODB_URI, opts).then((mongooseInstance) => {
