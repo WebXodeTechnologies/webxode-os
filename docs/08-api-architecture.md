@@ -18,16 +18,16 @@ This document defines how Webxode OS processes application requests and connects
 
 The architecture must support:
 
-* Modular development
-* Clear business boundaries
-* Server-side authorization
-* Reusable business logic
-* Maintainability
-* Testability
-* Secure data access
-* Fast development
-* Future integrations
-* Future AI capabilities
+- Modular development
+- Clear business boundaries
+- Server-side authorization
+- Reusable business logic
+- Maintainability
+- Testability
+- Secure data access
+- Fast development
+- Future integrations
+- Future AI capabilities
 
 The goal is to build a **modular monolith**, not a collection of disconnected APIs.
 
@@ -99,12 +99,12 @@ Webxode OS will be implemented as a modular monolith.
 
 This means:
 
-* One application
-* One primary deployment
-* One primary MongoDB database
-* Clearly separated internal modules
-* Shared infrastructure where appropriate
-* No unnecessary microservices
+- One application
+- One primary deployment
+- One primary MongoDB database
+- Clearly separated internal modules
+- Shared infrastructure where appropriate
+- No unnecessary microservices
 
 Conceptually:
 
@@ -135,12 +135,12 @@ The application should maintain clear responsibilities.
 
 Responsible for:
 
-* Pages
-* Components
-* Forms
-* Tables
-* Dashboards
-* Client-side interaction
+- Pages
+- Components
+- Forms
+- Tables
+- Dashboards
+- Client-side interaction
 
 Should not contain core business rules.
 
@@ -148,49 +148,49 @@ Should not contain core business rules.
 
 Responsible for:
 
-* Receiving requests
-* Parsing input
-* Authentication
-* Authorization
-* Calling application services
-* Returning responses
+- Receiving requests
+- Parsing input
+- Authentication
+- Authorization
+- Calling application services
+- Returning responses
 
 Implemented through:
 
-* Server Actions
-* Route Handlers
+- Server Actions
+- Route Handlers
 
 ### Layer 3 — Business / Service Layer
 
 Responsible for:
 
-* Business workflows
-* Business rules
-* State transitions
-* Ownership rules
-* Approval logic
-* Cross-module operations
+- Business workflows
+- Business rules
+- State transitions
+- Ownership rules
+- Approval logic
+- Cross-module operations
 
 ### Layer 4 — Data Access Layer
 
 Responsible for:
 
-* MongoDB queries
-* Document creation
-* Updates
-* Aggregations
-* Index-aware data access
+- MongoDB queries
+- Document creation
+- Updates
+- Aggregations
+- Index-aware data access
 
 ### Layer 5 — Infrastructure
 
 Responsible for:
 
-* Database connection
-* File storage
-* Email
-* External services
-* Logging
-* Background processing
+- Database connection
+- File storage
+- Email
+- External services
+- Logging
+- Background processing
 
 ---
 
@@ -220,13 +220,13 @@ Webxode OS will use Next.js as the primary application framework.
 
 The application will use:
 
-* React
-* Server Components
-* Client Components where interaction requires them
-* Server Actions
-* Route Handlers
-* Server-side services
-* Data-access/repository layer
+- React
+- Server Components
+- Client Components where interaction requires them
+- Server Actions
+- Route Handlers
+- Server-side services
+- Data-access/repository layer
 
 The architecture should avoid introducing a separate backend application unless future requirements justify it.
 
@@ -238,12 +238,12 @@ Server Components should be the default for server-rendered application screens.
 
 They are suitable for:
 
-* Dashboard data
-* Detail pages
-* Tables
-* Read-heavy screens
-* Server-side data fetching
-* Permission-aware rendering
+- Dashboard data
+- Detail pages
+- Tables
+- Read-heavy screens
+- Server-side data fetching
+- Permission-aware rendering
 
 Server Components should call appropriate server-side application/data functions rather than exposing internal database logic to the browser.
 
@@ -255,14 +255,14 @@ Client Components should be used where browser-side interaction is required.
 
 Examples:
 
-* Interactive forms
-* Filters
-* Search controls
-* Modals
-* Drag-and-drop
-* Rich editors
-* Real-time UI
-* Complex client-side interactions
+- Interactive forms
+- Filters
+- Search controls
+- Modals
+- Drag-and-drop
+- Rich editors
+- Real-time UI
+- Complex client-side interactions
 
 Client Components should not directly access MongoDB.
 
@@ -313,13 +313,13 @@ Route Handlers should be used where an HTTP endpoint is appropriate.
 
 Examples:
 
-* External API access
-* Webhooks
-* File upload endpoints
-* Integration callbacks
-* Public endpoints
-* APIs required by external clients
-* Future mobile applications
+- External API access
+- Webhooks
+- File upload endpoints
+- Integration callbacks
+- Public endpoints
+- APIs required by external clients
+- Future mobile applications
 
 Example conceptual routes:
 
@@ -337,18 +337,18 @@ Internal application operations should not automatically become REST endpoints s
 
 ### Prefer Server Actions for:
 
-* Internal UI mutations
-* Form submissions
-* Business operations initiated by Webxode OS users
-* Server-side application actions
+- Internal UI mutations
+- Form submissions
+- Business operations initiated by Webxode OS users
+- Server-side application actions
 
 ### Prefer Route Handlers for:
 
-* Webhooks
-* External integrations
-* Public/API consumers
-* External callbacks
-* Cases requiring explicit HTTP endpoints
+- Webhooks
+- External integrations
+- Public/API consumers
+- External callbacks
+- Cases requiring explicit HTTP endpoints
 
 This keeps V1 simpler.
 
@@ -431,16 +431,16 @@ That belongs to authorization/business logic.
 
 Repositories are responsible for:
 
-* MongoDB queries
-* Inserts
-* Updates
-* Deletes where permitted
-* Aggregations
-* Pagination
-* Sorting
-* Filtering
-* Data projections
-* Database-specific implementation
+- MongoDB queries
+- Inserts
+- Updates
+- Deletes where permitted
+- Aggregations
+- Pagination
+- Sorting
+- Filtering
+- Data projections
+- Database-specific implementation
 
 Repositories should avoid business decisions.
 
@@ -492,11 +492,11 @@ Checks whether the submitted data has the correct structure.
 
 Examples:
 
-* Required fields
-* Email format
-* Dates
-* Numbers
-* Enum values
+- Required fields
+- Email format
+- Dates
+- Numbers
+- Enum values
 
 ### Business Validation
 
@@ -504,10 +504,10 @@ Checks whether the operation makes business sense.
 
 Examples:
 
-* Cannot approve an already cancelled quotation.
-* Cannot move a lost opportunity directly to deployment.
-* Cannot assign work to an inactive user.
-* Cannot deploy a project that has required QA pending.
+- Cannot approve an already cancelled quotation.
+- Cannot move a lost opportunity directly to deployment.
+- Cannot assign work to an inactive user.
+- Cannot deploy a project that has required QA pending.
 
 ### Authorization
 
@@ -1008,14 +1008,14 @@ The service layer should own the transition.
 
 Read operations should support:
 
-* Filtering
-* Sorting
-* Pagination
-* Search
-* Date ranges
-* Status filters
-* Ownership filters
-* Department/team filters
+- Filtering
+- Sorting
+- Pagination
+- Search
+- Date ranges
+- Status filters
+- Ownership filters
+- Department/team filters
 
 Example conceptual query:
 
@@ -1057,11 +1057,11 @@ Audit
 
 Side effects may include:
 
-* Notification
-* Activity
-* Assignment history
-* Audit record
-* Background job
+- Notification
+- Activity
+- Assignment history
+- Audit record
+- Background job
 
 ---
 
@@ -1117,12 +1117,12 @@ Not every operation needs synchronous execution.
 
 Background processing may later handle:
 
-* Email sending
-* PDF generation
-* Large imports
-* Scheduled reminders
-* Report generation
-* File processing
+- Email sending
+- PDF generation
+- Large imports
+- Scheduled reminders
+- Report generation
+- File processing
 
 V1 should introduce background processing only where it provides a clear benefit.
 
@@ -1243,10 +1243,10 @@ Caching should be introduced only where useful.
 
 Potential candidates:
 
-* Permission metadata
-* User/session context
-* Frequently accessed configuration
-* Dashboard summaries where justified
+- Permission metadata
+- User/session context
+- Frequently accessed configuration
+- Dashboard summaries where justified
 
 The database remains the authoritative source.
 
@@ -1258,17 +1258,17 @@ V1 should avoid introducing a complex caching architecture before real performan
 
 The application architecture must follow:
 
-* Server-side authorization
-* Input validation
-* Secure session handling
-* Least privilege
-* No database access from client components
-* No secrets in client-side code
-* Safe error responses
-* Auditability
-* Secure file access
-* Protected webhooks
-* Controlled external integrations
+- Server-side authorization
+- Input validation
+- Secure session handling
+- Least privilege
+- No database access from client components
+- No secrets in client-side code
+- Safe error responses
+- Auditability
+- Secure file access
+- Protected webhooks
+- Controlled external integrations
 
 ---
 
@@ -1290,11 +1290,11 @@ Performance issues
 
 Logs should not contain:
 
-* Passwords
-* Authentication tokens
-* API secrets
-* Sensitive client credentials
-* Unnecessary personal information
+- Passwords
+- Authentication tokens
+- API secrets
+- Sensitive client credentials
+- Unnecessary personal information
 
 ---
 
@@ -1325,31 +1325,31 @@ Testing layers may include:
 
 For:
 
-* Business rules
-* State transitions
-* Permission decisions
-* Utility logic
+- Business rules
+- State transitions
+- Permission decisions
+- Utility logic
 
 ### Integration Tests
 
 For:
 
-* Services + MongoDB
-* Repositories
-* Authentication/authorization
-* Cross-module workflows
+- Services + MongoDB
+- Repositories
+- Authentication/authorization
+- Cross-module workflows
 
 ### End-to-End Tests
 
 For:
 
-* Login
-* Lead lifecycle
-* Sales workflow
-* Quotation approval
-* Client onboarding
-* Project workflow
-* Payment visibility
+- Login
+- Lead lifecycle
+- Sales workflow
+- Quotation approval
+- Client onboarding
+- Project workflow
+- Payment visibility
 
 ---
 
@@ -1521,15 +1521,15 @@ Invalid or missing references should be rejected safely.
 
 The application should:
 
-* Fetch only required fields.
-* Paginate large lists.
-* Use appropriate indexes.
-* Avoid repeated database queries.
-* Avoid unnecessary document population.
-* Avoid N+1 query patterns.
-* Cache only where justified.
-* Use aggregation when appropriate.
-* Keep API responses focused.
+- Fetch only required fields.
+- Paginate large lists.
+- Use appropriate indexes.
+- Avoid repeated database queries.
+- Avoid unnecessary document population.
+- Avoid N+1 query patterns.
+- Cache only where justified.
+- Use aggregation when appropriate.
+- Keep API responses focused.
 
 Performance optimization should follow actual measurements.
 
@@ -1559,11 +1559,11 @@ Later, specific workloads may be extracted if required.
 
 Examples:
 
-* Notification processing
-* File processing
-* Reporting
-* AI workloads
-* Integration workers
+- Notification processing
+- File processing
+- Reporting
+- AI workloads
+- Integration workers
 
 The modular boundaries should make future extraction possible without prematurely building microservices.
 
@@ -1573,17 +1573,17 @@ The modular boundaries should make future extraction possible without prematurel
 
 V1 will **not** introduce:
 
-* Microservices
-* Separate backend service
-* GraphQL unless a real requirement emerges
-* Complex API gateway
-* Kubernetes
-* Distributed event bus
-* CQRS
-* Event sourcing
-* Service mesh
-* Complex workflow engine
-* Dedicated search cluster
+- Microservices
+- Separate backend service
+- GraphQL unless a real requirement emerges
+- Complex API gateway
+- Kubernetes
+- Distributed event bus
+- CQRS
+- Event sourcing
+- Service mesh
+- Complex workflow engine
+- Dedicated search cluster
 
 The goal is a strong modular monolith.
 
@@ -1635,26 +1635,26 @@ This is the standard architectural pattern for important Webxode OS operations.
 
 The Application/API Architecture is considered complete when:
 
-* Next.js is established as the application platform.
-* Modular monolith architecture is defined.
-* Server Components are the default for server-rendered UI.
-* Client Components are used only where interaction requires them.
-* Server Actions are defined for internal mutations.
-* Route Handlers are reserved for appropriate HTTP/API requirements.
-* Authentication boundaries are defined.
-* Authorization is server-side.
-* Permission and scope checks are defined.
-* Service-layer business logic is established.
-* Repository/data-access responsibilities are defined.
-* Cross-module boundaries are established.
-* Validation responsibilities are separated.
-* Error handling is standardized.
-* Audit and notification responsibilities are defined.
-* Background processing boundaries are identified.
-* Integration boundaries are separated.
-* AI integration boundaries are separated.
-* Testing layers are defined.
-* V1 avoids unnecessary distributed architecture.
+- Next.js is established as the application platform.
+- Modular monolith architecture is defined.
+- Server Components are the default for server-rendered UI.
+- Client Components are used only where interaction requires them.
+- Server Actions are defined for internal mutations.
+- Route Handlers are reserved for appropriate HTTP/API requirements.
+- Authentication boundaries are defined.
+- Authorization is server-side.
+- Permission and scope checks are defined.
+- Service-layer business logic is established.
+- Repository/data-access responsibilities are defined.
+- Cross-module boundaries are established.
+- Validation responsibilities are separated.
+- Error handling is standardized.
+- Audit and notification responsibilities are defined.
+- Background processing boundaries are identified.
+- Integration boundaries are separated.
+- AI integration boundaries are separated.
+- Testing layers are defined.
+- V1 avoids unnecessary distributed architecture.
 
 ---
 

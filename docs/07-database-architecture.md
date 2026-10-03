@@ -46,19 +46,19 @@ Renewal / Upsell
 
 The database design must also support:
 
-* RBAC
-* Ownership
-* Assignment
-* Departments
-* Teams
-* Approvals
-* Notifications
-* Auditability
-* Business history
-* Reporting
-* Search
-* Future integrations
-* Future AI capabilities
+- RBAC
+- Ownership
+- Assignment
+- Departments
+- Teams
+- Approvals
+- Notifications
+- Auditability
+- Business history
+- Reporting
+- Search
+- Future integrations
+- Future AI capabilities
 
 The goal is a **clean, maintainable MongoDB architecture**, not an over-engineered enterprise database.
 
@@ -115,11 +115,11 @@ The system will use a hybrid approach:
 
 Use references when:
 
-* The related entity has its own lifecycle.
-* The entity is reused in multiple places.
-* The entity can grow significantly.
-* The entity requires independent permissions.
-* The entity is frequently updated independently.
+- The related entity has its own lifecycle.
+- The entity is reused in multiple places.
+- The entity can grow significantly.
+- The entity requires independent permissions.
+- The entity is frequently updated independently.
 
 Examples:
 
@@ -135,10 +135,10 @@ Project → Milestone
 
 Use embedded data when:
 
-* The data is small.
-* It belongs only to the parent.
-* It is usually read with the parent.
-* It does not require an independent lifecycle.
+- The data is small.
+- It belongs only to the parent.
+- It is usually read with the parent.
+- It does not require an independent lifecycle.
 
 Examples:
 
@@ -254,13 +254,13 @@ TASK-000921
 
 Business IDs should be useful for:
 
-* Human communication
-* Search
-* Documents
-* Quotations
-* Reports
-* Support
-* Client communication
+- Human communication
+- Search
+- Documents
+- Quotations
+- Reports
+- Support
+- Client communication
 
 Internal relationships should use stable database identifiers.
 
@@ -498,12 +498,12 @@ Activities represent interactions or events related to a lead.
 
 Examples:
 
-* Call
-* Email
-* WhatsApp
-* Meeting
-* Note
-* Requirement discussion
+- Call
+- Email
+- WhatsApp
+- Meeting
+- Note
+- Requirement discussion
 
 Conceptual fields:
 
@@ -848,11 +848,11 @@ Contacts have their own lifecycle and therefore should normally remain separate 
 
 Client-related documents may include:
 
-* Agreements
-* SOW
-* Contracts
-* Requirements
-* Other business documents
+- Agreements
+- SOW
+- Contracts
+- Requirements
+- Other business documents
 
 Conceptual metadata:
 
@@ -1043,12 +1043,12 @@ Deliverables represent expected project outputs.
 
 Examples:
 
-* Website
-* Mobile application
-* Design package
-* Documentation
-* Deployment
-* Training
+- Website
+- Mobile application
+- Design package
+- Documentation
+- Deployment
+- Training
 
 Conceptual fields:
 
@@ -1346,12 +1346,12 @@ updatedBy
 
 Payment records should support:
 
-* Expected
-* Due
-* Partially Paid
-* Paid
-* Overdue
-* Cancelled
+- Expected
+- Due
+- Partially Paid
+- Paid
+- Overdue
+- Cancelled
 
 ---
 
@@ -1492,12 +1492,12 @@ Ticket → assignedTo
 
 Ownership is required for:
 
-* Accountability
-* Permission scopes
-* Work queues
-* Reporting
-* Notifications
-* Management visibility
+- Accountability
+- Permission scopes
+- Work queues
+- Reporting
+- Notifications
+- Management visibility
 
 ---
 
@@ -1799,23 +1799,23 @@ Large collections must not be loaded entirely into memory.
 
 Lists such as:
 
-* Leads
-* Tasks
-* Projects
-* Activities
-* Audit logs
-* Payments
-* Notifications
+- Leads
+- Tasks
+- Projects
+- Activities
+- Audit logs
+- Payments
+- Notifications
 
 must use pagination.
 
 The application should support:
 
-* Page-based pagination where appropriate
-* Cursor-based pagination where scale requires it
-* Filtering
-* Sorting
-* Search
+- Page-based pagination where appropriate
+- Cursor-based pagination where scale requires it
+- Filtering
+- Sorting
+- Search
 
 ---
 
@@ -1874,13 +1874,13 @@ Webxode OS should avoid approaching that limit by design.
 
 Potentially growing data must remain separate:
 
-* Activities
-* Tasks
-* Audit logs
-* Notifications
-* Documents
-* History
-* Comments
+- Activities
+- Tasks
+- Audit logs
+- Notifications
+- Documents
+- History
+- Comments
 
 ---
 
@@ -1914,11 +1914,11 @@ Validates business rules.
 
 Examples:
 
-* Required fields
-* Allowed state transitions
-* Permission checks
-* Date rules
-* Approval requirements
+- Required fields
+- Allowed state transitions
+- Permission checks
+- Date rules
+- Approval requirements
 
 ### Database-Level Constraints
 
@@ -1926,8 +1926,8 @@ Used where MongoDB supports them effectively.
 
 Examples:
 
-* Unique indexes
-* Required structural constraints where applicable
+- Unique indexes
+- Required structural constraints where applicable
 
 The database should not be relied upon as the only source of business validation.
 
@@ -2009,11 +2009,11 @@ The database must not become a general-purpose password or credential vault.
 
 Sensitive information such as:
 
-* Production credentials
-* API secrets
-* Private keys
-* Client passwords
-* Infrastructure credentials
+- Production credentials
+- API secrets
+- Private keys
+- Client passwords
+- Infrastructure credentials
 
 should use an appropriate secrets-management approach.
 
@@ -2153,14 +2153,14 @@ If reporting becomes significantly more complex later, an analytics architecture
 
 Database performance should prioritize:
 
-* Correct indexes
-* Small predictable queries
-* Pagination
-* Projection of required fields
-* Avoiding unnecessary population/joins
-* Avoiding giant documents
-* Efficient filtering
-* Controlled aggregation
+- Correct indexes
+- Small predictable queries
+- Pagination
+- Projection of required fields
+- Avoiding unnecessary population/joins
+- Avoiding giant documents
+- Efficient filtering
+- Controlled aggregation
 
 Performance optimization should be driven by measured application behavior rather than premature optimization.
 
@@ -2170,11 +2170,11 @@ Performance optimization should be driven by measured application behavior rathe
 
 Production MongoDB must have:
 
-* Automated backups
-* Recovery procedures
-* Backup retention
-* Restore testing
-* Monitoring
+- Automated backups
+- Recovery procedures
+- Backup retention
+- Restore testing
+- Monitoring
 
 The backup strategy should be documented before production launch.
 
@@ -2202,11 +2202,11 @@ Although MongoDB is schema-flexible, schema changes must still be controlled.
 
 Changes such as:
 
-* Renaming fields
-* Changing status values
-* Introducing required fields
-* Restructuring embedded objects
-* Changing relationships
+- Renaming fields
+- Changing status values
+- Introducing required fields
+- Restructuring embedded objects
+- Changing relationships
 
 must have a documented migration strategy.
 
@@ -2235,11 +2235,11 @@ A dedicated integration layer should be introduced when integrations are actuall
 
 V3 AI capabilities may require additional data such as:
 
-* AI analysis results
-* Recommendations
-* Scoring
-* Generated summaries
-* Prediction metadata
+- AI analysis results
+- Recommendations
+- Scoring
+- Generated summaries
+- Prediction metadata
 
 These should be designed as an extension to the operational system.
 
@@ -2267,16 +2267,16 @@ Audit history
 
 V1 should not introduce:
 
-* Database-per-module
-* Database-per-client
-* Microservice databases
-* Data warehouse
-* Search cluster
-* Event-sourcing architecture
-* Complex CQRS
-* Graph database
-* AI vector infrastructure
-* Distributed transaction architecture
+- Database-per-module
+- Database-per-client
+- Microservice databases
+- Data warehouse
+- Search cluster
+- Event-sourcing architecture
+- Complex CQRS
+- Graph database
+- AI vector infrastructure
+- Distributed transaction architecture
 
 unless an actual requirement emerges.
 
@@ -2364,23 +2364,23 @@ Assignments
 
 The database architecture is considered complete when:
 
-* MongoDB is confirmed as the primary database.
-* Core collections are identified.
-* Module ownership is defined.
-* Major relationships are documented.
-* Reference vs embed strategy is established.
-* Ownership and assignment are represented.
-* Workflow history is supported.
-* Auditability is supported.
-* Indexing strategy is defined.
-* Pagination requirements are defined.
-* Soft-delete/archive behavior is defined.
-* Validation responsibilities are clear.
-* Financial data handling is defined.
-* File storage responsibilities are separated.
-* Security-sensitive data handling is defined.
-* V1 database boundaries are clear.
-* Future integration and AI extensions have clear boundaries.
+- MongoDB is confirmed as the primary database.
+- Core collections are identified.
+- Module ownership is defined.
+- Major relationships are documented.
+- Reference vs embed strategy is established.
+- Ownership and assignment are represented.
+- Workflow history is supported.
+- Auditability is supported.
+- Indexing strategy is defined.
+- Pagination requirements are defined.
+- Soft-delete/archive behavior is defined.
+- Validation responsibilities are clear.
+- Financial data handling is defined.
+- File storage responsibilities are separated.
+- Security-sensitive data handling is defined.
+- V1 database boundaries are clear.
+- Future integration and AI extensions have clear boundaries.
 
 ---
 

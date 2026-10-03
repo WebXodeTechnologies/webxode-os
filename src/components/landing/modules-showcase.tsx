@@ -1,15 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import {
-  Users,
-  FileText,
-  Workflow,
-  DollarSign,
-  Check,
-  ArrowRight,
-  Layers,
-} from "lucide-react";
+import { Users, FileText, Workflow, DollarSign, Check, ArrowRight, Layers } from "lucide-react";
 
 const modulesData = [
   {
@@ -92,7 +84,10 @@ export function ModulesShowcase() {
   const Icon = activeModule.icon;
 
   return (
-    <section id="modules" className="relative border-t border-slate-900 bg-slate-950 py-24 lg:py-32">
+    <section
+      id="modules"
+      className="relative border-t border-slate-900 bg-slate-950 py-24 lg:py-32"
+    >
       {/* Glow */}
       <div className="pointer-events-none absolute bottom-10 left-1/2 -z-10 h-125 w-175 -translate-x-1/2 rounded-full bg-linear-to-tr from-violet-600/10 via-indigo-600/10 to-transparent blur-[160px]" />
 
@@ -107,7 +102,8 @@ export function ModulesShowcase() {
             Explore the Core Operational Modules
           </h2>
           <p className="mt-4 text-base text-slate-400 sm:text-lg">
-            Every module is tightly integrated. Information flows seamlessly from initial sales leads down to final invoice payments.
+            Every module is tightly integrated. Information flows seamlessly from initial sales
+            leads down to final invoice payments.
           </p>
         </div>
 
@@ -123,7 +119,7 @@ export function ModulesShowcase() {
                 onClick={() => setActiveModuleId(mod.id)}
                 className={`flex items-center gap-2.5 rounded-xl px-5 py-3 text-sm font-semibold transition-all duration-200 ${
                   isActive
-                    ? "bg-linear-to-r from-indigo-600 to-violet-600 text-white shadow-lg shadow-indigo-600/30 scale-[1.02]"
+                    ? "scale-[1.02] bg-linear-to-r from-indigo-600 to-violet-600 text-white shadow-lg shadow-indigo-600/30"
                     : "text-slate-400 hover:bg-slate-800/60 hover:text-white"
                 }`}
               >
@@ -135,7 +131,7 @@ export function ModulesShowcase() {
         </div>
 
         {/* Active Module Card */}
-        <div className="relative mx-auto max-w-5xl overflow-hidden rounded-3xl border border-slate-800/90 bg-slate-900/40 p-8 sm:p-12 backdrop-blur-xl shadow-2xl">
+        <div className="relative mx-auto max-w-5xl overflow-hidden rounded-3xl border border-slate-800/90 bg-slate-900/40 p-8 shadow-2xl backdrop-blur-xl sm:p-12">
           <div
             className={`pointer-events-none absolute inset-0 -z-10 bg-linear-to-br ${activeModule.accentBg} opacity-50 transition-all duration-500`}
           />
@@ -152,9 +148,7 @@ export function ModulesShowcase() {
                 {activeModule.headline}
               </h3>
 
-              <p className="text-base text-slate-300 leading-relaxed">
-                {activeModule.description}
-              </p>
+              <p className="text-base leading-relaxed text-slate-300">{activeModule.description}</p>
 
               {/* Bullet Points */}
               <ul className="space-y-3">
@@ -175,12 +169,12 @@ export function ModulesShowcase() {
                 <Icon className="h-8 w-8" />
               </div>
               <div className="text-4xl font-black text-white sm:text-5xl">{activeModule.stat}</div>
-              <div className="mt-2 text-xs font-semibold uppercase tracking-wider text-slate-400">
+              <div className="mt-2 text-xs font-semibold tracking-wider text-slate-400 uppercase">
                 {activeModule.statLabel}
               </div>
 
-              <div className="mt-8 pt-6 border-t border-slate-800/80 w-full flex justify-center">
-                <span className="inline-flex items-center gap-1 text-xs font-semibold text-indigo-400 hover:text-indigo-300 transition-colors cursor-pointer">
+              <div className="mt-8 flex w-full justify-center border-t border-slate-800/80 pt-6">
+                <span className="inline-flex cursor-pointer items-center gap-1 text-xs font-semibold text-indigo-400 transition-colors hover:text-indigo-300">
                   <span>Explore Module Features</span>
                   <ArrowRight className="h-3.5 w-3.5" />
                 </span>

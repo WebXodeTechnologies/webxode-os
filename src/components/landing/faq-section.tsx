@@ -63,8 +63,9 @@ export function FaqSection() {
           <h2 className="text-3xl font-black tracking-tight text-white sm:text-5xl">
             Frequently Asked Questions
           </h2>
-          <p className="mt-4 text-base text-slate-400 sm:text-lg leading-relaxed">
-            Everything you need to know about Webxode OS architecture, presales automation, project execution, and enterprise security.
+          <p className="mt-4 text-base leading-relaxed text-slate-400 sm:text-lg">
+            Everything you need to know about Webxode OS architecture, presales automation, project
+            execution, and enterprise security.
           </p>
         </div>
 
@@ -75,7 +76,7 @@ export function FaqSection() {
             return (
               <div
                 key={idx}
-                className={`overflow-hidden rounded-2xl border transition-all duration-300 backdrop-blur-md ${
+                className={`overflow-hidden rounded-2xl border backdrop-blur-md transition-all duration-300 ${
                   isOpen
                     ? "border-indigo-500/40 bg-slate-900/80 shadow-xl shadow-indigo-950/30"
                     : "border-slate-800/80 bg-slate-900/40 hover:border-slate-700 hover:bg-slate-900/60"
@@ -86,7 +87,9 @@ export function FaqSection() {
                   onClick={() => toggleFaq(idx)}
                   className="flex w-full items-center justify-between p-6 text-left focus:outline-none"
                 >
-                  <span className={`text-base sm:text-lg font-bold transition-colors pr-4 ${isOpen ? "text-indigo-300" : "text-white"}`}>
+                  <span
+                    className={`pr-4 text-base font-bold transition-colors sm:text-lg ${isOpen ? "text-indigo-300" : "text-white"}`}
+                  >
                     {faq.question}
                   </span>
                   <div
@@ -101,7 +104,7 @@ export function FaqSection() {
                 </button>
 
                 {isOpen && (
-                  <div className="px-6 pb-6 pt-0 text-sm leading-relaxed text-slate-300 border-t border-slate-800/60 mt-1">
+                  <div className="mt-1 border-t border-slate-800/60 px-6 pt-0 pb-6 text-sm leading-relaxed text-slate-300">
                     <p className="pt-4">{faq.answer}</p>
                   </div>
                 )}

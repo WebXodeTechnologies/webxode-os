@@ -27,7 +27,9 @@ export function Footer() {
               </span>
             </Link>
             <p className="max-w-sm text-xs leading-relaxed text-slate-400">
-              The internal business operating system for Webxode Technologies. Centralizing the complete agency lifecycle from lead generation to presales, project execution, and financial tracking.
+              The internal business operating system for Webxode Technologies. Centralizing the
+              complete agency lifecycle from lead generation to presales, project execution, and
+              financial tracking.
             </p>
             <div className="inline-flex items-center gap-2 rounded-full border border-emerald-500/20 bg-emerald-500/10 px-3 py-1 font-mono text-[11px] text-emerald-400">
               <Activity className="h-3.5 w-3.5 animate-pulse" />
@@ -42,23 +44,39 @@ export function Footer() {
             </h4>
             <ul className="space-y-2.5 text-xs">
               <li>
-                <Link href="/dashboard" className="transition-colors hover:text-white flex items-center gap-1 group">
-                  Sales Pipeline <ArrowUpRight className="h-3 w-3 opacity-0 group-hover:opacity-100 transition-opacity" />
+                <Link
+                  href="/dashboard"
+                  className="group flex items-center gap-1 transition-colors hover:text-white"
+                >
+                  Sales Pipeline{" "}
+                  <ArrowUpRight className="h-3 w-3 opacity-0 transition-opacity group-hover:opacity-100" />
                 </Link>
               </li>
               <li>
-                <Link href="/dashboard" className="transition-colors hover:text-white flex items-center gap-1 group">
-                  Presales & Quotations <ArrowUpRight className="h-3 w-3 opacity-0 group-hover:opacity-100 transition-opacity" />
+                <Link
+                  href="/dashboard"
+                  className="group flex items-center gap-1 transition-colors hover:text-white"
+                >
+                  Presales & Quotations{" "}
+                  <ArrowUpRight className="h-3 w-3 opacity-0 transition-opacity group-hover:opacity-100" />
                 </Link>
               </li>
               <li>
-                <Link href="/dashboard" className="transition-colors hover:text-white flex items-center gap-1 group">
-                  Project Delivery Kanban <ArrowUpRight className="h-3 w-3 opacity-0 group-hover:opacity-100 transition-opacity" />
+                <Link
+                  href="/dashboard"
+                  className="group flex items-center gap-1 transition-colors hover:text-white"
+                >
+                  Project Delivery Kanban{" "}
+                  <ArrowUpRight className="h-3 w-3 opacity-0 transition-opacity group-hover:opacity-100" />
                 </Link>
               </li>
               <li>
-                <Link href="/dashboard" className="transition-colors hover:text-white flex items-center gap-1 group">
-                  Financial Intelligence <ArrowUpRight className="h-3 w-3 opacity-0 group-hover:opacity-100 transition-opacity" />
+                <Link
+                  href="/dashboard"
+                  className="group flex items-center gap-1 transition-colors hover:text-white"
+                >
+                  Financial Intelligence{" "}
+                  <ArrowUpRight className="h-3 w-3 opacity-0 transition-opacity group-hover:opacity-100" />
                 </Link>
               </li>
             </ul>
@@ -98,13 +116,14 @@ export function Footer() {
             <h4 className="mb-4 text-xs font-bold tracking-wider text-slate-200 uppercase">
               Operating Philosophy
             </h4>
-            <p className="text-xs italic leading-relaxed text-slate-400">
-              &quot;Webxode OS is the operating system for how Webxode does business. Less data entry. Zero clutter. Immediate action.&quot;
+            <p className="text-xs leading-relaxed text-slate-400 italic">
+              &quot;Webxode OS is the operating system for how Webxode does business. Less data
+              entry. Zero clutter. Immediate action.&quot;
             </p>
             <div className="mt-4">
               <Link
                 href="/login"
-                className="inline-flex items-center gap-2 rounded-lg border border-slate-800 bg-slate-900 px-3.5 py-2 text-xs font-semibold text-indigo-400 hover:border-indigo-500/50 hover:bg-slate-800 transition-all"
+                className="inline-flex items-center gap-2 rounded-lg border border-slate-800 bg-slate-900 px-3.5 py-2 text-xs font-semibold text-indigo-400 transition-all hover:border-indigo-500/50 hover:bg-slate-800"
               >
                 <Shield className="h-3.5 w-3.5" />
                 <span>Launch Admin Workspace</span>

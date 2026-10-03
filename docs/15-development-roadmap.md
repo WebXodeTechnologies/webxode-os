@@ -18,14 +18,14 @@ The roadmap converts the product documentation into an execution sequence.
 
 The objective is to:
 
-* Build the core business engine first
-* Establish the technical foundation correctly
-* Deliver usable functionality continuously
-* Avoid unnecessary complexity
-* Validate workflows during development
-* Maintain production quality
-* Keep the architecture extensible
-* Avoid building future features prematurely
+- Build the core business engine first
+- Establish the technical foundation correctly
+- Deliver usable functionality continuously
+- Avoid unnecessary complexity
+- Validate workflows during development
+- Maintain production quality
+- Keep the architecture extensible
+- Avoid building future features prematurely
 
 ---
 
@@ -92,14 +92,14 @@ Each phase should produce something usable.
 
 Do not introduce:
 
-* Microservices
-* Kubernetes
-* Complex event infrastructure
-* GraphQL
-* CQRS
-* Event sourcing
-* AI infrastructure
-* Advanced distributed systems
+- Microservices
+- Kubernetes
+- Complex event infrastructure
+- GraphQL
+- CQRS
+- Event sourcing
+- AI infrastructure
+- Advanced distributed systems
 
 unless an actual requirement justifies them.
 
@@ -115,43 +115,43 @@ The development stack is locked as:
 
 ### Frontend
 
-* Next.js
-* React
-* TypeScript
-* Tailwind CSS
-* shadcn/ui
+- Next.js
+- React
+- TypeScript
+- Tailwind CSS
+- shadcn/ui
 
 ### Application
 
-* Next.js Server Components
-* Server Actions where appropriate
-* Route Handlers where appropriate
-* Service layer
-* Repository/data-access layer
+- Next.js Server Components
+- Server Actions where appropriate
+- Route Handlers where appropriate
+- Service layer
+- Repository/data-access layer
 
 ### Database
 
-* MongoDB
+- MongoDB
 
 ### Architecture
 
-* Modular Monolith
+- Modular Monolith
 
 ### Authentication & Authorization
 
-* Application authentication
-* RBAC
-* Permission-based access
-* Ownership and scope-based access
+- Application authentication
+- RBAC
+- Permission-based access
+- Ownership and scope-based access
 
 ### Infrastructure
 
-* GitHub
-* GitHub Actions
-* Docker where useful
-* Nginx
-* AWS
-* Object/file storage where required
+- GitHub
+- GitHub Actions
+- Docker where useful
+- Nginx
+- AWS
+- Object/file storage where required
 
 ---
 
@@ -187,31 +187,31 @@ Establish a clean development environment before implementing business functiona
 
 ### Tasks
 
-* Create repository
-* Configure Next.js
-* Configure TypeScript
-* Configure Tailwind
-* Configure shadcn/ui
-* Configure linting
-* Configure formatting
-* Configure environment variables
-* Configure MongoDB connection
-* Establish source structure
-* Establish module structure
-* Establish Git workflow
-* Configure development environment
-* Configure basic error handling
-* Configure application logging foundation
+- Create repository
+- Configure Next.js
+- Configure TypeScript
+- Configure Tailwind
+- Configure shadcn/ui
+- Configure linting
+- Configure formatting
+- Configure environment variables
+- Configure MongoDB connection
+- Establish source structure
+- Establish module structure
+- Establish Git workflow
+- Configure development environment
+- Configure basic error handling
+- Configure application logging foundation
 
 ### Expected Result
 
 A clean application that:
 
-* Runs locally
-* Builds successfully
-* Connects safely to MongoDB
-* Has a defined project structure
-* Can begin feature development
+- Runs locally
+- Builds successfully
+- Connects safely to MongoDB
+- Has a defined project structure
+- Can begin feature development
 
 ---
 
@@ -223,31 +223,31 @@ Build the reusable technical foundation required by every module.
 
 ### Core areas
 
-* Database connection
-* Configuration management
-* Request validation
-* Error handling
-* Logging
-* Response handling
-* Common utilities
-* Date/time handling
-* ID generation
-* File metadata foundation
-* Service layer conventions
-* Repository conventions
+- Database connection
+- Configuration management
+- Request validation
+- Error handling
+- Logging
+- Response handling
+- Common utilities
+- Date/time handling
+- ID generation
+- File metadata foundation
+- Service layer conventions
+- Repository conventions
 
 ### Cross-cutting foundation
 
-* Audit service
-* Notification service
-* Permission service
-* Authentication context
-* User context
-* Ownership helpers
-* Pagination
-* Filtering
-* Sorting
-* Search foundation
+- Audit service
+- Notification service
+- Permission service
+- Authentication context
+- User context
+- Ownership helpers
+- Pagination
+- Filtering
+- Sorting
+- Search foundation
 
 ### Expected Result
 
@@ -263,35 +263,35 @@ Create the visual and structural foundation of Webxode OS.
 
 ### Application shell
 
-* Sidebar
-* Header
-* User menu
-* Notifications
-* Breadcrumbs
-* Page headers
-* Global actions
-* Search
-* Responsive behavior
+- Sidebar
+- Header
+- User menu
+- Notifications
+- Breadcrumbs
+- Page headers
+- Global actions
+- Search
+- Responsive behavior
 
 ### Design system
 
-* Typography
-* Spacing
-* Buttons
-* Inputs
-* Selects
-* Tables
-* Cards
-* Dialogs
-* Drawers
-* Tabs
-* Dropdowns
-* Badges
-* Status indicators
-* Toasts
-* Empty states
-* Loading states
-* Error states
+- Typography
+- Spacing
+- Buttons
+- Inputs
+- Selects
+- Tables
+- Cards
+- Dialogs
+- Drawers
+- Tabs
+- Dropdowns
+- Badges
+- Status indicators
+- Toasts
+- Empty states
+- Loading states
+- Error states
 
 ### UX principles
 
@@ -313,28 +313,28 @@ Secure the application and establish the permission foundation.
 
 ### Authentication
 
-* Login
-* Logout
-* Session management
-* Password handling
-* Account status
-* Authentication errors
-* Session protection
+- Login
+- Logout
+- Session management
+- Password handling
+- Account status
+- Authentication errors
+- Session protection
 
 ### Users
 
-* User creation
-* User profile
-* User status
-* User activation/deactivation
-* User assignment
+- User creation
+- User profile
+- User status
+- User activation/deactivation
+- User assignment
 
 ### Roles
 
-* Role creation
-* Role editing
-* Role assignment
-* Multiple roles where supported
+- Role creation
+- Role editing
+- Role assignment
+- Multiple roles where supported
 
 ### Permissions
 
@@ -361,12 +361,12 @@ expenses.approve
 
 ### Access scopes
 
-* OWN
-* ASSIGNED
-* TEAM
-* DEPARTMENT
-* PROJECT
-* GLOBAL
+- OWN
+- ASSIGNED
+- TEAM
+- DEPARTMENT
+- PROJECT
+- GLOBAL
 
 ### Expected Result
 
@@ -384,27 +384,27 @@ Build the most important revenue-generation workflow first.
 
 ### Lead Management
 
-* Create lead
-* Edit lead
-* View lead
-* Lead source
-* Lead status
-* Lead assignment
-* Lead owner
-* Contact details
-* Company/client information
-* Notes
-* Activity timeline
+- Create lead
+- Edit lead
+- View lead
+- Lead source
+- Lead status
+- Lead assignment
+- Lead owner
+- Contact details
+- Company/client information
+- Notes
+- Activity timeline
 
 ### Qualification
 
-* Qualification status
-* Requirement summary
-* Business need
-* Budget information
-* Timeline
-* Decision-maker information
-* Qualification notes
+- Qualification status
+- Requirement summary
+- Business need
+- Budget information
+- Timeline
+- Decision-maker information
+- Qualification notes
 
 ### Pipeline
 
@@ -438,45 +438,45 @@ Lost leads must have a reason.
 
 ### Activities
 
-* Calls
-* Emails
-* WhatsApp follow-ups
-* Meetings
-* Notes
-* Other activities
+- Calls
+- Emails
+- WhatsApp follow-ups
+- Meetings
+- Notes
+- Other activities
 
 ### Follow-ups
 
-* Due today
-* Upcoming
-* Overdue
-* Completed
-* Rescheduled
-* Assigned owner
+- Due today
+- Upcoming
+- Overdue
+- Completed
+- Rescheduled
+- Assigned owner
 
 ### Opportunities
 
-* Opportunity creation
-* Opportunity value
-* Expected close
-* Owner
-* Stage
-* Probability/forecast where required
+- Opportunity creation
+- Opportunity value
+- Expected close
+- Owner
+- Stage
+- Probability/forecast where required
 
 ### Sales dashboard
 
 Display:
 
-* New leads
-* Qualified leads
-* Active opportunities
-* Follow-ups
-* Meetings
-* Proposals
-* Quotations
-* Negotiations
-* Won
-* Lost
+- New leads
+- Qualified leads
+- Active opportunities
+- Follow-ups
+- Meetings
+- Proposals
+- Quotations
+- Negotiations
+- Won
+- Lost
 
 ### Expected Result
 
@@ -494,64 +494,64 @@ Convert qualified opportunities into structured commercial opportunities.
 
 ### Requirements
 
-* Requirement record
-* Requirement collection
-* Requirement analysis
-* Business objectives
-* Scope
-* Constraints
-* Assumptions
-* Technical requirements
+- Requirement record
+- Requirement collection
+- Requirement analysis
+- Business objectives
+- Scope
+- Constraints
+- Assumptions
+- Technical requirements
 
 ### Solution Planning
 
-* Proposed solution
-* Technology
-* Modules
-* Deliverables
-* Dependencies
-* Risks
+- Proposed solution
+- Technology
+- Modules
+- Deliverables
+- Dependencies
+- Risks
 
 ### Estimation
 
-* Development effort
-* Design effort
-* QA effort
-* Infrastructure
-* Other effort
-* Estimated timeline
-* Internal cost
-* Proposed price
+- Development effort
+- Design effort
+- QA effort
+- Infrastructure
+- Other effort
+- Estimated timeline
+- Internal cost
+- Proposed price
 
 ### Proposal
 
-* Proposal creation
-* Proposal status
-* Proposal version
-* Proposal documents
-* Submission
-* Revision
+- Proposal creation
+- Proposal status
+- Proposal version
+- Proposal documents
+- Submission
+- Revision
 
 ### Quotation
 
-* Quotation creation
-* Pricing
-* Taxes
-* Discounts
-* Validity
-* Terms
-* Approval
-* Submission
-* Revision
+- Quotation creation
+- Pricing
+- Taxes
+- Discounts
+- Validity
+- Terms
+- Approval
+- Submission
+- Revision
 
 ### Negotiation
 
-* Negotiation history
-* Requested changes
-* Discount requests
-* Scope changes
-* Approval
-* Final commercial decision
+- Negotiation history
+- Requested changes
+- Discount requests
+- Scope changes
+- Approval
+- Final commercial decision
 
 ### Expected Result
 
@@ -569,14 +569,14 @@ Convert successful sales opportunities into structured client relationships.
 
 ### Client
 
-* Client profile
-* Company details
-* Contacts
-* Communication information
-* Client status
-* Source
-* Owner
-* Notes
+- Client profile
+- Company details
+- Contacts
+- Communication information
+- Client status
+- Source
+- Owner
+- Notes
 
 ### Client Conversion
 
@@ -598,29 +598,29 @@ Project Creation
 
 Track:
 
-* Confirmation
-* Agreement/SOW
-* Advance payment
-* Requirements
-* Assets
-* Access details
-* Domain/server information
-* Team assignment
-* Kickoff
-* Project creation
+- Confirmation
+- Agreement/SOW
+- Advance payment
+- Requirements
+- Assets
+- Access details
+- Domain/server information
+- Team assignment
+- Kickoff
+- Project creation
 
 ### Client Timeline
 
 Show relevant:
 
-* Sales history
-* Proposals
-* Quotations
-* Projects
-* Payments
-* Activities
-* Support
-* Important documents
+- Sales history
+- Proposals
+- Quotations
+- Projects
+- Payments
+- Activities
+- Support
+- Important documents
 
 ### Expected Result
 
@@ -638,15 +638,15 @@ Manage delivery from project creation to completion.
 
 ### Project
 
-* Create project
-* Client association
-* Project manager
-* Project value
-* Start date
-* Target completion
-* Status
-* Priority
-* Team
+- Create project
+- Client association
+- Project manager
+- Project value
+- Start date
+- Target completion
+- Status
+- Priority
+- Team
 
 ### Project Planning
 
@@ -662,27 +662,27 @@ Tasks
 
 ### Phases
 
-* Requirements
-* UI/UX
-* Development
-* Testing
-* Client Review
-* Deployment
-* Handover
+- Requirements
+- UI/UX
+- Development
+- Testing
+- Client Review
+- Deployment
+- Handover
 
 ### Tasks
 
-* Task title
-* Description
-* Assignee
-* Reporter
-* Priority
-* Status
-* Due date
-* Estimated hours
-* Actual hours
-* Comments
-* Attachments
+- Task title
+- Description
+- Assignee
+- Reporter
+- Priority
+- Status
+- Due date
+- Estimated hours
+- Actual hours
+- Comments
+- Attachments
 
 ### Task workflow
 
@@ -704,19 +704,19 @@ Completed
 
 Support:
 
-* QA assignment
-* Test status
-* Pass
-* Fail
-* Bug notes
-* Return to developer
+- QA assignment
+- Test status
+- Pass
+- Fail
+- Bug notes
+- Return to developer
 
 ### Client Review
 
-* Review status
-* Client feedback
-* Approval
-* Change request
+- Review status
+- Client feedback
+- Approval
+- Change request
 
 ### Change Requests
 
@@ -736,11 +736,11 @@ Task
 
 ### Deployment & Handover
 
-* Deployment status
-* Delivery confirmation
-* Handover checklist
-* Documentation
-* Completion
+- Deployment status
+- Delivery confirmation
+- Handover checklist
+- Documentation
+- Completion
 
 ### Expected Result
 
@@ -754,20 +754,20 @@ Webxode OS can manage the complete project delivery lifecycle.
 
 ### Workforce
 
-* Employee records
-* Department
-* Team
-* Role
-* Attendance
-* Leave
-* Work allocation
+- Employee records
+- Department
+- Team
+- Role
+- Attendance
+- Leave
+- Work allocation
 
 ### Attendance
 
-* Check-in
-* Check-out
-* Attendance status
-* Working hours
+- Check-in
+- Check-out
+- Attendance status
+- Working hours
 
 ### Leave
 
@@ -785,11 +785,11 @@ Approve / Reject
 
 Management should be able to understand:
 
-* Who is working on what
-* Current workload
-* Assigned tasks
-* Pending work
-* Overdue work
+- Who is working on what
+- Current workload
+- Assigned tasks
+- Pending work
+- Overdue work
 
 ---
 
@@ -799,29 +799,29 @@ Management should be able to understand:
 
 ### Calendar
 
-* Internal events
-* Meetings
-* Deadlines
-* Project milestones
+- Internal events
+- Meetings
+- Deadlines
+- Project milestones
 
 ### Meetings
 
-* Meeting creation
-* Participants
-* Related lead/client/project
-* Date/time
-* Notes
-* Outcome
-* Follow-up
+- Meeting creation
+- Participants
+- Related lead/client/project
+- Date/time
+- Notes
+- Outcome
+- Follow-up
 
 ### Internal Tickets
 
 Lightweight internal operational ticketing for:
 
-* IT issues
-* Administrative requests
-* Internal problems
-* Operational tasks
+- IT issues
+- Administrative requests
+- Internal problems
+- Operational tasks
 
 ### Communication
 
@@ -829,10 +829,10 @@ V1 should remain lightweight.
 
 Focus on:
 
-* Comments
-* Activity updates
-* Notifications
-* Mentions where useful
+- Comments
+- Activity updates
+- Notifications
+- Mentions where useful
 
 Do not build a full internal chat platform unless required.
 
@@ -850,40 +850,40 @@ Provide management visibility without replacing InvoNext.
 
 Track:
 
-* Project value
-* Expected revenue
-* Won revenue
-* Collected revenue
+- Project value
+- Expected revenue
+- Won revenue
+- Collected revenue
 
 ### Payments
 
-* Payment record
-* Amount
-* Date
-* Reference
-* Status
-* Project
-* Client
+- Payment record
+- Amount
+- Date
+- Reference
+- Status
+- Project
+- Client
 
 ### Outstanding
 
 Track:
 
-* Total project value
-* Collected
-* Outstanding
-* Due date
+- Total project value
+- Collected
+- Outstanding
+- Due date
 
 ### Expenses
 
-* Employee
-* Category
-* Amount
-* Date
-* Project
-* Receipt
-* Approval status
-* Payment status
+- Employee
+- Category
+- Amount
+- Date
+- Project
+- Receipt
+- Approval status
+- Payment status
 
 ### Expense workflow
 
@@ -917,35 +917,35 @@ The management dashboard should provide a business overview.
 
 ### Sales
 
-* Leads
-* Pipeline
-* Conversion
-* Opportunities
-* Won/Lost
-* Expected revenue
+- Leads
+- Pipeline
+- Conversion
+- Opportunities
+- Won/Lost
+- Expected revenue
 
 ### Delivery
 
-* Active projects
-* Delayed projects
-* Milestones
-* Overdue tasks
-* QA status
-* Client review
+- Active projects
+- Delayed projects
+- Milestones
+- Overdue tasks
+- QA status
+- Client review
 
 ### Workforce
 
-* Workload
-* Attendance
-* Leave
-* Allocation
+- Workload
+- Attendance
+- Leave
+- Allocation
 
 ### Finance
 
-* Revenue
-* Collected
-* Outstanding
-* Expenses
+- Revenue
+- Collected
+- Outstanding
+- Expenses
 
 ### Attention Center
 
@@ -955,14 +955,14 @@ The dashboard should answer:
 
 Examples:
 
-* Overdue follow-ups
-* Unassigned leads
-* Pending approvals
-* Overdue tasks
-* Delayed projects
-* Pending client reviews
-* Outstanding payments
-* Expense approvals
+- Overdue follow-ups
+- Unassigned leads
+- Pending approvals
+- Overdue tasks
+- Delayed projects
+- Pending client reviews
+- Outstanding payments
+- Expense approvals
 
 ---
 
@@ -972,41 +972,41 @@ Examples:
 
 Implement:
 
-* Assignment notifications
-* Follow-up reminders
-* Task notifications
-* Approval notifications
-* Workflow updates
-* Payment notifications
-* Project notifications
+- Assignment notifications
+- Follow-up reminders
+- Task notifications
+- Approval notifications
+- Workflow updates
+- Payment notifications
+- Project notifications
 
 ### Audit
 
 Implement:
 
-* Create
-* Update
-* Delete
-* Archive
-* Assign
-* Approve
-* Reject
-* Submit
-* Cancel
-* Restore
-* Permission changes
+- Create
+- Update
+- Delete
+- Archive
+- Assign
+- Approve
+- Reject
+- Submit
+- Cancel
+- Restore
+- Permission changes
 
 ### Global Search
 
 Search across:
 
-* Leads
-* Opportunities
-* Clients
-* Projects
-* Tasks
-* Quotations
-* Employees
+- Leads
+- Opportunities
+- Clients
+- Projects
+- Tasks
+- Quotations
+- Employees
 
 ### Activity Timeline
 
@@ -1016,11 +1016,11 @@ Provide contextual history for important records.
 
 Centralize pending approvals:
 
-* Quotations
-* Discounts
-* Expenses
-* Scope changes
-* Other configured approvals
+- Quotations
+- Discounts
+- Expenses
+- Scope changes
+- Other configured approvals
 
 ---
 
@@ -1034,23 +1034,23 @@ Testing should happen continuously, but this phase focuses on final hardening.
 
 Test:
 
-* Business rules
-* Services
-* Validation
-* Permission evaluation
-* State transitions
-* Calculations
+- Business rules
+- Services
+- Validation
+- Permission evaluation
+- State transitions
+- Calculations
 
 ### Integration Testing
 
 Test:
 
-* MongoDB operations
-* Authentication
-* Authorization
-* Cross-module workflows
-* Audit generation
-* Notifications
+- MongoDB operations
+- Authentication
+- Authorization
+- Cross-module workflows
+- Audit generation
+- Notifications
 
 ### End-to-End Testing
 
@@ -1109,14 +1109,14 @@ Payment
 
 Verify:
 
-* Unauthorized access
-* Permission bypass
-* Scope bypass
-* ID manipulation
-* Session security
-* Input validation
-* File upload security
-* Sensitive data exposure
+- Unauthorized access
+- Permission bypass
+- Scope bypass
+- ID manipulation
+- Session security
+- Input validation
+- File upload security
+- Sensitive data exposure
 
 ---
 
@@ -1134,20 +1134,20 @@ Production
 
 ### Production checklist
 
-* Production domain
-* HTTPS
-* Nginx
-* Application deployment
-* MongoDB security
-* Environment variables
-* Secrets
-* Backups
-* Logging
-* Monitoring
-* Health checks
-* Error tracking
-* CI/CD
-* Rollback process
+- Production domain
+- HTTPS
+- Nginx
+- Application deployment
+- MongoDB security
+- Environment variables
+- Secrets
+- Backups
+- Logging
+- Monitoring
+- Health checks
+- Error tracking
+- CI/CD
+- Rollback process
 
 ### Deployment workflow
 
@@ -1312,18 +1312,18 @@ A feature is not considered complete merely because the UI exists.
 
 A feature should be considered complete when:
 
-* Business requirement is satisfied
-* Database model is implemented
-* Validation exists
-* Authorization exists
-* Business rules exist
-* UI works
-* Error states work
-* Loading states work
-* Audit is handled where required
-* Notifications exist where required
-* Tests exist for critical behavior
-* No major security issue remains
+- Business requirement is satisfied
+- Database model is implemented
+- Validation exists
+- Authorization exists
+- Business rules exist
+- UI works
+- Error states work
+- Loading states work
+- Audit is handled where required
+- Notifications exist where required
+- Tests exist for critical behavior
+- No major security issue remains
 
 ---
 
@@ -1335,22 +1335,22 @@ Must exist for V1.
 
 Examples:
 
-* Authentication
-* RBAC
-* Leads
-* Pipeline
-* Follow-ups
-* Opportunities
-* Requirements
-* Presales
-* Quotations
-* Clients
-* Projects
-* Tasks
-* QA
-* Delivery
-* Core finance visibility
-* Core management dashboard
+- Authentication
+- RBAC
+- Leads
+- Pipeline
+- Follow-ups
+- Opportunities
+- Requirements
+- Presales
+- Quotations
+- Clients
+- Projects
+- Tasks
+- QA
+- Delivery
+- Core finance visibility
+- Core management dashboard
 
 ### P1 — Operationally Important
 
@@ -1358,16 +1358,16 @@ Should be included when the core engine is stable.
 
 Examples:
 
-* Attendance
-* Leave
-* Work allocation
-* Meetings
-* Calendar
-* Expenses
-* Change requests
-* Advanced reports
-* Approval center
-* Global search
+- Attendance
+- Leave
+- Work allocation
+- Meetings
+- Calendar
+- Expenses
+- Change requests
+- Advanced reports
+- Approval center
+- Global search
 
 ### P2 — Enhancement
 
@@ -1375,12 +1375,12 @@ Can follow V1.
 
 Examples:
 
-* Advanced automation
-* Advanced analytics
-* External integrations
-* Advanced document management
-* Client portal
-* Advanced communication
+- Advanced automation
+- Advanced analytics
+- External integrations
+- Advanced document management
+- Client portal
+- Advanced communication
 
 ---
 
@@ -1388,18 +1388,18 @@ Examples:
 
 The following should not delay the core V1 release:
 
-* AI
-* Advanced automation
-* WhatsApp integration
-* Slack integration
-* Microsoft 365 integration
-* Google Workspace integration
-* Advanced analytics
-* Microservices
-* Kubernetes
-* Multi-region deployment
-* Advanced workflow engines
-* Complex event architecture
+- AI
+- Advanced automation
+- WhatsApp integration
+- Slack integration
+- Microsoft 365 integration
+- Google Workspace integration
+- Advanced analytics
+- Microservices
+- Kubernetes
+- Multi-region deployment
+- Advanced workflow engines
+- Complex event architecture
 
 These can be developed after the core operating system proves useful.
 
@@ -1457,12 +1457,12 @@ Avoid large commits containing unrelated features.
 
 Development should use:
 
-* Local MongoDB or approved development database
-* Local application server
-* Separate environment variables
-* Seed/test data
-* Development-only accounts
-* Development logging
+- Local MongoDB or approved development database
+- Local application server
+- Separate environment variables
+- Seed/test data
+- Development-only accounts
+- Development logging
 
 Production data must never be used casually for local development.
 
@@ -1490,15 +1490,15 @@ Destructive database changes should require explicit review.
 
 V1 performance priorities:
 
-* Fast page loads
-* Efficient MongoDB queries
-* Proper indexes
-* Pagination
-* Server-side filtering
-* Minimal unnecessary client-side rendering
-* Avoid unnecessary API requests
-* Efficient dashboard queries
-* Lazy loading for heavy functionality
+- Fast page loads
+- Efficient MongoDB queries
+- Proper indexes
+- Pagination
+- Server-side filtering
+- Minimal unnecessary client-side rendering
+- Avoid unnecessary API requests
+- Efficient dashboard queries
+- Lazy loading for heavy functionality
 
 Do not optimize prematurely.
 
@@ -1512,17 +1512,17 @@ Security is part of every development phase.
 
 Developers must:
 
-* Validate server-side
-* Enforce permissions server-side
-* Protect sensitive routes
-* Protect credentials
-* Avoid secrets in Git
-* Avoid sensitive logging
-* Sanitize external input
-* Use secure cookies/session handling
-* Protect file uploads
-* Verify webhooks
-* Follow least privilege
+- Validate server-side
+- Enforce permissions server-side
+- Protect sensitive routes
+- Protect credentials
+- Avoid secrets in Git
+- Avoid sensitive logging
+- Sanitize external input
+- Use secure cookies/session handling
+- Protect file uploads
+- Verify webhooks
+- Follow least privilege
 
 The frontend must never be considered the final security boundary.
 
@@ -1534,14 +1534,14 @@ Important development decisions should be documented.
 
 Documentation should cover:
 
-* Architecture decisions
-* Business rules
-* Permission changes
-* Database changes
-* Workflow changes
-* Deployment changes
-* Integration decisions
-* Security decisions
+- Architecture decisions
+- Business rules
+- Permission changes
+- Database changes
+- Workflow changes
+- Deployment changes
+- Integration decisions
+- Security decisions
 
 Documentation should evolve with the product rather than becoming a final cleanup task.
 
@@ -1639,14 +1639,14 @@ Support
 
 The system must provide visibility into:
 
-* Ownership
-* Status
-* Next action
-* Deadlines
-* Revenue
-* Delivery
-* Outstanding work
-* Accountability
+- Ownership
+- Status
+- Next action
+- Deadlines
+- Revenue
+- Delivery
+- Outstanding work
+- Accountability
 
 ---
 
@@ -1656,26 +1656,26 @@ After V1 is stable, development can move toward:
 
 ### V1.1
 
-* UX improvements
-* Performance improvements
-* Better reports
-* Advanced search
-* Better dashboards
-* Workflow refinements
+- UX improvements
+- Performance improvements
+- Better reports
+- Advanced search
+- Better dashboards
+- Workflow refinements
 
 ### V1.2
 
-* Integrations
-* Automation
-* Client portal
-* Advanced document workflows
+- Integrations
+- Automation
+- Client portal
+- Advanced document workflows
 
 ### V2
 
-* Connected business ecosystem
-* External integrations
-* Advanced automation
-* Expanded platform capabilities
+- Connected business ecosystem
+- External integrations
+- Advanced automation
+- Expanded platform capabilities
 
 ### Future
 

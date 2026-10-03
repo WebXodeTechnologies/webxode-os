@@ -34,8 +34,7 @@ const mainFeatures: FeatureItem[] = [
   {
     id: "crm",
     title: "Zero-Friction Sales CRM",
-    description:
-      "Track every lead, deal stage, and follow-up without manual spreadsheet overhead.",
+    description: "Track every lead, deal stage, and follow-up without manual spreadsheet overhead.",
     icon: Users,
     badge: "Lead Engine",
     span: "col-span-1",
@@ -70,7 +69,7 @@ function FeaturePreview({ featureId }: { featureId: string }) {
   switch (featureId) {
     case "presales":
       return (
-        <div className="mt-4 rounded-xl border border-slate-800 bg-slate-950 p-4 space-y-2 font-mono text-xs text-slate-300 shadow-inner">
+        <div className="mt-4 space-y-2 rounded-xl border border-slate-800 bg-slate-950 p-4 font-mono text-xs text-slate-300 shadow-inner">
           <div className="flex justify-between border-b border-slate-900 pb-2 text-indigo-400">
             <span>Quote #WX-2026-91</span>
             <span>Status: Approved</span>
@@ -79,7 +78,7 @@ function FeaturePreview({ featureId }: { featureId: string }) {
             <span>Scope: Next.js SaaS Web App</span>
             <span className="text-emerald-400">Margin: 62%</span>
           </div>
-          <div className="flex justify-between items-center text-white pt-1">
+          <div className="flex items-center justify-between pt-1 text-white">
             <span>Final Fixed Price</span>
             <span className="text-base font-bold text-emerald-400">$32,500</span>
           </div>
@@ -107,8 +106,8 @@ function FeaturePreview({ featureId }: { featureId: string }) {
             <span>Sprint 3 Progress</span>
             <span className="text-indigo-400">84%</span>
           </div>
-          <div className="h-2 w-full rounded-full bg-slate-950 border border-slate-800">
-            <div className="h-2 rounded-full bg-indigo-500 w-[84%]"></div>
+          <div className="h-2 w-full rounded-full border border-slate-800 bg-slate-950">
+            <div className="h-2 w-[84%] rounded-full bg-indigo-500"></div>
           </div>
           <div className="flex items-center gap-1.5 text-[11px] text-emerald-400">
             <CheckCircle2 className="h-3.5 w-3.5" />
@@ -120,11 +119,11 @@ function FeaturePreview({ featureId }: { featureId: string }) {
     case "finance":
       return (
         <div className="mt-4 grid grid-cols-2 gap-3 font-mono text-xs">
-          <div className="rounded-lg border border-slate-800 bg-slate-950 p-3 space-y-1">
+          <div className="space-y-1 rounded-lg border border-slate-800 bg-slate-950 p-3">
             <div className="text-[10px] text-slate-500">COLLECTED REVENUE</div>
             <div className="text-lg font-bold text-emerald-400">$184,500</div>
           </div>
-          <div className="rounded-lg border border-slate-800 bg-slate-950 p-3 space-y-1">
+          <div className="space-y-1 rounded-lg border border-slate-800 bg-slate-950 p-3">
             <div className="text-[10px] text-slate-500">PENDING MILESTONES</div>
             <div className="text-lg font-bold text-amber-400">$38,200</div>
           </div>
@@ -138,7 +137,10 @@ function FeaturePreview({ featureId }: { featureId: string }) {
 
 export function FeaturesSection() {
   return (
-    <section id="features" className="relative border-t border-slate-900 bg-slate-950 py-24 lg:py-32">
+    <section
+      id="features"
+      className="relative border-t border-slate-900 bg-slate-950 py-24 lg:py-32"
+    >
       {/* Glow Effect */}
       <div className="pointer-events-none absolute top-1/2 right-1/4 -z-10 h-112.5 w-112.5 rounded-full bg-indigo-600/10 blur-[150px]" />
 
@@ -152,8 +154,9 @@ export function FeaturesSection() {
           <h2 className="text-3xl font-black tracking-tight text-white sm:text-5xl">
             Engineered to Eliminate Friction & Complexity
           </h2>
-          <p className="mt-4 text-base text-slate-400 sm:text-lg leading-relaxed">
-            Replace disconnected spreadsheets, fragmented chat messages, and manual follow-ups with an integrated engine built specifically for modern tech agencies.
+          <p className="mt-4 text-base leading-relaxed text-slate-400 sm:text-lg">
+            Replace disconnected spreadsheets, fragmented chat messages, and manual follow-ups with
+            an integrated engine built specifically for modern tech agencies.
           </p>
         </div>
 
@@ -164,16 +167,16 @@ export function FeaturesSection() {
             return (
               <div
                 key={feat.id}
-                className={`group relative flex flex-col justify-between overflow-hidden rounded-2xl border border-slate-800/80 bg-slate-900/40 p-6 sm:p-8 backdrop-blur-md transition-all duration-300 hover:border-indigo-500/40 hover:bg-slate-900/80 hover:shadow-2xl hover:shadow-indigo-950/50 ${feat.span}`}
+                className={`group relative flex flex-col justify-between overflow-hidden rounded-2xl border border-slate-800/80 bg-slate-900/40 p-6 backdrop-blur-md transition-all duration-300 hover:border-indigo-500/40 hover:bg-slate-900/80 hover:shadow-2xl hover:shadow-indigo-950/50 sm:p-8 ${feat.span}`}
               >
                 {/* Subtle Background Radial Gradient */}
                 <div
-                  className={`pointer-events-none absolute -right-20 -top-20 h-64 w-64 rounded-full bg-linear-to-br ${feat.accent} blur-3xl opacity-60 group-hover:opacity-100 transition-opacity`}
+                  className={`pointer-events-none absolute -top-20 -right-20 h-64 w-64 rounded-full bg-linear-to-br ${feat.accent} opacity-60 blur-3xl transition-opacity group-hover:opacity-100`}
                 />
 
                 <div>
                   <div className="mb-6 flex items-center justify-between">
-                    <div className="flex h-12 w-12 items-center justify-center rounded-xl border border-indigo-500/30 bg-indigo-600/10 text-indigo-400 group-hover:scale-110 group-hover:bg-indigo-600 group-hover:text-white transition-all">
+                    <div className="flex h-12 w-12 items-center justify-center rounded-xl border border-indigo-500/30 bg-indigo-600/10 text-indigo-400 transition-all group-hover:scale-110 group-hover:bg-indigo-600 group-hover:text-white">
                       <Icon className="h-6 w-6" />
                     </div>
                     <span className="rounded-full border border-slate-800 bg-slate-950 px-3 py-1 text-xs font-medium text-slate-400">
@@ -181,12 +184,10 @@ export function FeaturesSection() {
                     </span>
                   </div>
 
-                  <h3 className="text-xl font-bold tracking-tight text-white group-hover:text-indigo-300 transition-colors">
+                  <h3 className="text-xl font-bold tracking-tight text-white transition-colors group-hover:text-indigo-300">
                     {feat.title}
                   </h3>
-                  <p className="mt-3 text-sm leading-relaxed text-slate-400">
-                    {feat.description}
-                  </p>
+                  <p className="mt-3 text-sm leading-relaxed text-slate-400">{feat.description}</p>
 
                   {/* Feature Interactive/Visual Preview */}
                   <FeaturePreview featureId={feat.id} />
@@ -197,7 +198,7 @@ export function FeaturesSection() {
                     <CheckCircle2 className="h-4 w-4 text-emerald-400" />
                     <span>{feat.highlight}</span>
                   </div>
-                  <ArrowUpRight className="h-4 w-4 opacity-0 group-hover:opacity-100 transition-opacity text-slate-300" />
+                  <ArrowUpRight className="h-4 w-4 text-slate-300 opacity-0 transition-opacity group-hover:opacity-100" />
                 </div>
               </div>
             );

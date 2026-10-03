@@ -33,51 +33,51 @@ The platform will evolve in stages:
 
 Build the core operating system for:
 
-* Sales
-* Presales
-* Client management
-* Project delivery
-* Employees
-* Tasks
-* Operations
-* Finance visibility
-* Management
+- Sales
+- Presales
+- Client management
+- Project delivery
+- Employees
+- Tasks
+- Operations
+- Finance visibility
+- Management
 
 ### V2 — Connected Business
 
 Introduce:
 
-* Third-party integrations
-* Productivity integrations
-* Workflow automation
-* Communication integrations
-* Calendar and collaboration integrations
-* External application synchronization
+- Third-party integrations
+- Productivity integrations
+- Workflow automation
+- Communication integrations
+- Calendar and collaboration integrations
+- External application synchronization
 
 ### V3 — Intelligent Business
 
 Introduce:
 
-* AI-assisted workflows
-* Advanced analytics
-* Business intelligence
-* Sales intelligence
-* Project intelligence
-* Automated recommendations
-* Predictive insights
-* Intelligent business automation
+- AI-assisted workflows
+- Advanced analytics
+- Business intelligence
+- Sales intelligence
+- Project intelligence
+- Automated recommendations
+- Predictive insights
+- Intelligent business automation
 
 ### Long-Term Vision
 
 Webxode OS should eventually support the broader evolution of Webxode Technologies across:
 
-* Web development
-* SaaS and custom application development
-* Cloud computing
-* DevOps
-* IoT
-* Automation
-* Technology products and platforms
+- Web development
+- SaaS and custom application development
+- Cloud computing
+- DevOps
+- IoT
+- Automation
+- Technology products and platforms
 
 The architecture should therefore remain extensible without introducing unnecessary complexity into V1.
 
@@ -145,21 +145,21 @@ It should help the company **operate the business**.
 
 The platform should answer:
 
-* What leads do we have?
-* Who is responsible for each lead?
-* Which follow-ups are due?
-* Which opportunities are qualified?
-* Which clients are close to conversion?
-* Which proposals are pending?
-* Which quotations require attention?
-* Which projects are active?
-* Which tasks are overdue?
-* Who is working on what?
-* Which projects are at risk?
-* What revenue has been generated?
-* What payments are outstanding?
-* What expenses have been submitted?
-* What requires management attention today?
+- What leads do we have?
+- Who is responsible for each lead?
+- Which follow-ups are due?
+- Which opportunities are qualified?
+- Which clients are close to conversion?
+- Which proposals are pending?
+- Which quotations require attention?
+- Which projects are active?
+- Which tasks are overdue?
+- Who is working on what?
+- Which projects are at risk?
+- What revenue has been generated?
+- What payments are outstanding?
+- What expenses have been submitted?
+- What requires management attention today?
 
 The system should prioritize **actionable information over unnecessary data collection**.
 
@@ -179,15 +179,15 @@ Provide structured lead management, follow-ups, sales pipelines, presales workfl
 
 Create repeatable processes for:
 
-* Requirement collection
-* Requirement analysis
-* Solution planning
-* Estimation
-* Pricing
-* Proposal preparation
-* Quotation preparation
-* Negotiation
-* Client confirmation
+- Requirement collection
+- Requirement analysis
+- Solution planning
+- Estimation
+- Pricing
+- Proposal preparation
+- Quotation preparation
+- Negotiation
+- Client confirmation
 
 ### 6.4 Improve Project Delivery
 
@@ -199,11 +199,11 @@ Every important activity should have clear ownership.
 
 The system should identify:
 
-* Who is responsible?
-* What needs to be done?
-* When is it due?
-* What is the current status?
-* What happened previously?
+- Who is responsible?
+- What needs to be done?
+- When is it due?
+- What is the current status?
+- What happened previously?
 
 ### 6.6 Improve Management Visibility
 
@@ -225,79 +225,79 @@ V1 focuses on the core internal business operation of Webxode.
 
 ### Foundation
 
-* Authentication
-* User management
-* Admin management
-* Role management
-* Permission management
-* Departments
-* Teams
-* Audit logs
+- Authentication
+- User management
+- Admin management
+- Role management
+- Permission management
+- Departments
+- Teams
+- Audit logs
 
 ### Sales
 
-* Lead management
-* Lead sources
-* Lead assignment
-* Lead qualification
-* Sales pipeline
-* Opportunities
-* Activities
-* Calls
-* Follow-ups
-* Sales notes
-* Sales dashboard
+- Lead management
+- Lead sources
+- Lead assignment
+- Lead qualification
+- Sales pipeline
+- Opportunities
+- Activities
+- Calls
+- Follow-ups
+- Sales notes
+- Sales dashboard
 
 ### Presales
 
-* Requirement management
-* Requirement analysis
-* Solution planning
-* Estimation
-* Proposal management
-* Quotation management
-* Negotiation tracking
-* Client confirmation
+- Requirement management
+- Requirement analysis
+- Solution planning
+- Estimation
+- Proposal management
+- Quotation management
+- Negotiation tracking
+- Client confirmation
 
 ### Clients
 
-* Client management
-* Contact management
-* Client history
-* Client onboarding
-* Client documents
-* Client activities
+- Client management
+- Contact management
+- Client history
+- Client onboarding
+- Client documents
+- Client activities
 
 ### Projects & Delivery
 
-* Project management
-* Milestones
-* Phases
-* Tasks
-* Deliverables
-* Assignments
-* Project status
-* QA workflow
-* Change requests
-* Project timeline
+- Project management
+- Milestones
+- Phases
+- Tasks
+- Deliverables
+- Assignments
+- Project status
+- QA workflow
+- Change requests
+- Project timeline
 
 ### Workforce
 
-* Employee management
-* User profiles
-* Role assignment
-* Attendance
-* Clock-in / clock-out
-* Leave management
-* Work allocation
+- Employee management
+- User profiles
+- Role assignment
+- Attendance
+- Clock-in / clock-out
+- Leave management
+- Work allocation
 
 ### Operations
 
-* Calendar
-* Meetings
-* Internal tickets
-* Internal communication
-* Notifications
+- Calendar
+- Meetings
+- Internal tickets
+- Internal communication
+- Notifications
 
 ### Finance Visibility
 
@@ -305,22 +305,22 @@ Webxode OS will not replace the dedicated accounting/billing system.
 
 V1 will provide operational financial visibility including:
 
-* Project value
-* Payment tracking
-* Revenue tracking
-* Outstanding payments
-* Expenses
-* Expense approval status
+- Project value
+- Payment tracking
+- Revenue tracking
+- Outstanding payments
+- Expenses
+- Expense approval status
 
 ### Management
 
-* Management dashboard
-* Sales reports
-* Revenue reports
-* Project reports
-* Employee workload visibility
-* Operational alerts
-* Activity history
+- Management dashboard
+- Sales reports
+- Revenue reports
+- Project reports
+- Employee workload visibility
+- Operational alerts
+- Activity history
 
 ---
 
@@ -328,20 +328,20 @@ V1 will provide operational financial visibility including:
 
 The following capabilities are intentionally excluded from the initial implementation:
 
-* Full accounting system
-* Payroll system
-* Full HRMS
-* Video conferencing platform
-* Full Slack replacement
-* Full Microsoft Teams replacement
-* Full document editor comparable to Microsoft Word
-* Advanced third-party integrations
-* AI-powered business intelligence
-* Advanced predictive analytics
-* Complex automation engine
-* Cloud infrastructure management
-* IoT management
-* Microservices architecture
+- Full accounting system
+- Payroll system
+- Full HRMS
+- Video conferencing platform
+- Full Slack replacement
+- Full Microsoft Teams replacement
+- Full document editor comparable to Microsoft Word
+- Advanced third-party integrations
+- AI-powered business intelligence
+- Advanced predictive analytics
+- Complex automation engine
+- Cloud infrastructure management
+- IoT management
+- Microservices architecture
 
 These capabilities may be introduced in future versions where appropriate.
 
@@ -403,14 +403,14 @@ Webxode OS is based on clear responsibility and ownership.
 
 Important business records should support ownership such as:
 
-* Lead Owner
-* Presales Owner
-* Client Owner
-* Project Manager
-* Task Assignee
-* QA Assignee
-* Accountable Employee
-* Expense Approver
+- Lead Owner
+- Presales Owner
+- Client Owner
+- Project Manager
+- Task Assignee
+- QA Assignee
+- Accountable Employee
+- Expense Approver
 
 The system should make responsibility visible.
 
@@ -437,16 +437,16 @@ Business roles are defined and managed by Admin.
 
 Examples may include:
 
-* Sales Executive
-* Sales Manager
-* Presales Executive
-* Project Manager
-* Developer
-* Designer
-* QA Engineer
-* Finance
-* Operations
-* Management
+- Sales Executive
+- Sales Manager
+- Presales Executive
+- Project Manager
+- Developer
+- Designer
+- QA Engineer
+- Finance
+- Operations
+- Management
 
 These roles should not be permanently hard-coded into the system.
 
@@ -550,40 +550,40 @@ V1 will use:
 
 ### Frontend
 
-* Next.js
-* React
-* TypeScript
-* Tailwind CSS
-* shadcn/ui
+- Next.js
+- React
+- TypeScript
+- Tailwind CSS
+- shadcn/ui
 
 ### Application
 
-* Next.js server-side architecture
-* Route Handlers
-* Server Actions where appropriate
-* Modular service architecture
-* Repository/data-access layer
+- Next.js server-side architecture
+- Route Handlers
+- Server Actions where appropriate
+- Modular service architecture
+- Repository/data-access layer
 
 ### Database
 
-* MongoDB
+- MongoDB
 
 ### Architecture
 
-* Modular Monolith
+- Modular Monolith
 
 ### Authorization
 
-* Custom Role-Based Access Control (RBAC)
+- Custom Role-Based Access Control (RBAC)
 
 ### Infrastructure
 
 The application should be designed to support:
 
-* Docker
-* Nginx
-* GitHub Actions
-* AWS
+- Docker
+- Nginx
+- GitHub Actions
+- AWS
 
 These infrastructure components will be introduced according to deployment requirements rather than unnecessarily increasing V1 complexity.
 
@@ -595,14 +595,14 @@ Webxode OS should be a professional internal business application.
 
 The interface should be:
 
-* Clean
-* Modern
-* Fast
-* Consistent
-* Responsive
-* Easy to learn
-* Action-oriented
-* Low in unnecessary complexity
+- Clean
+- Modern
+- Fast
+- Consistent
+- Responsive
+- Easy to learn
+- Action-oriented
+- Low in unnecessary complexity
 
 The system should avoid excessive dashboards and unnecessary data fields.
 
@@ -616,38 +616,38 @@ For example:
 
 ### Sales User
 
-* Leads
-* Follow-ups
-* Meetings
-* Opportunities
-* Proposals
-* Quotations
+- Leads
+- Follow-ups
+- Meetings
+- Opportunities
+- Proposals
+- Quotations
 
 ### Developer
 
-* Assigned projects
-* Tasks
-* Deadlines
-* QA requests
-* Meetings
+- Assigned projects
+- Tasks
+- Deadlines
+- QA requests
+- Meetings
 
 ### Project Manager
 
-* Projects
-* Milestones
-* Tasks
-* Team workload
-* Client issues
-* Project risks
+- Projects
+- Milestones
+- Tasks
+- Team workload
+- Client issues
+- Project risks
 
 ### Admin / Management
 
-* Sales
-* Revenue
-* Projects
-* Workforce
-* Expenses
-* Operational alerts
+- Sales
+- Revenue
+- Projects
+- Workforce
+- Expenses
+- Operational alerts
 
 ---
 
@@ -657,14 +657,14 @@ Important business operations should be traceable.
 
 The system should maintain:
 
-* Created by
-* Updated by
-* Created date
-* Updated date
-* Status history where required
-* Ownership history where required
-* Approval history
-* Important business changes
+- Created by
+- Updated by
+- Created date
+- Updated date
+- Status history where required
+- Ownership history where required
+- Approval history
+- Important business changes
 
 An audit trail should allow management to understand significant changes made within the system.
 
@@ -676,22 +676,22 @@ The platform should eventually provide centralized notifications for important e
 
 Examples:
 
-* New lead assigned
-* Follow-up due
-* Follow-up overdue
-* Meeting approaching
-* Proposal created
-* Quotation awaiting approval
-* Deal won
-* Project assigned
-* Task assigned
-* Task overdue
-* QA issue raised
-* Client response received
-* Payment due
-* Expense submitted
-* Expense approved
-* SLA approaching
+- New lead assigned
+- Follow-up due
+- Follow-up overdue
+- Meeting approaching
+- Proposal created
+- Quotation awaiting approval
+- Deal won
+- Project assigned
+- Task assigned
+- Task overdue
+- QA issue raised
+- Client response received
+- Payment due
+- Expense submitted
+- Expense approved
+- SLA approaching
 
 V1 should prioritize useful in-app notifications and basic communication mechanisms.
 
@@ -705,20 +705,20 @@ Advanced external notification channels can be introduced in later versions.
 
 Potential integrations include:
 
-* Google Workspace
-* Google Calendar
-* Google Meet
-* Gmail
-* Google Drive
-* Microsoft 365
-* Outlook
-* Microsoft Teams
-* OneDrive
-* Slack
-* GitHub
-* WhatsApp
-* Zoom
-* Other productivity and development platforms
+- Google Workspace
+- Google Calendar
+- Google Meet
+- Gmail
+- Google Drive
+- Microsoft 365
+- Outlook
+- Microsoft Teams
+- OneDrive
+- Slack
+- GitHub
+- WhatsApp
+- Zoom
+- Other productivity and development platforms
 
 The Integration Layer will remain separate from the core business modules.
 
@@ -726,18 +726,18 @@ The Integration Layer will remain separate from the core business modules.
 
 Potential capabilities include:
 
-* Sales intelligence
-* Lead scoring
-* Lead qualification assistance
-* Follow-up recommendations
-* Proposal assistance
-* Requirement analysis
-* Project risk detection
-* Revenue intelligence
-* Advanced analytics
-* Business intelligence
-* Automated recommendations
-* AI business assistant
+- Sales intelligence
+- Lead scoring
+- Lead qualification assistance
+- Follow-up recommendations
+- Proposal assistance
+- Requirement analysis
+- Project risk detection
+- Revenue intelligence
+- Advanced analytics
+- Business intelligence
+- Automated recommendations
+- AI business assistant
 
 AI should enhance existing business workflows rather than exist as a disconnected feature.
 

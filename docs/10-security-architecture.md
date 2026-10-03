@@ -19,30 +19,30 @@ This document defines the security architecture for Webxode OS.
 
 Webxode OS is an internal business operating system containing sensitive business information including:
 
-* leads
-* client information
-* contacts
-* requirements
-* proposals
-* quotations
-* project information
-* employee information
-* payments
-* expenses
-* business reports
-* internal communication
-* operational records
-* audit history
+- leads
+- client information
+- contacts
+- requirements
+- proposals
+- quotations
+- project information
+- employee information
+- payments
+- expenses
+- business reports
+- internal communication
+- operational records
+- audit history
 
 Security must therefore be part of the architecture rather than something added after development.
 
 The objective is to protect:
 
-* confidentiality
-* integrity
-* availability
-* accountability
-* business continuity
+- confidentiality
+- integrity
+- availability
+- accountability
+- business continuity
 
 while keeping the application practical and easy to operate.
 
@@ -56,16 +56,16 @@ Webxode OS follows:
 
 Security decisions should be built into:
 
-* authentication
-* authorization
-* business services
-* database access
-* workflows
-* APIs
-* file handling
-* logging
-* deployment
-* infrastructure
+- authentication
+- authorization
+- business services
+- database access
+- workflows
+- APIs
+- file handling
+- logging
+- deployment
+- infrastructure
 
 Security should not depend on frontend behavior.
 
@@ -137,14 +137,14 @@ Webxode OS security follows layered protection.
 
 Additional controls exist around:
 
-* secrets
-* files
-* logging
-* audit
-* rate limiting
-* security headers
-* monitoring
-* deployment
+- secrets
+- files
+- logging
+- audit
+- rate limiting
+- security headers
+- monitoring
+- deployment
 
 ---
 
@@ -158,12 +158,12 @@ The browser is untrusted.
 
 Never trust:
 
-* client-side roles
-* client-side permissions
-* hidden UI elements
-* client-submitted ownership
-* client-submitted status transitions
-* client-submitted financial values
+- client-side roles
+- client-side permissions
+- hidden UI elements
+- client-submitted ownership
+- client-submitted status transitions
+- client-submitted financial values
 
 ---
 
@@ -173,13 +173,13 @@ The Next.js server is the primary security enforcement layer.
 
 It must validate:
 
-* identity
-* session
-* permissions
-* scope
-* record ownership
-* business rules
-* input data
+- identity
+- session
+- permissions
+- scope
+- record ownership
+- business rules
+- input data
 
 ---
 
@@ -209,20 +209,20 @@ These must remain separate concepts.
 
 Webxode OS authentication should support:
 
-* secure login
-* secure session management
-* logout
-* password management
-* account status
-* session expiration
-* protected application routes
-* authentication failure handling
+- secure login
+- secure session management
+- logout
+- password management
+- account status
+- session expiration
+- protected application routes
+- authentication failure handling
 
 Future authentication methods may include:
 
-* Google OAuth
-* Microsoft authentication
-* SSO
+- Google OAuth
+- Microsoft authentication
+- SSO
 
 but these should remain extensions of the authentication architecture.
 
@@ -234,21 +234,21 @@ If Webxode OS supports password authentication:
 
 Passwords must:
 
-* never be stored in plaintext
-* never be logged
-* never be returned through APIs
-* be securely hashed
-* use an appropriate password-hashing algorithm
-* be protected against brute-force attempts
+- never be stored in plaintext
+- never be logged
+- never be returned through APIs
+- be securely hashed
+- use an appropriate password-hashing algorithm
+- be protected against brute-force attempts
 
 Password verification must happen server-side.
 
 Password reset tokens must:
 
-* be random
-* be short-lived
-* be single-use
-* never expose the user's password
+- be random
+- be short-lived
+- be single-use
+- never expose the user's password
 
 ---
 
@@ -258,13 +258,13 @@ Authenticated sessions must be securely managed.
 
 Session controls should include:
 
-* secure session identifiers
-* expiration
-* server-side validation
-* logout invalidation where applicable
-* secure cookie configuration
-* HTTPS-only transmission
-* protection against session theft
+- secure session identifiers
+- expiration
+- server-side validation
+- logout invalidation where applicable
+- secure cookie configuration
+- HTTPS-only transmission
+- protection against session theft
 
 Sensitive session information should not be exposed to client-side JavaScript unnecessarily.
 
@@ -276,11 +276,11 @@ Authentication cookies should use appropriate security attributes.
 
 Where applicable:
 
-* `HttpOnly`
-* `Secure`
-* appropriate `SameSite`
-* limited path/domain scope
-* controlled expiration
+- `HttpOnly`
+- `Secure`
+- appropriate `SameSite`
+- limited path/domain scope
+- controlled expiration
 
 Cookies should never contain sensitive business information.
 
@@ -324,21 +324,21 @@ The application uses role-based access control.
 
 System account types:
 
-* ADMIN
-* USER
+- ADMIN
+- USER
 
 Business roles may include:
 
-* Management
-* Sales Executive
-* Sales Manager
-* Presales Executive
-* Project Manager
-* Developer
-* Designer
-* QA
-* Finance
-* Operations
+- Management
+- Sales Executive
+- Sales Manager
+- Presales Executive
+- Project Manager
+- Developer
+- Designer
+- QA
+- Finance
+- Operations
 
 A user may have one or more business roles depending on organizational requirements.
 
@@ -380,12 +380,12 @@ Permissions may operate within a scope.
 
 Supported conceptual scopes:
 
-* OWN
-* ASSIGNED
-* TEAM
-* DEPARTMENT
-* PROJECT
-* GLOBAL
+- OWN
+- ASSIGNED
+- TEAM
+- DEPARTMENT
+- PROJECT
+- GLOBAL
 
 Example:
 
@@ -420,14 +420,14 @@ A user may have permission to access Leads but not necessarily every lead.
 
 Record access should consider:
 
-* owner
-* assignee
-* team
-* department
-* project
-* explicit access
-* role
-* permission scope
+- owner
+- assignee
+- team
+- department
+- project
+- explicit access
+- role
+- permission scope
 
 The application should build authorization-aware database queries rather than retrieving unrestricted records and filtering them in the UI.
 
@@ -439,13 +439,13 @@ Important records should contain ownership information.
 
 Examples:
 
-* Lead Owner
-* Opportunity Owner
-* Presales Owner
-* Project Manager
-* Task Assignee
-* QA Assignee
-* Expense Approver
+- Lead Owner
+- Opportunity Owner
+- Presales Owner
+- Project Manager
+- Task Assignee
+- QA Assignee
+- Expense Approver
 
 Ownership should be validated server-side.
 
@@ -461,12 +461,12 @@ Sensitive operations require explicit authorization.
 
 Examples:
 
-* changing own role
-* granting permissions
-* creating administrators
-* modifying permission definitions
-* approving own sensitive requests
-* changing ownership without permission
+- changing own role
+- granting permissions
+- creating administrators
+- modifying permission definitions
+- approving own sensitive requests
+- changing ownership without permission
 
 Administrative actions should be audited.
 
@@ -510,12 +510,12 @@ Approval actions are high-impact business operations.
 
 The server must verify:
 
-* user identity
-* permission
-* scope
-* current record state
-* approval eligibility
-* business rules
+- user identity
+- permission
+- scope
+- current record state
+- approval eligibility
+- business rules
 
 Example:
 
@@ -546,11 +546,11 @@ Approve Quotation
 
 The service then validates:
 
-* current status
-* approval permission
-* required information
-* approval conditions
-* audit requirements
+- current status
+- approval permission
+- required information
+- approval conditions
+- audit requirements
 
 ---
 
@@ -564,30 +564,30 @@ Validation should exist at multiple levels.
 
 Checks:
 
-* required fields
-* type
-* format
-* length
-* allowed values
+- required fields
+- type
+- format
+- length
+- allowed values
 
 ### Business Validation
 
 Checks:
 
-* valid workflow state
-* ownership
-* dependencies
-* commercial rules
-* approval rules
+- valid workflow state
+- ownership
+- dependencies
+- commercial rules
+- approval rules
 
 ### Authorization
 
 Checks:
 
-* identity
-* permission
-* scope
-* record access
+- identity
+- permission
+- scope
+- record access
 
 Passing input validation does not mean the operation is authorized.
 
@@ -599,14 +599,14 @@ The application must protect against injection attacks.
 
 Relevant areas include:
 
-* MongoDB queries
-* search
-* filters
-* user-generated text
-* URLs
-* file names
-* external integrations
-* command execution
+- MongoDB queries
+- search
+- filters
+- user-generated text
+- URLs
+- file names
+- external integrations
+- command execution
 
 Database queries must use controlled query construction.
 
@@ -618,14 +618,14 @@ User input must never be treated as executable application logic.
 
 MongoDB security should include:
 
-* authentication
-* encrypted connections
-* least-privilege database credentials
-* environment-specific databases
-* controlled network access
-* restricted database exposure
-* backups
-* monitoring
+- authentication
+- encrypted connections
+- least-privilege database credentials
+- environment-specific databases
+- controlled network access
+- restricted database exposure
+- backups
+- monitoring
 
 The application should never expose MongoDB directly to the browser.
 
@@ -661,12 +661,12 @@ Business-critical data should be protected from accidental corruption.
 
 Examples:
 
-* quotation values
-* project values
-* payment amounts
-* ownership
-* workflow status
-* approval state
+- quotation values
+- project values
+- payment amounts
+- ownership
+- workflow status
+- approval state
 
 Important updates should pass through business services.
 
@@ -680,11 +680,11 @@ Webxode OS contains operational financial information.
 
 Sensitive financial operations should require:
 
-* authentication
-* permission checks
-* server-side validation
-* audit logging
-* controlled workflow transitions
+- authentication
+- permission checks
+- server-side validation
+- audit logging
+- controlled workflow transitions
 
 Monetary values must use precise representations and should not rely on floating-point arithmetic.
 
@@ -694,14 +694,14 @@ Monetary values must use precise representations and should not rely on floating
 
 Sensitive information may include:
 
-* passwords
-* authentication tokens
-* API keys
-* OAuth secrets
-* database credentials
-* infrastructure credentials
-* private access links
-* client confidential information
+- passwords
+- authentication tokens
+- API keys
+- OAuth secrets
+- database credentials
+- infrastructure credentials
+- private access links
+- client confidential information
 
 Secrets must never be stored casually inside business records.
 
@@ -723,12 +723,12 @@ EMAIL_API_KEY
 
 Requirements:
 
-* never commit secrets to Git
-* never hard-code secrets
-* never expose secrets to browser bundles
-* separate development/staging/production secrets
-* rotate secrets when necessary
-* restrict secret access
+- never commit secrets to Git
+- never hard-code secrets
+- never expose secrets to browser bundles
+- separate development/staging/production secrets
+- rotate secrets when necessary
+- restrict secret access
 
 ---
 
@@ -736,9 +736,9 @@ Requirements:
 
 Separate:
 
-* development
-* staging
-* production
+- development
+- staging
+- production
 
 Production credentials must never be reused casually in development.
 
@@ -752,13 +752,13 @@ Every protected API endpoint must verify authentication and authorization.
 
 APIs should implement:
 
-* authentication
-* authorization
-* input validation
-* rate limiting where appropriate
-* controlled responses
-* error handling
-* audit logging for sensitive operations
+- authentication
+- authorization
+- input validation
+- rate limiting where appropriate
+- controlled responses
+- error handling
+- audit logging for sensitive operations
 
 Never rely on route naming or frontend visibility as security.
 
@@ -770,13 +770,13 @@ Server Actions must be treated like API endpoints.
 
 Every mutation should verify:
 
-* authenticated user
-* user status
-* permission
-* scope
-* input
-* record access
-* business state
+- authenticated user
+- user status
+- permission
+- scope
+- input
+- record access
+- business state
 
 A Server Action is not trusted merely because it is called internally by the application.
 
@@ -798,12 +798,12 @@ The application should protect against cross-site scripting.
 
 Controls include:
 
-* output encoding
-* safe rendering
-* sanitization of rich text
-* avoiding unsafe HTML injection
-* controlled rendering of user-generated content
-* appropriate security headers
+- output encoding
+- safe rendering
+- sanitization of rich text
+- avoiding unsafe HTML injection
+- controlled rendering of user-generated content
+- appropriate security headers
 
 Rich text content should never be treated as trusted HTML by default.
 
@@ -815,12 +815,12 @@ The application should use appropriate security headers.
 
 Depending on deployment architecture, this may include:
 
-* Content Security Policy
-* Strict-Transport-Security
-* X-Content-Type-Options
-* Referrer-Policy
-* frame protection
-* appropriate Permissions-Policy
+- Content Security Policy
+- Strict-Transport-Security
+- X-Content-Type-Options
+- Referrer-Policy
+- frame protection
+- appropriate Permissions-Policy
 
 Headers should be configured based on actual application requirements rather than copied blindly.
 
@@ -832,14 +832,14 @@ Rate limiting should protect sensitive endpoints.
 
 Priority areas:
 
-* login
-* password reset
-* authentication
-* public endpoints
-* search
-* file uploads
-* webhooks
-* high-cost operations
+- login
+- password reset
+- authentication
+- public endpoints
+- search
+- file uploads
+- webhooks
+- high-cost operations
 
 Rate limits should be appropriate to the operation.
 
@@ -853,11 +853,11 @@ Authentication systems should detect and reduce repeated failed attempts.
 
 Possible controls:
 
-* rate limiting
-* temporary lockouts
-* progressive delays
-* monitoring
-* security alerts
+- rate limiting
+- temporary lockouts
+- progressive delays
+- monitoring
+- security alerts
 
 The implementation should avoid creating easy denial-of-service opportunities through account-lockout abuse.
 
@@ -867,24 +867,24 @@ The implementation should avoid creating easy denial-of-service opportunities th
 
 Files may include:
 
-* client documents
-* proposals
-* quotations
-* receipts
-* project assets
-* attachments
+- client documents
+- proposals
+- quotations
+- receipts
+- project assets
+- attachments
 
 File handling must include:
 
-* authentication
-* authorization
-* file type validation
-* size limits
-* secure storage
-* safe file names
-* controlled downloads
-* malware scanning where required
-* access checks before retrieval
+- authentication
+- authorization
+- file type validation
+- size limits
+- secure storage
+- safe file names
+- controlled downloads
+- malware scanning where required
+- access checks before retrieval
 
 Files should not be treated as public simply because a user knows a URL.
 
@@ -894,12 +894,12 @@ Files should not be treated as public simply because a user knows a URL.
 
 Uploads should validate:
 
-* MIME type
-* extension
-* file size
-* upload permissions
-* destination
-* filename
+- MIME type
+- extension
+- file size
+- upload permissions
+- destination
+- filename
 
 Avoid trusting only the file extension supplied by the browser.
 
@@ -913,26 +913,26 @@ Audit logs are a core security and accountability feature.
 
 Important actions should record:
 
-* actor
-* action
-* entity
-* entity ID
-* timestamp
-* relevant before/after information where appropriate
-* source/context where useful
+- actor
+- action
+- entity
+- entity ID
+- timestamp
+- relevant before/after information where appropriate
+- source/context where useful
 
 Examples:
 
-* user created
-* role changed
-* permission changed
-* lead reassigned
-* quotation approved
-* quotation value changed
-* project status changed
-* payment recorded
-* expense approved
-* sensitive configuration changed
+- user created
+- role changed
+- permission changed
+- lead reassigned
+- quotation approved
+- quotation value changed
+- project status changed
+- payment recorded
+- expense approved
+- sensitive configuration changed
 
 ---
 
@@ -964,10 +964,10 @@ Audit records should be append-oriented and protected from ordinary modification
 
 Users should not be able to casually:
 
-* edit audit records
-* delete audit records
-* impersonate another user
-* modify timestamps
+- edit audit records
+- delete audit records
+- impersonate another user
+- modify timestamps
 
 Administrative access to audit data should itself be controlled and auditable.
 
@@ -979,15 +979,15 @@ Security-relevant events should be logged.
 
 Examples:
 
-* failed login
-* successful login
-* logout
-* password reset
-* permission change
-* role change
-* account suspension
-* suspicious access attempts
-* repeated authorization failures
+- failed login
+- successful login
+- logout
+- password reset
+- permission change
+- role change
+- account suspension
+- suspicious access attempts
+- repeated authorization failures
 
 Logs should avoid storing passwords, tokens or unnecessary sensitive information.
 
@@ -999,12 +999,12 @@ Errors must not expose internal details to users.
 
 Avoid exposing:
 
-* database errors
-* stack traces
-* internal file paths
-* secrets
-* credentials
-* infrastructure details
+- database errors
+- stack traces
+- internal file paths
+- secrets
+- credentials
+- infrastructure details
 
 Users should receive safe, actionable errors.
 
@@ -1016,19 +1016,19 @@ Developers should have access to appropriate diagnostic information through cont
 
 Application logs should support:
 
-* debugging
-* security investigation
-* operational monitoring
-* performance investigation
+- debugging
+- security investigation
+- operational monitoring
+- performance investigation
 
 Logs should contain useful context such as:
 
-* timestamp
-* request/context identifier
-* user identifier where appropriate
-* operation
-* result
-* severity
+- timestamp
+- request/context identifier
+- user identifier where appropriate
+- operation
+- result
+- severity
 
 Sensitive information should be redacted.
 
@@ -1038,10 +1038,10 @@ Sensitive information should be redacted.
 
 The system should distinguish appropriately between:
 
-* unauthenticated
-* unauthorized
-* invalid input
-* unavailable resource
+- unauthenticated
+- unauthorized
+- invalid input
+- unavailable resource
 
 However, responses should avoid leaking information that helps attackers enumerate protected records.
 
@@ -1063,12 +1063,12 @@ API responses should return only the fields required by the client.
 
 Do not return:
 
-* password hashes
-* authentication secrets
-* internal security configuration
-* unnecessary personal data
-* private credentials
-* sensitive infrastructure information
+- password hashes
+- authentication secrets
+- internal security configuration
+- unnecessary personal data
+- private credentials
+- sensitive infrastructure information
 
 Use explicit response models where appropriate.
 
@@ -1080,11 +1080,11 @@ Employee and client information should be accessible according to role and busin
 
 Examples of potentially restricted information:
 
-* personal contact information
-* attendance
-* leave
-* internal notes
-* compensation-related information if introduced later
+- personal contact information
+- attendance
+- leave
+- internal notes
+- compensation-related information if introduced later
 
 Sensitive employee data should not automatically become visible to all users.
 
@@ -1096,12 +1096,12 @@ Client information should follow record-level access controls.
 
 Users should only see client information permitted by:
 
-* role
-* team
-* department
-* assignment
-* project access
-* management permissions
+- role
+- team
+- department
+- assignment
+- project access
+- management permissions
 
 Cross-client access should never occur accidentally through broad queries.
 
@@ -1130,11 +1130,11 @@ Export permissions should be explicitly controlled.
 
 Exports should consider:
 
-* user permissions
-* record scope
-* sensitive fields
-* export size
-* audit logging
+- user permissions
+- record scope
+- sensitive fields
+- export size
+- audit logging
 
 Important exports should be recorded in audit logs.
 
@@ -1146,10 +1146,10 @@ Bulk operations should be permission-controlled.
 
 Examples:
 
-* bulk assignment
-* bulk status update
-* bulk archive
-* bulk export
+- bulk assignment
+- bulk status update
+- bulk archive
+- bulk export
 
 The server must validate every affected record against authorization and business rules.
 
@@ -1173,11 +1173,11 @@ SUSPENDED
 
 Offboarding should:
 
-* disable access
-* preserve historical records
-* reassign active ownership where required
-* invalidate relevant sessions
-* preserve audit history
+- disable access
+- preserve historical records
+- reassign active ownership where required
+- invalidate relevant sessions
+- preserve audit history
 
 Deleting a user should not destroy business history.
 
@@ -1189,18 +1189,18 @@ Administrative functions should receive additional protection.
 
 Admin capabilities may include:
 
-* user management
-* role management
-* permission management
-* system configuration
-* security configuration
+- user management
+- role management
+- permission management
+- system configuration
+- security configuration
 
 Sensitive administrative operations should require:
 
-* explicit permissions
-* audit logging
-* strong validation
-* careful UI confirmation where appropriate
+- explicit permissions
+- audit logging
+- strong validation
+- careful UI confirmation where appropriate
 
 ---
 
@@ -1208,15 +1208,15 @@ Sensitive administrative operations should require:
 
 High-risk actions include:
 
-* deleting important records
-* changing roles
-* changing permissions
-* approving quotations
-* approving expenses
-* modifying financial information
-* changing ownership
-* changing security settings
-* exporting sensitive information
+- deleting important records
+- changing roles
+- changing permissions
+- approving quotations
+- approving expenses
+- modifying financial information
+- changing ownership
+- changing security settings
+- exporting sensitive information
 
 These actions require stronger authorization and auditability.
 
@@ -1228,10 +1228,10 @@ Business records should generally not be physically deleted when historical inte
 
 Use:
 
-* archive
-* deactivate
-* cancel
-* soft delete where appropriate
+- archive
+- deactivate
+- cancel
+- soft delete where appropriate
 
 Hard deletion should be restricted to clearly defined administrative/system scenarios.
 
@@ -1269,20 +1269,20 @@ Future integrations must follow the same security model.
 
 Potential integrations:
 
-* Google Workspace
-* Microsoft 365
-* GitHub
-* Slack
-* WhatsApp
-* Zoom
+- Google Workspace
+- Microsoft 365
+- GitHub
+- Slack
+- WhatsApp
+- Zoom
 
 Integration credentials should:
 
-* be encrypted/protected
-* use least privilege
-* have controlled scopes
-* be isolated from normal business records
-* support revocation
+- be encrypted/protected
+- use least privilege
+- have controlled scopes
+- be isolated from normal business records
+- support revocation
 
 Integrations are part of V2 and are not required for V1 implementation.
 
@@ -1294,12 +1294,12 @@ Future webhooks must verify authenticity before processing.
 
 Controls may include:
 
-* signature verification
-* shared secrets
-* timestamp validation
-* replay protection
-* idempotency
-* payload validation
+- signature verification
+- shared secrets
+- timestamp validation
+- replay protection
+- idempotency
+- payload validation
 
 Webhook endpoints should never blindly trust incoming requests.
 
@@ -1315,11 +1315,11 @@ AI services should receive only the data necessary for the task.
 
 AI must respect:
 
-* user permissions
-* record-level access
-* client confidentiality
-* data minimization
-* audit requirements
+- user permissions
+- record-level access
+- client confidentiality
+- data minimization
+- audit requirements
 
 AI recommendations should not silently execute critical business actions.
 
@@ -1335,11 +1335,11 @@ The user or approved workflow decides whether to execute it.
 
 AI-generated:
 
-* proposals
-* summaries
-* recommendations
-* classifications
-* analysis
+- proposals
+- summaries
+- recommendations
+- classifications
+- analysis
 
 must be treated as generated content, not authoritative business truth.
 
@@ -1353,11 +1353,11 @@ Application dependencies should be managed responsibly.
 
 Security practices should include:
 
-* regular dependency updates
-* vulnerability monitoring
-* removal of unused packages
-* lockfile management
-* controlled package additions
+- regular dependency updates
+- vulnerability monitoring
+- removal of unused packages
+- lockfile management
+- controlled package additions
 
 New dependencies should have a clear reason for inclusion.
 
@@ -1367,15 +1367,15 @@ New dependencies should have a clear reason for inclusion.
 
 Development should follow:
 
-* code review
-* protected production branches
-* environment separation
-* secret scanning
-* dependency scanning
-* linting
-* type checking
-* automated testing
-* security-focused testing
+- code review
+- protected production branches
+- environment separation
+- secret scanning
+- dependency scanning
+- linting
+- type checking
+- automated testing
+- security-focused testing
 
 Security issues should be treated as engineering defects.
 
@@ -1385,19 +1385,19 @@ Security issues should be treated as engineering defects.
 
 The repository must never contain:
 
-* production secrets
-* database credentials
-* API keys
-* private certificates
-* authentication secrets
-* client confidential files
+- production secrets
+- database credentials
+- API keys
+- private certificates
+- authentication secrets
+- client confidential files
 
 Use:
 
-* `.env` files excluded from Git
-* environment templates without real secrets
-* secret management
-* branch protection where appropriate
+- `.env` files excluded from Git
+- environment templates without real secrets
+- secret management
+- branch protection where appropriate
 
 ---
 
@@ -1429,15 +1429,15 @@ Production infrastructure should follow least privilege.
 
 Controls include:
 
-* restricted network access
-* SSH key-based access
-* limited administrative accounts
-* firewall/security-group controls
-* HTTPS
-* system updates
-* secure environment variables
-* backup configuration
-* monitoring
+- restricted network access
+- SSH key-based access
+- limited administrative accounts
+- firewall/security-group controls
+- HTTPS
+- system updates
+- secure environment variables
+- backup configuration
+- monitoring
 
 Infrastructure configuration should be version-controlled where practical without exposing secrets.
 
@@ -1447,19 +1447,19 @@ Infrastructure configuration should be version-controlled where practical withou
 
 Security includes the ability to recover from:
 
-* accidental deletion
-* data corruption
-* infrastructure failure
-* security incidents
-* deployment problems
+- accidental deletion
+- data corruption
+- infrastructure failure
+- security incidents
+- deployment problems
 
 Backups should be:
 
-* automated where practical
-* monitored
-* protected
-* tested periodically
-* separated appropriately from the primary system
+- automated where practical
+- monitored
+- protected
+- tested periodically
+- separated appropriately from the primary system
 
 A backup that has never been restored successfully should not be assumed reliable.
 
@@ -1469,12 +1469,12 @@ A backup that has never been restored successfully should not be assumed reliabl
 
 The system should have a recovery strategy covering:
 
-* database recovery
-* application redeployment
-* environment reconstruction
-* secret restoration
-* file recovery
-* backup restoration
+- database recovery
+- application redeployment
+- environment reconstruction
+- secret restoration
+- file recovery
+- backup restoration
 
 Recovery procedures should be documented before production becomes business-critical.
 
@@ -1484,14 +1484,14 @@ Recovery procedures should be documented before production becomes business-crit
 
 Production should monitor:
 
-* authentication failures
-* authorization failures
-* application errors
-* unusual request patterns
-* database issues
-* infrastructure failures
-* resource utilization
-* suspicious activity
+- authentication failures
+- authorization failures
+- application errors
+- unusual request patterns
+- database issues
+- infrastructure failures
+- resource utilization
+- suspicious activity
 
 Monitoring architecture will be expanded in the Observability & Monitoring document.
 
@@ -1517,13 +1517,13 @@ Review
 
 Potential incidents:
 
-* compromised account
-* leaked credential
-* unauthorized access
-* malicious upload
-* data exposure
-* suspicious activity
-* infrastructure compromise
+- compromised account
+- leaked credential
+- unauthorized access
+- malicious upload
+- data exposure
+- suspicious activity
+- infrastructure compromise
 
 Incident procedures should prioritize containment and preservation of evidence.
 
@@ -1537,42 +1537,42 @@ Testing areas:
 
 ### Authentication
 
-* login
-* logout
-* password reset
-* session expiration
+- login
+- logout
+- password reset
+- session expiration
 
 ### Authorization
 
-* role access
-* permission access
-* scope access
-* ownership access
+- role access
+- permission access
+- scope access
+- ownership access
 
 ### API
 
-* unauthorized requests
-* malformed requests
-* privilege escalation
-* rate limiting
+- unauthorized requests
+- malformed requests
+- privilege escalation
+- rate limiting
 
 ### Data
 
-* injection
-* validation
-* data exposure
+- injection
+- validation
+- data exposure
 
 ### Files
 
-* upload restrictions
-* authorization
-* access control
+- upload restrictions
+- authorization
+- access control
 
 ### Workflow
 
-* invalid state transitions
-* approval bypass
-* unauthorized ownership changes
+- invalid state transitions
+- approval bypass
+- unauthorized ownership changes
 
 ---
 
@@ -1606,11 +1606,11 @@ Security should protect the business without unnecessarily slowing normal work.
 
 The design should avoid:
 
-* excessive authentication prompts
-* unnecessary confirmation dialogs
-* confusing permission errors
-* overly restrictive workflows
-* duplicate data entry
+- excessive authentication prompts
+- unnecessary confirmation dialogs
+- confusing permission errors
+- overly restrictive workflows
+- duplicate data entry
 
 Security controls should be strongest around high-risk actions and lightweight for routine operations.
 
@@ -1620,45 +1620,45 @@ Security controls should be strongest around high-risk actions and lightweight f
 
 ## P0 — Mandatory
 
-* secure authentication
-* session security
-* RBAC
-* permission enforcement
-* scope enforcement
-* ownership enforcement
-* server-side authorization
-* input validation
-* MongoDB authentication
-* HTTPS
-* secure cookies
-* secret management
-* audit logging
-* error protection
-* security headers
-* basic rate limiting
-* protected file access
-* backup strategy
-* environment separation
+- secure authentication
+- session security
+- RBAC
+- permission enforcement
+- scope enforcement
+- ownership enforcement
+- server-side authorization
+- input validation
+- MongoDB authentication
+- HTTPS
+- secure cookies
+- secret management
+- audit logging
+- error protection
+- security headers
+- basic rate limiting
+- protected file access
+- backup strategy
+- environment separation
 
 ## P1 — Operational Security
 
-* security event monitoring
-* advanced audit UI
-* export controls
-* bulk operation protection
-* dependency scanning
-* enhanced security testing
-* incident response documentation
+- security event monitoring
+- advanced audit UI
+- export controls
+- bulk operation protection
+- dependency scanning
+- enhanced security testing
+- incident response documentation
 
 ## P2 — Future Security Enhancements
 
-* MFA
-* SSO
-* advanced threat detection
-* centralized security monitoring
-* advanced DLP
-* enterprise security controls
-* advanced integration security
+- MFA
+- SSO
+- advanced threat detection
+- centralized security monitoring
+- advanced DLP
+- enterprise security controls
+- advanced integration security
 
 ---
 
@@ -1668,42 +1668,42 @@ Security is shared across the system.
 
 ### UI
 
-* provide appropriate visibility
-* provide safe interactions
-* never act as the security boundary
+- provide appropriate visibility
+- provide safe interactions
+- never act as the security boundary
 
 ### Application
 
-* authentication
-* authorization
-* business validation
-* workflow enforcement
+- authentication
+- authorization
+- business validation
+- workflow enforcement
 
 ### Repository
 
-* controlled data access
-* authorization-aware queries
+- controlled data access
+- authorization-aware queries
 
 ### Database
 
-* authentication
-* encrypted connections
-* restricted access
-* backups
+- authentication
+- encrypted connections
+- restricted access
+- backups
 
 ### Infrastructure
 
-* network security
-* HTTPS
-* server access
-* deployment security
+- network security
+- HTTPS
+- server access
+- deployment security
 
 ### Development
 
-* secure coding
-* dependency management
-* testing
-* code review
+- secure coding
+- dependency management
+- testing
+- code review
 
 ---
 
@@ -1738,15 +1738,15 @@ Webxode OS V1 will focus on strong application-level security without unnecessar
 
 V1 will not require:
 
-* microservice security mesh
-* Kubernetes security infrastructure
-* service-to-service identity platforms
-* complex zero-trust infrastructure
-* dedicated SIEM platform
-* advanced DLP
-* multi-region disaster recovery
-* enterprise SSO
-* sophisticated threat-intelligence platforms
+- microservice security mesh
+- Kubernetes security infrastructure
+- service-to-service identity platforms
+- complex zero-trust infrastructure
+- dedicated SIEM platform
+- advanced DLP
+- multi-region disaster recovery
+- enterprise SSO
+- sophisticated threat-intelligence platforms
 
 These may become relevant as Webxode OS evolves.
 
@@ -1758,30 +1758,30 @@ As Webxode OS grows, security can evolve toward:
 
 ### V2
 
-* SSO
-* MFA
-* integration credential management
-* enhanced monitoring
-* stronger file scanning
-* advanced audit capabilities
+- SSO
+- MFA
+- integration credential management
+- enhanced monitoring
+- stronger file scanning
+- advanced audit capabilities
 
 ### V3
 
-* AI security controls
-* intelligent anomaly detection
-* advanced access analytics
-* enterprise security policies
-* automated security response
+- AI security controls
+- intelligent anomaly detection
+- advanced access analytics
+- enterprise security policies
+- automated security response
 
 ### Long Term
 
 Potential enterprise capabilities:
 
-* centralized identity
-* organization-level security policies
-* advanced compliance controls
-* dedicated security monitoring
-* advanced disaster recovery
+- centralized identity
+- organization-level security policies
+- advanced compliance controls
+- dedicated security monitoring
+- advanced disaster recovery
 
 ---
 
@@ -1789,19 +1789,19 @@ Potential enterprise capabilities:
 
 A security-sensitive feature is not complete until:
 
-* authentication is verified
-* authorization is verified
-* permissions are enforced server-side
-* record scope is enforced
-* ownership is validated
-* input is validated
-* business state is validated
-* sensitive data is protected
-* audit requirements are satisfied
-* errors do not expose internal information
-* relevant security events are logged
-* tests cover unauthorized behavior
-* production configuration does not expose secrets
+- authentication is verified
+- authorization is verified
+- permissions are enforced server-side
+- record scope is enforced
+- ownership is validated
+- input is validated
+- business state is validated
+- sensitive data is protected
+- audit requirements are satisfied
+- errors do not expose internal information
+- relevant security events are logged
+- tests cover unauthorized behavior
+- production configuration does not expose secrets
 
 ---
 

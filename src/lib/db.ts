@@ -1,3 +1,4 @@
+// src/lib/db.ts
 import mongoose from "mongoose";
 
 const MONGODB_URI = process.env.MONGODB_URI;
@@ -6,22 +7,13 @@ if (!MONGODB_URI) {
   throw new Error("Please define the MONGODB_URI environment variable inside .env.local");
 }
 
-interface CachedConnection {
-  conn: typeof mongoose | null;
-  promise: Promise<typeof mongoose> | null;
+let cached = (global as any).mongoose;
+
+if (!cached) {
+  cached = (global as any).mongoose = { conn: null, promise: null };
 }
 
-declare global {
-  var mongooseCache: CachedConnection | undefined;
-}
-
-let cached: CachedConnection = global.mongooseCache || { conn: null, promise: null };
-
-if (!global.mongooseCache) {
-  global.mongooseCache = cached;
-}
-
-export async function connectDB(): Promise<typeof mongoose> {
+export async function connectDB() {
   if (cached.conn) {
     return cached.conn;
   }
@@ -29,9 +21,10 @@ export async function connectDB(): Promise<typeof mongoose> {
   if (!cached.promise) {
     const opts = {
       bufferCommands: false,
+      dbName: process.env.MONGODB_DB_NAME || "webxode_os",
     };
 
-    cached.promise = mongoose.connect(MONGODB_URI!, opts).then((mongooseInstance: any) => {
+    cached.promise = mongoose.connect(MONGODB_URI!, opts).then((mongooseInstance) => {
       return mongooseInstance;
     });
   }

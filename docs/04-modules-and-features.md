@@ -17,14 +17,14 @@ It translates the business requirements into a practical product structure.
 
 The document defines:
 
-* Core modules.
-* Submodules.
-* Features.
-* Major workflows.
-* User actions.
-* Module boundaries.
-* V1 priorities.
-* Future extension areas.
+- Core modules.
+- Submodules.
+- Features.
+- Major workflows.
+- User actions.
+- Module boundaries.
+- V1 priorities.
+- Future extension areas.
 
 It does not define database schemas or implementation code.
 
@@ -122,47 +122,47 @@ Management should see:
 
 ### Sales
 
-* New leads.
-* Qualified leads.
-* Active opportunities.
-* Proposals.
-* Quotations.
-* Negotiations.
-* Won opportunities.
-* Lost opportunities.
+- New leads.
+- Qualified leads.
+- Active opportunities.
+- Proposals.
+- Quotations.
+- Negotiations.
+- Won opportunities.
+- Lost opportunities.
 
 ### Delivery
 
-* Active projects.
-* Delayed projects.
-* Upcoming deadlines.
-* Overdue tasks.
-* QA issues.
-* Client reviews.
+- Active projects.
+- Delayed projects.
+- Upcoming deadlines.
+- Overdue tasks.
+- QA issues.
+- Client reviews.
 
 ### Finance
 
-* Expected revenue.
-* Won revenue.
-* Collected revenue.
-* Outstanding payments.
-* Expenses.
+- Expected revenue.
+- Won revenue.
+- Collected revenue.
+- Outstanding payments.
+- Expenses.
 
 ### Workforce
 
-* Employee availability.
-* Workload.
-* Pending approvals.
-* Attendance overview.
+- Employee availability.
+- Workload.
+- Pending approvals.
+- Attendance overview.
 
 ### Attention Center
 
-* Overdue follow-ups.
-* Overdue tasks.
-* Payment overdue.
-* Approval pending.
-* Projects at risk.
-* Important unresolved items.
+- Overdue follow-ups.
+- Overdue tasks.
+- Payment overdue.
+- Approval pending.
+- Projects at risk.
+- Important unresolved items.
 
 ---
 
@@ -170,14 +170,14 @@ Management should see:
 
 Employees should see:
 
-* My tasks.
-* Today's follow-ups.
-* Upcoming meetings.
-* Pending approvals.
-* Assigned projects.
-* Notifications.
-* Overdue work.
-* Recent activity.
+- My tasks.
+- Today's follow-ups.
+- Upcoming meetings.
+- Pending approvals.
+- Assigned projects.
+- Notifications.
+- Overdue work.
+- Recent activity.
 
 The dashboard should answer:
 
@@ -195,18 +195,18 @@ The Foundation module provides the system's core capabilities.
 
 Features:
 
-* Login.
-* Logout.
-* Session management.
-* Password management.
-* Account status.
-* Authentication protection.
+- Login.
+- Logout.
+- Session management.
+- Password management.
+- Account status.
+- Authentication protection.
 
 Future extension:
 
-* Google OAuth.
-* Microsoft OAuth.
-* Other identity providers.
+- Google OAuth.
+- Microsoft OAuth.
+- Other identity providers.
 
 ---
 
@@ -214,25 +214,25 @@ Future extension:
 
 Admin features:
 
-* Create user.
-* Edit user.
-* Activate/deactivate user.
-* Reset access.
-* Assign business role.
-* Assign department.
-* Assign team.
-* View user activity.
+- Create user.
+- Edit user.
+- Activate/deactivate user.
+- Reset access.
+- Assign business role.
+- Assign department.
+- Assign team.
+- View user activity.
 
 User profile should include:
 
-* Name.
-* Email.
-* Phone.
-* Profile image.
-* Department.
-* Team.
-* Business role.
-* Account status.
+- Name.
+- Email.
+- Phone.
+- Profile image.
+- Department.
+- Team.
+- Business role.
+- Account status.
 
 ---
 
@@ -242,16 +242,16 @@ Admin should be able to create and manage business roles.
 
 Examples:
 
-* Sales Executive.
-* Sales Manager.
-* Presales Executive.
-* Project Manager.
-* Developer.
-* Designer.
-* QA.
-* Finance.
-* Operations.
-* Management.
+- Sales Executive.
+- Sales Manager.
+- Presales Executive.
+- Project Manager.
+- Developer.
+- Designer.
+- QA.
+- Finance.
+- Operations.
+- Management.
 
 Roles should not be hardcoded to the application.
 
@@ -291,14 +291,14 @@ Permission scope should support future expansion.
 
 Initial departments may include:
 
-* Sales.
-* Presales.
-* Development.
-* Design.
-* QA.
-* Finance.
-* Operations.
-* Management.
+- Sales.
+- Presales.
+- Development.
+- Design.
+- QA.
+- Finance.
+- Operations.
+- Management.
 
 Departments should be configurable.
 
@@ -327,13 +327,13 @@ Authorized users should be able to view important system activities.
 
 Examples:
 
-* User created.
-* Lead reassigned.
-* Quotation changed.
-* Quotation approved.
-* Expense approved.
-* Project status changed.
-* Task reassigned.
+- User created.
+- Lead reassigned.
+- Quotation changed.
+- Quotation approved.
+- Expense approved.
+- Project status changed.
+- Task reassigned.
 
 ---
 
@@ -349,21 +349,21 @@ The purpose is to ensure opportunities are captured, followed up, qualified and 
 
 Features:
 
-* Create lead.
-* Edit lead.
-* View lead.
-* Assign lead.
-* Reassign lead.
-* Change status.
-* Set priority.
-* Add notes.
-* Record source.
-* Record requirement.
-* Schedule follow-up.
-* Convert lead.
-* Mark lost.
-* Search leads.
-* Filter leads.
+- Create lead.
+- Edit lead.
+- View lead.
+- Assign lead.
+- Reassign lead.
+- Change status.
+- Set priority.
+- Add notes.
+- Record source.
+- Record requirement.
+- Schedule follow-up.
+- Convert lead.
+- Mark lost.
+- Search leads.
+- Filter leads.
 
 ---
 
@@ -371,17 +371,17 @@ Features:
 
 Initial sources:
 
-* Manual.
-* Website.
-* LinkedIn.
-* Referral.
-* Cold Calling.
-* Lead Import.
-* Google.
-* Advertising.
-* Partner.
-* Existing Client.
-* Other.
+- Manual.
+- Website.
+- LinkedIn.
+- Referral.
+- Cold Calling.
+- Lead Import.
+- Google.
+- Advertising.
+- Partner.
+- Existing Client.
+- Other.
 
 Admin should be able to add sources later.
 
@@ -391,21 +391,21 @@ Admin should be able to add sources later.
 
 Features:
 
-* Qualification status.
-* Qualification notes.
-* Budget indication.
-* Timeline.
-* Business fit.
-* Decision-maker information.
-* Requirement status.
-* Qualification outcome.
+- Qualification status.
+- Qualification notes.
+- Budget indication.
+- Timeline.
+- Business fit.
+- Decision-maker information.
+- Requirement status.
+- Qualification outcome.
 
 Possible outcomes:
 
-* Qualified.
-* Unqualified.
-* Nurture.
-* Lost.
+- Qualified.
+- Unqualified.
+- Nurture.
+- Lost.
 
 ---
 
@@ -413,9 +413,9 @@ Possible outcomes:
 
 Authorized users can:
 
-* Assign lead.
-* Reassign lead.
-* View ownership history.
+- Assign lead.
+- Reassign lead.
+- View ownership history.
 
 The assigned owner is responsible for progressing the lead.
 
@@ -461,25 +461,25 @@ Lost
 
 Activity types:
 
-* Call.
-* Follow-up.
-* Meeting.
-* WhatsApp.
-* Email.
-* Callback.
-* Requirement discussion.
-* Proposal discussion.
-* Negotiation.
-* Other.
+- Call.
+- Follow-up.
+- Meeting.
+- WhatsApp.
+- Email.
+- Callback.
+- Requirement discussion.
+- Proposal discussion.
+- Negotiation.
+- Other.
 
 Each activity should record:
 
-* Type.
-* Date/time.
-* Owner.
-* Notes.
-* Outcome.
-* Next action.
+- Type.
+- Date/time.
+- Owner.
+- Notes.
+- Outcome.
+- Next action.
 
 ---
 
@@ -489,22 +489,22 @@ Employees should have:
 
 ### Today
 
-* Follow-ups.
-* Calls.
-* Callbacks.
-* Meetings.
-* Proposal follow-ups.
+- Follow-ups.
+- Calls.
+- Callbacks.
+- Meetings.
+- Proposal follow-ups.
 
 ### Upcoming
 
-* Scheduled follow-ups.
-* Meetings.
-* Future callbacks.
+- Scheduled follow-ups.
+- Meetings.
+- Future callbacks.
 
 ### Overdue
 
-* Missed follow-ups.
-* Unresolved actions.
+- Missed follow-ups.
+- Unresolved actions.
 
 This should be one of the most frequently used Sales screens.
 
@@ -514,17 +514,17 @@ This should be one of the most frequently used Sales screens.
 
 Features:
 
-* Create opportunity.
-* Convert qualified lead.
-* Assign owner.
-* Set expected value.
-* Track stage.
-* Track expected close period.
-* Link requirement.
-* Link proposal.
-* Link quotation.
-* Track negotiation.
-* Mark won/lost.
+- Create opportunity.
+- Convert qualified lead.
+- Assign owner.
+- Set expected value.
+- Track stage.
+- Track expected close period.
+- Link requirement.
+- Link proposal.
+- Link quotation.
+- Track negotiation.
+- Mark won/lost.
 
 ---
 
@@ -532,18 +532,18 @@ Features:
 
 Metrics:
 
-* New leads.
-* Leads contacted.
-* Qualified leads.
-* Active opportunities.
-* Follow-ups due.
-* Overdue follow-ups.
-* Meetings.
-* Proposals.
-* Quotations.
-* Negotiations.
-* Won opportunities.
-* Lost opportunities.
+- New leads.
+- Leads contacted.
+- Qualified leads.
+- Active opportunities.
+- Follow-ups due.
+- Overdue follow-ups.
+- Meetings.
+- Proposals.
+- Quotations.
+- Negotiations.
+- Won opportunities.
+- Lost opportunities.
 
 ---
 
@@ -557,16 +557,16 @@ Presales converts a business requirement into a commercially viable solution.
 
 Features:
 
-* Create requirement.
-* Link to lead/opportunity.
-* Record business problem.
-* Record objective.
-* Record requirements.
-* Record constraints.
-* Record dependencies.
-* Record assumptions.
-* Record exclusions.
-* Assign presales owner.
+- Create requirement.
+- Link to lead/opportunity.
+- Record business problem.
+- Record objective.
+- Record requirements.
+- Record constraints.
+- Record dependencies.
+- Record assumptions.
+- Record exclusions.
+- Assign presales owner.
 
 ---
 
@@ -574,15 +574,15 @@ Features:
 
 Features:
 
-* Functional requirements.
-* Technical requirements.
-* Integrations.
-* User requirements.
-* Scope analysis.
-* Complexity assessment.
-* Risks.
-* Dependencies.
-* Assumptions.
+- Functional requirements.
+- Technical requirements.
+- Integrations.
+- User requirements.
+- Scope analysis.
+- Complexity assessment.
+- Risks.
+- Dependencies.
+- Assumptions.
 
 ---
 
@@ -590,14 +590,14 @@ Features:
 
 Features:
 
-* Proposed solution.
-* Service category.
-* Delivery approach.
-* Technology approach.
-* Major components.
-* Integration requirements.
-* Infrastructure requirements.
-* Support requirements.
+- Proposed solution.
+- Service category.
+- Delivery approach.
+- Technology approach.
+- Major components.
+- Integration requirements.
+- Infrastructure requirements.
+- Support requirements.
 
 ---
 
@@ -605,14 +605,14 @@ Features:
 
 Features:
 
-* Feature estimation.
-* Development effort.
-* Design effort.
-* QA effort.
-* Infrastructure cost.
-* Third-party cost.
-* Timeline.
-* Resource requirement.
+- Feature estimation.
+- Development effort.
+- Design effort.
+- QA effort.
+- Infrastructure cost.
+- Third-party cost.
+- Timeline.
+- Resource requirement.
 
 ---
 
@@ -620,15 +620,15 @@ Features:
 
 Features:
 
-* Create proposal.
-* Edit proposal.
-* Proposal versioning.
-* Internal review.
-* Approval.
-* Send proposal.
-* Track status.
-* Accept/reject.
-* Expiry.
+- Create proposal.
+- Edit proposal.
+- Proposal versioning.
+- Internal review.
+- Approval.
+- Send proposal.
+- Track status.
+- Accept/reject.
+- Expiry.
 
 Statuses:
 
@@ -650,20 +650,20 @@ Accepted / Rejected
 
 Features:
 
-* Create quotation.
-* Add line items.
-* Set quantity.
-* Set price.
-* Discount.
-* Tax.
-* Total.
-* Payment terms.
-* Validity.
-* Terms and conditions.
-* Internal approval.
-* Send quotation.
-* Revision.
-* Track acceptance.
+- Create quotation.
+- Add line items.
+- Set quantity.
+- Set price.
+- Discount.
+- Tax.
+- Total.
+- Payment terms.
+- Validity.
+- Terms and conditions.
+- Internal approval.
+- Send quotation.
+- Revision.
+- Track acceptance.
 
 Statuses:
 
@@ -687,13 +687,13 @@ Accepted / Rejected
 
 Features:
 
-* Record negotiation.
-* Record requested discount.
-* Record scope changes.
-* Record timeline changes.
-* Record payment-term changes.
-* Create quotation revision.
-* Maintain commercial history.
+- Record negotiation.
+- Record requested discount.
+- Record scope changes.
+- Record timeline changes.
+- Record payment-term changes.
+- Create quotation revision.
+- Maintain commercial history.
 
 ---
 
@@ -707,14 +707,14 @@ The Clients module manages converted business relationships.
 
 Features:
 
-* Create client.
-* Convert lead to client.
-* Edit client.
-* View client.
-* Assign relationship owner.
-* Search client.
-* Filter clients.
-* View client history.
+- Create client.
+- Convert lead to client.
+- Edit client.
+- View client.
+- Assign relationship owner.
+- Search client.
+- Filter clients.
+- View client history.
 
 ---
 
@@ -722,12 +722,12 @@ Features:
 
 Features:
 
-* Add contact.
-* Edit contact.
-* Set primary contact.
-* Record designation.
-* Record communication details.
-* Mark contact active/inactive.
+- Add contact.
+- Edit contact.
+- Set primary contact.
+- Record designation.
+- Record communication details.
+- Mark contact active/inactive.
 
 A client may have multiple contacts.
 
@@ -754,17 +754,17 @@ Client
 
 Features:
 
-* Onboarding checklist.
-* Agreement/SOW.
-* Advance payment status.
-* Requirement confirmation.
-* Asset collection.
-* Domain details.
-* Hosting details.
-* Access requirements.
-* Team assignment.
-* Kickoff meeting.
-* Project creation.
+- Onboarding checklist.
+- Agreement/SOW.
+- Advance payment status.
+- Requirement confirmation.
+- Asset collection.
+- Domain details.
+- Hosting details.
+- Access requirements.
+- Team assignment.
+- Kickoff meeting.
+- Project creation.
 
 ---
 
@@ -772,14 +772,14 @@ Features:
 
 Documents may include:
 
-* Agreements.
-* SOW.
-* Proposals.
-* Quotations.
-* Brand assets.
-* Requirements.
-* Project documents.
-* Other business documents.
+- Agreements.
+- SOW.
+- Proposals.
+- Quotations.
+- Brand assets.
+- Requirements.
+- Project documents.
+- Other business documents.
 
 ---
 
@@ -787,15 +787,15 @@ Documents may include:
 
 Client history should show:
 
-* Lead history.
-* Opportunities.
-* Proposals.
-* Quotations.
-* Projects.
-* Payments.
-* Support.
-* Meetings.
-* Important activities.
+- Lead history.
+- Opportunities.
+- Proposals.
+- Quotations.
+- Projects.
+- Payments.
+- Support.
+- Meetings.
+- Important activities.
 
 ---
 
@@ -809,18 +809,18 @@ Projects are created after a confirmed business opportunity.
 
 Features:
 
-* Create project.
-* Edit project.
-* Assign project manager.
-* Assign team.
-* Set start date.
-* Set deadline.
-* Set project value.
-* Define scope.
-* Link client.
-* Link SOW.
-* Track status.
-* Close project.
+- Create project.
+- Edit project.
+- Assign project manager.
+- Assign team.
+- Set start date.
+- Set deadline.
+- Set project value.
+- Define scope.
+- Link client.
+- Link SOW.
+- Track status.
+- Close project.
 
 ---
 
@@ -843,11 +843,11 @@ Cancelled
 
 Features:
 
-* Create milestone.
-* Set due date.
-* Assign owner.
-* Track completion.
-* Link deliverables.
+- Create milestone.
+- Set due date.
+- Assign owner.
+- Track completion.
+- Link deliverables.
 
 ---
 
@@ -873,16 +873,16 @@ Project managers should be able to customize phases based on project type.
 
 Features:
 
-* Create task.
-* Assign task.
-* Set priority.
-* Set due date.
-* Estimate effort.
-* Track actual effort where required.
-* Add comments.
-* Add attachments.
-* Set status.
-* Track dependencies.
+- Create task.
+- Assign task.
+- Set priority.
+- Set due date.
+- Estimate effort.
+- Track actual effort where required.
+- Add comments.
+- Add attachments.
+- Set status.
+- Track dependencies.
 
 Statuses:
 
@@ -902,12 +902,12 @@ Done
 
 Features:
 
-* Define deliverable.
-* Assign owner.
-* Set deadline.
-* Link milestone.
-* Track status.
-* Record client approval.
+- Define deliverable.
+- Assign owner.
+- Set deadline.
+- Link milestone.
+- Track status.
+- Record client approval.
 
 ---
 
@@ -915,14 +915,14 @@ Features:
 
 Features:
 
-* Submit for QA.
-* QA assignment.
-* Pass.
-* Fail.
-* Bug creation.
-* Return to developer.
-* Re-test.
-* Final approval.
+- Submit for QA.
+- QA assignment.
+- Pass.
+- Fail.
+- Bug creation.
+- Return to developer.
+- Re-test.
+- Final approval.
 
 Workflow:
 
@@ -942,15 +942,15 @@ QA
 
 Features:
 
-* Create change request.
-* Record client request.
-* Impact analysis.
-* Estimate effort.
-* Estimate cost.
-* Estimate timeline.
-* Send for approval.
-* Approve/reject.
-* Convert approved change into work.
+- Create change request.
+- Record client request.
+- Impact analysis.
+- Estimate effort.
+- Estimate cost.
+- Estimate timeline.
+- Send for approval.
+- Approve/reject.
+- Convert approved change into work.
 
 Workflow:
 
@@ -972,14 +972,14 @@ Task / Work
 
 The project should provide a timeline showing:
 
-* Project creation.
-* Milestones.
-* Major phase changes.
-* Important tasks.
-* Client approvals.
-* Change requests.
-* Delivery.
-* Closure.
+- Project creation.
+- Milestones.
+- Major phase changes.
+- Important tasks.
+- Client approvals.
+- Change requests.
+- Delivery.
+- Closure.
 
 ---
 
@@ -987,16 +987,16 @@ The project should provide a timeline showing:
 
 Metrics:
 
-* Overall project status.
-* Progress.
-* Milestones.
-* Tasks.
-* Overdue tasks.
-* QA issues.
-* Change requests.
-* Client review.
-* Payment status.
-* Deadline.
+- Overall project status.
+- Progress.
+- Milestones.
+- Tasks.
+- Overdue tasks.
+- QA issues.
+- Change requests.
+- Client review.
+- Payment status.
+- Deadline.
 
 ---
 
@@ -1010,15 +1010,15 @@ The Workforce module provides operational employee management.
 
 Features:
 
-* Employee profile.
-* User account link.
-* Department.
-* Team.
-* Business role.
-* Joining date.
-* Employment status.
-* Contact details.
-* Work allocation.
+- Employee profile.
+- User account link.
+- Department.
+- Team.
+- Business role.
+- Joining date.
+- Employment status.
+- Contact details.
+- Work allocation.
 
 ---
 
@@ -1026,12 +1026,12 @@ Features:
 
 Features:
 
-* Clock in.
-* Clock out.
-* Attendance history.
-* Working status.
-* Daily attendance view.
-* Management attendance view.
+- Clock in.
+- Clock out.
+- Attendance history.
+- Working status.
+- Daily attendance view.
+- Management attendance view.
 
 ---
 
@@ -1039,12 +1039,12 @@ Features:
 
 Features:
 
-* Apply leave.
-* View leave.
-* Approve leave.
-* Reject leave.
-* Leave history.
-* Leave status.
+- Apply leave.
+- View leave.
+- Approve leave.
+- Reject leave.
+- Leave history.
+- Leave status.
 
 Workflow:
 
@@ -1064,12 +1064,12 @@ Approve / Reject
 
 Features:
 
-* View employee workload.
-* Assign project.
-* Assign task.
-* View active assignments.
-* View overdue work.
-* View availability.
+- View employee workload.
+- Assign project.
+- Assign task.
+- View active assignments.
+- View overdue work.
+- View availability.
 
 ---
 
@@ -1083,12 +1083,12 @@ Operations handles internal coordination.
 
 Features:
 
-* Calendar view.
-* Events.
-* Meetings.
-* Deadlines.
-* Follow-ups.
-* Project milestones.
+- Calendar view.
+- Events.
+- Meetings.
+- Deadlines.
+- Follow-ups.
+- Project milestones.
 
 ---
 
@@ -1096,13 +1096,13 @@ Features:
 
 Features:
 
-* Create meeting.
-* Add participants.
-* Set date/time.
-* Add agenda.
-* Record notes.
-* Record decisions.
-* Add follow-up actions.
+- Create meeting.
+- Add participants.
+- Set date/time.
+- Add agenda.
+- Record notes.
+- Record decisions.
+- Add follow-up actions.
 
 ---
 
@@ -1110,22 +1110,22 @@ Features:
 
 Internal tickets can be used for:
 
-* IT requests.
-* Infrastructure issues.
-* Internal support.
-* Operational requests.
-* Access requests.
-* General internal issues.
+- IT requests.
+- Infrastructure issues.
+- Internal support.
+- Operational requests.
+- Access requests.
+- General internal issues.
 
 Features:
 
-* Create ticket.
-* Assign ticket.
-* Priority.
-* Status.
-* Comments.
-* Attachments.
-* Resolution.
+- Create ticket.
+- Assign ticket.
+- Priority.
+- Status.
+- Comments.
+- Attachments.
+- Resolution.
 
 ---
 
@@ -1135,10 +1135,10 @@ V1 may provide lightweight internal communication features.
 
 Examples:
 
-* Comments.
-* Mentions.
-* Activity updates.
-* Internal messages where required.
+- Comments.
+- Mentions.
+- Activity updates.
+- Internal messages where required.
 
 The system is not intended to replace Slack, Teams or WhatsApp in V1.
 
@@ -1148,14 +1148,14 @@ The system is not intended to replace Slack, Teams or WhatsApp in V1.
 
 Notification types:
 
-* Assignment.
-* Approval.
-* Reminder.
-* Overdue.
-* Mention.
-* Project update.
-* Payment reminder.
-* System alert.
+- Assignment.
+- Approval.
+- Reminder.
+- Overdue.
+- Mention.
+- Project update.
+- Payment reminder.
+- System alert.
 
 ---
 
@@ -1171,14 +1171,14 @@ It does not replace InvoNext.
 
 Features:
 
-* Project value.
-* Opportunity value.
-* Won value.
-* Expected revenue.
-* Collected revenue.
-* Outstanding revenue.
-* Client revenue.
-* Project revenue.
+- Project value.
+- Opportunity value.
+- Won value.
+- Expected revenue.
+- Collected revenue.
+- Outstanding revenue.
+- Client revenue.
+- Project revenue.
 
 ---
 
@@ -1186,14 +1186,14 @@ Features:
 
 Features:
 
-* Add payment.
-* Payment milestone.
-* Due date.
-* Amount.
-* Payment date.
-* Payment status.
-* Outstanding calculation.
-* Payment history.
+- Add payment.
+- Payment milestone.
+- Due date.
+- Amount.
+- Payment date.
+- Payment status.
+- Outstanding calculation.
+- Payment history.
 
 Statuses:
 
@@ -1211,11 +1211,11 @@ Overdue
 
 The system should provide:
 
-* Client outstanding.
-* Project outstanding.
-* Overdue payments.
-* Upcoming payments.
-* Payment reminders.
+- Client outstanding.
+- Project outstanding.
+- Overdue payments.
+- Upcoming payments.
+- Payment reminders.
 
 ---
 
@@ -1223,15 +1223,15 @@ The system should provide:
 
 Features:
 
-* Submit expense.
-* Expense category.
-* Amount.
-* Date.
-* Project.
-* Receipt.
-* Approval.
-* Rejection.
-* Payment status.
+- Submit expense.
+- Expense category.
+- Amount.
+- Date.
+- Project.
+- Receipt.
+- Approval.
+- Rejection.
+- Payment status.
 
 ---
 
@@ -1262,35 +1262,35 @@ Initial reports:
 
 ### Sales
 
-* Lead source report.
-* Lead conversion.
-* Sales pipeline.
-* Won/lost opportunities.
-* Sales performance.
+- Lead source report.
+- Lead conversion.
+- Sales pipeline.
+- Won/lost opportunities.
+- Sales performance.
 
 ### Projects
 
-* Active projects.
-* Project status.
-* Delayed projects.
-* Task performance.
-* QA performance.
-* Delivery performance.
+- Active projects.
+- Project status.
+- Delayed projects.
+- Task performance.
+- QA performance.
+- Delivery performance.
 
 ### Finance
 
-* Revenue.
-* Collections.
-* Outstanding.
-* Expenses.
-* Project financial visibility.
+- Revenue.
+- Collections.
+- Outstanding.
+- Expenses.
+- Project financial visibility.
 
 ### Workforce
 
-* Workload.
-* Attendance.
-* Leave.
-* Task allocation.
+- Workload.
+- Attendance.
+- Leave.
+- Task allocation.
 
 ---
 
@@ -1300,17 +1300,17 @@ This is a core management feature.
 
 The system should surface:
 
-* Overdue follow-ups.
-* Stale leads.
-* Unassigned leads.
-* Pending quotations.
-* Pending approvals.
-* Overdue tasks.
-* At-risk projects.
-* QA failures.
-* Client review delays.
-* Payment overdue.
-* Unresolved internal tickets.
+- Overdue follow-ups.
+- Stale leads.
+- Unassigned leads.
+- Pending quotations.
+- Pending approvals.
+- Overdue tasks.
+- At-risk projects.
+- QA failures.
+- Client review delays.
+- Payment overdue.
+- Unresolved internal tickets.
 
 The objective is:
 
@@ -1324,17 +1324,17 @@ Global search should allow users to quickly locate business records.
 
 Search targets:
 
-* Leads.
-* Opportunities.
-* Clients.
-* Projects.
-* Tasks.
-* Proposals.
-* Quotations.
-* Payments.
-* Tickets.
-* Meetings.
-* Documents.
+- Leads.
+- Opportunities.
+- Clients.
+- Projects.
+- Tasks.
+- Proposals.
+- Quotations.
+- Payments.
+- Tickets.
+- Meetings.
+- Documents.
 
 Results must respect permissions.
 
@@ -1368,10 +1368,10 @@ Won
 
 Similar timelines should exist for:
 
-* Clients.
-* Projects.
-* Quotations.
-* Change requests.
+- Clients.
+- Projects.
+- Quotations.
+- Change requests.
 
 ---
 
@@ -1379,12 +1379,12 @@ Similar timelines should exist for:
 
 A centralized approval view should eventually show:
 
-* Quotation approvals.
-* Discount approvals.
-* Proposal approvals.
-* Expense approvals.
-* Leave approvals.
-* Scope-change approvals.
+- Quotation approvals.
+- Discount approvals.
+- Proposal approvals.
+- Expense approvals.
+- Leave approvals.
+- Scope-change approvals.
 
 The user should be able to act directly from the approval queue where appropriate.
 
@@ -1538,57 +1538,57 @@ These are essential.
 
 ### Foundation
 
-* Authentication.
-* Users.
-* Roles.
-* Permissions.
+- Authentication.
+- Users.
+- Roles.
+- Permissions.
 
 ### Sales
 
-* Leads.
-* Assignment.
-* Qualification.
-* Pipeline.
-* Activities.
-* Follow-ups.
-* Opportunities.
+- Leads.
+- Assignment.
+- Qualification.
+- Pipeline.
+- Activities.
+- Follow-ups.
+- Opportunities.
 
 ### Presales
 
-* Requirements.
-* Estimation.
-* Proposals.
-* Quotations.
-* Approval.
-* Negotiation.
+- Requirements.
+- Estimation.
+- Proposals.
+- Quotations.
+- Approval.
+- Negotiation.
 
 ### Clients
 
-* Client conversion.
-* Client profiles.
-* Contacts.
-* Onboarding.
+- Client conversion.
+- Client profiles.
+- Contacts.
+- Onboarding.
 
 ### Projects
 
-* Projects.
-* Milestones.
-* Phases.
-* Tasks.
-* Assignment.
-* Basic QA.
-* Delivery status.
+- Projects.
+- Milestones.
+- Phases.
+- Tasks.
+- Assignment.
+- Basic QA.
+- Delivery status.
 
 ### Finance
 
-* Project value.
-* Payments.
-* Outstanding.
+- Project value.
+- Payments.
+- Outstanding.
 
 ### Management
 
-* Core dashboard.
-* Attention items.
+- Core dashboard.
+- Attention items.
 
 ---
 
@@ -1596,19 +1596,19 @@ These are essential.
 
 After the core business engine is stable:
 
-* Attendance.
-* Leave.
-* Work allocation.
-* Meetings.
-* Calendar.
-* Internal tickets.
-* Expenses.
-* Deliverables.
-* Change requests.
-* Advanced project dashboard.
-* Detailed reports.
-* Audit log UI.
-* Notifications.
+- Attendance.
+- Leave.
+- Work allocation.
+- Meetings.
+- Calendar.
+- Internal tickets.
+- Expenses.
+- Deliverables.
+- Change requests.
+- Advanced project dashboard.
+- Detailed reports.
+- Audit log UI.
+- Notifications.
 
 ---
 
@@ -1616,13 +1616,13 @@ After the core business engine is stable:
 
 After the operational foundation is stable:
 
-* Advanced search.
-* Advanced reporting.
-* Document management improvements.
-* Advanced approval workflows.
-* Automation foundation.
-* More detailed analytics.
-* Advanced activity timelines.
+- Advanced search.
+- Advanced reporting.
+- Document management improvements.
+- Advanced approval workflows.
+- Automation foundation.
+- More detailed analytics.
+- Advanced activity timelines.
 
 ---
 
@@ -1634,13 +1634,13 @@ The following should remain outside the V1 core.
 
 Potential integrations:
 
-* Google Workspace.
-* Microsoft 365.
-* GitHub.
-* Slack.
-* WhatsApp.
-* Zoom.
-* Other productivity tools.
+- Google Workspace.
+- Microsoft 365.
+- GitHub.
+- Slack.
+- WhatsApp.
+- Zoom.
+- Other productivity tools.
 
 ---
 
@@ -1648,14 +1648,14 @@ Potential integrations:
 
 Potential AI capabilities:
 
-* Lead scoring.
-* Sales intelligence.
-* Follow-up recommendations.
-* Proposal assistance.
-* Requirement analysis.
-* Project risk detection.
-* Revenue intelligence.
-* AI business assistant.
+- Lead scoring.
+- Sales intelligence.
+- Follow-up recommendations.
+- Proposal assistance.
+- Requirement analysis.
+- Project risk detection.
+- Revenue intelligence.
+- AI business assistant.
 
 ---
 
@@ -1663,11 +1663,11 @@ Potential AI capabilities:
 
 Future capabilities:
 
-* Trigger-based workflows.
-* Scheduled actions.
-* Cross-module automation.
-* External application automation.
-* Notification automation.
+- Trigger-based workflows.
+- Scheduled actions.
+- Cross-module automation.
+- External application automation.
+- Notification automation.
 
 ---
 
@@ -1677,12 +1677,12 @@ Future capability:
 
 Clients may eventually be able to:
 
-* View projects.
-* Approve deliverables.
-* Review quotations.
-* View documents.
-* Raise support requests.
-* Track payments.
+- View projects.
+- Approve deliverables.
+- Review quotations.
+- View documents.
+- Raise support requests.
+- Track payments.
 
 ---
 
@@ -1708,14 +1708,14 @@ Each module must have a clear responsibility.
 
 Every feature should satisfy at least one of the following:
 
-* Helps generate revenue.
-* Helps convert revenue.
-* Helps deliver revenue.
-* Helps collect revenue.
-* Helps manage people.
-* Helps reduce operational risk.
-* Helps management make informed decisions.
-* Helps create repeatable business processes.
+- Helps generate revenue.
+- Helps convert revenue.
+- Helps deliver revenue.
+- Helps collect revenue.
+- Helps manage people.
+- Helps reduce operational risk.
+- Helps management make informed decisions.
+- Helps create repeatable business processes.
 
 Features that do not provide meaningful operational value should not be added simply because they are technically possible.
 
@@ -1759,13 +1759,13 @@ Webxode OS V1 is primarily:
 
 It is not:
 
-* A complete ERP.
-* A complete accounting platform.
-* A complete HRMS.
-* A complete project management SaaS for external customers.
-* A communication platform.
-* An AI platform.
-* An integration platform.
+- A complete ERP.
+- A complete accounting platform.
+- A complete HRMS.
+- A complete project management SaaS for external customers.
+- A communication platform.
+- An AI platform.
+- An integration platform.
 
 The objective is to build the operating system required to run **Webxode Technologies**.
 
