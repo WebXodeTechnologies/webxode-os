@@ -61,24 +61,24 @@ A single business action may therefore create both.
 
 The notification architecture should:
 
-* surface important work
-* reduce missed follow-ups
-* support approvals
-* notify users of assignments
-* highlight deadlines
-* avoid notification overload
-* provide contextual navigation
-* support future channels
+- surface important work
+- reduce missed follow-ups
+- support approvals
+- notify users of assignments
+- highlight deadlines
+- avoid notification overload
+- provide contextual navigation
+- support future channels
 
 The audit architecture should:
 
-* preserve important business history
-* provide accountability
-* support security investigations
-* support operational troubleshooting
-* record sensitive actions
-* provide change visibility
-* preserve historical integrity
+- preserve important business history
+- provide accountability
+- support security investigations
+- support operational troubleshooting
+- record sensitive actions
+- provide change visibility
+- preserve historical integrity
 
 ---
 
@@ -101,11 +101,11 @@ Business modules generate events.
 
 The shared platform determines:
 
-* whether an audit record is required
-* whether a notification is required
-* who should receive it
-* what information should be shown
-* what action the user can take
+- whether an audit record is required
+- whether a notification is required
+- who should receive it
+- what information should be shown
+- what action the user can take
 
 ---
 
@@ -115,13 +115,13 @@ Webxode OS should not notify users about everything that happens.
 
 The system should notify users when an event is:
 
-* actionable
-* important
-* assigned to them
-* approaching a deadline
-* blocking work
-* requiring approval
-* relevant to their responsibility
+- actionable
+- important
+- assigned to them
+- approaching a deadline
+- blocking work
+- requiring approval
+- relevant to their responsibility
 
 ### Core Principle
 
@@ -137,11 +137,11 @@ Notifications should be categorized by business purpose.
 
 Examples:
 
-* lead assigned
-* task assigned
-* project assigned
-* QA item assigned
-* expense review assigned
+- lead assigned
+- task assigned
+- project assigned
+- QA item assigned
+- expense review assigned
 
 ---
 
@@ -149,11 +149,11 @@ Examples:
 
 Examples:
 
-* follow-up due
-* quotation approval required
-* client review required
-* task overdue
-* change request awaiting decision
+- follow-up due
+- quotation approval required
+- client review required
+- task overdue
+- change request awaiting decision
 
 ---
 
@@ -161,10 +161,10 @@ Examples:
 
 Examples:
 
-* quotation approved
-* lead moved to negotiation
-* project entered QA
-* client approved deliverable
+- quotation approved
+- lead moved to negotiation
+- project entered QA
+- client approved deliverable
 
 ---
 
@@ -172,10 +172,10 @@ Examples:
 
 Examples:
 
-* follow-up due today
-* task due tomorrow
-* milestone approaching
-* quotation expiring
+- follow-up due today
+- task due tomorrow
+- milestone approaching
+- quotation expiring
 
 ---
 
@@ -183,10 +183,10 @@ Examples:
 
 Examples:
 
-* payment received
-* project completed
-* new client created
-* opportunity won
+- payment received
+- project completed
+- new client created
+- opportunity won
 
 Business events should only generate notifications when they are relevant to the recipient.
 
@@ -247,14 +247,14 @@ Recipients should be determined by business context.
 
 Possible recipients:
 
-* specific user
-* record owner
-* assignee
-* manager
-* project manager
-* approval authority
-* team
-* department
+- specific user
+- record owner
+- assignee
+- manager
+- project manager
+- approval authority
+- team
+- department
 
 The system should not blindly notify entire teams unless the business rule requires it.
 
@@ -288,19 +288,19 @@ V1 should prioritize in-application notifications.
 
 ### V1
 
-* notification center
-* header notification indicator
-* dashboard attention items
-* contextual notifications
+- notification center
+- header notification indicator
+- dashboard attention items
+- contextual notifications
 
 ### Future
 
-* email
-* WhatsApp
-* SMS where justified
-* push notifications
-* Slack
-* Microsoft Teams
+- email
+- WhatsApp
+- SMS where justified
+- push notifications
+- Slack
+- Microsoft Teams
 
 External channels belong to the future integration architecture.
 
@@ -310,13 +310,13 @@ External channels belong to the future integration architecture.
 
 The notification center should provide:
 
-* unread count
-* recent notifications
-* priority indicator
-* timestamp
-* source
-* direct navigation
-* read/unread state
+- unread count
+- recent notifications
+- priority indicator
+- timestamp
+- source
+- direct navigation
+- read/unread state
 
 Example:
 
@@ -363,13 +363,13 @@ Notifications should reduce navigation effort.
 
 Notifications should support:
 
-* unread
-* read
+- unread
+- read
 
 Optional future states:
 
-* dismissed
-* archived
+- dismissed
+- archived
 
 Unread state should be visually obvious without becoming distracting.
 
@@ -379,9 +379,9 @@ Unread state should be visually obvious without becoming distracting.
 
 A notification may be marked as read:
 
-* when opened
-* through explicit action
-* through bulk "mark as read"
+- when opened
+- through explicit action
+- through bulk "mark as read"
 
 The system should avoid accidentally marking large numbers of notifications as read without user intent.
 
@@ -428,18 +428,18 @@ Notification generation should be tied to meaningful business events.
 
 Notifications should generally be immediate for:
 
-* assignments
-* approvals
-* client responses
-* important workflow changes
+- assignments
+- approvals
+- client responses
+- important workflow changes
 
 Time-based notifications may be generated for:
 
-* due dates
-* overdue tasks
-* upcoming meetings
-* quotation expiry
-* payment reminders
+- due dates
+- overdue tasks
+- upcoming meetings
+- quotation expiry
+- payment reminders
 
 Scheduled notifications should use background processing where required.
 
@@ -493,12 +493,12 @@ Users may eventually control notification preferences.
 
 Potential settings:
 
-* task assignments
-* follow-ups
-* approvals
-* project updates
-* payments
-* meetings
+- task assignments
+- follow-ups
+- approvals
+- project updates
+- payments
+- meetings
 
 However, users should not be allowed to disable mandatory business/security notifications without appropriate controls.
 
@@ -531,10 +531,10 @@ A user should never receive a notification containing information about a record
 
 Before creating or displaying a notification, the system should consider:
 
-* recipient permission
-* record scope
-* record access
-* sensitivity
+- recipient permission
+- record scope
+- record access
+- sensitivity
 
 A notification must never become a side-channel for unauthorized data.
 
@@ -546,12 +546,12 @@ Notifications should expose only the information necessary.
 
 Avoid placing:
 
-* passwords
-* API keys
-* credentials
-* sensitive internal notes
-* unnecessary personal information
-* confidential financial details
+- passwords
+- API keys
+- credentials
+- sensitive internal notes
+- unnecessary personal information
+- confidential financial details
 
 inside notification messages.
 
@@ -587,13 +587,13 @@ Future external channels can consume the same notification event.
 
 A centralized notification service should provide controlled operations such as:
 
-* create notification
-* create bulk notifications
-* mark read
-* mark unread
-* fetch notifications
-* count unread
-* resolve recipients
+- create notification
+- create bulk notifications
+- mark read
+- mark unread
+- fetch notifications
+- count unread
+- resolve recipients
 
 Business modules should not implement separate notification logic independently.
 
@@ -611,12 +611,12 @@ notifications
 
 The collection should support:
 
-* recipient queries
-* unread queries
-* recent notifications
-* source filtering
-* entity navigation
-* cleanup/retention policies
+- recipient queries
+- unread queries
+- recent notifications
+- source filtering
+- entity navigation
+- cleanup/retention policies
 
 ---
 
@@ -624,11 +624,11 @@ The collection should support:
 
 Indexes should support common queries such as:
 
-* recipient + unread
-* recipient + createdAt
-* recipient + priority
-* source entity
-* notification status
+- recipient + unread
+- recipient + createdAt
+- recipient + priority
+- source entity
+- notification status
 
 Indexes should be based on actual query patterns.
 
@@ -640,12 +640,12 @@ Immediate in-app notifications may be created during the normal business operati
 
 Background processing should be used for:
 
-* scheduled reminders
-* recurring notifications
-* large notification batches
-* email
-* external messaging
-* notification digests
+- scheduled reminders
+- recurring notifications
+- large notification batches
+- email
+- external messaging
+- notification digests
 
 The notification architecture should remain simple in V1.
 
@@ -657,16 +657,16 @@ Important notifications should not silently disappear.
 
 The system should distinguish:
 
-* event created
-* notification created
-* notification delivered in-app
+- event created
+- notification created
+- notification delivered in-app
 
 External delivery channels will later require:
 
-* delivery status
-* retry
-* failure handling
-* provider response tracking
+- delivery status
+- retry
+- failure handling
+- provider response tracking
 
 ---
 
@@ -680,11 +680,11 @@ Audit logging is different from business activity history.
 
 Audit logs should prioritize:
 
-* accountability
-* security
-* traceability
-* change history
-* investigation
+- accountability
+- security
+- traceability
+- change history
+- investigation
 
 ---
 
@@ -694,37 +694,37 @@ Important actions include:
 
 ### Authentication
 
-* login
-* logout
-* failed login
-* password reset
-* account lock/suspension
+- login
+- logout
+- failed login
+- password reset
+- account lock/suspension
 
 ### Access Control
 
-* role changes
-* permission changes
-* user activation/deactivation
-* ownership changes
+- role changes
+- permission changes
+- user activation/deactivation
+- ownership changes
 
 ### Business
 
-* lead creation
-* lead assignment
-* stage changes
-* opportunity conversion
-* quotation approval
-* quotation changes
-* project status changes
-* task assignment
-* payment recording
-* expense approval
+- lead creation
+- lead assignment
+- stage changes
+- opportunity conversion
+- quotation approval
+- quotation changes
+- project status changes
+- task assignment
+- payment recording
+- expense approval
 
 ### Administrative
 
-* configuration changes
-* sensitive system changes
-* export operations
+- configuration changes
+- sensitive system changes
+- export operations
 
 ---
 
@@ -734,10 +734,10 @@ Not every read operation needs a permanent audit record.
 
 Examples:
 
-* opening a normal dashboard
-* viewing a standard list
-* scrolling through a task list
-* opening a non-sensitive client page
+- opening a normal dashboard
+- viewing a standard list
+- scrolling through a task list
+- opening a non-sensitive client page
 
 This prevents audit data from becoming unnecessarily large.
 
@@ -827,11 +827,11 @@ Audit data should be purposeful.
 
 Audit logs must not capture:
 
-* passwords
-* authentication tokens
-* API secrets
-* database credentials
-* private encryption keys
+- passwords
+- authentication tokens
+- API secrets
+- database credentials
+- private encryption keys
 
 Sensitive business information should also be minimized.
 
@@ -845,10 +845,10 @@ Audit records should be treated as append-oriented.
 
 Normal users must not be able to:
 
-* edit audit records
-* delete audit records
-* rewrite timestamps
-* change the recorded actor
+- edit audit records
+- delete audit records
+- rewrite timestamps
+- change the recorded actor
 
 Administrative access to audit data should be restricted.
 
@@ -860,11 +860,11 @@ Every audit record should identify the responsible actor where possible.
 
 Examples:
 
-* authenticated user
-* system process
-* scheduled job
-* integration
-* administrator
+- authenticated user
+- system process
+- scheduled job
+- integration
+- administrator
 
 Example:
 
@@ -883,11 +883,11 @@ Automated actions should clearly identify themselves as system-generated.
 
 Where useful, audit records may include:
 
-* request identifier
-* session/context identifier
-* IP information where appropriate
-* user agent information where appropriate
-* source application
+- request identifier
+- session/context identifier
+- IP information where appropriate
+- user agent information where appropriate
+- source application
 
 This information should be collected carefully and according to privacy/security requirements.
 
@@ -1022,13 +1022,13 @@ Authorized users should eventually be able to search audit history.
 
 Filters may include:
 
-* actor
-* module
-* entity
-* action
-* date
-* result
-* record ID
+- actor
+- module
+- entity
+- action
+- date
+- result
+- record ID
 
 Example:
 
@@ -1048,9 +1048,9 @@ Audit visibility should be restricted.
 
 Potential access:
 
-* Management
-* authorized Admin
-* security/operations roles where applicable
+- Management
+- authorized Admin
+- security/operations roles where applicable
 
 Regular users should not automatically have access to organization-wide audit logs.
 
@@ -1060,10 +1060,10 @@ Regular users should not automatically have access to organization-wide audit lo
 
 Retention should be defined based on:
 
-* business requirements
-* security requirements
-* storage requirements
-* legal/regulatory requirements where applicable
+- business requirements
+- security requirements
+- storage requirements
+- legal/regulatory requirements where applicable
 
 V1 should establish a retention policy rather than keeping unlimited audit data indefinitely without purpose.
 
@@ -1239,13 +1239,13 @@ The dashboard should summarize action rather than repeat the complete notificati
 
 Notifications should:
 
-* be concise
-* explain the event
-* show relevance
-* provide context
-* provide a direct action
-* avoid technical language
-* avoid unnecessary repetition
+- be concise
+- explain the event
+- show relevance
+- provide context
+- provide a direct action
+- avoid technical language
+- avoid unnecessary repetition
 
 Example:
 
@@ -1263,11 +1263,11 @@ Good:
 
 Audit interfaces should prioritize:
 
-* actor
-* action
-* record
-* timestamp
-* change summary
+- actor
+- action
+- record
+- timestamp
+- change summary
 
 Technical metadata should remain available as secondary information.
 
@@ -1347,55 +1347,55 @@ Each business module should integrate with the shared capabilities.
 
 ### Sales
 
-* lead assignment
-* follow-ups
-* opportunity changes
-* pipeline movement
+- lead assignment
+- follow-ups
+- opportunity changes
+- pipeline movement
 
 ### Presales
 
-* proposal creation
-* quotation submission
-* approval
-* negotiation
+- proposal creation
+- quotation submission
+- approval
+- negotiation
 
 ### Clients
 
-* onboarding
-* client updates
-* important communication
+- onboarding
+- client updates
+- important communication
 
 ### Projects
 
-* task assignment
-* milestone changes
-* QA
-* client review
-* blockers
+- task assignment
+- milestone changes
+- QA
+- client review
+- blockers
 
 ### Workforce
 
-* leave approval
-* work assignment
-* attendance-related exceptions
+- leave approval
+- work assignment
+- attendance-related exceptions
 
 ### Operations
 
-* meetings
-* tickets
-* operational assignments
+- meetings
+- tickets
+- operational assignments
 
 ### Finance
 
-* payment events
-* expense approval
-* financial workflow changes
+- payment events
+- expense approval
+- financial workflow changes
 
 ### Management
 
-* high-level business alerts
-* approval requirements
-* critical attention items
+- high-level business alerts
+- approval requirements
+- critical attention items
 
 ---
 
@@ -1405,14 +1405,14 @@ Notifications and audit capabilities must follow the Security Architecture.
 
 Mandatory requirements:
 
-* server-side authorization
-* permission-aware notification generation
-* restricted audit access
-* sensitive data protection
-* secure logging
-* audit immutability
-* no secrets in notifications
-* no secrets in audit logs
+- server-side authorization
+- permission-aware notification generation
+- restricted audit access
+- sensitive data protection
+- secure logging
+- audit immutability
+- no secrets in notifications
+- no secrets in audit logs
 
 ---
 
@@ -1422,12 +1422,12 @@ Notifications and audit logs can grow quickly.
 
 The architecture should support:
 
-* indexed queries
-* pagination
-* limited default result sets
-* retention policies
-* background processing
-* archival where required
+- indexed queries
+- pagination
+- limited default result sets
+- retention policies
+- background processing
+- archival where required
 
 Never load an entire audit history or notification history into the browser.
 
@@ -1465,38 +1465,38 @@ This evolution should happen only when operational volume justifies it.
 
 ## P0
 
-* in-app notifications
-* unread count
-* notification center
-* assignment notifications
-* approval notifications
-* follow-up reminders
-* task notifications
-* important workflow notifications
-* audit logging
-* audit access control
-* audit history
-* important state-change tracking
+- in-app notifications
+- unread count
+- notification center
+- assignment notifications
+- approval notifications
+- follow-up reminders
+- task notifications
+- important workflow notifications
+- audit logging
+- audit access control
+- audit history
+- important state-change tracking
 
 ## P1
 
-* scheduled reminders
-* notification preferences
-* advanced audit search
-* attention center integration
-* notification grouping
-* improved audit UI
-* security event dashboard
+- scheduled reminders
+- notification preferences
+- advanced audit search
+- attention center integration
+- notification grouping
+- improved audit UI
+- security event dashboard
 
 ## P2
 
-* email notifications
-* WhatsApp
-* push notifications
-* notification templates
-* advanced escalation
-* notification analytics
-* external delivery tracking
+- email notifications
+- WhatsApp
+- push notifications
+- notification templates
+- advanced escalation
+- notification analytics
+- external delivery tracking
 
 ---
 
@@ -1504,13 +1504,13 @@ This evolution should happen only when operational volume justifies it.
 
 Do not over-engineer V1 with:
 
-* distributed notification microservices
-* complex event buses
-* enterprise messaging infrastructure
-* multi-provider notification orchestration
-* advanced real-time streaming infrastructure
-* complex workflow engines
-* AI-generated notification systems
+- distributed notification microservices
+- complex event buses
+- enterprise messaging infrastructure
+- multi-provider notification orchestration
+- advanced real-time streaming infrastructure
+- complex workflow engines
+- AI-generated notification systems
 
 The modular monolith should remain the primary architecture.
 
@@ -1520,16 +1520,16 @@ The modular monolith should remain the primary architecture.
 
 A notification feature is complete when:
 
-* the triggering business event is clearly defined
-* recipients are determined server-side
-* authorization is respected
-* notification content is concise
-* the relevant record can be opened
-* unread/read state works
-* duplicate notifications are controlled
-* failure behavior is defined
-* sensitive data is excluded
-* the notification is auditable where appropriate
+- the triggering business event is clearly defined
+- recipients are determined server-side
+- authorization is respected
+- notification content is concise
+- the relevant record can be opened
+- unread/read state works
+- duplicate notifications are controlled
+- failure behavior is defined
+- sensitive data is excluded
+- the notification is auditable where appropriate
 
 ---
 
@@ -1537,18 +1537,18 @@ A notification feature is complete when:
 
 An auditable feature is complete when:
 
-* important actions are identified
-* actor is recorded
-* action is recorded
-* target record is recorded
-* timestamp is recorded
-* important changes are captured
-* sensitive information is excluded
-* normal users cannot modify audit records
-* authorized users can retrieve relevant history
-* unauthorized users cannot access audit data
-* important security events are recorded
-* retention behavior is defined
+- important actions are identified
+- actor is recorded
+- action is recorded
+- target record is recorded
+- timestamp is recorded
+- important changes are captured
+- sensitive information is excluded
+- normal users cannot modify audit records
+- authorized users can retrieve relevant history
+- unauthorized users cannot access audit data
+- important security events are recorded
+- retention behavior is defined
 
 ---
 

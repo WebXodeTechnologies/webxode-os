@@ -15,12 +15,12 @@ This document defines the identity, role, permission, and access-control model f
 
 The objective is to ensure that:
 
-* Employees only access information required for their responsibilities.
-* Business actions are controlled by permissions.
-* Management has appropriate visibility.
-* Sensitive operations require authorization.
-* Roles can evolve as Webxode grows.
-* Access control is centralized and auditable.
+- Employees only access information required for their responsibilities.
+- Business actions are controlled by permissions.
+- Management has appropriate visibility.
+- Sensitive operations require authorization.
+- Roles can evolve as Webxode grows.
+- Access control is centralized and auditable.
 
 The core model is:
 
@@ -71,15 +71,15 @@ An `ADMIN` is responsible for system administration.
 
 Administrative capabilities may include:
 
-* User management.
-* Role management.
-* Permission management.
-* Department management.
-* Team management.
-* System configuration.
-* Access control.
-* Audit visibility.
-* Business configuration.
+- User management.
+- Role management.
+- Permission management.
+- Department management.
+- Team management.
+- System configuration.
+- Access control.
+- Audit visibility.
+- Business configuration.
 
 An Admin is not necessarily a business department role.
 
@@ -146,13 +146,13 @@ Admin should be able to create additional roles.
 
 Typical responsibilities:
 
-* Business visibility.
-* Sales oversight.
-* Project oversight.
-* Revenue visibility.
-* Approvals.
-* Employee visibility.
-* Management reporting.
+- Business visibility.
+- Sales oversight.
+- Project oversight.
+- Revenue visibility.
+- Approvals.
+- Employee visibility.
+- Management reporting.
 
 Typical access:
 
@@ -168,14 +168,14 @@ subject to configured permissions.
 
 Responsibilities:
 
-* Lead management.
-* Lead qualification.
-* Follow-ups.
-* Sales activities.
-* Opportunities.
-* Proposal coordination.
-* Quotation coordination.
-* Client communication.
+- Lead management.
+- Lead qualification.
+- Follow-ups.
+- Sales activities.
+- Opportunities.
+- Proposal coordination.
+- Quotation coordination.
+- Client communication.
 
 Typical scope:
 
@@ -189,12 +189,12 @@ OWN / ASSIGNED
 
 Responsibilities:
 
-* Sales team management.
-* Lead assignment.
-* Pipeline management.
-* Sales performance.
-* Opportunity oversight.
-* Approvals.
+- Sales team management.
+- Lead assignment.
+- Pipeline management.
+- Sales performance.
+- Opportunity oversight.
+- Approvals.
 
 Typical scope:
 
@@ -210,12 +210,12 @@ with selected GLOBAL access.
 
 Responsibilities:
 
-* Requirement analysis.
-* Solution planning.
-* Estimation.
-* Proposal preparation.
-* Quotation preparation.
-* Presales support.
+- Requirement analysis.
+- Solution planning.
+- Estimation.
+- Proposal preparation.
+- Quotation preparation.
+- Presales support.
 
 Typical scope:
 
@@ -229,13 +229,13 @@ OWN / ASSIGNED
 
 Responsibilities:
 
-* Project planning.
-* Team allocation.
-* Milestone management.
-* Task management.
-* Delivery tracking.
-* Client coordination.
-* Project reporting.
+- Project planning.
+- Team allocation.
+- Milestone management.
+- Task management.
+- Delivery tracking.
+- Client coordination.
+- Project reporting.
 
 Typical scope:
 
@@ -249,11 +249,11 @@ ASSIGNED PROJECTS
 
 Responsibilities:
 
-* Development tasks.
-* Technical work.
-* Bug fixing.
-* Development completion.
-* Technical project activities.
+- Development tasks.
+- Technical work.
+- Bug fixing.
+- Development completion.
+- Technical project activities.
 
 Typical scope:
 
@@ -267,10 +267,10 @@ ASSIGNED TASKS / ASSIGNED PROJECTS
 
 Responsibilities:
 
-* UI/UX work.
-* Design tasks.
-* Design deliverables.
-* Client review changes.
+- UI/UX work.
+- Design tasks.
+- Design deliverables.
+- Client review changes.
 
 Typical scope:
 
@@ -284,11 +284,11 @@ ASSIGNED TASKS / ASSIGNED PROJECTS
 
 Responsibilities:
 
-* Testing.
-* QA tasks.
-* Bug reporting.
-* Verification.
-* Release readiness.
+- Testing.
+- QA tasks.
+- Bug reporting.
+- Verification.
+- Release readiness.
 
 Typical scope:
 
@@ -302,11 +302,11 @@ ASSIGNED PROJECTS / QA ASSIGNMENTS
 
 Responsibilities:
 
-* Payment visibility.
-* Revenue tracking.
-* Outstanding payments.
-* Expense management.
-* Financial operational reporting.
+- Payment visibility.
+- Revenue tracking.
+- Outstanding payments.
+- Expense management.
+- Financial operational reporting.
 
 Typical scope:
 
@@ -322,12 +322,12 @@ subject to permissions.
 
 Responsibilities:
 
-* Internal operations.
-* Meetings.
-* Internal tickets.
-* Employee coordination.
-* Operational requests.
-* Internal support.
+- Internal operations.
+- Meetings.
+- Internal tickets.
+- Employee coordination.
+- Operational requests.
+- Internal support.
 
 Typical scope:
 
@@ -774,9 +774,9 @@ project.scope.change.approve
 
 Sensitive operations should be:
 
-* Permission controlled.
-* Audited.
-* Visible in activity history where appropriate.
+- Permission controlled.
+- Audited.
+- Visible in activity history where appropriate.
 
 ---
 
@@ -895,32 +895,32 @@ Examples:
 
 Access may depend on:
 
-* Owner.
-* Assigned employee.
-* Sales team.
+- Owner.
+- Assigned employee.
+- Sales team.
 
 ### Projects
 
 Access may depend on:
 
-* Project manager.
-* Project team.
-* Assigned task.
+- Project manager.
+- Project team.
+- Assigned task.
 
 ### Tasks
 
 Access may depend on:
 
-* Assignee.
-* Project membership.
+- Assignee.
+- Project membership.
 
 ### Expenses
 
 Access may depend on:
 
-* Employee.
-* Approver.
-* Finance.
+- Employee.
+- Approver.
+- Finance.
 
 ---
 
@@ -1017,10 +1017,10 @@ The architecture should allow future support for temporary responsibilities.
 
 Examples:
 
-* Acting Project Manager.
-* Temporary Team Lead.
-* Temporary Approval authority.
-* Project-specific responsibility.
+- Acting Project Manager.
+- Temporary Team Lead.
+- Temporary Approval authority.
+- Project-specific responsibility.
 
 This does not need full implementation in V1 but should not be architecturally impossible.
 
@@ -1046,12 +1046,12 @@ Historical records owned by inactive users must remain intact.
 
 When an employee leaves:
 
-* Account access should be disabled.
-* Historical activity should remain.
-* Owned records should be reassigned where required.
-* Active tasks should be reassigned.
-* Active leads should be reassigned.
-* Project responsibilities should be reviewed.
+- Account access should be disabled.
+- Historical activity should remain.
+- Owned records should be reassigned where required.
+- Active tasks should be reassigned.
+- Active leads should be reassigned.
+- Project responsibilities should be reviewed.
 
 Deleting the user should not delete their business history.
 
@@ -1075,24 +1075,24 @@ Access-sensitive actions should be auditable.
 
 Examples:
 
-* User created.
-* User deactivated.
-* Role changed.
-* Permission changed.
-* Lead reassigned.
-* Quotation approved.
-* Discount approved.
-* Expense approved.
-* Payment modified.
-* Project assignment changed.
+- User created.
+- User deactivated.
+- Role changed.
+- Permission changed.
+- Lead reassigned.
+- Quotation approved.
+- Discount approved.
+- Expense approved.
+- Payment modified.
+- Project assignment changed.
 
 Audit logs should identify:
 
-* Actor.
-* Action.
-* Target record.
-* Timestamp.
-* Relevant change.
+- Actor.
+- Action.
+- Target record.
+- Timestamp.
+- Relevant change.
 
 ---
 
@@ -1100,16 +1100,16 @@ Audit logs should identify:
 
 Admin should be able to:
 
-* Create users.
-* Edit users.
-* Activate/deactivate users.
-* Create roles.
-* Edit roles.
-* Assign permissions.
-* Assign roles.
-* Configure departments.
-* Configure teams.
-* Review audit logs.
+- Create users.
+- Edit users.
+- Activate/deactivate users.
+- Create roles.
+- Edit roles.
+- Assign permissions.
+- Assign roles.
+- Configure departments.
+- Configure teams.
+- Review audit logs.
 
 Admin should not automatically become the business owner of every record.
 
@@ -1121,13 +1121,13 @@ System administration and business ownership remain separate concepts.
 
 Management access should focus on:
 
-* Business visibility.
-* Approvals.
-* Reporting.
-* Sales oversight.
-* Project oversight.
-* Revenue visibility.
-* Workforce visibility.
+- Business visibility.
+- Approvals.
+- Reporting.
+- Sales oversight.
+- Project oversight.
+- Revenue visibility.
+- Workforce visibility.
 
 Management access should be configurable rather than permanently hardcoded.
 
@@ -1199,17 +1199,17 @@ Admin controls the system itself.
 
 V1 should implement:
 
-* User authentication.
-* User status.
-* Role assignment.
-* Permission assignment.
-* Module permissions.
-* Action permissions.
-* Basic ownership-based access.
-* Basic team-based access.
-* Basic global access.
-* Server-side authorization.
-* Audit logging for sensitive actions.
+- User authentication.
+- User status.
+- Role assignment.
+- Permission assignment.
+- Module permissions.
+- Action permissions.
+- Basic ownership-based access.
+- Basic team-based access.
+- Basic global access.
+- Server-side authorization.
+- Audit logging for sensitive actions.
 
 Advanced policy engines are not required.
 
@@ -1219,14 +1219,14 @@ Advanced policy engines are not required.
 
 The architecture should allow future support for:
 
-* Custom permission scopes.
-* Temporary access.
-* Project-specific roles.
-* Delegated approvals.
-* Time-limited permissions.
-* Conditional access.
-* Advanced policy rules.
-* Attribute-based access control.
+- Custom permission scopes.
+- Temporary access.
+- Project-specific roles.
+- Delegated approvals.
+- Time-limited permissions.
+- Conditional access.
+- Advanced policy rules.
+- Attribute-based access control.
 
 These are future capabilities, not V1 requirements.
 

@@ -107,14 +107,14 @@ Represents the current state of a business record.
 
 Examples:
 
-* New
-* Qualified
-* Proposal
-* Negotiation
-* Won
-* In Progress
-* Completed
-* Cancelled
+- New
+- Qualified
+- Proposal
+- Negotiation
+- Won
+- In Progress
+- Completed
+- Cancelled
 
 ### Activity
 
@@ -122,13 +122,13 @@ Represents something that happened.
 
 Examples:
 
-* Phone call
-* WhatsApp conversation
-* Email
-* Meeting
-* Requirement discussion
-* Follow-up
-* Client review
+- Phone call
+- WhatsApp conversation
+- Email
+- Meeting
+- Requirement discussion
+- Follow-up
+- Client review
 
 ### Task
 
@@ -136,11 +136,11 @@ Represents work that must be completed.
 
 Examples:
 
-* Contact lead
-* Prepare proposal
-* Review quotation
-* Fix QA issue
-* Collect payment
+- Contact lead
+- Prepare proposal
+- Review quotation
+- Fix QA issue
+- Collect payment
 
 ### Approval
 
@@ -148,10 +148,10 @@ Represents an action requiring authorization.
 
 Examples:
 
-* Quotation approval
-* Discount approval
-* Expense approval
-* Scope change approval
+- Quotation approval
+- Discount approval
+- Expense approval
+- Scope change approval
 
 These concepts should remain distinct throughout the system.
 
@@ -161,18 +161,18 @@ These concepts should remain distinct throughout the system.
 
 Leads may originate from:
 
-* Website
-* Google
-* LinkedIn
-* Social media
-* Referral
-* Existing client
-* Partner
-* Advertisement
-* Cold calling
-* Lead scraping/import
-* Manual entry
-* Other sources
+- Website
+- Google
+- LinkedIn
+- Social media
+- Referral
+- Existing client
+- Partner
+- Advertisement
+- Cold calling
+- Lead scraping/import
+- Manual entry
+- Other sources
 
 ### Workflow
 
@@ -194,13 +194,13 @@ First Contact
 
 Every newly created lead should have:
 
-* Source
-* Contact information
-* Business/company information where available
-* Lead owner
-* Created date
-* Initial status
-* Next action where applicable
+- Source
+- Contact information
+- Business/company information where available
+- Lead owner
+- Created date
+- Initial status
+- Next action where applicable
 
 ---
 
@@ -222,9 +222,9 @@ Contact Action
 
 Assignment may be performed by:
 
-* Admin
-* Sales Manager
-* Authorized Management user
+- Admin
+- Sales Manager
+- Authorized Management user
 
 The assigned employee becomes responsible for progressing the lead.
 
@@ -240,16 +240,16 @@ The sales owner evaluates whether the lead represents a meaningful business oppo
 
 The employee may evaluate:
 
-* Business type
-* Requirement
-* Budget
-* Timeline
-* Decision maker
-* Location
-* Current solution
-* Expected scope
-* Urgency
-* Business potential
+- Business type
+- Requirement
+- Budget
+- Timeline
+- Decision maker
+- Location
+- Current solution
+- Expected scope
+- Urgency
+- Business potential
 
 ### Workflow
 
@@ -273,14 +273,14 @@ The system requires a reason.
 
 Possible reasons:
 
-* No requirement
-* Not relevant
-* Budget mismatch
-* Duplicate
-* Invalid lead
-* Not reachable
-* Outside service scope
-* Other
+- No requirement
+- Not relevant
+- Budget mismatch
+- Duplicate
+- Invalid lead
+- Not reachable
+- Outside service scope
+- Other
 
 ---
 
@@ -290,14 +290,14 @@ Follow-ups are a core operational workflow.
 
 A follow-up may be:
 
-* Phone call
-* WhatsApp
-* Email
-* Meeting
-* Callback
-* Proposal follow-up
-* Payment follow-up
-* General client follow-up
+- Phone call
+- WhatsApp
+- Email
+- Meeting
+- Callback
+- Proposal follow-up
+- Payment follow-up
+- General client follow-up
 
 ### Workflow
 
@@ -351,19 +351,19 @@ Requirement Ready
 
 Requirements may include:
 
-* Business objective
-* Problem statement
-* Requested solution
-* Functional requirements
-* Technical requirements
-* User requirements
-* Integrations
-* Platforms
-* Existing systems
-* Constraints
-* Timeline
-* Budget
-* Client expectations
+- Business objective
+- Problem statement
+- Requested solution
+- Functional requirements
+- Technical requirements
+- User requirements
+- Integrations
+- Platforms
+- Existing systems
+- Constraints
+- Timeline
+- Budget
+- Client expectations
 
 The requirement becomes the foundation for presales.
 
@@ -415,15 +415,15 @@ Quotation
 
 Presales should clearly identify:
 
-* What will be delivered
-* What will not be delivered
-* Estimated effort
-* Timeline
-* Dependencies
-* Technology considerations
-* Pricing
-* Assumptions
-* Client responsibilities
+- What will be delivered
+- What will not be delivered
+- Estimated effort
+- Timeline
+- Dependencies
+- Technology considerations
+- Pricing
+- Assumptions
+- Client responsibilities
 
 ---
 
@@ -431,14 +431,14 @@ Presales should clearly identify:
 
 Estimation may consider:
 
-* Development effort
-* UI/UX effort
-* QA effort
-* Project management
-* Infrastructure
-* Third-party services
-* Maintenance
-* Other operational costs
+- Development effort
+- UI/UX effort
+- QA effort
+- Project management
+- Infrastructure
+- Third-party services
+- Maintenance
+- Other operational costs
 
 ### Workflow
 
@@ -480,15 +480,15 @@ Proposal Sent
 
 Proposal status may include:
 
-* Draft
-* Internal Review
-* Approved
-* Sent
-* Viewed / Discussed
-* Revised
-* Accepted
-* Rejected
-* Expired
+- Draft
+- Internal Review
+- Approved
+- Sent
+- Viewed / Discussed
+- Revised
+- Accepted
+- Rejected
+- Expired
 
 Proposal revisions should preserve historical information where required.
 
@@ -514,9 +514,9 @@ Negotiation / Acceptance
 
 Depending on the quotation:
 
-* Approval may be required.
-* Discount may require approval.
-* Special commercial terms may require approval.
+- Approval may be required.
+- Discount may require approval.
+- Special commercial terms may require approval.
 
 ---
 
@@ -524,14 +524,14 @@ Depending on the quotation:
 
 Negotiation may involve:
 
-* Price
-* Scope
-* Timeline
-* Payment terms
-* Deliverables
-* Support
-* Discounts
-* Commercial conditions
+- Price
+- Scope
+- Timeline
+- Payment terms
+- Deliverables
+- Support
+- Discounts
+- Commercial conditions
 
 ```text
 Quotation Sent
@@ -569,12 +569,12 @@ Onboarding
 
 The system should capture:
 
-* Final project value
-* Agreed scope
-* Commercial terms
-* Expected start date
-* Payment terms
-* Responsible team
+- Final project value
+- Agreed scope
+- Commercial terms
+- Expected start date
+- Payment terms
+- Responsible team
 
 ### Lost
 
@@ -672,13 +672,13 @@ Schedule
 
 Each important task should have:
 
-* Assignee
-* Reporter
-* Priority
-* Status
-* Due date
-* Estimated effort where applicable
-* Actual effort where applicable
+- Assignee
+- Reporter
+- Priority
+- Status
+- Due date
+- Estimated effort where applicable
+- Actual effort where applicable
 
 ---
 
@@ -726,9 +726,9 @@ Completed
 
 Tasks may also become:
 
-* Blocked
-* Cancelled
-* Reopened
+- Blocked
+- Cancelled
+- Reopened
 
 A task should not be marked completed without satisfying its required completion criteria.
 
@@ -759,13 +759,13 @@ A failed QA item returns to the responsible development workflow.
 
 QA history should preserve:
 
-* Issue
-* Severity
-* Reporter
-* Assignee
-* Status
-* Resolution
-* Verification
+- Issue
+- Severity
+- Reporter
+- Assignee
+- Status
+- Resolution
+- Verification
 
 ---
 
@@ -815,11 +815,11 @@ Task          Change Request
 
 Change requests must distinguish between:
 
-* Existing agreed scope
-* New requirement
-* Additional effort
-* Timeline impact
-* Commercial impact
+- Existing agreed scope
+- New requirement
+- Additional effort
+- Timeline impact
+- Commercial impact
 
 ```text
 Client Request
@@ -863,14 +863,14 @@ Project Completion
 
 Handover may include:
 
-* Credentials/access transfer through approved secure methods
-* Documentation
-* Source-code handover where applicable
-* Hosting details
-* User instructions
-* Training
-* Final deliverables
-* Support information
+- Credentials/access transfer through approved secure methods
+- Documentation
+- Source-code handover where applicable
+- Hosting details
+- User instructions
+- Training
+- Final deliverables
+- Support information
 
 Sensitive credentials should not be casually stored in Webxode OS.
 
@@ -898,12 +898,12 @@ Payment Recorded
 
 Payment status may include:
 
-* Expected
-* Due
-* Partially Paid
-* Paid
-* Overdue
-* Cancelled
+- Expected
+- Due
+- Partially Paid
+- Paid
+- Overdue
+- Cancelled
 
 Outstanding payments should generate attention items where appropriate.
 
@@ -1017,12 +1017,12 @@ Closed
 
 Tickets may represent:
 
-* IT issues
-* Internal requests
-* Operational problems
-* Access requests
-* Infrastructure issues
-* Administrative requests
+- IT issues
+- Internal requests
+- Operational problems
+- Access requests
+- Infrastructure issues
+- Administrative requests
 
 ---
 
@@ -1162,24 +1162,24 @@ Approved / Rejected
 
 Possible approval workflows:
 
-* Quotation
-* Discount
-* Proposal
-* Scope change
-* Expense
-* Purchase
-* Leave
-* Refund / credit
-* Other controlled business actions
+- Quotation
+- Discount
+- Proposal
+- Scope change
+- Expense
+- Purchase
+- Leave
+- Refund / credit
+- Other controlled business actions
 
 Approval history should record:
 
-* Request
-* Requested by
-* Approver
-* Decision
-* Decision date
-* Reason/comment where applicable
+- Request
+- Requested by
+- Approver
+- Decision
+- Decision date
+- Reason/comment where applicable
 
 ---
 
@@ -1207,13 +1207,13 @@ Transfer should not erase historical ownership.
 
 This applies to:
 
-* Leads
-* Opportunities
-* Clients
-* Projects
-* Tasks
-* Tickets
-* Other owned records
+- Leads
+- Opportunities
+- Clients
+- Projects
+- Tasks
+- Tickets
+- Other owned records
 
 ---
 
@@ -1245,12 +1245,12 @@ Business records should not simply disappear when work stops.
 
 Possible terminal or exceptional states:
 
-* Lost
-* Disqualified
-* Cancelled
-* Rejected
-* Archived
-* Closed
+- Lost
+- Disqualified
+- Cancelled
+- Rejected
+- Archived
+- Closed
 
 Where appropriate, records may be reopened through authorized actions.
 
@@ -1394,13 +1394,13 @@ Change Project Status
 
 Workflow actions must respect:
 
-* Role
-* Permission
-* Scope
-* Record ownership
-* Assignment
-* Department/team access
-* Approval authority
+- Role
+- Permission
+- Scope
+- Record ownership
+- Assignment
+- Department/team access
+- Approval authority
 
 ---
 
@@ -1427,12 +1427,12 @@ Won
 
 The system should retain meaningful history such as:
 
-* Previous state
-* New state
-* Changed by
-* Changed at
-* Reason where required
-* Related activity
+- Previous state
+- New state
+- Changed by
+- Changed at
+- Reason where required
+- Related activity
 
 This supports accountability and management analysis.
 
@@ -1448,35 +1448,35 @@ Examples:
 
 Required information may include:
 
-* Contact information
-* Requirement
-* Owner
-* Qualification information
+- Contact information
+- Requirement
+- Owner
+- Qualification information
 
 ### Opportunity → Proposal
 
 Required:
 
-* Requirement
-* Scope
-* Estimate
-* Proposal information
+- Requirement
+- Scope
+- Estimate
+- Proposal information
 
 ### Project → Development
 
 Required:
 
-* Project scope
-* Assigned team
-* Development tasks
+- Project scope
+- Assigned team
+- Development tasks
 
 ### Project → Deployment
 
 Required:
 
-* QA completion
-* Required approvals
-* Client approval where applicable
+- QA completion
+- Required approvals
+- Client approval where applicable
 
 Validation should prevent incomplete workflow progression.
 
@@ -1488,17 +1488,17 @@ Real business processes are not always linear.
 
 The system must support:
 
-* Reassignment
-* Rejection
-* Cancellation
-* Reopening
-* Scope changes
-* Delays
-* Blocked tasks
-* Failed QA
-* Partial payments
-* Client-requested changes
-* Internal approval delays
+- Reassignment
+- Rejection
+- Cancellation
+- Reopening
+- Scope changes
+- Delays
+- Blocked tasks
+- Failed QA
+- Partial payments
+- Client-requested changes
+- Internal approval delays
 
 Exceptions should be explicit states/actions rather than hidden workarounds.
 
@@ -1512,36 +1512,36 @@ Examples:
 
 ### Sales
 
-* New leads
-* Uncontacted leads
-* Overdue follow-ups
-* Upcoming meetings
-* Pending proposals
-* Pending quotations
-* Negotiations
+- New leads
+- Uncontacted leads
+- Overdue follow-ups
+- Upcoming meetings
+- Pending proposals
+- Pending quotations
+- Negotiations
 
 ### Projects
 
-* Overdue tasks
-* Blocked tasks
-* QA failures
-* Pending client reviews
-* Delayed milestones
+- Overdue tasks
+- Blocked tasks
+- QA failures
+- Pending client reviews
+- Delayed milestones
 
 ### Finance
 
-* Upcoming payments
-* Overdue payments
-* Pending expenses
-* Approval requests
+- Upcoming payments
+- Overdue payments
+- Pending expenses
+- Approval requests
 
 ### Management
 
-* Major overdue items
-* High-value opportunities
-* Project risks
-* Outstanding payments
-* Approval requests
+- Major overdue items
+- High-value opportunities
+- Project risks
+- Outstanding payments
+- Approval requests
 
 The dashboard should therefore function as an **action center**, not merely an analytics page.
 
@@ -1611,25 +1611,25 @@ Support
 
 V1 should provide:
 
-* Core state transitions
-* Ownership
-* Assignment
-* Follow-ups
-* Tasks
-* Approvals
-* Notifications
-* Audit history
-* Attention queues
-* Cross-module relationships
+- Core state transitions
+- Ownership
+- Assignment
+- Follow-ups
+- Tasks
+- Approvals
+- Notifications
+- Audit history
+- Attention queues
+- Cross-module relationships
 
 V1 should **not** attempt to build:
 
-* Generic workflow builder
-* Complex BPM engine
-* Fully configurable automation engine
-* Advanced event orchestration
-* AI-driven autonomous workflows
-* Large-scale external integrations
+- Generic workflow builder
+- Complex BPM engine
+- Fully configurable automation engine
+- Advanced event orchestration
+- AI-driven autonomous workflows
+- Large-scale external integrations
 
 Those belong to future platform capabilities.
 
@@ -1641,14 +1641,14 @@ Those belong to future platform capabilities.
 
 Future integrations may connect:
 
-* Google Workspace
-* Microsoft 365
-* Slack
-* GitHub
-* WhatsApp
-* Zoom
-* Payment systems
-* Other business tools
+- Google Workspace
+- Microsoft 365
+- Slack
+- GitHub
+- WhatsApp
+- Zoom
+- Payment systems
+- Other business tools
 
 The business workflow should remain the internal source of truth while integrations act as connected channels.
 
@@ -1656,15 +1656,15 @@ The business workflow should remain the internal source of truth while integrati
 
 AI may later assist with:
 
-* Lead prioritization
-* Follow-up suggestions
-* Requirement analysis
-* Proposal assistance
-* Sales insights
-* Project risk detection
-* Revenue intelligence
-* Payment reminders
-* Business recommendations
+- Lead prioritization
+- Follow-up suggestions
+- Requirement analysis
+- Proposal assistance
+- Sales insights
+- Project risk detection
+- Revenue intelligence
+- Payment reminders
+- Business recommendations
 
 AI should enhance existing workflows rather than create disconnected processes.
 
@@ -1745,18 +1745,18 @@ form the operational foundation.
 
 The Business Workflow document is considered complete when:
 
-* The end-to-end business lifecycle is defined.
-* Major workflow states are identified.
-* Ownership is defined.
-* Major transitions are defined.
-* Approval points are identified.
-* Exceptions are considered.
-* Cross-module transitions are documented.
-* Sales → Presales → Client → Project → Finance → Support is connected.
-* Workflow permissions are recognized.
-* Audit requirements are established.
-* V1 boundaries are clear.
-* Future V2/V3 workflow evolution is separated from V1.
+- The end-to-end business lifecycle is defined.
+- Major workflow states are identified.
+- Ownership is defined.
+- Major transitions are defined.
+- Approval points are identified.
+- Exceptions are considered.
+- Cross-module transitions are documented.
+- Sales → Presales → Client → Project → Finance → Support is connected.
+- Workflow permissions are recognized.
+- Audit requirements are established.
+- V1 boundaries are clear.
+- Future V2/V3 workflow evolution is separated from V1.
 
 This document becomes the baseline for designing the **database architecture, application/API architecture, and UI/UX architecture**.
 

@@ -17,15 +17,15 @@ Webxode OS is designed to become the central operating system for Webxode's busi
 
 The integration strategy therefore focuses on:
 
-* Clear integration boundaries
-* Loose coupling
-* Secure authentication
-* Reliable data exchange
-* Controlled synchronization
-* Webhooks where appropriate
-* Retry and failure handling
-* Auditability
-* Future extensibility
+- Clear integration boundaries
+- Loose coupling
+- Secure authentication
+- Reliable data exchange
+- Controlled synchronization
+- Webhooks where appropriate
+- Retry and failure handling
+- Auditability
+- Future extensibility
 
 Integrations are **not part of the core V1 business engine**.
 
@@ -39,13 +39,13 @@ Webxode OS follows the principle:
 
 Examples:
 
-* Webxode OS owns lead management.
-* Google Calendar provides calendar synchronization.
-* Gmail provides email communication.
-* WhatsApp provides messaging.
-* GitHub provides development activity.
-* Zoom provides meeting capabilities.
-* Payment systems provide transaction information.
+- Webxode OS owns lead management.
+- Google Calendar provides calendar synchronization.
+- Gmail provides email communication.
+- WhatsApp provides messaging.
+- GitHub provides development activity.
+- Zoom provides meeting capabilities.
+- Payment systems provide transaction information.
 
 External platforms should not become the source of truth for Webxode's core business workflows unless explicitly designed that way.
 
@@ -73,12 +73,12 @@ Secrets must never be stored directly in source code or ordinary business record
 
 Every integration must define:
 
-* What data Webxode OS owns
-* What data the external system owns
-* What data is synchronized
-* Sync direction
-* Conflict behavior
-* Failure behavior
+- What data Webxode OS owns
+- What data the external system owns
+- What data is synchronized
+- Sync direction
+- Conflict behavior
+- Failure behavior
 
 ### 3.5 Event-Driven Where Appropriate
 
@@ -98,10 +98,10 @@ Important synchronization and integration actions should be traceable.
 
 If an external service becomes unavailable:
 
-* Core Webxode OS workflows should continue where possible.
-* Failed synchronization should be recorded.
-* Retry mechanisms should be available.
-* Users should understand what failed.
+- Core Webxode OS workflows should continue where possible.
+- Failed synchronization should be recorded.
+- Retry mechanisms should be available.
+- Users should understand what failed.
 
 ### 3.9 Integration Independence
 
@@ -138,40 +138,40 @@ Integrations are grouped into the following categories.
 
 ### 5.1 Communication
 
-* Gmail
-* Outlook
-* WhatsApp
-* Slack
-* Microsoft Teams
+- Gmail
+- Outlook
+- WhatsApp
+- Slack
+- Microsoft Teams
 
 ### 5.2 Calendar & Meetings
 
-* Google Calendar
-* Microsoft Outlook Calendar
-* Google Meet
-* Zoom
+- Google Calendar
+- Microsoft Outlook Calendar
+- Google Meet
+- Zoom
 
 ### 5.3 Development
 
-* GitHub
-* GitLab
-* Bitbucket
+- GitHub
+- GitLab
+- Bitbucket
 
 ### 5.4 Productivity
 
-* Google Drive
-* Google Sheets
-* Microsoft OneDrive
-* Microsoft Excel
+- Google Drive
+- Google Sheets
+- Microsoft OneDrive
+- Microsoft Excel
 
 ### 5.5 Finance & Payments
 
 Potential future integrations:
 
-* Razorpay
-* Stripe
-* Banking/payment platforms
-* Accounting systems
+- Razorpay
+- Stripe
+- Banking/payment platforms
+- Accounting systems
 
 InvoNext remains the primary billing/accounting application for Webxode.
 
@@ -179,32 +179,32 @@ InvoNext remains the primary billing/accounting application for Webxode.
 
 Potential future integrations:
 
-* Website lead forms
-* LinkedIn
-* Meta Lead Ads
-* Google Ads
-* Google Business Profile
-* Email marketing platforms
+- Website lead forms
+- LinkedIn
+- Meta Lead Ads
+- Google Ads
+- Google Business Profile
+- Email marketing platforms
 
 ### 5.7 Infrastructure & Monitoring
 
 Potential future integrations:
 
-* AWS
-* Cloudflare
-* Sentry
-* GitHub Actions
-* Uptime monitoring platforms
+- AWS
+- Cloudflare
+- Sentry
+- GitHub Actions
+- Uptime monitoring platforms
 
 ### 5.8 Automation
 
 Future automation platforms may include:
 
-* Webhooks
-* Zapier
-* Make
-* n8n
-* Internal automation engine
+- Webhooks
+- Zapier
+- Make
+- n8n
+- Internal automation engine
 
 ---
 
@@ -220,11 +220,11 @@ Integrations that directly improve critical Webxode workflows.
 
 Examples:
 
-* Google Workspace
-* Microsoft 365
-* GitHub
-* WhatsApp
-* Calendar
+- Google Workspace
+- Microsoft 365
+- GitHub
+- WhatsApp
+- Calendar
 
 ### P1 — Operational Integrations
 
@@ -232,11 +232,11 @@ Integrations that improve daily productivity.
 
 Examples:
 
-* Slack
-* Microsoft Teams
-* Zoom
-* Google Drive
-* OneDrive
+- Slack
+- Microsoft Teams
+- Zoom
+- Google Drive
+- OneDrive
 
 ### P2 — Growth Integrations
 
@@ -244,11 +244,11 @@ Integrations that improve lead generation, marketing, and analytics.
 
 Examples:
 
-* LinkedIn
-* Meta Lead Ads
-* Google Ads
-* Google Business Profile
-* Marketing platforms
+- LinkedIn
+- Meta Lead Ads
+- Google Ads
+- Google Business Profile
+- Marketing platforms
 
 ### P3 — Advanced Ecosystem Integrations
 
@@ -256,11 +256,11 @@ Integrations that become useful as Webxode OS matures.
 
 Examples:
 
-* Accounting platforms
-* Banking systems
-* Automation platforms
-* Advanced analytics platforms
-* Infrastructure platforms
+- Accounting platforms
+- Banking systems
+- Automation platforms
+- Advanced analytics platforms
+- Infrastructure platforms
 
 ---
 
@@ -274,17 +274,17 @@ The application should instead establish the architecture required to support th
 
 ### Required foundation
 
-* Integration-ready module boundaries
-* Secure environment configuration
-* Secret management
-* API client abstraction
-* Webhook handling architecture
-* Integration status tracking
-* Audit logging
-* Error logging
-* Retry strategy
-* Background job capability where required
-* Integration permission model
+- Integration-ready module boundaries
+- Secure environment configuration
+- Secret management
+- API client abstraction
+- Webhook handling architecture
+- Integration status tracking
+- Audit logging
+- Error logging
+- Retry strategy
+- Background job capability where required
+- Integration permission model
 
 ### V1 rule
 
@@ -300,52 +300,52 @@ Google Workspace is a high-value future integration because Webxode already depe
 
 Potential services:
 
-* Gmail
-* Google Calendar
-* Google Drive
-* Google Meet
-* Google Sheets
+- Gmail
+- Google Calendar
+- Google Drive
+- Google Meet
+- Google Sheets
 
 ### Gmail
 
 Potential capabilities:
 
-* Send email from Webxode OS
-* Track outbound communication
-* Link emails to leads
-* Link emails to clients
-* Proposal/quotation communication
-* Payment reminders
-* Follow-up communication
+- Send email from Webxode OS
+- Track outbound communication
+- Link emails to leads
+- Link emails to clients
+- Proposal/quotation communication
+- Payment reminders
+- Follow-up communication
 
 ### Google Calendar
 
 Potential capabilities:
 
-* Create meetings
-* Synchronize events
-* Meeting reminders
-* Lead/client meeting association
-* Project meetings
-* Employee calendar visibility
+- Create meetings
+- Synchronize events
+- Meeting reminders
+- Lead/client meeting association
+- Project meetings
+- Employee calendar visibility
 
 ### Google Drive
 
 Potential capabilities:
 
-* Store or link project documents
-* Client documents
-* Proposal documents
-* SOW files
-* Project deliverables
+- Store or link project documents
+- Client documents
+- Proposal documents
+- SOW files
+- Project deliverables
 
 ### Google Meet
 
 Potential capabilities:
 
-* Create meeting links
-* Attach meeting links to meetings
-* Associate meetings with leads, clients, or projects
+- Create meeting links
+- Attach meeting links to meetings
+- Associate meetings with leads, clients, or projects
 
 ---
 
@@ -355,20 +355,20 @@ Microsoft 365 should follow the same conceptual model as Google Workspace.
 
 Potential services:
 
-* Outlook
-* Outlook Calendar
-* OneDrive
-* Teams
-* Microsoft Graph
+- Outlook
+- Outlook Calendar
+- OneDrive
+- Teams
+- Microsoft Graph
 
 Capabilities may include:
 
-* Email
-* Calendar synchronization
-* Meetings
-* File storage
-* Teams communication
-* Business identity integration
+- Email
+- Calendar synchronization
+- Meetings
+- File storage
+- Teams communication
+- Business identity integration
 
 The integration architecture should avoid creating provider-specific business logic throughout the application.
 
@@ -392,14 +392,14 @@ GitHub integration is particularly valuable for the Projects and Development wor
 
 Potential capabilities:
 
-* Repository linking
-* Pull request visibility
-* Issue synchronization
-* Commit activity
-* Deployment status
-* Release information
-* Developer activity
-* Project-to-repository mapping
+- Repository linking
+- Pull request visibility
+- Issue synchronization
+- Commit activity
+- Deployment status
+- Release information
+- Developer activity
+- Project-to-repository mapping
 
 Example:
 
@@ -421,13 +421,13 @@ WhatsApp can become an important communication channel for client-facing workflo
 
 Potential capabilities:
 
-* Lead follow-ups
-* Client communication
-* Appointment reminders
-* Proposal notifications
-* Payment reminders
-* Project updates
-* Support communication
+- Lead follow-ups
+- Client communication
+- Appointment reminders
+- Proposal notifications
+- Payment reminders
+- Project updates
+- Support communication
 
 The integration must use supported business APIs and comply with applicable platform requirements.
 
@@ -439,9 +439,9 @@ Webxode OS should maintain the business context while WhatsApp acts as the commu
 
 Potential meeting integrations:
 
-* Zoom
-* Google Meet
-* Microsoft Teams
+- Zoom
+- Google Meet
+- Microsoft Teams
 
 Possible workflow:
 
@@ -469,13 +469,13 @@ Once the core sales engine is stable, Webxode OS can connect to external lead so
 
 Potential sources:
 
-* Website forms
-* LinkedIn
-* Meta Lead Ads
-* Google Ads
-* Google Business Profile
-* Referral systems
-* External lead imports
+- Website forms
+- LinkedIn
+- Meta Lead Ads
+- Google Ads
+- Google Business Profile
+- Referral systems
+- External lead imports
 
 Example:
 
@@ -505,19 +505,19 @@ Webxode OS should eventually connect operational finance visibility with payment
 
 Potential integrations:
 
-* Razorpay
-* Stripe
-* Other payment providers
-* InvoNext
+- Razorpay
+- Stripe
+- Other payment providers
+- InvoNext
 
 Potential capabilities:
 
-* Payment status
-* Transaction reference
-* Payment confirmation
-* Payment webhooks
-* Outstanding balance updates
-* Revenue reporting
+- Payment status
+- Transaction reference
+- Payment confirmation
+- Payment webhooks
+- Outstanding balance updates
+- Revenue reporting
 
 ### Important boundary
 
@@ -531,21 +531,21 @@ InvoNext remains responsible for dedicated billing/accounting workflows unless t
 
 Future integrations may connect:
 
-* Google Analytics
-* Google Search Console
-* Google Ads
-* Meta Ads
-* LinkedIn
-* Google Business Profile
+- Google Analytics
+- Google Search Console
+- Google Ads
+- Meta Ads
+- LinkedIn
+- Google Business Profile
 
 Potential capabilities:
 
-* Campaign performance
-* Lead attribution
-* Traffic information
-* Conversion data
-* Marketing ROI
-* Lead-source analysis
+- Campaign performance
+- Lead attribution
+- Traffic information
+- Conversion data
+- Marketing ROI
+- Lead-source analysis
 
 This data can eventually feed the Management and AI layers.
 
@@ -555,11 +555,11 @@ This data can eventually feed the Management and AI layers.
 
 Webxode OS may eventually expose automation capabilities through:
 
-* Webhooks
-* Zapier
-* Make
-* n8n
-* Native automation engine
+- Webhooks
+- Zapier
+- Make
+- n8n
+- Native automation engine
 
 Example:
 
@@ -679,13 +679,13 @@ Audit / Notification
 
 Webhook processing must support:
 
-* Signature verification
-* Event validation
-* Idempotency
-* Duplicate detection
-* Retry handling
-* Failure logging
-* Auditability
+- Signature verification
+- Event validation
+- Idempotency
+- Duplicate detection
+- Retry handling
+- Failure logging
+- Auditability
 
 ---
 
@@ -731,21 +731,21 @@ This prevents provider-specific logic from spreading throughout the application.
 
 Integrations may use:
 
-* OAuth 2.0
-* API keys
-* Service accounts
-* Webhook signatures
-* Access tokens
-* Refresh tokens
+- OAuth 2.0
+- API keys
+- Service accounts
+- Webhook signatures
+- Access tokens
+- Refresh tokens
 
 Credentials must be:
 
-* Encrypted or securely managed
-* Server-side only
-* Never exposed to clients unnecessarily
-* Never committed to Git
-* Rotatable
-* Revocable
+- Encrypted or securely managed
+- Server-side only
+- Never exposed to clients unnecessarily
+- Never committed to Git
+- Rotatable
+- Revocable
 
 Integration access should also respect Webxode OS permissions.
 
@@ -771,11 +771,11 @@ Sensitive integrations should not automatically be available to every user.
 
 For example:
 
-* Management may manage business integrations.
-* Admin may configure integrations.
-* Sales users may use approved communication integrations.
-* Developers may access GitHub project integration information.
-* Finance may access payment integration information.
+- Management may manage business integrations.
+- Admin may configure integrations.
+- Sales users may use approved communication integrations.
+- Developers may access GitHub project integration information.
+- Finance may access payment integration information.
 
 ---
 
@@ -785,15 +785,15 @@ External systems will fail.
 
 Webxode OS should handle:
 
-* API timeout
-* Rate limits
-* Authentication expiry
-* Invalid requests
-* Provider downtime
-* Webhook failure
-* Duplicate events
-* Partial synchronization
-* Permission errors
+- API timeout
+- Rate limits
+- Authentication expiry
+- Invalid requests
+- Provider downtime
+- Webhook failure
+- Duplicate events
+- Partial synchronization
+- Permission errors
 
 The system should record enough information to diagnose failures without exposing sensitive credentials.
 
@@ -803,17 +803,17 @@ The system should record enough information to diagnose failures without exposin
 
 Retryable failures may include:
 
-* Temporary network failure
-* Provider timeout
-* Temporary server error
-* Rate limiting
+- Temporary network failure
+- Provider timeout
+- Temporary server error
+- Rate limiting
 
 Non-retryable failures may include:
 
-* Invalid credentials
-* Invalid request
-* Missing required data
-* Permission denied
+- Invalid credentials
+- Invalid request
+- Missing required data
+- Permission denied
 
 Retries should use controlled backoff rather than aggressive repeated requests.
 
@@ -827,11 +827,11 @@ External providers may enforce API limits.
 
 Integration services should therefore support:
 
-* Request throttling
-* Retry-after handling
-* Backoff
-* Request batching where supported
-* Usage monitoring
+- Request throttling
+- Retry-after handling
+- Backoff
+- Request batching where supported
+- Usage monitoring
 
 The application should avoid unnecessary API calls.
 
@@ -843,15 +843,15 @@ Integration logs should capture useful operational information.
 
 Examples:
 
-* Provider
-* Operation
-* Entity
-* Request identifier
-* Result
-* Timestamp
-* Duration
-* Error category
-* Retry status
+- Provider
+- Operation
+- Entity
+- Request identifier
+- Result
+- Timestamp
+- Duration
+- Error category
+- Retry status
 
 Sensitive request/response data should not be logged blindly.
 
@@ -863,14 +863,14 @@ Each integration should have a visible status.
 
 Possible states:
 
-* Not Connected
-* Connected
-* Authentication Required
-* Syncing
-* Degraded
-* Failed
-* Disabled
-* Revoked
+- Not Connected
+- Connected
+- Authentication Required
+- Syncing
+- Degraded
+- Failed
+- Disabled
+- Revoked
 
 This allows administrators to understand the health of external connections.
 
@@ -880,16 +880,16 @@ This allows administrators to understand the health of external connections.
 
 A future Integration Center may provide:
 
-* Available integrations
-* Connected integrations
-* Connection status
-* Permissions/scopes
-* Last synchronization
-* Sync errors
-* Retry controls
-* Disconnect
-* Reconnect
-* Configuration settings
+- Available integrations
+- Connected integrations
+- Connection status
+- Permissions/scopes
+- Last synchronization
+- Sync errors
+- Retry controls
+- Disconnect
+- Reconnect
+- Configuration settings
 
 The Integration Center should be available primarily to authorized administrative users.
 
@@ -899,14 +899,14 @@ The Integration Center should be available primarily to authorized administrativ
 
 Integration architecture must protect:
 
-* OAuth tokens
-* API keys
-* Webhook secrets
-* Client data
-* Communication content
-* Financial information
-* Documents
-* Personal information
+- OAuth tokens
+- API keys
+- Webhook secrets
+- Client data
+- Communication content
+- Financial information
+- Documents
+- Personal information
 
 External integrations must follow least-privilege access.
 
@@ -920,16 +920,16 @@ Important integration events should be auditable.
 
 Examples:
 
-* Integration connected
-* Integration disconnected
-* OAuth authorization changed
-* Synchronization started
-* Synchronization completed
-* Synchronization failed
-* Manual retry
-* Configuration changed
-* Webhook received
-* External record linked
+- Integration connected
+- Integration disconnected
+- OAuth authorization changed
+- Synchronization started
+- Synchronization completed
+- Synchronization failed
+- Manual retry
+- Configuration changed
+- Webhook received
+- External record linked
 
 This connects directly with the Webxode OS Audit Architecture.
 
@@ -1031,14 +1031,14 @@ The future AI layer may use integration data to provide business intelligence.
 
 Examples:
 
-* Lead communication analysis
-* Follow-up suggestions
-* Meeting summaries
-* Project risk detection
-* Developer activity insights
-* Revenue analysis
-* Marketing attribution
-* Payment risk alerts
+- Lead communication analysis
+- Follow-up suggestions
+- Meeting summaries
+- Project risk detection
+- Developer activity insights
+- Revenue analysis
+- Marketing attribution
+- Payment risk alerts
 
 However:
 
@@ -1104,22 +1104,22 @@ Monitoring
 
 An integration is considered production-ready when:
 
-* Business purpose is clearly defined
-* Data ownership is documented
-* API permissions are minimized
-* Authentication is secure
-* Secrets are protected
-* Webhooks are verified
-* Duplicate events are handled
-* Retry behavior is implemented
-* Errors are logged safely
-* Audit events are generated where required
-* Permissions are enforced
-* Failure scenarios are tested
-* Rate limits are handled
-* Disconnect/reconnect is supported where applicable
-* Documentation exists
-* Monitoring is available
+- Business purpose is clearly defined
+- Data ownership is documented
+- API permissions are minimized
+- Authentication is secure
+- Secrets are protected
+- Webhooks are verified
+- Duplicate events are handled
+- Retry behavior is implemented
+- Errors are logged safely
+- Audit events are generated where required
+- Permissions are enforced
+- Failure scenarios are tested
+- Rate limits are handled
+- Disconnect/reconnect is supported where applicable
+- Documentation exists
+- Monitoring is available
 
 ---
 
@@ -1129,13 +1129,13 @@ Webxode OS V1 will **not** attempt to build the entire integration ecosystem.
 
 V1 focuses on:
 
-* Integration-ready architecture
-* Secure configuration
-* Clear boundaries
-* Audit support
-* Notification support
-* Background-job readiness
-* External API-ready service structure
+- Integration-ready architecture
+- Secure configuration
+- Clear boundaries
+- Audit support
+- Notification support
+- Background-job readiness
+- External API-ready service structure
 
 Actual third-party integrations should be added only when they solve a real operational problem.
 
@@ -1179,14 +1179,14 @@ The goal is:
 
 This means Webxode OS should understand:
 
-* Who the client is
-* What opportunity exists
-* What was promised
-* What project is being delivered
-* Who owns the work
-* What communication happened
-* What payment is pending
-* What action is required next
+- Who the client is
+- What opportunity exists
+- What was promised
+- What project is being delivered
+- Who owns the work
+- What communication happened
+- What payment is pending
+- What action is required next
 
 Integrations should enrich that context.
 

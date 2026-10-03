@@ -21,18 +21,18 @@ The primary purpose of V1 is to create a repeatable operating system for Webxode
 
 The platform must help the team:
 
-* Capture and manage business opportunities.
-* Follow up with leads consistently.
-* Convert qualified opportunities into clients.
-* Standardize requirement analysis and presales.
-* Create proposals and quotations.
-* Manage client onboarding.
-* Execute projects systematically.
-* Track employee responsibilities.
-* Monitor payments and revenue.
-* Manage operational activities.
-* Provide management visibility.
-* Maintain accountability and audit history.
+- Capture and manage business opportunities.
+- Follow up with leads consistently.
+- Convert qualified opportunities into clients.
+- Standardize requirement analysis and presales.
+- Create proposals and quotations.
+- Manage client onboarding.
+- Execute projects systematically.
+- Track employee responsibilities.
+- Monitor payments and revenue.
+- Manage operational activities.
+- Provide management visibility.
+- Maintain accountability and audit history.
 
 ---
 
@@ -44,12 +44,12 @@ Webxode OS must support the following business objectives.
 
 The system should ensure that every genuine opportunity has:
 
-* An owner.
-* A current stage.
-* A next action.
-* A follow-up date.
-* Relevant communication history.
-* Clear qualification status.
+- An owner.
+- A current stage.
+- A next action.
+- A follow-up date.
+- Relevant communication history.
+- Clear qualification status.
 
 The system should make it difficult for qualified opportunities to become inactive without visibility.
 
@@ -71,17 +71,17 @@ Once a client confirms a project, the system should convert the commercial oppor
 
 The project should have:
 
-* Defined scope.
-* Project owner.
-* Team members.
-* Milestones.
-* Phases.
-* Tasks.
-* Deliverables.
-* Deadlines.
-* QA process.
-* Client review.
-* Delivery status.
+- Defined scope.
+- Project owner.
+- Team members.
+- Milestones.
+- Phases.
+- Tasks.
+- Deliverables.
+- Deadlines.
+- QA process.
+- Client review.
+- Delivery status.
 
 ---
 
@@ -91,14 +91,14 @@ Every important business activity must have an identifiable owner.
 
 Examples:
 
-* Lead owner.
-* Follow-up owner.
-* Presales owner.
-* Project manager.
-* Task assignee.
-* QA assignee.
-* Expense approver.
-* Payment owner.
+- Lead owner.
+- Follow-up owner.
+- Presales owner.
+- Project manager.
+- Task assignee.
+- QA assignee.
+- Expense approver.
+- Payment owner.
 
 The system should make responsibility visible rather than relying on informal communication.
 
@@ -110,12 +110,12 @@ The business should be able to operate through defined workflows and responsibil
 
 Management should be able to see:
 
-* What is happening.
-* Who owns it.
-* What is pending.
-* What is overdue.
-* What requires approval.
-* What requires attention.
+- What is happening.
+- Who owns it.
+- What is pending.
+- What is overdue.
+- What requires approval.
+- What requires attention.
 
 ---
 
@@ -159,12 +159,12 @@ Renewal / Upsell
 
 Each stage must have a clear:
 
-* Owner
-* Status
-* Action
-* Input
-* Output
-* Next step
+- Owner
+- Status
+- Action
+- Input
+- Output
+- Next step
 
 ---
 
@@ -174,17 +174,17 @@ Webxode OS must support different business responsibilities without hardcoding s
 
 The initial business roles may include:
 
-* Management
-* Sales Executive
-* Sales Manager
-* Presales Executive
-* Project Manager
-* Developer
-* Designer
-* QA
-* Finance
-* Operations
-* Admin
+- Management
+- Sales Executive
+- Sales Manager
+- Presales Executive
+- Project Manager
+- Developer
+- Designer
+- QA
+- Finance
+- Operations
+- Admin
 
 These are business roles.
 
@@ -210,17 +210,17 @@ The system must support leads from multiple sources.
 
 Initial sources:
 
-* Manual Entry
-* Website
-* LinkedIn
-* Referral
-* Cold Calling
-* Lead Scraping / Import
-* Google
-* Advertising
-* Partner
-* Existing Client
-* Other
+- Manual Entry
+- Website
+- LinkedIn
+- Referral
+- Cold Calling
+- Lead Scraping / Import
+- Google
+- Advertising
+- Partner
+- Existing Client
+- Other
 
 The system should allow additional sources to be added later.
 
@@ -230,25 +230,25 @@ The system should allow additional sources to be added later.
 
 A lead should contain relevant information such as:
 
-* Lead name
-* Company / business name
-* Contact person
-* Phone
-* Email
-* Location
-* Industry
-* Lead source
-* Interested service
-* Requirement summary
-* Estimated value
-* Lead owner
-* Priority
-* Status
-* Next follow-up
-* Notes
-* Communication history
-* Created date
-* Updated date
+- Lead name
+- Company / business name
+- Contact person
+- Phone
+- Email
+- Location
+- Industry
+- Lead source
+- Interested service
+- Requirement summary
+- Estimated value
+- Lead owner
+- Priority
+- Status
+- Next follow-up
+- Notes
+- Communication history
+- Created date
+- Updated date
 
 The system should avoid unnecessary data collection.
 
@@ -260,10 +260,10 @@ Every active lead should have an owner.
 
 Lead assignment may happen through:
 
-* Manual assignment.
-* Admin assignment.
-* Manager assignment.
-* Future automated assignment.
+- Manual assignment.
+- Admin assignment.
+- Manager assignment.
+- Future automated assignment.
 
 The assigned employee becomes responsible for progressing the lead.
 
@@ -275,21 +275,21 @@ A lead must be evaluated before significant presales effort is invested.
 
 Qualification should consider factors such as:
 
-* Genuine requirement.
-* Business fit.
-* Budget indication.
-* Decision-maker availability.
-* Project timeline.
-* Service suitability.
-* Client seriousness.
-* Communication responsiveness.
+- Genuine requirement.
+- Business fit.
+- Budget indication.
+- Decision-maker availability.
+- Project timeline.
+- Service suitability.
+- Client seriousness.
+- Communication responsiveness.
 
 Qualification outcomes:
 
-* Qualified
-* Unqualified
-* Nurture
-* Lost
+- Qualified
+- Unqualified
+- Nurture
+- Lost
 
 A lost or unqualified opportunity should have a reason recorded.
 
@@ -335,13 +335,13 @@ Lost
 
 Every active opportunity should have:
 
-* Current stage.
-* Owner.
-* Next action.
-* Follow-up date.
-* Expected value where applicable.
-* Last activity.
-* Next activity.
+- Current stage.
+- Owner.
+- Next action.
+- Follow-up date.
+- Expected value where applicable.
+- Last activity.
+- Next activity.
 
 The system should highlight opportunities with no recent activity.
 
@@ -351,26 +351,26 @@ The system should highlight opportunities with no recent activity.
 
 Sales employees must be able to record activities including:
 
-* Phone call
-* Follow-up
-* Meeting
-* WhatsApp communication
-* Email
-* Callback
-* Requirement discussion
-* Proposal discussion
-* Negotiation
-* Other sales activity
+- Phone call
+- Follow-up
+- Meeting
+- WhatsApp communication
+- Email
+- Callback
+- Requirement discussion
+- Proposal discussion
+- Negotiation
+- Other sales activity
 
 Each activity should support:
 
-* Date/time.
-* Activity type.
-* Related lead/client.
-* Owner.
-* Notes.
-* Outcome.
-* Next action.
+- Date/time.
+- Activity type.
+- Related lead/client.
+- Owner.
+- Notes.
+- Outcome.
+- Next action.
 
 ---
 
@@ -384,23 +384,23 @@ Employees should be able to see:
 
 ### Today
 
-* Calls due.
-* Follow-ups due.
-* Meetings.
-* Callbacks.
-* Proposal follow-ups.
+- Calls due.
+- Follow-ups due.
+- Meetings.
+- Callbacks.
+- Proposal follow-ups.
 
 ### Upcoming
 
-* Future follow-ups.
-* Meetings.
-* Scheduled actions.
+- Future follow-ups.
+- Meetings.
+- Scheduled actions.
 
 ### Overdue
 
-* Missed follow-ups.
-* Overdue callbacks.
-* Unresolved sales actions.
+- Missed follow-ups.
+- Overdue callbacks.
+- Unresolved sales actions.
 
 The objective is simple:
 
@@ -416,19 +416,19 @@ An opportunity represents a genuine commercial possibility for Webxode.
 
 An opportunity should track:
 
-* Client/lead.
-* Service.
-* Requirement.
-* Estimated value.
-* Owner.
-* Stage.
-* Probability if introduced later.
-* Expected closing period.
-* Presales owner.
-* Proposal.
-* Quotation.
-* Negotiation history.
-* Final outcome.
+- Client/lead.
+- Service.
+- Requirement.
+- Estimated value.
+- Owner.
+- Stage.
+- Probability if introduced later.
+- Expected closing period.
+- Presales owner.
+- Proposal.
+- Quotation.
+- Negotiation history.
+- Final outcome.
 
 ---
 
@@ -438,20 +438,20 @@ Before preparing a proposal or quotation, requirements must be documented.
 
 Requirement analysis should capture:
 
-* Business problem.
-* Client objective.
-* Current process.
-* Required solution.
-* Functional requirements.
-* Technical requirements where applicable.
-* Integrations.
-* User requirements.
-* Expected deliverables.
-* Timeline.
-* Constraints.
-* Assumptions.
-* Dependencies.
-* Out-of-scope requirements.
+- Business problem.
+- Client objective.
+- Current process.
+- Required solution.
+- Functional requirements.
+- Technical requirements where applicable.
+- Integrations.
+- User requirements.
+- Expected deliverables.
+- Timeline.
+- Constraints.
+- Assumptions.
+- Dependencies.
+- Out-of-scope requirements.
 
 The requirement should be understandable by both business and delivery teams.
 
@@ -493,17 +493,17 @@ Presales must ensure that the project is commercially and operationally understo
 
 Estimation may consider:
 
-* Project type.
-* Features.
-* Complexity.
-* Development effort.
-* Design effort.
-* QA effort.
-* Infrastructure.
-* Third-party services.
-* Maintenance/support.
-* Timeline.
-* Internal resource availability.
+- Project type.
+- Features.
+- Complexity.
+- Development effort.
+- Design effort.
+- QA effort.
+- Infrastructure.
+- Third-party services.
+- Maintenance/support.
+- Timeline.
+- Internal resource availability.
 
 The system should eventually allow estimation to be converted into a commercial price.
 
@@ -515,29 +515,29 @@ The system must support proposal creation and tracking.
 
 A proposal may include:
 
-* Client information.
-* Business requirement.
-* Proposed solution.
-* Scope.
-* Deliverables.
-* Technology approach where relevant.
-* Timeline.
-* Assumptions.
-* Exclusions.
-* Commercial information.
-* Terms and conditions.
+- Client information.
+- Business requirement.
+- Proposed solution.
+- Scope.
+- Deliverables.
+- Technology approach where relevant.
+- Timeline.
+- Assumptions.
+- Exclusions.
+- Commercial information.
+- Terms and conditions.
 
 Proposal statuses may include:
 
-* Draft
-* Internal Review
-* Approved
-* Sent
-* Viewed
-* Revision Required
-* Accepted
-* Rejected
-* Expired
+- Draft
+- Internal Review
+- Approved
+- Sent
+- Viewed
+- Revision Required
+- Accepted
+- Rejected
+- Expired
 
 ---
 
@@ -547,17 +547,17 @@ Quotation management is a controlled business process.
 
 A quotation should contain:
 
-* Client.
-* Project/service.
-* Items.
-* Quantity.
-* Unit price.
-* Discount.
-* Tax where applicable.
-* Total value.
-* Validity.
-* Payment terms.
-* Terms and conditions.
+- Client.
+- Project/service.
+- Items.
+- Quantity.
+- Unit price.
+- Discount.
+- Tax where applicable.
+- Total value.
+- Validity.
+- Payment terms.
+- Terms and conditions.
 
 Quotation workflow:
 
@@ -579,10 +579,10 @@ Important commercial changes should be auditable.
 
 Examples:
 
-* Price changes.
-* Discount changes.
-* Scope changes.
-* Payment-term changes.
+- Price changes.
+- Discount changes.
+- Scope changes.
+- Payment-term changes.
 
 ---
 
@@ -594,13 +594,13 @@ The system should record important commercial changes.
 
 Examples:
 
-* Original quotation.
-* Revised quotation.
-* Requested discount.
-* Scope changes.
-* Timeline changes.
-* Payment-term changes.
-* Final agreed value.
+- Original quotation.
+- Revised quotation.
+- Requested discount.
+- Scope changes.
+- Timeline changes.
+- Payment-term changes.
+- Final agreed value.
 
 The objective is to maintain a clear commercial history.
 
@@ -612,11 +612,11 @@ When a client confirms the project, the opportunity should move to **Won**.
 
 Client confirmation may involve:
 
-* Proposal acceptance.
-* Quotation acceptance.
-* Agreement/SOW.
-* Advance payment where applicable.
-* Confirmation communication.
+- Proposal acceptance.
+- Quotation acceptance.
+- Agreement/SOW.
+- Advance payment where applicable.
+- Confirmation communication.
 
 A confirmed opportunity should trigger the client onboarding process.
 
@@ -626,17 +626,17 @@ A confirmed opportunity should trigger the client onboarding process.
 
 A client profile should contain:
 
-* Company/business information.
-* Primary contacts.
-* Contact history.
-* Active projects.
-* Completed projects.
-* Commercial history.
-* Documents.
-* Payments.
-* Support history.
-* Notes.
-* Future opportunities.
+- Company/business information.
+- Primary contacts.
+- Contact history.
+- Active projects.
+- Completed projects.
+- Commercial history.
+- Documents.
+- Payments.
+- Support history.
+- Notes.
+- Future opportunities.
 
 Client information should become the central relationship record after conversion.
 
@@ -668,15 +668,15 @@ Project Execution
 
 Onboarding may collect:
 
-* Logo/assets.
-* Brand information.
-* Content.
-* Domain information.
-* Hosting information.
-* Required credentials/access.
-* Business documents.
-* Technical requirements.
-* Contact information.
+- Logo/assets.
+- Brand information.
+- Content.
+- Domain information.
+- Hosting information.
+- Required credentials/access.
+- Business documents.
+- Technical requirements.
+- Contact information.
 
 Sensitive credentials must be handled securely and should not be stored casually.
 
@@ -688,24 +688,24 @@ Every confirmed project should have a structured project record.
 
 A project should contain:
 
-* Client.
-* Project owner.
-* Project manager.
-* Team.
-* Project type.
-* Start date.
-* Expected completion date.
-* Commercial value.
-* Scope.
-* SOW.
-* Milestones.
-* Phases.
-* Tasks.
-* Deliverables.
-* QA status.
-* Client review.
-* Deployment/delivery.
-* Payment status.
+- Client.
+- Project owner.
+- Project manager.
+- Team.
+- Project type.
+- Start date.
+- Expected completion date.
+- Commercial value.
+- Scope.
+- SOW.
+- Milestones.
+- Phases.
+- Tasks.
+- Deliverables.
+- QA status.
+- Client review.
+- Deployment/delivery.
+- Payment status.
 
 ---
 
@@ -745,30 +745,30 @@ The project type should determine the applicable workflow.
 
 Tasks should support:
 
-* Title.
-* Description.
-* Project.
-* Phase.
-* Assignee.
-* Reporter.
-* Priority.
-* Status.
-* Due date.
-* Estimated effort.
-* Actual effort where required.
-* Comments.
-* Attachments.
-* Dependencies where required.
+- Title.
+- Description.
+- Project.
+- Phase.
+- Assignee.
+- Reporter.
+- Priority.
+- Status.
+- Due date.
+- Estimated effort.
+- Actual effort where required.
+- Comments.
+- Attachments.
+- Dependencies where required.
 
 Initial task statuses:
 
-* To Do
-* In Progress
-* Blocked
-* Developer Complete
-* QA
-* Client Review
-* Done
+- To Do
+- In Progress
+- Blocked
+- Developer Complete
+- QA
+- Client Review
+- Done
 
 ---
 
@@ -806,11 +806,11 @@ A completed task should not automatically be considered production-ready when QA
 
 Client review may result in:
 
-* Approved.
-* Changes requested.
-* New requirement.
-* Bug reported.
-* Scope change.
+- Approved.
+- Changes requested.
+- New requirement.
+- Bug reported.
+- Scope change.
 
 Existing scope changes should follow the Change Request process.
 
@@ -846,13 +846,13 @@ A project can be marked complete when required deliverables are completed and ac
 
 Project closure should capture:
 
-* Final deliverables.
-* Client approval.
-* Deployment status.
-* Handover information.
-* Final payment status.
-* Documentation.
-* Support/maintenance status.
+- Final deliverables.
+- Client approval.
+- Deployment status.
+- Handover information.
+- Final payment status.
+- Documentation.
+- Support/maintenance status.
 
 ---
 
@@ -860,12 +860,12 @@ Project closure should capture:
 
 After project delivery, the client may enter:
 
-* Support.
-* Maintenance.
-* Retainer.
-* Renewal.
-* Upsell.
-* Cross-sell.
+- Support.
+- Maintenance.
+- Retainer.
+- Renewal.
+- Upsell.
+- Cross-sell.
 
 Support activities should remain connected to the client and project history.
 
@@ -877,16 +877,16 @@ Webxode OS must provide basic workforce visibility.
 
 The system should support:
 
-* Employee profiles.
-* Department/team assignment.
-* Business role.
-* Work allocation.
-* Attendance.
-* Clock-in/out.
-* Leave.
-* Task workload.
-* Assigned projects.
-* Activity history.
+- Employee profiles.
+- Department/team assignment.
+- Business role.
+- Work allocation.
+- Attendance.
+- Clock-in/out.
+- Leave.
+- Task workload.
+- Assigned projects.
+- Activity history.
 
 V1 should focus on operational workforce management rather than becoming a complete HRMS.
 
@@ -896,10 +896,10 @@ V1 should focus on operational workforce management rather than becoming a compl
 
 Employees should be able to:
 
-* Clock in.
-* Clock out.
-* View attendance history.
-* View working status.
+- Clock in.
+- Clock out.
+- View attendance history.
+- View working status.
 
 Management should be able to view attendance information based on permissions.
 
@@ -909,14 +909,14 @@ Management should be able to view attendance information based on permissions.
 
 The system should support:
 
-* Leave request.
-* Leave type.
-* Start date.
-* End date.
-* Reason.
-* Approval.
-* Rejection.
-* Leave history.
+- Leave request.
+- Leave type.
+- Start date.
+- End date.
+- Reason.
+- Approval.
+- Rejection.
+- Leave history.
 
 Basic workflow:
 
@@ -936,12 +936,12 @@ Approve / Reject
 
 The platform should support internal operational activities including:
 
-* Meetings.
-* Calendar events.
-* Internal tickets.
-* Notifications.
-* Internal communication.
-* Task coordination.
+- Meetings.
+- Calendar events.
+- Internal tickets.
+- Notifications.
+- Internal communication.
+- Task coordination.
 
 These capabilities should support the business rather than attempting to replace every external productivity application.
 
@@ -955,17 +955,17 @@ It is **not intended to replace InvoNext or become a complete accounting system.
 
 The system should track:
 
-* Project value.
-* Quotation value.
-* Expected revenue.
-* Advance.
-* Payments.
-* Collected amount.
-* Outstanding amount.
-* Project revenue.
-* Client revenue.
-* Expenses.
-* Payment status.
+- Project value.
+- Quotation value.
+- Expected revenue.
+- Advance.
+- Payments.
+- Collected amount.
+- Outstanding amount.
+- Project revenue.
+- Client revenue.
+- Expenses.
+- Payment status.
 
 ---
 
@@ -973,22 +973,22 @@ The system should track:
 
 Payment records should be associated with the relevant:
 
-* Client.
-* Project.
-* Agreement/quotation where applicable.
-* Payment milestone.
-* Amount.
-* Due date.
-* Payment date.
-* Status.
+- Client.
+- Project.
+- Agreement/quotation where applicable.
+- Payment milestone.
+- Amount.
+- Due date.
+- Payment date.
+- Status.
 
 Example statuses:
 
-* Pending
-* Due
-* Partially Paid
-* Paid
-* Overdue
+- Pending
+- Due
+- Partially Paid
+- Paid
+- Overdue
 
 ---
 
@@ -998,16 +998,16 @@ Employees should be able to submit business expenses.
 
 Expense categories may include:
 
-* Travel.
-* Food.
-* Software.
-* Hosting.
-* Domain.
-* Advertising.
-* Office.
-* Client Meeting.
-* Equipment.
-* Other.
+- Travel.
+- Food.
+- Software.
+- Hosting.
+- Domain.
+- Advertising.
+- Office.
+- Client Meeting.
+- Equipment.
+- Other.
 
 Expense workflow:
 
@@ -1035,40 +1035,40 @@ The dashboard should provide visibility into:
 
 ### Sales
 
-* New leads.
-* Qualified leads.
-* Active opportunities.
-* Follow-ups.
-* Meetings.
-* Proposals.
-* Quotations.
-* Negotiations.
-* Won opportunities.
-* Lost opportunities.
+- New leads.
+- Qualified leads.
+- Active opportunities.
+- Follow-ups.
+- Meetings.
+- Proposals.
+- Quotations.
+- Negotiations.
+- Won opportunities.
+- Lost opportunities.
 
 ### Delivery
 
-* Active projects.
-* Delayed projects.
-* Upcoming deadlines.
-* Overdue tasks.
-* QA issues.
-* Client reviews.
+- Active projects.
+- Delayed projects.
+- Upcoming deadlines.
+- Overdue tasks.
+- QA issues.
+- Client reviews.
 
 ### Workforce
 
-* Employee workload.
-* Attendance.
-* Pending approvals.
-* Assigned work.
+- Employee workload.
+- Attendance.
+- Pending approvals.
+- Assigned work.
 
 ### Finance
 
-* Expected revenue.
-* Won revenue.
-* Collected revenue.
-* Outstanding payments.
-* Expenses.
+- Expected revenue.
+- Won revenue.
+- Collected revenue.
+- Outstanding payments.
+- Expenses.
 
 ### Attention Items
 
@@ -1082,23 +1082,23 @@ The system should generate notifications for important business events.
 
 Examples:
 
-* New lead assigned.
-* Follow-up due.
-* Follow-up overdue.
-* Meeting approaching.
-* Proposal approved.
-* Quotation approved.
-* Client confirmation.
-* Task assigned.
-* Task overdue.
-* QA failure.
-* Client change request.
-* SOW approved.
-* Expense submitted.
-* Expense approved/rejected.
-* Payment due.
-* Payment overdue.
-* Milestone completed.
+- New lead assigned.
+- Follow-up due.
+- Follow-up overdue.
+- Meeting approaching.
+- Proposal approved.
+- Quotation approved.
+- Client confirmation.
+- Task assigned.
+- Task overdue.
+- QA failure.
+- Client change request.
+- SOW approved.
+- Expense submitted.
+- Expense approved/rejected.
+- Payment due.
+- Payment overdue.
+- Milestone completed.
 
 Notifications should be actionable where possible.
 
@@ -1110,14 +1110,14 @@ The system should support controlled approvals.
 
 Initial approval areas:
 
-* Quotations.
-* Discounts.
-* Proposals.
-* SOW.
-* Expenses.
-* Leave.
-* Project scope changes.
-* Other management-controlled actions.
+- Quotations.
+- Discounts.
+- Proposals.
+- SOW.
+- Expenses.
+- Leave.
+- Project scope changes.
+- Other management-controlled actions.
 
 Approval rules should be configurable as the company grows.
 
@@ -1129,22 +1129,22 @@ Important business changes must be traceable.
 
 The system should record:
 
-* Who performed the action.
-* What changed.
-* When it changed.
-* Relevant record.
-* Previous value where required.
-* New value where required.
+- Who performed the action.
+- What changed.
+- When it changed.
+- Relevant record.
+- Previous value where required.
+- New value where required.
 
 Examples:
 
-* Quotation amount changed.
-* Discount modified.
-* Lead reassigned.
-* Project status changed.
-* Task reassigned.
-* Expense approved.
-* Payment updated.
+- Quotation amount changed.
+- Discount modified.
+- Lead reassigned.
+- Project status changed.
+- Task reassigned.
+- Expense approved.
+- Payment updated.
 
 ---
 
@@ -1184,15 +1184,15 @@ The system should continuously answer:
 
 Examples:
 
-* Call these leads.
-* Follow up with these prospects.
-* Review these requirements.
-* Approve these quotations.
-* Review these expenses.
-* Complete these tasks.
-* Test these builds.
-* Follow up on these payments.
-* Resolve these overdue items.
+- Call these leads.
+- Follow up with these prospects.
+- Review these requirements.
+- Approve these quotations.
+- Review these expenses.
+- Complete these tasks.
+- Test these builds.
+- Follow up on these payments.
+- Resolve these overdue items.
 
 The platform should prioritize action over information overload.
 
@@ -1204,18 +1204,18 @@ Users should be able to find business information quickly.
 
 Global search should eventually cover:
 
-* Leads.
-* Opportunities.
-* Clients.
-* Projects.
-* Tasks.
-* Quotations.
-* Proposals.
-* SOWs.
-* Payments.
-* Tickets.
-* Meetings.
-* Documents.
+- Leads.
+- Opportunities.
+- Clients.
+- Projects.
+- Tasks.
+- Quotations.
+- Proposals.
+- SOWs.
+- Payments.
+- Tickets.
+- Meetings.
+- Documents.
 
 Search visibility must respect user permissions.
 
@@ -1247,23 +1247,23 @@ Initial business rules include:
 
 The following are not core V1 business requirements:
 
-* Full accounting.
-* Payroll.
-* Complete HRMS.
-* Full recruitment system.
-* Advanced ERP.
-* Video conferencing.
-* Full email replacement.
-* Full Slack replacement.
-* Full Microsoft Teams replacement.
-* Advanced third-party integrations.
-* AI business assistant.
-* Predictive analytics.
-* Advanced automation engine.
-* Cloud infrastructure management.
-* IoT management.
-* Microservices architecture.
-* Full client portal.
+- Full accounting.
+- Payroll.
+- Complete HRMS.
+- Full recruitment system.
+- Advanced ERP.
+- Video conferencing.
+- Full email replacement.
+- Full Slack replacement.
+- Full Microsoft Teams replacement.
+- Advanced third-party integrations.
+- AI business assistant.
+- Predictive analytics.
+- Advanced automation engine.
+- Cloud infrastructure management.
+- IoT management.
+- Microservices architecture.
+- Full client portal.
 
 These may be considered in future versions.
 
@@ -1275,13 +1275,13 @@ These may be considered in future versions.
 
 Webxode OS can connect with external platforms such as:
 
-* Google Workspace.
-* Microsoft 365.
-* Slack.
-* GitHub.
-* WhatsApp.
-* Zoom.
-* Other productivity and development platforms.
+- Google Workspace.
+- Microsoft 365.
+- Slack.
+- GitHub.
+- WhatsApp.
+- Zoom.
+- Other productivity and development platforms.
 
 The purpose is to connect existing workflows rather than rebuild every external tool inside Webxode OS.
 
@@ -1291,15 +1291,15 @@ The purpose is to connect existing workflows rather than rebuild every external 
 
 AI and advanced analytics can enhance existing workflows through:
 
-* Lead intelligence.
-* Sales insights.
-* Follow-up recommendations.
-* Proposal assistance.
-* Requirement analysis.
-* Project risk detection.
-* Revenue intelligence.
-* Business recommendations.
-* Intelligent automation.
+- Lead intelligence.
+- Sales insights.
+- Follow-up recommendations.
+- Proposal assistance.
+- Requirement analysis.
+- Project risk detection.
+- Revenue intelligence.
+- Business recommendations.
+- Intelligent automation.
 
 AI should enhance the operating system rather than become a disconnected feature.
 

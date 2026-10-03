@@ -20,15 +20,15 @@ The architecture must provide a strong foundation for the complete internal busi
 
 The system must support:
 
-* Business modularity.
-* Clear separation of responsibilities.
-* Secure role-based access.
-* Scalable data architecture.
-* Maintainable business logic.
-* Future integrations.
-* Future AI capabilities.
-* Future infrastructure expansion.
-* Rapid product development.
+- Business modularity.
+- Clear separation of responsibilities.
+- Secure role-based access.
+- Scalable data architecture.
+- Maintainable business logic.
+- Future integrations.
+- Future AI capabilities.
+- Future infrastructure expansion.
+- Rapid product development.
 
 The primary architectural principle is:
 
@@ -92,13 +92,13 @@ Webxode OS does not require microservices during V1.
 
 A modular monolith provides:
 
-* Faster development.
-* Easier deployment.
-* Lower infrastructure complexity.
-* Easier debugging.
-* Shared transactions where appropriate.
-* Clear business boundaries.
-* Ability to extract services later if genuinely required.
+- Faster development.
+- Easier deployment.
+- Lower infrastructure complexity.
+- Easier debugging.
+- Shared transactions where appropriate.
+- Clear business boundaries.
+- Ability to extract services later if genuinely required.
 
 The system must therefore be **modular internally even though it is deployed as one application**.
 
@@ -108,9 +108,9 @@ The system must therefore be **modular internally even though it is deployed as 
 
 ## 5.1 Application
 
-* Next.js
-* React
-* TypeScript
+- Next.js
+- React
+- TypeScript
 
 Next.js will provide both the user interface and server-side application capabilities.
 
@@ -118,17 +118,17 @@ Next.js will provide both the user interface and server-side application capabil
 
 ## 5.2 Styling and UI
 
-* Tailwind CSS
-* shadcn/ui
+- Tailwind CSS
+- shadcn/ui
 
 The UI system should provide:
 
-* Consistent components.
-* Responsive layouts.
-* Accessible controls.
-* Reusable patterns.
-* Consistent spacing and typography.
-* Consistent forms, tables, dialogs and notifications.
+- Consistent components.
+- Responsive layouts.
+- Accessible controls.
+- Reusable patterns.
+- Consistent spacing and typography.
+- Consistent forms, tables, dialogs and notifications.
 
 ---
 
@@ -140,27 +140,27 @@ Primary database:
 
 MongoDB will store:
 
-* Users.
-* Roles.
-* Permissions.
-* Leads.
-* Opportunities.
-* Activities.
-* Clients.
-* Requirements.
-* Proposals.
-* Quotations.
-* Projects.
-* Tasks.
-* Employees.
-* Attendance.
-* Leave.
-* Meetings.
-* Expenses.
-* Payments.
-* Notifications.
-* Audit logs.
-* Other business records.
+- Users.
+- Roles.
+- Permissions.
+- Leads.
+- Opportunities.
+- Activities.
+- Clients.
+- Requirements.
+- Proposals.
+- Quotations.
+- Projects.
+- Tasks.
+- Employees.
+- Attendance.
+- Leave.
+- Meetings.
+- Expenses.
+- Payments.
+- Notifications.
+- Audit logs.
+- Other business records.
 
 ---
 
@@ -209,13 +209,13 @@ Webxode OS should follow clear application layers.
 
 Responsible for:
 
-* Pages.
-* Layouts.
-* Components.
-* Forms.
-* Tables.
-* Dashboards.
-* User interactions.
+- Pages.
+- Layouts.
+- Components.
+- Forms.
+- Tables.
+- Dashboards.
+- User interactions.
 
 The presentation layer should not contain complex business rules.
 
@@ -225,17 +225,17 @@ The presentation layer should not contain complex business rules.
 
 Responsible for:
 
-* Receiving user actions.
-* Validating requests.
-* Checking authorization.
-* Calling business services.
-* Returning results.
-* Handling application-level workflows.
+- Receiving user actions.
+- Validating requests.
+- Checking authorization.
+- Calling business services.
+- Returning results.
+- Handling application-level workflows.
 
 Primary mechanisms:
 
-* Server Actions.
-* Route Handlers.
+- Server Actions.
+- Route Handlers.
 
 ---
 
@@ -245,14 +245,14 @@ The service layer contains business logic.
 
 Examples:
 
-* Lead qualification.
-* Lead assignment.
-* Opportunity conversion.
-* Quotation approval.
-* Project creation.
-* Change request processing.
-* Expense approval.
-* Payment updates.
+- Lead qualification.
+- Lead assignment.
+- Opportunity conversion.
+- Quotation approval.
+- Project creation.
+- Change request processing.
+- Expense approval.
+- Payment updates.
 
 Business rules should not be placed directly inside UI components.
 
@@ -264,12 +264,12 @@ The data access layer is responsible for communicating with MongoDB.
 
 Responsibilities include:
 
-* Queries.
-* Inserts.
-* Updates.
-* Deletes.
-* Aggregations.
-* Database-specific operations.
+- Queries.
+- Inserts.
+- Updates.
+- Deletes.
+- Aggregations.
+- Database-specific operations.
 
 Business services should not directly contain scattered database queries throughout the application.
 
@@ -404,15 +404,15 @@ The Foundation module provides capabilities used by the rest of the system.
 
 Responsibilities:
 
-* Authentication.
-* User accounts.
-* Roles.
-* Permissions.
-* Departments.
-* Teams.
-* Session management.
-* Audit logs.
-* System configuration.
+- Authentication.
+- User accounts.
+- Roles.
+- Permissions.
+- Departments.
+- Teams.
+- Session management.
+- Audit logs.
+- System configuration.
 
 Other modules should depend on Foundation capabilities rather than implementing their own authentication or authorization systems.
 
@@ -422,20 +422,20 @@ Other modules should depend on Foundation capabilities rather than implementing 
 
 Authentication is responsible for:
 
-* Login.
-* Logout.
-* Session management.
-* Password management.
-* Account status.
-* Authentication security.
-* Future authentication providers.
+- Login.
+- Logout.
+- Session management.
+- Password management.
+- Account status.
+- Authentication security.
+- Future authentication providers.
 
 The architecture should allow future support for:
 
-* OAuth.
-* Google authentication.
-* Microsoft authentication.
-* Other identity providers.
+- OAuth.
+- Google authentication.
+- Microsoft authentication.
+- Other identity providers.
 
 These should be extensions rather than tightly coupled to business modules.
 
@@ -577,14 +577,14 @@ Modules should avoid directly modifying another module's internal implementation
 
 The Sales module manages:
 
-* Leads.
-* Lead sources.
-* Lead assignment.
-* Qualification.
-* Opportunities.
-* Activities.
-* Follow-ups.
-* Pipeline stages.
+- Leads.
+- Lead sources.
+- Lead assignment.
+- Qualification.
+- Opportunities.
+- Activities.
+- Follow-ups.
+- Pipeline stages.
 
 Primary flow:
 
@@ -608,14 +608,14 @@ Sales should remain responsible for commercial opportunity progression.
 
 Presales manages:
 
-* Requirements.
-* Requirement analysis.
-* Solution planning.
-* Estimation.
-* Proposals.
-* Quotations.
-* Negotiation.
-* Approval.
+- Requirements.
+- Requirement analysis.
+- Solution planning.
+- Estimation.
+- Proposals.
+- Quotations.
+- Negotiation.
+- Approval.
 
 Primary flow:
 
@@ -704,12 +704,12 @@ Workforce capabilities should remain operational.
 
 The module manages:
 
-* Employee profiles.
-* Teams.
-* Departments.
-* Attendance.
-* Leave.
-* Work allocation.
+- Employee profiles.
+- Teams.
+- Departments.
+- Attendance.
+- Leave.
+- Work allocation.
 
 Employee identity should be linked to the platform user account where applicable.
 
@@ -721,11 +721,11 @@ Operations manages cross-business operational activities.
 
 Examples:
 
-* Meetings.
-* Calendar events.
-* Internal tickets.
-* Notifications.
-* Internal communication.
+- Meetings.
+- Calendar events.
+- Internal tickets.
+- Notifications.
+- Internal communication.
 
 Operations should not become a replacement for every external productivity platform.
 
@@ -737,11 +737,11 @@ Finance in Webxode OS is an operational visibility layer.
 
 It manages:
 
-* Commercial values.
-* Payment tracking.
-* Outstanding amounts.
-* Revenue visibility.
-* Expenses.
+- Commercial values.
+- Payment tracking.
+- Outstanding amounts.
+- Revenue visibility.
+- Expenses.
 
 It does **not** become the accounting source of truth.
 
@@ -767,11 +767,11 @@ Management should not duplicate business records.
 
 It should provide:
 
-* KPIs.
-* Reports.
-* Attention items.
-* Trends.
-* Operational visibility.
+- KPIs.
+- Reports.
+- Attention items.
+- Trends.
+- Operational visibility.
 
 ---
 
@@ -833,21 +833,21 @@ MongoDB documents should be designed according to actual access patterns.
 
 Use embedding where:
 
-* Data is tightly coupled.
-* The embedded data has a bounded size.
-* The data is usually retrieved together.
+- Data is tightly coupled.
+- The embedded data has a bounded size.
+- The data is usually retrieved together.
 
 Use references where:
 
-* Data has an independent lifecycle.
-* Data can grow significantly.
-* Data is reused across multiple records.
-* The relationship is many-to-many or operationally independent.
+- Data has an independent lifecycle.
+- Data can grow significantly.
+- Data is reused across multiple records.
+- The relationship is many-to-many or operationally independent.
 
 Avoid both:
 
-* Excessive normalization.
-* Massive nested documents.
+- Excessive normalization.
+- Massive nested documents.
 
 The objective is balanced MongoDB modeling.
 
@@ -859,14 +859,14 @@ Business records should have stable identifiers.
 
 Examples:
 
-* Lead ID.
-* Client ID.
-* Opportunity ID.
-* Proposal number.
-* Quotation number.
-* Project ID.
-* Task ID.
-* Payment reference.
+- Lead ID.
+- Client ID.
+- Opportunity ID.
+- Proposal number.
+- Quotation number.
+- Project ID.
+- Task ID.
+- Payment reference.
 
 Internal database identifiers and human-readable business identifiers may be separate.
 
@@ -892,13 +892,13 @@ Audit Log
 
 Audit logs should capture relevant:
 
-* Actor.
-* Action.
-* Module.
-* Record.
-* Timestamp.
-* Previous state where required.
-* New state where required.
+- Actor.
+- Action.
+- Module.
+- Record.
+- Timestamp.
+- Previous state where required.
+- New state where required.
 
 ---
 
@@ -920,10 +920,10 @@ Sales Owner Notification
 
 Possible future channels:
 
-* In-app.
-* Email.
-* WhatsApp.
-* Push.
+- In-app.
+- Email.
+- WhatsApp.
+- Push.
 
 V1 should prioritize the simplest required notification mechanism.
 
@@ -933,13 +933,13 @@ V1 should prioritize the simplest required notification mechanism.
 
 Documents may include:
 
-* Proposals.
-* Quotations.
-* SOWs.
-* Client files.
-* Project documents.
-* Receipts.
-* Attachments.
+- Proposals.
+- Quotations.
+- SOWs.
+- Client files.
+- Project documents.
+- Receipts.
+- Attachments.
 
 Large files should not be unnecessarily stored directly inside MongoDB.
 
@@ -947,9 +947,9 @@ The architecture should support external/object storage.
 
 Future infrastructure may use:
 
-* AWS S3.
-* Compatible object storage.
-* Other storage providers.
+- AWS S3.
+- Compatible object storage.
+- Other storage providers.
 
 The application should store metadata and references where appropriate.
 
@@ -961,12 +961,12 @@ Input validation must happen at application boundaries.
 
 Validation should cover:
 
-* Required fields.
-* Data formats.
-* Business constraints.
-* Allowed state transitions.
-* Numeric limits.
-* Permission requirements.
+- Required fields.
+- Data formats.
+- Business constraints.
+- Allowed state transitions.
+- Numeric limits.
+- Permission requirements.
 
 Validation should not depend exclusively on the frontend.
 
@@ -999,20 +999,20 @@ Users should receive meaningful messages without exposing sensitive implementati
 
 Application logging should support:
 
-* Errors.
-* Warnings.
-* Important business events.
-* Authentication events.
-* System events.
-* Background job failures.
+- Errors.
+- Warnings.
+- Important business events.
+- Authentication events.
+- System events.
+- Background job failures.
 
 Logs should not expose:
 
-* Passwords.
-* Authentication secrets.
-* API keys.
-* Sensitive credentials.
-* Private tokens.
+- Passwords.
+- Authentication secrets.
+- API keys.
+- Sensitive credentials.
+- Private tokens.
 
 ---
 
@@ -1022,18 +1022,18 @@ Security must be built into the foundation.
 
 Initial security requirements:
 
-* Secure authentication.
-* Password hashing.
-* Session protection.
-* Authorization checks.
-* Input validation.
-* Secure cookies where applicable.
-* CSRF considerations.
-* Rate limiting where required.
-* Secure headers.
-* Sensitive data protection.
-* Audit logging.
-* Principle of least privilege.
+- Secure authentication.
+- Password hashing.
+- Session protection.
+- Authorization checks.
+- Input validation.
+- Secure cookies where applicable.
+- CSRF considerations.
+- Rate limiting where required.
+- Secure headers.
+- Sensitive data protection.
+- Audit logging.
+- Principle of least privilege.
 
 Security should be applied consistently across modules.
 
@@ -1137,11 +1137,11 @@ PaymentOverdue
 
 Events can later power:
 
-* Notifications.
-* Audit actions.
-* Automation.
-* Analytics.
-* Integrations.
+- Notifications.
+- Audit actions.
+- Automation.
+- Analytics.
+- Integrations.
 
 V1 should only introduce events where they provide real value.
 
@@ -1153,13 +1153,13 @@ Some operations should not block normal user requests.
 
 Future/background processing may include:
 
-* Email sending.
-* PDF generation.
-* Notifications.
-* Scheduled reminders.
-* Large lead imports.
-* Data processing.
-* Report generation.
+- Email sending.
+- PDF generation.
+- Notifications.
+- Scheduled reminders.
+- Large lead imports.
+- Data processing.
+- Report generation.
 
 A queue system can be introduced when required.
 
@@ -1173,14 +1173,14 @@ The platform will eventually require global search.
 
 Search targets may include:
 
-* Leads.
-* Clients.
-* Projects.
-* Tasks.
-* Quotations.
-* Proposals.
-* Payments.
-* Documents.
+- Leads.
+- Clients.
+- Projects.
+- Tasks.
+- Quotations.
+- Proposals.
+- Payments.
+- Documents.
 
 Initial implementation can use MongoDB capabilities.
 
@@ -1194,14 +1194,14 @@ Reports should consume business data without duplicating the source records.
 
 Initial reporting areas:
 
-* Sales pipeline.
-* Lead conversion.
-* Revenue.
-* Project performance.
-* Employee workload.
-* Outstanding payments.
-* Expenses.
-* Client activity.
+- Sales pipeline.
+- Lead conversion.
+- Revenue.
+- Project performance.
+- Employee workload.
+- Outstanding payments.
+- Expenses.
+- Client activity.
 
 Complex analytics infrastructure is not required for V1.
 
@@ -1254,12 +1254,12 @@ Business Workflow
 
 Potential capabilities:
 
-* Lead scoring.
-* Sales recommendations.
-* Requirement analysis.
-* Proposal assistance.
-* Project risk detection.
-* Revenue intelligence.
+- Lead scoring.
+- Sales recommendations.
+- Requirement analysis.
+- Proposal assistance.
+- Project risk detection.
+- Revenue intelligence.
 
 AI must enhance existing business modules rather than bypass them.
 
@@ -1271,12 +1271,12 @@ If a module eventually requires independent scaling or deployment, it should be 
 
 Potential candidates in the future could include:
 
-* Notifications.
-* Document processing.
-* Lead ingestion.
-* AI services.
-* Reporting.
-* Integrations.
+- Notifications.
+- Document processing.
+- Lead ingestion.
+- AI services.
+- Reporting.
+- Integrations.
 
 This is a future optimization, not a V1 requirement.
 
@@ -1302,13 +1302,13 @@ Conceptual production environment:
 
 Future infrastructure may include:
 
-* Docker.
-* Nginx.
-* AWS.
-* CI/CD.
-* Object storage.
-* Monitoring.
-* Error tracking.
+- Docker.
+- Nginx.
+- AWS.
+- CI/CD.
+- Object storage.
+- Monitoring.
+- Error tracking.
 
 Infrastructure complexity should grow only when business requirements justify it.
 
@@ -1358,9 +1358,9 @@ Deployment
 
 Developers should avoid placing business logic directly inside:
 
-* UI components.
-* Route handlers.
-* Database utility files.
+- UI components.
+- Route handlers.
+- Database utility files.
 
 ---
 
@@ -1372,18 +1372,18 @@ Testing should be introduced at multiple levels.
 
 For:
 
-* Business rules.
-* Utility functions.
-* Service logic.
+- Business rules.
+- Utility functions.
+- Service logic.
 
 ### Integration Tests
 
 For:
 
-* Database operations.
-* Authentication.
-* Module workflows.
-* API/server actions.
+- Database operations.
+- Authentication.
+- Module workflows.
+- API/server actions.
 
 ### End-to-End Tests
 
@@ -1407,12 +1407,12 @@ Testing depth should increase as the product becomes more critical.
 
 The architecture should eventually support:
 
-* Application logs.
-* Error tracking.
-* Performance monitoring.
-* Database monitoring.
-* Audit logs.
-* Business metrics.
+- Application logs.
+- Error tracking.
+- Performance monitoring.
+- Database monitoring.
+- Audit logs.
+- Business metrics.
 
 Potential tools can be introduced later based on operational requirements.
 
@@ -1422,15 +1422,15 @@ Potential tools can be introduced later based on operational requirements.
 
 V1 performance priorities:
 
-* Fast initial page loads.
-* Efficient database queries.
-* Pagination for large datasets.
-* Server-side authorization.
-* Avoid unnecessary client-side state.
-* Avoid unnecessary API calls.
-* Proper indexing.
-* Efficient aggregation queries.
-* Lazy loading where useful.
+- Fast initial page loads.
+- Efficient database queries.
+- Pagination for large datasets.
+- Server-side authorization.
+- Avoid unnecessary client-side state.
+- Avoid unnecessary API calls.
+- Proper indexing.
+- Efficient aggregation queries.
+- Lazy loading where useful.
 
 Performance optimization should be driven by actual usage rather than premature complexity.
 
@@ -1494,13 +1494,13 @@ Future integrations and AI should be possible without redesigning the core.
 
 The business system should support future Webxode services including:
 
-* Websites.
-* SaaS.
-* Custom applications.
-* Cloud.
-* DevOps.
-* Automation.
-* IoT.
+- Websites.
+- SaaS.
+- Custom applications.
+- Cloud.
+- DevOps.
+- Automation.
+- IoT.
 
 The project model should therefore not assume Web Development is the only service type.
 
@@ -1510,16 +1510,16 @@ The project model should therefore not assume Web Development is the only servic
 
 V1 will **not** implement:
 
-* Microservices.
-* Kubernetes.
-* Complex event-driven infrastructure.
-* Dedicated search clusters.
-* Advanced data warehouse.
-* AI infrastructure.
-* Full integration platform.
-* Complex workflow engine.
-* Multi-region deployment.
-* Complex distributed caching architecture.
+- Microservices.
+- Kubernetes.
+- Complex event-driven infrastructure.
+- Dedicated search clusters.
+- Advanced data warehouse.
+- AI infrastructure.
+- Full integration platform.
+- Complex workflow engine.
+- Multi-region deployment.
+- Complex distributed caching architecture.
 
 These can be introduced when actual requirements justify them.
 
@@ -1594,15 +1594,15 @@ The resulting V1 architecture is:
 
 The architecture will be considered successful when:
 
-* New business modules can be added without destabilizing existing modules.
-* Business logic is separated from presentation.
-* Database access is organized and maintainable.
-* Permissions can be centrally managed.
-* Important workflows are auditable.
-* Future integrations can be added independently.
-* AI can later consume business data without redesigning the entire application.
-* The application can be deployed simply.
-* The system can evolve beyond V1 without requiring an architectural rewrite.
+- New business modules can be added without destabilizing existing modules.
+- Business logic is separated from presentation.
+- Database access is organized and maintainable.
+- Permissions can be centrally managed.
+- Important workflows are auditable.
+- Future integrations can be added independently.
+- AI can later consume business data without redesigning the entire application.
+- The application can be deployed simply.
+- The system can evolve beyond V1 without requiring an architectural rewrite.
 
 ---
 

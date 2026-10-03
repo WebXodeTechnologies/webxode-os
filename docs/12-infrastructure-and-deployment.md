@@ -20,14 +20,14 @@ This document defines the infrastructure and deployment architecture for Webxode
 
 The objective is to establish a deployment foundation that is:
 
-* secure
-* reliable
-* maintainable
-* cost-conscious
-* easy to develop
-* easy to deploy
-* easy to recover
-* scalable when required
+- secure
+- reliable
+- maintainable
+- cost-conscious
+- easy to develop
+- easy to deploy
+- easy to recover
+- scalable when required
 
 The infrastructure should support the current internal business application without introducing unnecessary cloud complexity.
 
@@ -41,13 +41,13 @@ Webxode OS follows:
 
 V1 does not require:
 
-* Kubernetes
-* microservices infrastructure
-* service mesh
-* complex orchestration
-* multi-region deployment
-* distributed databases
-* complex event infrastructure
+- Kubernetes
+- microservices infrastructure
+- service mesh
+- complex orchestration
+- multi-region deployment
+- distributed databases
+- complex event infrastructure
 
 The initial infrastructure should be a strong production setup that can evolve as Webxode OS grows.
 
@@ -85,11 +85,11 @@ The initial conceptual production architecture:
 
 Supporting services may include:
 
-* email provider
-* monitoring
-* logging
-* CI/CD
-* background workers where required
+- email provider
+- monitoring
+- logging
+- CI/CD
+- background workers where required
 
 ---
 
@@ -99,37 +99,37 @@ Infrastructure is divided into:
 
 ## Layer 1 — Network
 
-* DNS
-* HTTPS
-* firewall/security groups
-* reverse proxy
+- DNS
+- HTTPS
+- firewall/security groups
+- reverse proxy
 
 ## Layer 2 — Application
 
-* Next.js
-* Node.js runtime
-* application configuration
+- Next.js
+- Node.js runtime
+- application configuration
 
 ## Layer 3 — Data
 
-* MongoDB
-* indexes
-* backups
-* database access controls
+- MongoDB
+- indexes
+- backups
+- database access controls
 
 ## Layer 4 — Storage
 
-* object/file storage
-* uploaded documents
-* project assets
+- object/file storage
+- uploaded documents
+- project assets
 
 ## Layer 5 — Operations
 
-* CI/CD
-* logging
-* monitoring
-* backups
-* deployment management
+- CI/CD
+- logging
+- monitoring
+- backups
+- deployment management
 
 ---
 
@@ -147,11 +147,11 @@ Production
 
 Each environment should have:
 
-* separate configuration
-* separate database
-* separate credentials
-* separate application instance
-* appropriate access controls
+- separate configuration
+- separate database
+- separate credentials
+- separate application instance
+- appropriate access controls
 
 Production data should not be casually used in development.
 
@@ -173,13 +173,13 @@ Developer Machine
 
 Development should support:
 
-* hot reload
-* local debugging
-* local database access
-* test data
-* linting
-* type checking
-* automated tests
+- hot reload
+- local debugging
+- local database access
+- test data
+- linting
+- type checking
+- automated tests
 
 ---
 
@@ -189,19 +189,19 @@ Staging provides a production-like validation environment.
 
 Purpose:
 
-* integration testing
-* E2E testing
-* deployment validation
-* migration validation
-* release verification
-* stakeholder review
+- integration testing
+- E2E testing
+- deployment validation
+- migration validation
+- release verification
+- stakeholder review
 
 Staging should use:
 
-* production-like application configuration
-* separate database
-* separate credentials
-* similar deployment architecture
+- production-like application configuration
+- separate database
+- separate credentials
+- similar deployment architecture
 
 It should not contain real sensitive production data unless specifically controlled.
 
@@ -213,15 +213,15 @@ Production hosts the real Webxode OS application.
 
 Production should provide:
 
-* HTTPS
-* restricted infrastructure access
-* secure environment variables
-* production database
-* backups
-* monitoring
-* application logging
-* controlled deployment
-* recovery procedures
+- HTTPS
+- restricted infrastructure access
+- secure environment variables
+- production database
+- backups
+- monitoring
+- application logging
+- controlled deployment
+- recovery procedures
 
 Production access should be limited to authorized personnel.
 
@@ -233,11 +233,11 @@ The initial cloud direction may use AWS because it provides the infrastructure r
 
 Potential services include:
 
-* EC2
-* S3
-* Route 53
-* CloudWatch
-* IAM
+- EC2
+- S3
+- Route 53
+- CloudWatch
+- IAM
 
 Additional AWS services should only be introduced when they provide a clear benefit.
 
@@ -286,14 +286,14 @@ The initial application can run on a dedicated EC2 instance.
 
 Responsibilities:
 
-* run Next.js
-* serve the Webxode OS application
-* handle server-side requests
-* execute Server Actions
-* execute Route Handlers
-* communicate with MongoDB
-* communicate with file storage
-* run required background processes
+- run Next.js
+- serve the Webxode OS application
+- handle server-side requests
+- execute Server Actions
+- execute Route Handlers
+- communicate with MongoDB
+- communicate with file storage
+- run required background processes
 
 The application server should not expose unnecessary ports publicly.
 
@@ -305,12 +305,12 @@ Nginx should sit in front of the Next.js application.
 
 Responsibilities:
 
-* HTTPS termination where configured
-* reverse proxy
-* domain routing
-* request forwarding
-* basic request controls
-* static asset handling where appropriate
+- HTTPS termination where configured
+- reverse proxy
+- domain routing
+- request forwarding
+- basic request controls
+- static asset handling where appropriate
 
 Traffic flow:
 
@@ -332,11 +332,11 @@ Production traffic must use HTTPS.
 
 HTTPS protects:
 
-* authentication sessions
-* business information
-* client data
-* financial information
-* credentials transmitted through the application
+- authentication sessions
+- business information
+- client data
+- financial information
+- credentials transmitted through the application
 
 HTTP should redirect to HTTPS where appropriate.
 
@@ -391,12 +391,12 @@ MongoDB is the primary application database.
 
 The production database should be:
 
-* authenticated
-* encrypted in transit
-* access-controlled
-* backed up
-* monitored
-* isolated from public access
+- authenticated
+- encrypted in transit
+- access-controlled
+- backed up
+- monitored
+- isolated from public access
 
 The application should use a dedicated database user with only the required permissions.
 
@@ -406,19 +406,19 @@ The application should use a dedicated database user with only the required perm
 
 MongoDB deployment may use:
 
-* MongoDB Atlas
-* managed MongoDB infrastructure
-* controlled self-hosted MongoDB
+- MongoDB Atlas
+- managed MongoDB infrastructure
+- controlled self-hosted MongoDB
 
 For V1, a managed database is preferred when it provides better reliability and reduces operational overhead.
 
 The final choice should consider:
 
-* cost
-* backups
-* security
-* availability
-* operational simplicity
+- cost
+- backups
+- security
+- availability
+- operational simplicity
 
 ---
 
@@ -452,12 +452,12 @@ Business files should not be stored permanently inside the application server fi
 
 Examples:
 
-* client documents
-* quotations
-* proposals
-* receipts
-* project files
-* attachments
+- client documents
+- quotations
+- proposals
+- receipts
+- project files
+- attachments
 
 Preferred architecture:
 
@@ -479,14 +479,14 @@ AWS S3 may be used for production object storage.
 
 The database should store metadata such as:
 
-* file ID
-* original name
-* storage key
-* file type
-* file size
-* entity
-* uploaded by
-* created date
+- file ID
+- original name
+- storage key
+- file type
+- file size
+- entity
+- uploaded by
+- created date
 
 The actual file remains in object storage.
 
@@ -540,11 +540,11 @@ Production secrets should be managed securely.
 
 Production secrets should not live inside:
 
-* Git repository
-* source code
-* Docker images
-* public environment files
-* client-side JavaScript
+- Git repository
+- source code
+- Docker images
+- public environment files
+- client-side JavaScript
 
 Secrets should be injected into the runtime environment securely.
 
@@ -566,10 +566,10 @@ Runtime Container
 
 Docker provides:
 
-* consistent environments
-* predictable deployment
-* easier rollback
-* environment isolation
+- consistent environments
+- predictable deployment
+- easier rollback
+- environment isolation
 
 However, Docker should not automatically mean Kubernetes.
 
@@ -616,9 +616,9 @@ The Next.js application should avoid storing critical persistent state on the ap
 
 Persistent state should live in:
 
-* MongoDB
-* object storage
-* appropriate external services
+- MongoDB
+- object storage
+- appropriate external services
 
 This allows future horizontal scaling.
 
@@ -688,11 +688,11 @@ The pipeline should fail when critical checks fail.
 
 Pull requests should validate:
 
-* lint
-* TypeScript
-* tests
-* build
-* dependency/security checks where configured
+- lint
+- TypeScript
+- tests
+- build
+- dependency/security checks where configured
 
 The objective is to prevent broken code from reaching deployment.
 
@@ -720,10 +720,10 @@ Production Deployment
 
 As the product grows, deployment can evolve toward:
 
-* automated production deployments
-* blue/green deployment
-* rolling deployment
-* canary deployment
+- automated production deployments
+- blue/green deployment
+- rolling deployment
+- canary deployment
 
 Only when operational scale requires it.
 
@@ -735,18 +735,18 @@ MongoDB schema changes should be handled deliberately.
 
 Changes may include:
 
-* new fields
-* renamed fields
-* new indexes
-* data transformations
-* status changes
+- new fields
+- renamed fields
+- new indexes
+- data transformations
+- status changes
 
 Production database changes should be:
 
-* documented
-* tested
-* reversible where practical
-* compatible with the deployed application version
+- documented
+- tested
+- reversible where practical
+- compatible with the deployed application version
 
 ---
 
@@ -774,11 +774,11 @@ Avoid destructive database changes in the same deployment unless properly planne
 
 Production deployments should verify:
 
-* application starts
-* database connection works
-* critical routes respond
-* environment configuration is valid
-* required services are reachable
+- application starts
+- database connection works
+- critical routes respond
+- environment configuration is valid
+- required services are reachable
 
 A failed health check should prevent or stop an unsafe deployment.
 
@@ -810,10 +810,10 @@ Production deployments should be identifiable.
 
 A deployment may include:
 
-* Git commit SHA
-* release version
-* deployment timestamp
-* environment
+- Git commit SHA
+- release version
+- deployment timestamp
+- environment
 
 This helps troubleshooting.
 
@@ -832,19 +832,19 @@ Environment: Production
 
 Production application logs should support:
 
-* application errors
-* warnings
-* important events
-* request context
-* deployment troubleshooting
+- application errors
+- warnings
+- important events
+- request context
+- deployment troubleshooting
 
 Logs should not expose:
 
-* passwords
-* tokens
-* API keys
-* sensitive personal information
-* unnecessary client data
+- passwords
+- tokens
+- API keys
+- sensitive personal information
+- unnecessary client data
 
 ---
 
@@ -854,30 +854,30 @@ Production monitoring should cover:
 
 ### Application
 
-* uptime
-* response time
-* errors
-* failed requests
+- uptime
+- response time
+- errors
+- failed requests
 
 ### Database
 
-* connection health
-* query performance
-* storage
-* availability
+- connection health
+- query performance
+- storage
+- availability
 
 ### Infrastructure
 
-* CPU
-* memory
-* disk
-* network
+- CPU
+- memory
+- disk
+- network
 
 ### Business-critical operations
 
-* failed background jobs
-* notification failures
-* payment-related processing failures where applicable
+- failed background jobs
+- notification failures
+- payment-related processing failures where applicable
 
 ---
 
@@ -905,12 +905,12 @@ Some operations should not block normal user requests.
 
 Potential background jobs:
 
-* scheduled reminders
-* email
-* file processing
-* report generation
-* large imports
-* notification processing
+- scheduled reminders
+- email
+- file processing
+- report generation
+- large imports
+- notification processing
 
 V1 should introduce a queue only when there is an actual asynchronous workload requiring it.
 
@@ -920,10 +920,10 @@ V1 should introduce a queue only when there is an actual asynchronous workload r
 
 Redis may be introduced for:
 
-* caching
-* queues
-* rate limiting
-* temporary state
+- caching
+- queues
+- rate limiting
+- temporary state
 
 It should not be added merely because it is part of a common SaaS stack.
 
@@ -945,14 +945,14 @@ Production infrastructure must follow the Security Architecture.
 
 Required principles:
 
-* least privilege
-* restricted ports
-* HTTPS
-* SSH key-based access
-* protected database
-* secure secrets
-* regular updates
-* restricted administrative access
+- least privilege
+- restricted ports
+- HTTPS
+- SSH key-based access
+- protected database
+- secure secrets
+- regular updates
+- restricted administrative access
 
 ---
 
@@ -981,10 +981,10 @@ AWS IAM should follow least privilege.
 
 Separate permissions should exist for:
 
-* application runtime
-* deployment
-* infrastructure administration
-* storage access
+- application runtime
+- deployment
+- infrastructure administration
+- storage access
 
 Application credentials should not automatically have full AWS account access.
 
@@ -994,11 +994,11 @@ Application credentials should not automatically have full AWS account access.
 
 Object storage should use:
 
-* private buckets
-* controlled access
-* appropriate IAM policies
-* encryption
-* secure object retrieval
+- private buckets
+- controlled access
+- appropriate IAM policies
+- encryption
+- secure object retrieval
 
 Files should be accessed through controlled application logic or appropriately scoped signed URLs.
 
@@ -1010,16 +1010,16 @@ Critical data should have backups.
 
 Primary backup targets:
 
-* MongoDB
-* important object storage
+- MongoDB
+- important object storage
 
 Backup strategy should define:
 
-* frequency
-* retention
-* storage location
-* encryption
-* restoration procedure
+- frequency
+- retention
+- storage location
+- encryption
+- restoration procedure
 
 ---
 
@@ -1075,11 +1075,11 @@ Infrastructure should remain appropriate for Webxode's current scale.
 
 Avoid paying for:
 
-* unused managed services
-* oversized servers
-* unnecessary replicas
-* unnecessary high availability
-* unused monitoring platforms
+- unused managed services
+- oversized servers
+- unnecessary replicas
+- unnecessary high availability
+- unused monitoring platforms
 
 Scale based on actual workload.
 
@@ -1119,12 +1119,12 @@ Scale based on measurable requirements.
 
 Examples:
 
-* sustained CPU pressure
-* memory pressure
-* high response latency
-* increased concurrent users
-* database performance issues
-* growing background workload
+- sustained CPU pressure
+- memory pressure
+- high response latency
+- increased concurrent users
+- database performance issues
+- growing background workload
 
 Do not introduce infrastructure complexity simply because future scale is theoretically possible.
 
@@ -1134,10 +1134,10 @@ Do not introduce infrastructure complexity simply because future scale is theore
 
 A CDN may be introduced later for:
 
-* static assets
-* public resources
-* file delivery
-* global users
+- static assets
+- public resources
+- file delivery
+- global users
 
 V1 does not require a complex CDN architecture unless traffic requires it.
 
@@ -1149,11 +1149,11 @@ Caching should be introduced selectively.
 
 Potential candidates:
 
-* frequently accessed reference data
-* dashboard summaries
-* permissions
-* configuration
-* expensive reports
+- frequently accessed reference data
+- dashboard summaries
+- permissions
+- configuration
+- expensive reports
 
 Do not cache rapidly changing business data without a clear invalidation strategy.
 
@@ -1165,12 +1165,12 @@ Every deployment should be traceable.
 
 Track:
 
-* deployment time
-* version
-* commit
-* environment
-* deployment status
-* migration status
+- deployment time
+- version
+- commit
+- environment
+- deployment status
+- migration status
 
 This allows production issues to be correlated with releases.
 
@@ -1210,9 +1210,9 @@ Access should be granted based on responsibility.
 
 Avoid:
 
-* shared administrator credentials
-* shared SSH keys
-* shared database credentials
+- shared administrator credentials
+- shared SSH keys
+- shared database credentials
 
 Individual access provides better accountability.
 
@@ -1224,12 +1224,12 @@ Important infrastructure changes should be documented.
 
 Examples:
 
-* server changes
-* database configuration
-* DNS changes
-* security rules
-* environment variables
-* storage configuration
+- server changes
+- database configuration
+- DNS changes
+- security rules
+- environment variables
+- storage configuration
 
 Changes should be traceable to a person and a reason.
 
@@ -1241,7 +1241,7 @@ Infrastructure as Code may be introduced as infrastructure complexity grows.
 
 Potential future tool:
 
-* Terraform
+- Terraform
 
 V1 does not require a large infrastructure-as-code system if deployment is still simple.
 
@@ -1328,10 +1328,10 @@ The recommended practical V1 infrastructure:
 
 Supporting:
 
-* GitHub
-* GitHub Actions
-* logging
-* monitoring
+- GitHub
+- GitHub Actions
+- logging
+- monitoring
 
 ---
 
@@ -1339,40 +1339,40 @@ Supporting:
 
 ## P0 — Required
 
-* production domain
-* HTTPS
-* application server
-* MongoDB
-* secure environment variables
-* Nginx
-* production build
-* database backups
-* application logs
-* basic monitoring
-* deployment rollback
-* restricted network access
+- production domain
+- HTTPS
+- application server
+- MongoDB
+- secure environment variables
+- Nginx
+- production build
+- database backups
+- application logs
+- basic monitoring
+- deployment rollback
+- restricted network access
 
 ## P1 — Recommended
 
-* Docker
-* GitHub Actions
-* staging environment
-* automated tests in CI
-* S3
-* deployment health checks
-* automated backup verification
+- Docker
+- GitHub Actions
+- staging environment
+- automated tests in CI
+- S3
+- deployment health checks
+- automated backup verification
 
 ## P2 — Future
 
-* load balancing
-* multiple application instances
-* Redis
-* CDN
-* Terraform
-* advanced monitoring
-* automated scaling
-* blue/green deployment
-* advanced disaster recovery
+- load balancing
+- multiple application instances
+- Redis
+- CDN
+- Terraform
+- advanced monitoring
+- automated scaling
+- blue/green deployment
+- advanced disaster recovery
 
 ---
 
@@ -1380,15 +1380,15 @@ Supporting:
 
 Webxode OS V1 does not require:
 
-* Kubernetes
-* service mesh
-* microservices deployment
-* multi-region infrastructure
-* complex container orchestration
-* distributed databases
-* dedicated API gateway
-* complex serverless architecture
-* advanced multi-cloud infrastructure
+- Kubernetes
+- service mesh
+- microservices deployment
+- multi-region infrastructure
+- complex container orchestration
+- distributed databases
+- dedicated API gateway
+- complex serverless architecture
+- advanced multi-cloud infrastructure
 
 These can be introduced only when actual business requirements justify them.
 
@@ -1400,47 +1400,47 @@ Before production:
 
 ### Application
 
-* production build succeeds
-* environment configuration validated
-* authentication works
-* authorization works
-* critical workflows tested
+- production build succeeds
+- environment configuration validated
+- authentication works
+- authorization works
+- critical workflows tested
 
 ### Database
 
-* production database configured
-* access restricted
-* indexes created
-* backup enabled
-* restore procedure verified
+- production database configured
+- access restricted
+- indexes created
+- backup enabled
+- restore procedure verified
 
 ### Network
 
-* DNS configured
-* HTTPS configured
-* Nginx configured
-* unnecessary ports closed
+- DNS configured
+- HTTPS configured
+- Nginx configured
+- unnecessary ports closed
 
 ### Security
 
-* secrets protected
-* production credentials separated
-* security headers configured
-* admin access restricted
+- secrets protected
+- production credentials separated
+- security headers configured
+- admin access restricted
 
 ### Deployment
 
-* CI pipeline working
-* deployment tested
-* rollback available
-* health checks working
+- CI pipeline working
+- deployment tested
+- rollback available
+- health checks working
 
 ### Operations
 
-* logging enabled
-* monitoring enabled
-* backup alerts configured
-* recovery procedure documented
+- logging enabled
+- monitoring enabled
+- backup alerts configured
+- recovery procedure documented
 
 ---
 
@@ -1448,19 +1448,19 @@ Before production:
 
 A deployment architecture is considered ready when:
 
-* application can be deployed consistently
-* production environment is isolated
-* HTTPS is enabled
-* database is protected
-* secrets are secure
-* files are securely stored
-* backups exist
-* restore has been tested
-* logs are available
-* monitoring is available
-* deployment health can be verified
-* rollback is possible
-* production access is controlled
+- application can be deployed consistently
+- production environment is isolated
+- HTTPS is enabled
+- database is protected
+- secrets are secure
+- files are securely stored
+- backups exist
+- restore has been tested
+- logs are available
+- monitoring is available
+- deployment health can be verified
+- rollback is possible
+- production access is controlled
 
 ---
 
@@ -1521,11 +1521,11 @@ Object Storage
 
 Only if justified:
 
-* advanced orchestration
-* automated scaling
-* multi-region
-* advanced observability
-* disaster recovery architecture
+- advanced orchestration
+- automated scaling
+- multi-region
+- advanced observability
+- disaster recovery architecture
 
 ---
 
