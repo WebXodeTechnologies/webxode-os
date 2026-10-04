@@ -22,16 +22,19 @@ export async function GET() {
     const user = await User.findById(payload.userId).select("-passwordHash");
     if (!user) {
       // Return payload data if user record not found in DB
-      return NextResponse.json({
-        success: true,
-        user: {
-          id: payload.userId,
-          name: payload.name || "Akash S M",
-          email: payload.email || "akash@webxode.com",
-          role: payload.role || "admin",
-          department: "Engineering",
+      return NextResponse.json(
+        {
+          success: true,
+          user: {
+            id: payload.userId,
+            name: payload.name || "Akash S M",
+            email: payload.email || "akash@webxode.com",
+            role: payload.role || "admin",
+            department: "Engineering",
+          },
         },
-      }, { status: 200 });
+        { status: 200 },
+      );
     }
 
     return NextResponse.json({ success: true, user }, { status: 200 });

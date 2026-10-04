@@ -22,12 +22,25 @@ const UserSchema = new Schema<IUser>(
       enum: ["admin", "user"],
       default: "user",
       required: true,
+      set: (v: string) => (v && v.toLowerCase() === "admin" ? "admin" : "user"),
     },
     department: {
       type: String,
       enum: ["sales", "development", "revenue", "hr", "general"],
       default: "development",
       required: true,
+      set: (v: string) => {
+        if (!v) return "development";
+        const val = v.toLowerCase().trim();
+        if (val.includes("sale") || val.includes("presale")) return "sales";
+        if (val.includes("engineer") || val.includes("dev") || val.includes("product"))
+          return "development";
+        if (val.includes("finance") || val.includes("revenue") || val.includes("account"))
+          return "revenue";
+        if (val.includes("hr") || val.includes("people") || val.includes("operation")) return "hr";
+        if (val.includes("general")) return "general";
+        return "development";
+      },
     },
     isActive: { type: Boolean, default: true },
   },
