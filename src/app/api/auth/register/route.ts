@@ -1,3 +1,4 @@
+// src/app/api/auth/register/route.ts
 import { NextResponse } from "next/server";
 import { connectDB } from "@/lib/db";
 import { User } from "@/models/user.model";
@@ -34,8 +35,8 @@ export async function POST(req: Request) {
       name: name.trim(),
       email: cleanEmail,
       passwordHash,
-      role: role || "developer",
-      department: department || "Engineering",
+      role: role || "user",
+      department: department || "development",
     });
 
     const token = signToken({
@@ -43,6 +44,7 @@ export async function POST(req: Request) {
       email: newUser.email,
       role: newUser.role,
       name: newUser.name,
+      department: newUser.department,
     });
 
     await setAuthCookie(token);

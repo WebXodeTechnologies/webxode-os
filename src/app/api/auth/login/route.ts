@@ -37,6 +37,7 @@ export async function POST(req: Request) {
       email: user.email,
       role: user.role,
       name: user.name,
+      department: user.department,
     });
 
     await setAuthCookie(token);

@@ -20,19 +20,16 @@ import {
 import { toast } from "sonner";
 
 const ROLES = [
-  { id: "developer", label: "Developer", icon: Code2, desc: "Engineering & Code" },
-  { id: "manager", label: "Manager", icon: Briefcase, desc: "Team & Projects" },
-  { id: "sales", label: "Sales", icon: UserCheck, desc: "Leads & Presales" },
-  { id: "client", label: "Client", icon: User, desc: "Client Portal" },
-  { id: "admin", label: "Admin", icon: Shield, desc: "Full Access" },
+  { id: "user", label: "Team Staff", icon: UserCheck, desc: "Department Access" },
+  { id: "admin", label: "Admin / Founder", icon: Shield, desc: "Full Unrestricted Access" },
 ];
 
 const DEPARTMENTS = [
-  "Engineering",
-  "Product & Presales",
-  "Sales & Marketing",
-  "Operations & HR",
-  "Client Services",
+  { id: "development", label: "Development & Engineering" },
+  { id: "sales", label: "Sales & Growth" },
+  { id: "revenue", label: "Revenue & Finance" },
+  { id: "hr", label: "HR & Operations" },
+  { id: "general", label: "General Staff" },
 ];
 
 export default function RegisterPage() {
@@ -41,8 +38,8 @@ export default function RegisterPage() {
     name: "",
     email: "",
     password: "",
-    role: "developer",
-    department: "Engineering",
+    role: "user",
+    department: "development",
   });
   const [agreeTerms, setAgreeTerms] = useState(true);
   const [loading, setLoading] = useState(false);
@@ -166,7 +163,7 @@ export default function RegisterPage() {
           <label className="block text-xs font-bold tracking-wider text-slate-300 uppercase">
             Select Account Role
           </label>
-          <div className="grid grid-cols-5 gap-2">
+          <div className="grid grid-cols-2 gap-3">
             {ROLES.map((r) => {
               const Icon = r.icon;
               const isSelected = formData.role === r.id;
@@ -175,18 +172,19 @@ export default function RegisterPage() {
                   type="button"
                   key={r.id}
                   onClick={() => setFormData({ ...formData, role: r.id })}
-                  className={`group relative flex flex-col items-center justify-center rounded-2xl border p-2.5 text-center transition-all duration-200 ${
+                  className={`group relative flex flex-col items-center justify-center rounded-2xl border p-3 text-center transition-all duration-200 ${
                     isSelected
                       ? "border-indigo-500/90 bg-indigo-500/20 text-white shadow-lg ring-1 shadow-indigo-500/20 ring-indigo-400"
                       : "border-slate-800/90 bg-slate-950/70 text-slate-400 hover:border-slate-700 hover:bg-slate-900/70 hover:text-slate-200"
                   }`}
                 >
                   <Icon
-                    className={`h-4.5 w-4.5 transition-transform duration-200 group-hover:scale-110 ${
+                    className={`h-5 w-5 transition-transform duration-200 group-hover:scale-110 ${
                       isSelected ? "text-indigo-400" : "text-slate-500"
                     }`}
                   />
-                  <span className="mt-1 w-full truncate text-[11px] font-bold">{r.label}</span>
+                  <span className="mt-1.5 text-xs font-bold">{r.label}</span>
+                  <span className="text-[10px] text-slate-500 font-medium">{r.desc}</span>
                 </button>
               );
             })}
@@ -199,7 +197,7 @@ export default function RegisterPage() {
             htmlFor="department"
             className="block text-xs font-bold tracking-wider text-slate-300 uppercase"
           >
-            Department
+            Assigned Department (RBAC Scope)
           </label>
           <div className="group relative">
             <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3.5 text-slate-500 transition-colors group-focus-within:text-indigo-400">
@@ -212,8 +210,8 @@ export default function RegisterPage() {
               className="w-full rounded-2xl border border-slate-800 bg-slate-950/90 py-3.5 pr-3.5 pl-10 text-sm text-white shadow-inner transition-all duration-200 focus:border-indigo-500 focus:bg-slate-900 focus:ring-4 focus:ring-indigo-500/20 focus:outline-none"
             >
               {DEPARTMENTS.map((dept) => (
-                <option key={dept} value={dept} className="bg-slate-900 text-white">
-                  {dept}
+                <option key={dept.id} value={dept.id} className="bg-slate-900 text-white">
+                  {dept.label}
                 </option>
               ))}
             </select>

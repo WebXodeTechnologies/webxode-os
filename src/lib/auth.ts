@@ -7,8 +7,9 @@ const JWT_SECRET = process.env.JWT_SECRET || "fallback_secret_key";
 export interface JWTPayload {
   userId: string;
   email: string;
-  role: string;
   name: string;
+  role: "admin" | "user";
+  department: "sales" | "development" | "revenue" | "hr" | "general";
 }
 
 export function signToken(payload: JWTPayload): string {
@@ -30,7 +31,7 @@ export async function setAuthCookie(token: string) {
     value: token,
     httpOnly: true,
     secure: process.env.NODE_ENV === "production",
-    sameSite: "strict",
+    sameSite: "lax",
     maxAge: 60 * 60 * 24 * 7, // 7 days
     path: "/",
   });
