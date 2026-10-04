@@ -5,8 +5,8 @@ export interface IUser extends Document {
   name: string;
   email: string;
   passwordHash: string;
-  role: "admin" | "manager" | "sales" | "developer" | "client";
-  department: string;
+  role: "admin" | "user";
+  department: "sales" | "development" | "revenue" | "hr" | "general";
   isActive: boolean;
   createdAt: Date;
   updatedAt: Date;
@@ -19,10 +19,16 @@ const UserSchema = new Schema<IUser>(
     passwordHash: { type: String, required: true },
     role: {
       type: String,
-      enum: ["admin", "manager", "sales", "developer", "client"],
-      default: "developer",
+      enum: ["admin", "user"],
+      default: "user",
+      required: true,
     },
-    department: { type: String, default: "Engineering" },
+    department: {
+      type: String,
+      enum: ["sales", "development", "revenue", "hr", "general"],
+      default: "development",
+      required: true,
+    },
     isActive: { type: Boolean, default: true },
   },
   { timestamps: true },
