@@ -184,7 +184,7 @@ export default function RegisterPage() {
                     }`}
                   />
                   <span className="mt-1.5 text-xs font-bold">{r.label}</span>
-                  <span className="text-[10px] text-slate-500 font-medium">{r.desc}</span>
+                  <span className="text-[10px] font-medium text-slate-500">{r.desc}</span>
                 </button>
               );
             })}

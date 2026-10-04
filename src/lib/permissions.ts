@@ -34,11 +34,7 @@ export const DEPARTMENT_ROUTES: Record<string, string[]> = {
     "/dashboard/tickets",
     "/dashboard/settings",
   ],
-  general: [
-    "/dashboard",
-    "/dashboard/tickets",
-    "/dashboard/settings",
-  ],
+  general: ["/dashboard", "/dashboard/tickets", "/dashboard/settings"],
 };
 
 export function canAccessRoute(role: string, department: string, pathname: string): boolean {
@@ -47,6 +43,8 @@ export function canAccessRoute(role: string, department: string, pathname: strin
 
   // For regular users, check if the pathname matches or starts with any allowed route for their department
   const allowedRoutes = DEPARTMENT_ROUTES[department] || DEPARTMENT_ROUTES["general"];
-  
-  return allowedRoutes.some((route) => pathname === route || (route !== "/dashboard" && pathname.startsWith(route)));
+
+  return allowedRoutes.some(
+    (route) => pathname === route || (route !== "/dashboard" && pathname.startsWith(route)),
+  );
 }
