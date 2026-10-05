@@ -84,24 +84,26 @@ export function HeroSection() {
 
       <div className="relative z-10 mx-auto max-w-7xl px-4 text-center sm:px-6 lg:px-8">
         {/* Announcement Badge */}
-        <div className="mb-6 inline-flex cursor-pointer items-center gap-3 rounded-full border border-indigo-500/30 bg-slate-900/80 px-4 py-1.5 text-xs text-indigo-300 shadow-lg shadow-indigo-950/50 backdrop-blur-md transition-all hover:border-indigo-500/60 hover:shadow-indigo-900/40">
-          <Sparkles className="h-3.5 w-3.5 animate-pulse text-indigo-400" />
-          <span className="font-semibold text-slate-200">Webxode OS 2.0 Engine</span>
+        <div className="mb-6 inline-flex cursor-pointer items-center gap-3 rounded-full border border-indigo-200 bg-white/90 px-4 py-1.5 text-xs text-indigo-700 shadow-sm backdrop-blur-md transition-all hover:border-indigo-300 dark:border-indigo-500/30 dark:bg-slate-900/80 dark:text-indigo-300 dark:shadow-indigo-950/50 dark:hover:border-indigo-500/60">
+          <Sparkles className="h-3.5 w-3.5 animate-pulse text-indigo-600 dark:text-indigo-400" />
+          <span className="font-semibold text-slate-800 dark:text-slate-200">
+            Webxode OS 2.0 Engine
+          </span>
           <span className="h-1.5 w-1.5 rounded-full bg-indigo-500" />
-          <span className="text-slate-400">Command & Control Workspace</span>
-          <ChevronRight className="h-3.5 w-3.5 text-slate-500" />
+          <span className="text-slate-500 dark:text-slate-400">Command & Control Workspace</span>
+          <ChevronRight className="h-3.5 w-3.5 text-slate-400 dark:text-slate-500" />
         </div>
 
         {/* Hero Title */}
-        <h1 className="mx-auto max-w-5xl text-4xl leading-[1.12] font-black tracking-tight text-white sm:text-6xl lg:text-7xl">
+        <h1 className="mx-auto max-w-5xl text-4xl leading-[1.12] font-black tracking-tight text-slate-950 sm:text-6xl lg:text-7xl dark:text-white">
           One Operating System. <br />
-          <span className="bg-linear-to-r from-indigo-400 via-violet-300 to-cyan-300 bg-clip-text text-transparent">
+          <span className="bg-linear-to-r from-indigo-600 via-violet-600 to-blue-600 bg-clip-text text-transparent dark:from-indigo-400 dark:via-violet-300 dark:to-cyan-300">
             Zero Operational Chaos.
           </span>
         </h1>
 
         {/* Subtitle */}
-        <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-slate-400 sm:text-xl">
+        <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-slate-900 sm:text-xl dark:text-slate-400">
           Centralize your agency lifecycle — from lead capture & presales quotes to agile project
           delivery and real-time financial margin tracking.
         </p>
@@ -117,9 +119,9 @@ export function HeroSection() {
           </Link>
           <Link
             href="#modules"
-            className="inline-flex w-full items-center justify-center gap-2.5 rounded-xl border border-slate-800 bg-slate-900/80 px-8 py-4 font-semibold text-slate-300 backdrop-blur-md transition-all duration-200 hover:border-slate-700 hover:bg-slate-800 hover:text-white sm:w-auto"
+            className="inline-flex w-full items-center justify-center gap-2.5 rounded-xl border border-slate-200 bg-white/90 px-8 py-4 font-semibold text-slate-700 shadow-xs backdrop-blur-md transition-all duration-200 hover:border-slate-300 hover:bg-slate-100 hover:text-slate-900 sm:w-auto dark:border-slate-800 dark:bg-slate-900/80 dark:text-slate-300 dark:hover:border-slate-700 dark:hover:bg-slate-800 dark:hover:text-white"
           >
-            <Play className="h-4 w-4 fill-indigo-400/20 text-indigo-400" />
+            <Play className="h-4 w-4 fill-indigo-400/20 text-indigo-600 dark:text-indigo-400" />
             <span>Explore Live Modules</span>
           </Link>
         </div>

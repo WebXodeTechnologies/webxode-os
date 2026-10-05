@@ -3,10 +3,14 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowRight, Menu, X, ChevronRight } from "lucide-react";
+import { ArrowRight, Menu, X, ChevronRight, Sun, Moon } from "lucide-react";
+import { useMarketingTheme } from "./theme-context";
 
 export function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const { theme, toggleTheme, mounted } = useMarketingTheme();
+
+  const isDark = theme === "dark";
 
   // Lock background scrolling when full-screen mobile menu drawer is open
   useEffect(() => {
@@ -61,25 +65,48 @@ export function Navbar() {
   return (
     <>
       {/* Sticky Top Header */}
-      <header className="sticky top-0 z-40 w-full border-b border-slate-800/80 bg-slate-950/85 backdrop-blur-xl transition-all duration-300">
+      <header
+        className={`sticky top-0 z-40 w-full border-b backdrop-blur-xl transition-all duration-300 ${
+          isDark
+            ? "border-slate-800/80 bg-slate-950/85 text-white"
+            : "border-slate-200/80 bg-white/85 text-slate-900 shadow-2xs"
+        }`}
+      >
         <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
           {/* Brand Logo */}
           <div className="flex items-center space-x-3">
             <Link href="/" className="group flex items-center space-x-3">
-              <div className="relative flex h-10 w-10 items-center justify-center overflow-hidden rounded-xl border border-slate-800 bg-slate-900/90 p-1.5 shadow-inner transition-transform group-hover:scale-105 group-hover:border-indigo-500/50">
+              <div
+                className={`relative flex h-10 w-10 items-center justify-center overflow-hidden rounded-xl border p-1.5 shadow-xs transition-transform group-hover:scale-105 ${
+                  isDark
+                    ? "border-slate-800 bg-slate-900/90 group-hover:border-indigo-500/50"
+                    : "border-slate-200 bg-white group-hover:border-indigo-300"
+                }`}
+              >
                 <Image
                   src="/logos/webxodelogocropped-removebg-preview.png"
                   alt="Webxode Technologies Logo"
-                  width={36}
-                  height={36}
+                  width={50}
+                  height={50}
+                  unoptimized
                   className="object-contain"
                 />
               </div>
               <div className="flex flex-col">
-                <span className="text-base font-bold tracking-tight text-white transition-colors group-hover:text-indigo-300">
-                  Webxode <span className="font-extrabold text-indigo-400">OS</span>
+                <span
+                  className={`text-base font-bold tracking-tight transition-colors ${
+                    isDark
+                      ? "text-white group-hover:text-indigo-300"
+                      : "text-slate-900 group-hover:text-indigo-600"
+                  }`}
+                >
+                  Webxode <span className="font-extrabold text-indigo-500">OS</span>
                 </span>
-                <span className="text-[10px] font-medium tracking-wider text-slate-400 uppercase">
+                <span
+                  className={`text-[10px] font-medium tracking-wider uppercase ${
+                    isDark ? "text-slate-400" : "text-slate-500"
+                  }`}
+                >
                   Enterprise v2.0
                 </span>
               </div>
@@ -87,29 +114,67 @@ export function Navbar() {
           </div>
 
           {/* Desktop Navigation */}
-          <nav className="hidden items-center space-x-6 text-sm font-medium text-slate-300 md:flex">
-            <Link href="#features" className="transition-colors hover:text-indigo-400">
+          <nav
+            className={`hidden items-center space-x-6 text-sm font-semibold md:flex ${
+              isDark ? "text-slate-300" : "text-slate-600"
+            }`}
+          >
+            <Link
+              href="#features"
+              className={`transition-colors ${isDark ? "hover:text-indigo-400" : "hover:text-indigo-600"}`}
+            >
               Features
             </Link>
-            <Link href="#modules" className="transition-colors hover:text-indigo-400">
+            <Link
+              href="#modules"
+              className={`transition-colors ${isDark ? "hover:text-indigo-400" : "hover:text-indigo-600"}`}
+            >
               Modules
             </Link>
-            <Link href="#why-webxode" className="transition-colors hover:text-indigo-400">
+            <Link
+              href="#why-webxode"
+              className={`transition-colors ${isDark ? "hover:text-indigo-400" : "hover:text-indigo-600"}`}
+            >
               Why OS
             </Link>
-            <Link href="#impact" className="transition-colors hover:text-indigo-400">
+            <Link
+              href="#impact"
+              className={`transition-colors ${isDark ? "hover:text-indigo-400" : "hover:text-indigo-600"}`}
+            >
               Impact
             </Link>
-            <Link href="#faq" className="transition-colors hover:text-indigo-400">
+            <Link
+              href="#faq"
+              className={`transition-colors ${isDark ? "hover:text-indigo-400" : "hover:text-indigo-600"}`}
+            >
               FAQ
             </Link>
           </nav>
 
-          {/* Desktop Action Cluster */}
-          <div className="hidden items-center space-x-2 md:flex">
+          {/* Desktop Action Cluster + Theme Toggle */}
+          <div className="hidden items-center space-x-3 md:flex">
+            {/* Theme Toggle Button */}
+            {mounted && (
+              <button
+                type="button"
+                onClick={toggleTheme}
+                className={`flex h-9 w-9 items-center justify-center rounded-xl border transition-all duration-200 active:scale-95 ${
+                  isDark
+                    ? "border-slate-800 bg-slate-900 text-amber-400 hover:border-amber-400/50 hover:bg-slate-800"
+                    : "border-slate-200 bg-slate-100 text-indigo-600 hover:border-indigo-300 hover:bg-slate-200"
+                }`}
+                title={isDark ? "Switch to Light Theme" : "Switch to Dark Theme"}
+                aria-label="Toggle Theme"
+              >
+                {isDark ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
+              </button>
+            )}
+
             <Link
               href="/login"
-              className="text-sm font-medium text-slate-300 transition-colors hover:text-white"
+              className={`text-sm font-semibold transition-colors ${
+                isDark ? "text-slate-300 hover:text-white" : "text-slate-600 hover:text-slate-900"
+              }`}
             >
               Sign In
             </Link>
@@ -123,25 +188,52 @@ export function Navbar() {
             </Link>
           </div>
 
-          {/* Mobile Hamburger Button */}
-          <div className="flex md:hidden">
+          {/* Mobile Right Cluster (Theme Toggle + Hamburger) */}
+          <div className="flex items-center space-x-2 md:hidden">
+            {mounted && (
+              <button
+                type="button"
+                onClick={toggleTheme}
+                className={`flex h-10 w-10 items-center justify-center rounded-xl border transition-all ${
+                  isDark
+                    ? "border-slate-800 bg-slate-900 text-amber-400"
+                    : "border-slate-200 bg-slate-100 text-indigo-600"
+                }`}
+                aria-label="Toggle Theme"
+              >
+                {isDark ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
+              </button>
+            )}
+
             <button
               type="button"
               onClick={() => setMobileMenuOpen(true)}
-              className="flex h-11 w-11 items-center justify-center rounded-xl border border-slate-800 bg-slate-900/90 text-slate-200 shadow-inner transition-colors hover:border-indigo-500/50 hover:bg-slate-800 hover:text-white focus:outline-none"
+              className={`flex h-10 w-10 items-center justify-center rounded-xl border transition-colors ${
+                isDark
+                  ? "border-slate-800 bg-slate-900 text-slate-200 hover:bg-slate-800"
+                  : "border-slate-200 bg-slate-100 text-slate-700 hover:bg-slate-200"
+              }`}
               aria-label="Open Mobile Menu"
             >
-              <Menu className="h-6 w-6" />
+              <Menu className="h-5 w-5" />
             </button>
           </div>
         </div>
       </header>
 
-      {/* Full-Screen Mobile Drawer Modal (Mounted only when open to prevent horizontal whitespace) */}
+      {/* Full-Screen Mobile Drawer Modal */}
       {mobileMenuOpen && (
-        <div className="animate-in fade-in fixed inset-0 z-50 flex h-full w-full flex-col bg-slate-950 text-white duration-150 md:hidden">
+        <div
+          className={`animate-in fade-in fixed inset-0 z-50 flex h-full w-full flex-col duration-150 md:hidden ${
+            isDark ? "bg-slate-950 text-white" : "bg-white text-slate-900"
+          }`}
+        >
           {/* Drawer Top Header */}
-          <div className="flex h-16 shrink-0 items-center justify-between border-b border-slate-800/80 bg-slate-950 px-4 sm:px-6">
+          <div
+            className={`flex h-16 shrink-0 items-center justify-between border-b px-4 sm:px-6 ${
+              isDark ? "border-slate-800/80 bg-slate-950" : "border-slate-200 bg-white"
+            }`}
+          >
             <Link
               href="/"
               onClick={() => {
@@ -150,7 +242,11 @@ export function Navbar() {
               }}
               className="flex items-center space-x-3"
             >
-              <div className="relative flex h-10 w-10 items-center justify-center overflow-hidden rounded-xl border border-slate-800 bg-slate-900 p-1.5 shadow-inner">
+              <div
+                className={`relative flex h-10 w-10 items-center justify-center overflow-hidden rounded-xl border p-1.5 shadow-xs ${
+                  isDark ? "border-slate-800 bg-slate-900" : "border-slate-200 bg-slate-100"
+                }`}
+              >
                 <Image
                   src="/logos/webxodelogocropped-removebg-preview.png"
                   alt="Webxode Technologies Logo"
@@ -160,23 +256,29 @@ export function Navbar() {
                 />
               </div>
               <div className="flex flex-col">
-                <span className="text-base font-bold tracking-tight text-white">
-                  Webxode <span className="font-extrabold text-indigo-400">OS</span>
+                <span
+                  className={`text-base font-bold tracking-tight ${isDark ? "text-white" : "text-slate-900"}`}
+                >
+                  Webxode <span className="font-extrabold text-indigo-500">OS</span>
                 </span>
-                <span className="text-[10px] font-medium tracking-wider text-slate-400 uppercase">
+                <span
+                  className={`text-[10px] font-medium tracking-wider uppercase ${
+                    isDark ? "text-slate-400" : "text-slate-500"
+                  }`}
+                >
                   Enterprise v2.0
                 </span>
               </div>
             </Link>
 
-            {/* High Contrast Red Close Button */}
+            {/* Close Button */}
             <button
               type="button"
               onClick={() => {
                 if (typeof document !== "undefined") document.body.style.overflow = "";
                 setMobileMenuOpen(false);
               }}
-              className="flex h-11 w-11 items-center justify-center rounded-xl border border-rose-500/40 bg-rose-500/10 text-rose-400 shadow-md transition-all hover:border-rose-500 hover:bg-rose-500 hover:text-white focus:outline-none active:scale-95"
+              className="flex h-11 w-11 items-center justify-center rounded-xl border border-rose-500/40 bg-rose-500/10 text-rose-500 shadow-xs transition-all hover:bg-rose-500 hover:text-white active:scale-95"
               aria-label="Close Menu"
             >
               <X className="h-6 w-6" />
@@ -188,52 +290,76 @@ export function Navbar() {
             <a
               href="#features"
               onClick={(e) => handleNavClick(e, "#features")}
-              className="group flex items-center justify-between rounded-2xl px-5 py-4 text-lg font-semibold text-slate-200 transition-all hover:border-indigo-500/40 hover:bg-slate-900 hover:text-indigo-400"
+              className={`group flex items-center justify-between rounded-2xl px-5 py-4 text-lg font-semibold transition-all ${
+                isDark
+                  ? "text-slate-200 hover:bg-slate-900 hover:text-indigo-400"
+                  : "text-slate-700 hover:bg-slate-100 hover:text-indigo-600"
+              }`}
             >
               <span>Features</span>
-              <ChevronRight className="h-5 w-5 text-slate-500 transition-transform group-hover:translate-x-1 group-hover:text-indigo-400" />
+              <ChevronRight className="h-5 w-5 text-slate-400 transition-transform group-hover:translate-x-1" />
             </a>
 
             <a
               href="#modules"
               onClick={(e) => handleNavClick(e, "#modules")}
-              className="group flex items-center justify-between rounded-2xl px-5 py-4 text-lg font-semibold text-slate-200 transition-all hover:border-indigo-500/40 hover:bg-slate-900 hover:text-indigo-400"
+              className={`group flex items-center justify-between rounded-2xl px-5 py-4 text-lg font-semibold transition-all ${
+                isDark
+                  ? "text-slate-200 hover:bg-slate-900 hover:text-indigo-400"
+                  : "text-slate-700 hover:bg-slate-100 hover:text-indigo-600"
+              }`}
             >
               <span>Modules Showcase</span>
-              <ChevronRight className="h-5 w-5 text-slate-500 transition-transform group-hover:translate-x-1 group-hover:text-indigo-400" />
+              <ChevronRight className="h-5 w-5 text-slate-400 transition-transform group-hover:translate-x-1" />
             </a>
 
             <a
               href="#why-webxode"
               onClick={(e) => handleNavClick(e, "#why-webxode")}
-              className="group flex items-center justify-between rounded-2xl px-5 py-4 text-lg font-semibold text-slate-200 transition-all hover:border-indigo-500/40 hover:bg-slate-900 hover:text-indigo-400"
+              className={`group flex items-center justify-between rounded-2xl px-5 py-4 text-lg font-semibold transition-all ${
+                isDark
+                  ? "text-slate-200 hover:bg-slate-900 hover:text-indigo-400"
+                  : "text-slate-700 hover:bg-slate-100 hover:text-indigo-600"
+              }`}
             >
               <span>Why Webxode OS</span>
-              <ChevronRight className="h-5 w-5 text-slate-500 transition-transform group-hover:translate-x-1 group-hover:text-indigo-400" />
+              <ChevronRight className="h-5 w-5 text-slate-400 transition-transform group-hover:translate-x-1" />
             </a>
 
             <a
               href="#impact"
               onClick={(e) => handleNavClick(e, "#impact")}
-              className="group flex items-center justify-between rounded-2xl px-5 py-4 text-lg font-semibold text-slate-200 transition-all hover:border-indigo-500/40 hover:bg-slate-900 hover:text-indigo-400"
+              className={`group flex items-center justify-between rounded-2xl px-5 py-4 text-lg font-semibold transition-all ${
+                isDark
+                  ? "text-slate-200 hover:bg-slate-900 hover:text-indigo-400"
+                  : "text-slate-700 hover:bg-slate-100 hover:text-indigo-600"
+              }`}
             >
               <span>Impact & ROI</span>
-              <ChevronRight className="h-5 w-5 text-slate-500 transition-transform group-hover:translate-x-1 group-hover:text-indigo-400" />
+              <ChevronRight className="h-5 w-5 text-slate-400 transition-transform group-hover:translate-x-1" />
             </a>
 
             <a
               href="#faq"
               onClick={(e) => handleNavClick(e, "#faq")}
-              className="group flex items-center justify-between rounded-2xl px-5 py-4 text-lg font-semibold text-slate-200 transition-all hover:border-indigo-500/40 hover:bg-slate-900 hover:text-indigo-400"
+              className={`group flex items-center justify-between rounded-2xl px-5 py-4 text-lg font-semibold transition-all ${
+                isDark
+                  ? "text-slate-200 hover:bg-slate-900 hover:text-indigo-400"
+                  : "text-slate-700 hover:bg-slate-100 hover:text-indigo-600"
+              }`}
             >
               <span>FAQ</span>
-              <ChevronRight className="h-5 w-5 text-slate-500 transition-transform group-hover:translate-x-1 group-hover:text-indigo-400" />
+              <ChevronRight className="h-5 w-5 text-slate-400 transition-transform group-hover:translate-x-1" />
             </a>
           </div>
 
           {/* Drawer Fixed Footer Cluster */}
-          <div className="shrink-0 space-y-3 border-t border-slate-800/80 bg-slate-950 px-4 py-5 sm:px-6">
-            <div className="flex items-center justify-between rounded-xl border border-emerald-500/20 bg-emerald-500/10 px-4 py-2.5 text-xs text-emerald-400">
+          <div
+            className={`shrink-0 space-y-3 border-t px-4 py-5 sm:px-6 ${
+              isDark ? "border-slate-800/80 bg-slate-950" : "border-slate-200 bg-white"
+            }`}
+          >
+            <div className="flex items-center justify-between rounded-xl border border-emerald-500/20 bg-emerald-500/10 px-4 py-2.5 text-xs text-emerald-600 dark:text-emerald-400">
               <span className="flex items-center gap-2">
                 <span className="relative flex h-2.5 w-2.5">
                   <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75"></span>
@@ -251,7 +377,11 @@ export function Navbar() {
                   if (typeof document !== "undefined") document.body.style.overflow = "";
                   setMobileMenuOpen(false);
                 }}
-                className="w-full rounded-xl border border-slate-800 bg-slate-900 py-3 text-center text-sm font-semibold text-slate-200 transition-all hover:border-slate-700 hover:bg-slate-800 hover:text-white"
+                className={`w-full rounded-xl border py-3 text-center text-sm font-semibold transition-all ${
+                  isDark
+                    ? "border-slate-800 bg-slate-900 text-slate-200 hover:bg-slate-800"
+                    : "border-slate-200 bg-slate-100 text-slate-700 hover:bg-slate-200"
+                }`}
               >
                 Sign In
               </Link>
