@@ -31,6 +31,7 @@ import {
 } from "lucide-react";
 import { toast } from "sonner";
 import { canAccessRoute } from "@/lib/permissions";
+import { getDefaultAvatar } from "@/lib/avatars";
 
 interface SubNavItem {
   name: string;
@@ -123,7 +124,8 @@ export function Sidebar({
     name: string;
     email: string;
     role: "admin" | "user";
-    department: "sales" | "development" | "revenue" | "hr" | "general";
+    department:
+      "sales" | "development" | "revenue" | "hr" | "general" | "presales" | "Product & Presales";
   } | null>(null);
 
   const [openSections, setOpenSections] = useState<Record<string, boolean>>({
@@ -170,14 +172,10 @@ export function Sidebar({
   const role = userData?.role || "user";
   const department = userData?.department || "development";
   const userName = userData?.name || "Team Member";
-  const userRoleDisplay =
-    role === "admin" ? "ADMIN & FOUNDER" : `${department.toUpperCase()} STAFF`;
-  const userInitials = userName
-    .split(" ")
-    .map((n) => n[0])
-    .join("")
-    .slice(0, 2)
-    .toUpperCase();
+  const userRoleDisplay = role === "admin" ? "ADMIN" : `${department.toUpperCase()}`;
+
+  // Get role-based default avatar configuration
+  const avatarConfig = getDefaultAvatar(role, department, userName);
 
   const filteredGroups = navigationGroups
     .map((group) => {
@@ -461,10 +459,16 @@ export function Sidebar({
           {isCollapsed ? (
             <div className="flex flex-col items-center gap-2">
               <div
-                className="group relative flex h-9 w-9 cursor-pointer items-center justify-center rounded-xl bg-linear-to-br from-indigo-600 to-violet-600 text-xs font-extrabold text-white shadow-xs"
+                className={`group relative flex h-9 w-9 cursor-pointer items-center justify-center overflow-hidden rounded-xl ${avatarConfig.bgClass} shadow-xs`}
                 title={`${userName} (${userRoleDisplay})`}
               >
-                {userInitials}
+                <Image
+                  src={avatarConfig.imageUrl}
+                  alt={userName}
+                  width={36}
+                  height={36}
+                  className="h-full w-full object-cover"
+                />
                 <span className="absolute -right-0.5 -bottom-0.5 h-2.5 w-2.5 rounded-full bg-emerald-500 ring-2 ring-white" />
                 <div className="pointer-events-none absolute left-full z-50 ml-3 hidden flex-col rounded-xl bg-slate-900 px-3 py-1.5 text-xs font-semibold whitespace-nowrap text-white shadow-xl group-hover:flex">
                   <span>{userName}</span>
@@ -494,9 +498,17 @@ export function Sidebar({
             <>
               <div className="mb-2 flex items-center justify-between rounded-xl border border-slate-200/80 bg-white p-2.5 shadow-2xs">
                 <div className="flex min-w-0 items-center gap-2.5">
-                  <div className="relative flex h-8 w-8 shrink-0 items-center justify-center rounded-xl bg-linear-to-br from-indigo-600 to-violet-600 text-xs font-extrabold text-white shadow-sm">
-                    {userInitials}
-                    <span className="absolute -right-0.5 -bottom-0.5 h-2.5 w-2.5 rounded-full bg-emerald-500 ring-2 ring-white" />
+                  <div
+                    className={`relative flex h-12 w-12 shrink-0 overflow-hidden rounded-xl ${avatarConfig.bgClass} shadow-sm`}
+                  >
+                    <Image
+                      src={avatarConfig.imageUrl}
+                      alt={userName}
+                      width={32}
+                      height={32}
+                      unoptimized
+                      className="h-full w-full object-cover"
+                    />
                   </div>
                   <div className="min-w-0">
                     <p className="truncate text-xs font-bold text-slate-900">{userName}</p>
