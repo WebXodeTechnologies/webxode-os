@@ -49,21 +49,24 @@ export function FaqSection() {
   };
 
   return (
-    <section id="faq" className="relative border-t border-slate-900 bg-slate-950 py-24 lg:py-32">
+    <section
+      id="faq"
+      className="relative border-t border-slate-200/80 bg-slate-50/50 py-24 transition-colors duration-300 lg:py-32 dark:border-slate-900 dark:bg-slate-950"
+    >
       {/* Background Accent Glow */}
-      <div className="pointer-events-none absolute top-1/2 left-1/2 -z-10 h-125 w-175 -translate-x-1/2 -translate-y-1/2 rounded-full bg-indigo-600/10 blur-[170px]" />
+      <div className="pointer-events-none absolute top-1/2 left-1/2 -z-10 h-125 w-175 -translate-x-1/2 -translate-y-1/2 rounded-full bg-indigo-500/10 blur-[170px] dark:bg-indigo-600/10" />
 
       <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="mx-auto mb-16 max-w-3xl text-center">
-          <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-indigo-500/20 bg-indigo-500/10 px-3.5 py-1 text-xs font-semibold text-indigo-400">
+          <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-indigo-200 bg-indigo-50 px-3.5 py-1 text-xs font-semibold text-indigo-700 dark:border-indigo-500/20 dark:bg-indigo-500/10 dark:text-indigo-400">
             <HelpCircle className="h-3.5 w-3.5" />
             <span>EXPERT KNOWLEDGE BASE</span>
           </div>
-          <h2 className="text-3xl font-black tracking-tight text-white sm:text-5xl">
+          <h2 className="text-3xl font-black tracking-tight text-slate-900 sm:text-5xl dark:text-white">
             Frequently Asked Questions
           </h2>
-          <p className="mt-4 text-base leading-relaxed text-slate-400 sm:text-lg">
+          <p className="mt-4 text-base leading-relaxed text-slate-900 sm:text-lg dark:text-slate-400">
             Everything you need to know about Webxode OS architecture, presales automation, project
             execution, and enterprise security.
           </p>
@@ -78,8 +81,8 @@ export function FaqSection() {
                 key={idx}
                 className={`overflow-hidden rounded-2xl border backdrop-blur-md transition-all duration-300 ${
                   isOpen
-                    ? "border-indigo-500/40 bg-slate-900/80 shadow-xl shadow-indigo-950/30"
-                    : "border-slate-800/80 bg-slate-900/40 hover:border-slate-700 hover:bg-slate-900/60"
+                    ? "border-indigo-300 bg-white shadow-md dark:border-indigo-500/40 dark:bg-slate-900/80 dark:shadow-xl dark:shadow-indigo-950/30"
+                    : "border-slate-200/80 bg-white/80 hover:border-slate-300 hover:bg-white dark:border-slate-800/80 dark:bg-slate-900/40 dark:hover:border-slate-700 dark:hover:bg-slate-900/60"
                 }`}
               >
                 <button
@@ -88,7 +91,7 @@ export function FaqSection() {
                   className="flex w-full items-center justify-between p-6 text-left focus:outline-none"
                 >
                   <span
-                    className={`pr-4 text-base font-bold transition-colors sm:text-lg ${isOpen ? "text-indigo-300" : "text-white"}`}
+                    className={`pr-4 text-base font-bold transition-colors sm:text-lg ${isOpen ? "text-indigo-600 dark:text-indigo-300" : "text-slate-900 dark:text-white"}`}
                   >
                     {faq.question}
                   </span>
@@ -96,7 +99,7 @@ export function FaqSection() {
                     className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border transition-all duration-300 ${
                       isOpen
                         ? "rotate-180 border-indigo-500 bg-indigo-600 text-white shadow-md shadow-indigo-600/30"
-                        : "border-slate-800 bg-slate-950 text-slate-400"
+                        : "border-slate-200 bg-slate-100 text-slate-900 dark:border-slate-800 dark:bg-slate-950 dark:text-slate-400"
                     }`}
                   >
                     <ChevronDown className="h-4 w-4" />
@@ -104,7 +107,7 @@ export function FaqSection() {
                 </button>
 
                 {isOpen && (
-                  <div className="mt-1 border-t border-slate-800/60 px-6 pt-0 pb-6 text-sm leading-relaxed text-slate-300">
+                  <div className="mt-1 border-t border-slate-100 px-6 pt-0 pb-6 text-sm leading-relaxed text-slate-900 dark:border-slate-800/60 dark:text-slate-300">
                     <p className="pt-4">{faq.answer}</p>
                   </div>
                 )}

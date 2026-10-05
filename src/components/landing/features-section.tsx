@@ -139,22 +139,22 @@ export function FeaturesSection() {
   return (
     <section
       id="features"
-      className="relative border-t border-slate-900 bg-slate-950 py-24 lg:py-32"
+      className="relative border-t border-slate-200/80 bg-slate-50/50 py-24 transition-colors duration-300 lg:py-32 dark:border-slate-900 dark:bg-slate-950"
     >
       {/* Glow Effect */}
-      <div className="pointer-events-none absolute top-1/2 right-1/4 -z-10 h-112.5 w-112.5 rounded-full bg-indigo-600/10 blur-[150px]" />
+      <div className="pointer-events-none absolute top-1/2 right-1/4 -z-10 h-112.5 w-112.5 rounded-full bg-indigo-500/10 blur-[150px] dark:bg-indigo-600/10" />
 
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="mx-auto mb-16 max-w-3xl text-center">
-          <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-indigo-500/20 bg-indigo-500/10 px-3.5 py-1 text-xs font-semibold text-indigo-400">
+          <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-indigo-200 bg-indigo-50 px-3.5 py-1 text-xs font-semibold text-indigo-700 dark:border-indigo-500/20 dark:bg-indigo-500/10 dark:text-indigo-400">
             <Zap className="h-3.5 w-3.5" />
             <span>OPERATIONAL EXCELLENCE</span>
           </div>
-          <h2 className="text-3xl font-black tracking-tight text-white sm:text-5xl">
+          <h2 className="text-3xl font-black tracking-tight text-slate-900 sm:text-5xl dark:text-white">
             Engineered to Eliminate Friction & Complexity
           </h2>
-          <p className="mt-4 text-base leading-relaxed text-slate-400 sm:text-lg">
+          <p className="mt-4 text-base leading-relaxed text-slate-900 sm:text-lg dark:text-slate-400">
             Replace disconnected spreadsheets, fragmented chat messages, and manual follow-ups with
             an integrated engine built specifically for modern tech agencies.
           </p>
@@ -167,7 +167,7 @@ export function FeaturesSection() {
             return (
               <div
                 key={feat.id}
-                className={`group relative flex flex-col justify-between overflow-hidden rounded-2xl border border-slate-800/80 bg-slate-900/40 p-6 backdrop-blur-md transition-all duration-300 hover:border-indigo-500/40 hover:bg-slate-900/80 hover:shadow-2xl hover:shadow-indigo-950/50 sm:p-8 ${feat.span}`}
+                className={`group relative flex flex-col justify-between overflow-hidden rounded-2xl border border-slate-200/80 bg-white/90 p-6 shadow-xs backdrop-blur-md transition-all duration-300 hover:border-indigo-300 hover:bg-white hover:shadow-xl sm:p-8 dark:border-slate-800/80 dark:bg-slate-900/40 dark:hover:border-indigo-500/40 dark:hover:bg-slate-900/80 dark:hover:shadow-indigo-950/50 ${feat.span}`}
               >
                 {/* Subtle Background Radial Gradient */}
                 <div
@@ -176,29 +176,31 @@ export function FeaturesSection() {
 
                 <div>
                   <div className="mb-6 flex items-center justify-between">
-                    <div className="flex h-12 w-12 items-center justify-center rounded-xl border border-indigo-500/30 bg-indigo-600/10 text-indigo-400 transition-all group-hover:scale-110 group-hover:bg-indigo-600 group-hover:text-white">
+                    <div className="flex h-12 w-12 items-center justify-center rounded-xl border border-indigo-200 bg-indigo-50 text-indigo-600 transition-all group-hover:scale-110 group-hover:bg-indigo-600 group-hover:text-white dark:border-indigo-500/30 dark:bg-indigo-600/10 dark:text-indigo-400">
                       <Icon className="h-6 w-6" />
                     </div>
-                    <span className="rounded-full border border-slate-800 bg-slate-950 px-3 py-1 text-xs font-medium text-slate-400">
+                    <span className="rounded-full border border-slate-200 bg-slate-100 px-3 py-1 text-xs font-semibold text-slate-600 dark:border-slate-800 dark:bg-slate-950 dark:text-slate-400">
                       {feat.badge}
                     </span>
                   </div>
 
-                  <h3 className="text-xl font-bold tracking-tight text-white transition-colors group-hover:text-indigo-300">
+                  <h3 className="text-xl font-bold tracking-tight text-slate-900 transition-colors group-hover:text-indigo-600 dark:text-white dark:group-hover:text-indigo-300">
                     {feat.title}
                   </h3>
-                  <p className="mt-3 text-sm leading-relaxed text-slate-400">{feat.description}</p>
+                  <p className="mt-3 text-sm leading-relaxed text-slate-600 dark:text-slate-400">
+                    {feat.description}
+                  </p>
 
                   {/* Feature Interactive/Visual Preview */}
                   <FeaturePreview featureId={feat.id} />
                 </div>
 
-                <div className="mt-8 flex items-center justify-between border-t border-slate-800/60 pt-4 text-xs font-medium text-slate-400">
-                  <div className="flex items-center gap-2 text-indigo-400">
-                    <CheckCircle2 className="h-4 w-4 text-emerald-400" />
+                <div className="mt-8 flex items-center justify-between border-t border-slate-200/80 pt-4 text-xs font-semibold text-slate-600 dark:border-slate-800/60 dark:text-slate-400">
+                  <div className="flex items-center gap-2 text-indigo-600 dark:text-indigo-400">
+                    <CheckCircle2 className="h-4 w-4 text-emerald-500" />
                     <span>{feat.highlight}</span>
                   </div>
-                  <ArrowUpRight className="h-4 w-4 text-slate-300 opacity-0 transition-opacity group-hover:opacity-100" />
+                  <ArrowUpRight className="h-4 w-4 text-slate-400 opacity-0 transition-opacity group-hover:opacity-100 dark:text-slate-300" />
                 </div>
               </div>
             );
