@@ -3,7 +3,9 @@
 
 import { useState, useEffect, useRef, useMemo } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
+import { getDefaultAvatar } from "@/lib/avatars";
 import {
   Bell,
   Search,
@@ -165,9 +167,12 @@ export function Navbar({ onOpenMobileMenu }: NavbarProps) {
   const [commandSearch, setCommandSearch] = useState("");
   const commandInputRef = useRef<HTMLInputElement>(null);
 
-  const [userData, setUserData] = useState<{ name: string; email: string; role: string } | null>(
-    null,
-  );
+  const [userData, setUserData] = useState<{
+    name: string;
+    email: string;
+    role: string;
+    department?: string;
+  } | null>(null);
 
   const notifRef = useRef<HTMLDivElement>(null);
   const profileRef = useRef<HTMLDivElement>(null);
@@ -245,8 +250,13 @@ export function Navbar({ onOpenMobileMenu }: NavbarProps) {
     router.push(href as any);
   };
 
-  const userName = userData?.name || "Akash S M";
-  const userEmail = userData?.email || "akash@webxode.com";
+  const role = userData?.role || "admin";
+  const department = userData?.department || "development";
+  const userName = userData?.name || "Team Member";
+  const userEmail = userData?.email || "team@webxode.com";
+  const userRoleDisplay = role === "admin" ? "ADMIN" : `${department.toUpperCase()}`;
+
+  const avatarConfig = getDefaultAvatar(role, department, userName);
 
   // Filter command items
   const filteredCommands = useMemo(() => {
@@ -510,23 +520,44 @@ export function Navbar({ onOpenMobileMenu }: NavbarProps) {
               onClick={() => setShowProfileMenu(!showProfileMenu)}
               className="flex items-center gap-2 rounded-xl p-1 transition-colors hover:bg-slate-100"
             >
-              <div className="flex h-8 w-8 items-center justify-center rounded-xl bg-linear-to-br from-indigo-600 to-violet-600 text-xs font-extrabold text-white shadow-xs">
-                {userName[0]}
+              <div
+                className={`relative flex h-8 w-8 shrink-0 items-center justify-center overflow-hidden rounded-xl ${avatarConfig.bgClass} shadow-sm`}
+              >
+                <Image
+                  src={avatarConfig.imageUrl}
+                  alt={userName}
+                  width={32}
+                  height={32}
+                  className="h-full w-full object-cover"
+                />
               </div>
               <div className="hidden text-left sm:block">
                 <p className="text-xs leading-tight font-bold text-slate-900">{userName}</p>
-                <p className="text-[10px] font-semibold text-slate-400">Admin</p>
+                <p className="text-[10px] font-semibold text-slate-400">{userRoleDisplay}</p>
               </div>
               <ChevronDown className="hidden h-3.5 w-3.5 text-slate-400 sm:block" />
             </button>
 
             {showProfileMenu && (
               <div className="animate-in fade-in absolute right-0 z-50 mt-2 w-60 rounded-2xl border border-slate-200/80 bg-white p-1.5 shadow-xl ring-1 ring-black/5 duration-150">
-                <div className="border-b border-slate-100 px-3 py-2.5">
-                  <p className="text-xs font-bold text-slate-900">{userName}</p>
-                  <p className="truncate text-[11px] text-slate-500">{userEmail}</p>
-                  <div className="mt-1.5 inline-flex items-center gap-1 rounded-md bg-indigo-50 px-1.5 py-0.5 text-[9px] font-bold text-indigo-700">
-                    <ShieldCheck className="h-3 w-3" /> ADMIN & FOUNDER
+                <div className="flex items-center gap-2.5 border-b border-slate-100 px-3 py-2.5">
+                  <div
+                    className={`relative flex h-9 w-9 shrink-0 items-center justify-center overflow-hidden rounded-xl ${avatarConfig.bgClass} shadow-xs`}
+                  >
+                    <Image
+                      src={avatarConfig.imageUrl}
+                      alt={userName}
+                      width={36}
+                      height={36}
+                      className="h-full w-full object-cover"
+                    />
+                  </div>
+                  <div className="min-w-0 flex-1">
+                    <p className="truncate text-xs font-bold text-slate-900">{userName}</p>
+                    <p className="truncate text-[11px] text-slate-500">{userEmail}</p>
+                    <div className="mt-1 inline-flex items-center gap-1 rounded-md bg-indigo-50 px-1.5 py-0.5 text-[9px] font-bold text-indigo-700">
+                      <ShieldCheck className="h-3 w-3" /> {userRoleDisplay}
+                    </div>
                   </div>
                 </div>
 
