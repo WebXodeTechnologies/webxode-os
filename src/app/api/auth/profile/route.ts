@@ -1,67 +1,75 @@
 // src/app/api/auth/profile/route.ts
 import { NextResponse } from "next/server";
-import { cookies } from "next/headers";
-import { verifyToken } from "@/lib/auth";
 import { connectDB } from "@/lib/db";
 import { User } from "@/models/user.model";
+import { requireAuth } from "@/lib/rabc";
 
-export async function PATCH(request: Request) {
+export async function PATCH(req: Request) {
   try {
-    const body = await request.json();
-    const cookieStore = await cookies();
-    const token = cookieStore.get("webxode_token")?.value;
+    // 1. Authenticate user session
+    const { error, user } = await requireAuth();
+    if (error || !user) return error;
 
-    if (token) {
-      const payload = verifyToken(token);
-      if (payload?.userId) {
-        try {
-          await connectDB();
-          const user = await User.findById(payload.userId);
-          if (user) {
-            if (body.name) user.name = body.name;
-            if (body.department) user.department = body.department;
-            await user.save();
+    // 2. Parse payload body
+    const body = await req.json();
+    const { name, department, phone, location, bio, github, linkedin, twitter } = body;
 
-            return NextResponse.json({
-              success: true,
-              message: "Profile updated successfully",
-              user: {
-                name: user.name,
-                email: user.email,
-                role: user.role,
-                department: user.department,
-              },
-            });
-          }
-        } catch (dbErr) {
-          console.warn(
-            "DB connection or update failed in /api/auth/profile, returning fallback success",
-            dbErr
-          );
-        }
-      }
+    if (!name || typeof name !== "string" || name.trim() === "") {
+      return NextResponse.json({ error: "Name is required" }, { status: 400 });
     }
 
-    // Fallback response for active UI state update when unauthenticated or local dev mode
+    // 3. Connect DB & Update User Document in MongoDB
+    await connectDB();
+    const updateData: Record<string, any> = {
+      name: name.trim(),
+      ...(department && { department }),
+      ...(phone !== undefined && { phone }),
+      ...(location !== undefined && { location }),
+      ...(bio !== undefined && { bio }),
+      ...(github !== undefined && { github }),
+      ...(linkedin !== undefined && { linkedin }),
+      ...(twitter !== undefined && { twitter }),
+    };
+
+    const updatedUser = await User.findByIdAndUpdate(user._id, updateData, {
+      new: true,
+      runValidators: true,
+    }).select("-passwordHash");
+
+    if (!updatedUser) {
+      return NextResponse.json({ error: "User profile record not found" }, { status: 404 });
+    }
+
     return NextResponse.json({
       success: true,
-      message: "Profile parameters saved successfully",
+      message: "Profile synchronized successfully",
       user: {
-        name: body.name || "AKASH",
-        department: body.department || "development",
+        id: updatedUser._id,
+        name: updatedUser.name,
+        email: updatedUser.email,
+        role: updatedUser.role,
+        department: updatedUser.department,
+        createdAt: updatedUser.createdAt,
+        bio: updatedUser.bio || "",
+        phone: updatedUser.phone || "",
+        location: updatedUser.location || "",
+        github: updatedUser.github || "",
+        linkedin: updatedUser.linkedin || "",
+        twitter: updatedUser.twitter || "",
       },
     });
   } catch (error: any) {
+    console.error("Profile update error in PATCH /api/auth/profile:", error);
     return NextResponse.json(
-      { success: false, error: error.message || "Failed to update profile" },
-      { status: 400 }
+      { error: "Internal server error", details: error.message },
+      { status: 500 }
     );
   }
 }
 
 export async function GET() {
   return NextResponse.json(
-    { error: "Use GET /api/auth/me or PATCH /api/auth/profile" },
+    { error: "Method not allowed. Use GET /api/auth/me or PATCH /api/auth/profile" },
     { status: 405 }
   );
 }
