@@ -17,7 +17,7 @@ export async function POST(req: Request) {
     if (password.length < 6) {
       return NextResponse.json(
         { error: "Password must be at least 6 characters long" },
-        { status: 400 },
+        { status: 400 }
       );
     }
 
@@ -61,7 +61,7 @@ export async function POST(req: Request) {
           department: newUser.department,
         },
       },
-      { status: 201 },
+      { status: 201 }
     );
   } catch (error: any) {
     return NextResponse.json({ error: error.message || "Internal Server Error" }, { status: 500 });

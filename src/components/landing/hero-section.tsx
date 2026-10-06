@@ -70,7 +70,7 @@ function AnimatedCounter({
 
 export function HeroSection() {
   const [activeTab, setActiveTab] = useState<"overview" | "sales" | "presales" | "finance">(
-    "overview",
+    "overview"
   );
 
   return (

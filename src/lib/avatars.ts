@@ -33,7 +33,7 @@ function hashSeed(seed: string): number {
 export function getDefaultAvatar(
   role?: string,
   department?: string,
-  seed: string = "user",
+  seed: string = "user"
 ): AvatarConfig {
   const userRole = role?.toLowerCase() || "user";
   const userDept = department?.toLowerCase() || "development";
