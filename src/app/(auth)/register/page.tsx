@@ -17,7 +17,7 @@ import {
   UserCheck,
   Shield,
 } from "lucide-react";
-import { toast } from "sonner";
+import { toast } from "@/lib/toast";
 
 const ROLES = [
   { id: "user", label: "Team Staff", icon: UserCheck, desc: "Department Access" },

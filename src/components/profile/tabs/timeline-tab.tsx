@@ -19,7 +19,7 @@ import {
   RefreshCw,
   SlidersHorizontal,
 } from "lucide-react";
-import { toast } from "sonner";
+import { toast } from "@/lib/toast";
 
 interface TimelineEvent {
   id: string;
@@ -157,12 +157,14 @@ export function TimelineTab() {
   const groupedDates = ["Today", "Yesterday", "Earlier This Week"] as const;
 
   return (
-    <div className="space-y-8">
+    <div className="w-full space-y-6 sm:space-y-8">
       {/* Header */}
       <div className="flex flex-col justify-between gap-4 border-b border-slate-100 pb-4 sm:flex-row sm:items-center">
         <div>
-          <div className="flex items-center gap-2">
-            <h2 className="text-lg font-bold text-slate-900">Activity & Audit Log Timeline</h2>
+          <div className="flex flex-wrap items-center gap-2">
+            <h2 className="text-base font-bold text-slate-900 sm:text-lg">
+              Activity & Audit Log Timeline
+            </h2>
             <span className="inline-flex items-center gap-1.5 rounded-full border border-emerald-200 bg-emerald-50 px-2.5 py-0.5 text-[11px] font-extrabold text-emerald-700">
               <span className="h-2 w-2 animate-pulse rounded-full bg-emerald-500" />
               Live Audit Active
@@ -189,7 +191,7 @@ export function TimelineTab() {
       {/* Filter & Search Bar */}
       <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
         {/* Category Pills (Horizontal Scroll on mobile) */}
-        <div className="flex scrollbar-none items-center gap-1.5 overflow-x-auto pb-1">
+        <div className="flex w-full scrollbar-none items-center gap-1.5 overflow-x-auto pb-1 [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
           {categories.map((cat) => (
             <button
               key={cat.id}
@@ -207,14 +209,14 @@ export function TimelineTab() {
         </div>
 
         {/* Search Input */}
-        <div className="relative flex min-w-55 items-center">
-          <Search className="absolute left-3.5 h-4 w-4 text-slate-400" />
+        <div className="relative flex w-full shrink-0 items-center md:w-64">
+          <Search className="absolute left-3.5 h-4 w-4 shrink-0 text-slate-400" />
           <input
             type="text"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             placeholder="Search activity log..."
-            className="w-full rounded-2xl border border-slate-200 bg-slate-50/60 py-2.5 pr-4 pl-10 text-xs font-semibold text-slate-900 placeholder-slate-400 focus:border-indigo-500 focus:bg-white focus:outline-none"
+            className="w-full rounded-2xl border border-slate-200 bg-slate-50/60 py-2.5 pr-4 pl-10 text-xs font-semibold text-slate-900 placeholder-slate-400 focus:border-indigo-500 focus:bg-white focus:outline-none sm:text-sm"
           />
         </div>
       </div>
@@ -236,27 +238,27 @@ export function TimelineTab() {
               </div>
 
               {/* Vertical Timeline Card Stream */}
-              <div className="relative space-y-4 pl-6 before:absolute before:top-3 before:bottom-3 before:left-2.5 before:w-0.5 before:bg-slate-200 sm:pl-8 sm:before:left-3.5">
+              <div className="relative space-y-4 pl-7 before:absolute before:top-3 before:bottom-3 before:left-3 before:w-0.5 before:bg-slate-200 sm:pl-10 sm:before:left-4">
                 {eventsInGroup.map((item) => {
                   const Icon = item.icon;
                   return (
                     <div key={item.id} className="group relative">
                       {/* Timeline Node Bullet */}
-                      <div className="absolute top-4 -left-6 flex h-6 w-6 items-center justify-center rounded-full border-2 border-indigo-600 bg-white shadow-2xs transition-transform group-hover:scale-110 sm:-left-8">
-                        <span className="h-2 w-2 rounded-full bg-indigo-600" />
+                      <div className="absolute top-4 -left-7 flex h-6 w-6 items-center justify-center rounded-full border-2 border-indigo-600 bg-white shadow-2xs transition-transform group-hover:scale-110 sm:-left-10 sm:h-7 sm:w-7">
+                        <span className="h-2 w-2 rounded-full bg-indigo-600 sm:h-2.5 sm:w-2.5" />
                       </div>
 
                       {/* Event Box Card */}
                       <div className="space-y-3 rounded-3xl border border-slate-200/80 bg-white p-4 shadow-2xs transition-all hover:border-indigo-200 hover:shadow-xs sm:p-5">
                         <div className="flex flex-col justify-between gap-2 border-b border-slate-100 pb-3 sm:flex-row sm:items-center">
-                          <div className="flex items-center gap-3">
+                          <div className="flex min-w-0 items-center gap-3">
                             <div
                               className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border ${item.iconBg}`}
                             >
                               <Icon className="h-5 w-5" />
                             </div>
-                            <div>
-                              <h3 className="text-sm font-bold text-slate-900 sm:text-base">
+                            <div className="min-w-0">
+                              <h3 className="truncate text-sm font-bold text-slate-900 sm:text-base">
                                 {item.title}
                               </h3>
                               <p className="text-xs font-semibold text-indigo-600">
@@ -265,7 +267,7 @@ export function TimelineTab() {
                             </div>
                           </div>
 
-                          <div className="flex items-center gap-2 self-start sm:self-center">
+                          <div className="flex shrink-0 items-center gap-2 self-start sm:self-center">
                             <span
                               className={`rounded-full border px-2.5 py-0.5 text-[10px] font-extrabold ${item.badgeBg}`}
                             >
@@ -284,14 +286,14 @@ export function TimelineTab() {
 
                         {/* Event Footer Meta & Action */}
                         <div className="flex flex-col justify-between gap-3 pt-2 text-xs sm:flex-row sm:items-center">
-                          <div className="flex flex-wrap items-center gap-3 font-medium text-slate-500">
+                          <div className="flex flex-wrap items-center gap-2 font-medium text-slate-500">
                             <span>
                               Actor: <strong className="text-slate-800">{item.user}</strong>
                             </span>
                             {item.ipLocation && (
                               <>
-                                <span>•</span>
-                                <span>{item.ipLocation}</span>
+                                <span className="hidden sm:inline">•</span>
+                                <span className="truncate">{item.ipLocation}</span>
                               </>
                             )}
                           </div>

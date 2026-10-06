@@ -29,7 +29,7 @@ import {
   PanelLeftClose,
   PanelLeftOpen,
 } from "lucide-react";
-import { toast } from "sonner";
+import { toast } from "@/lib/toast";
 import { canAccessRoute } from "@/lib/permissions";
 import { getDefaultAvatar } from "@/lib/avatars";
 
@@ -174,7 +174,6 @@ export function Sidebar({
   const userName = userData?.name || "Team Member";
   const userRoleDisplay = role === "admin" ? "ADMIN" : `${department.toUpperCase()}`;
 
-  // Get role-based default avatar configuration
   const avatarConfig = getDefaultAvatar(role, department, userName);
 
   const filteredGroups = navigationGroups
@@ -289,8 +288,8 @@ export function Sidebar({
           )}
         </div>
 
-        {/* Navigation Content */}
-        <div className="flex-1 scrollbar-thin space-y-4 overflow-y-auto px-3 py-4">
+        {/* Navigation Content with Internal Scrolling */}
+        <div className="min-h-0 flex-1 scrollbar-thin scrollbar-thumb-slate-200 space-y-4 overflow-y-auto px-3 py-4">
           {isCollapsed ? (
             /* Icon-Only Collapsed View */
             <div className="flex flex-col items-center space-y-2.5">
@@ -311,14 +310,14 @@ export function Sidebar({
                         href={item.href as any}
                         className={`relative flex h-11 w-11 items-center justify-center rounded-2xl transition-all duration-150 ${
                           isActive
-                            ? "bg-white text-slate-900 shadow-md shadow-indigo-600/15"
+                            ? "bg-indigo-50 text-indigo-700 shadow-md shadow-indigo-600/15"
                             : "text-slate-700 hover:bg-indigo-50/80 hover:text-indigo-600"
                         }`}
                       >
                         {isActive && (
                           <span className="absolute top-1/2 -left-2.5 h-6 w-1.5 -translate-y-1/2 rounded-r-full bg-indigo-600" />
                         )}
-                        <Icon className={`h-5 w-5 ${isActive ? "text-indigo-400" : ""}`} />
+                        <Icon className={`h-5 w-5 ${isActive ? "text-indigo-600" : ""}`} />
                         {item.badge && (
                           <span className="absolute -top-1 -right-1 flex h-4.5 w-4.5 items-center justify-center rounded-full bg-indigo-600 text-[10px] font-bold text-white ring-2 ring-white">
                             {item.badge}
@@ -364,19 +363,19 @@ export function Sidebar({
                       onClick={isMobile ? onCloseMobile : undefined}
                       className={`group relative flex items-center justify-between rounded-2xl px-3.5 py-3 text-sm font-semibold transition-all duration-150 ${
                         isActive
-                          ? "bg-white font-bold text-slate-900 shadow-md shadow-slate-900/10"
+                          ? "bg-indigo-50 font-bold text-indigo-950 shadow-md shadow-slate-900/10"
                           : "text-slate-700 hover:bg-indigo-50/70 hover:text-indigo-950"
                       }`}
                     >
                       <div className="flex items-center gap-3">
                         <Icon
                           className={`h-5 w-5 shrink-0 transition-transform duration-150 group-hover:scale-110 ${
-                            isActive ? "text-indigo-400" : "text-indigo-600"
+                            isActive ? "text-indigo-600" : "text-indigo-600"
                           }`}
                         />
                         <span>{item.name}</span>
                       </div>
-                      {isActive && <ChevronRight className="h-4 w-4 text-slate-400" />}
+                      {isActive && <ChevronRight className="h-4 w-4 text-indigo-600" />}
                     </Link>
                   </div>
                 );
@@ -547,7 +546,7 @@ export function Sidebar({
     <>
       {/* Desktop Permanent Sidebar */}
       <aside
-        className={`hidden transition-all duration-300 ease-in-out lg:sticky lg:top-0 lg:z-30 lg:flex lg:h-screen lg:flex-col ${
+        className={`hidden transition-all duration-300 ease-in-out lg:flex lg:h-full lg:flex-col ${
           collapsed ? "lg:w-20" : "lg:w-64 xl:w-72 2xl:w-80"
         }`}
       >

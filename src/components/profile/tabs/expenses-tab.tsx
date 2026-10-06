@@ -2,7 +2,7 @@
 "use client";
 
 import { DollarSign, Plus, Receipt, CheckCircle2, Clock, FileText } from "lucide-react";
-import { toast } from "sonner";
+import { toast } from "@/lib/toast";
 
 export function ExpensesTab() {
   const summaryMetrics = [

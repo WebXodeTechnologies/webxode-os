@@ -6,7 +6,7 @@ import { useRouter } from "next/navigation";
 import { AuthWrapper } from "@/components/auth/auth-wrapper";
 import { PasswordInput } from "@/components/auth/password-input";
 import { Mail, ArrowRight, Loader2, AlertCircle, Sparkles, KeyRound } from "lucide-react";
-import { toast } from "sonner";
+import { toast } from "@/lib/toast";
 
 export default function LoginPage() {
   const router = useRouter();
