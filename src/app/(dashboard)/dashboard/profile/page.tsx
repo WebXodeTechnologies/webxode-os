@@ -1,4 +1,3 @@
-// src/app/(dashboard)/dashboard/profile/page.tsx
 "use client";
 
 import { useState, useEffect } from "react";
@@ -25,17 +24,17 @@ export default function AdminProfilePage() {
   const [saving, setSaving] = useState(false);
 
   const [user, setUser] = useState<UserProfile>({
-    name: "AKASH",
-    email: "admin@webxode.com",
-    role: "admin",
-    department: "Development",
+    name: "",
+    email: "",
+    role: "user",
+    department: "development",
     createdAt: new Date().toISOString(),
-    bio: "Founder @ Webxode Technologies",
-    phone: "+91 9345336311",
-    location: "Namakkal",
-    github: "https://github.com/ak220193",
-    linkedin: "https://linkedin.com/in/akashsm-dev/",
-    twitter: "https://x.com/akashsm_dev",
+    bio: "",
+    phone: "",
+    location: "",
+    github: "",
+    linkedin: "",
+    twitter: "",
   });
 
   const [twoFactorEnabled, setTwoFactorEnabled] = useState(true);
@@ -47,14 +46,19 @@ export default function AdminProfilePage() {
       .then((res) => (res.ok ? res.json() : null))
       .then((data) => {
         if (data?.user) {
-          setUser((prev) => ({
-            ...prev,
-            name: data.user.name || prev.name,
-            email: data.user.email || prev.email,
-            role: data.user.role || prev.role,
-            department: data.user.department || prev.department,
-            createdAt: data.user.createdAt || prev.createdAt,
-          }));
+          setUser({
+            name: data.user.name || "Team Member",
+            email: data.user.email || "",
+            role: data.user.role || "user",
+            department: data.user.department || "development",
+            createdAt: data.user.createdAt || new Date().toISOString(),
+            bio: data.user.bio || "",
+            phone: data.user.phone || "",
+            location: data.user.location || "",
+            github: data.user.github || "",
+            linkedin: data.user.linkedin || "",
+            twitter: data.user.twitter || "",
+          });
         }
       })
       .catch(() => {
@@ -92,6 +96,20 @@ export default function AdminProfilePage() {
         throw new Error(data.error || `Failed to update profile (Status ${res.status})`);
       }
 
+      if (data?.user) {
+        setUser((prev) => ({
+          ...prev,
+          name: data.user.name || prev.name,
+          department: data.user.department || prev.department,
+          phone: data.user.phone ?? prev.phone,
+          location: data.user.location ?? prev.location,
+          bio: data.user.bio ?? prev.bio,
+          github: data.user.github ?? prev.github,
+          linkedin: data.user.linkedin ?? prev.linkedin,
+          twitter: data.user.twitter ?? prev.twitter,
+        }));
+      }
+
       toast.success("Profile Updated Successfully", {
         description: "Your Webxode OS administrative parameters are synchronized.",
       });
@@ -125,8 +143,8 @@ export default function AdminProfilePage() {
           <ProfileSidebar activeTab={activeTab} onSelectTab={setActiveTab} />
         </div>
 
-        {/* Active Tab Content Card */}
-        <div className="rounded-3xl border border-slate-200/80 bg-white p-4 shadow-sm min-[2560px]:col-span-10 min-[2560px]:p-16 sm:p-6 lg:p-8 xl:col-span-9 xl:p-10 2xl:col-span-9 2xl:p-12">
+        {/* Active Tab Content Card with Internal Vertical Scrollbar */}
+        <div className="max-h-150 scrollbar-thin scrollbar-thumb-slate-200 overflow-y-auto rounded-3xl border border-slate-200/80 bg-white p-4 shadow-sm hover:scrollbar-thumb-slate-300 min-[2560px]:col-span-10 min-[2560px]:p-12 sm:max-h-162.5 sm:p-6 lg:max-h-[calc(100vh-16rem)] lg:p-8 xl:col-span-9 xl:p-8 2xl:col-span-9 2xl:p-10">
           {activeTab === "general" && (
             <GeneralInfoTab
               user={user}

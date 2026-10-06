@@ -1,44 +1,41 @@
+// src/app/api/auth/me/route.ts
 import { NextResponse } from "next/server";
-import { cookies } from "next/headers";
-import { verifyToken } from "@/lib/auth";
 import { connectDB } from "@/lib/db";
 import { User } from "@/models/user.model";
+import { requireAuth } from "@/lib/rabc";
 
 export async function GET() {
   try {
-    const cookieStore = await cookies();
-    const token = cookieStore.get("webxode_token")?.value;
+    const { error, user } = await requireAuth();
 
-    if (!token) {
-      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+    if (error || !user) {
+      // Return unauthenticated response
+      return error || NextResponse.json({ error: "Unauthorized session" }, { status: 401 });
     }
 
-    const payload = verifyToken(token);
-    if (!payload) {
-      return NextResponse.json({ error: "Invalid session token" }, { status: 401 });
-    }
-
-    await connectDB();
-    const user = await User.findById(payload.userId).select("-passwordHash");
-    if (!user) {
-      // Return payload data if user record not found in DB
-      return NextResponse.json(
-        {
-          success: true,
-          user: {
-            id: payload.userId,
-            name: payload.name || "Akash S M",
-            email: payload.email || "akash@webxode.com",
-            role: payload.role || "admin",
-            department: "Engineering",
-          },
+    return NextResponse.json(
+      {
+        success: true,
+        user: {
+          id: user._id,
+          name: user.name,
+          email: user.email,
+          role: user.role,
+          department: user.department,
+          isActive: user.isActive,
+          createdAt: user.createdAt,
+          bio: user.bio || "",
+          phone: user.phone || "",
+          location: user.location || "",
+          github: user.github || "",
+          linkedin: user.linkedin || "",
+          twitter: user.twitter || "",
         },
-        { status: 200 }
-      );
-    }
-
-    return NextResponse.json({ success: true, user }, { status: 200 });
+      },
+      { status: 200 }
+    );
   } catch (error: any) {
+    console.error("Error in GET /api/auth/me:", error);
     return NextResponse.json({ error: error.message || "Internal Server Error" }, { status: 500 });
   }
 }

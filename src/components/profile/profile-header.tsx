@@ -126,23 +126,29 @@ export function ProfileHeader({ user, onEditClick }: ProfileHeaderProps) {
         </div>
       </div>
 
-      {/* LIGHT THEME ADMIN STATS STRIP */}
+      {/* DYNAMIC ROLE & WORKSPACE STATS STRIP */}
       <div className="mt-8 grid grid-cols-2 gap-3 border-t border-slate-200/80 pt-6 sm:grid-cols-4">
         <div className="rounded-2xl border border-slate-200/80 bg-white p-3.5 shadow-2xs">
-          <p className="text-[11px] font-bold text-slate-500">Admin Authority Level</p>
-          <p className="mt-0.5 text-lg font-extrabold text-emerald-700">Super Administrator</p>
+          <p className="text-[11px] font-bold text-slate-500">Account Authority</p>
+          <p className="mt-0.5 text-base font-extrabold text-emerald-700 capitalize sm:text-lg">
+            {user.role === "admin" ? "Super Administrator" : `${user.role} Member`}
+          </p>
         </div>
         <div className="rounded-2xl border border-slate-200/80 bg-white p-3.5 shadow-2xs">
-          <p className="text-[11px] font-bold text-slate-500">Managed Workspaces</p>
-          <p className="mt-0.5 text-lg font-extrabold text-slate-900">5 Departments</p>
+          <p className="text-[11px] font-bold text-slate-500">Assigned Department</p>
+          <p className="mt-0.5 text-base font-extrabold text-slate-900 capitalize sm:text-lg">
+            {user.department || "Development"}
+          </p>
         </div>
         <div className="rounded-2xl border border-slate-200/80 bg-white p-3.5 shadow-2xs">
           <p className="text-[11px] font-bold text-slate-500">Security & Governance</p>
-          <p className="mt-0.5 text-lg font-extrabold text-indigo-700">Full System Root</p>
+          <p className="mt-0.5 text-base font-extrabold text-indigo-700 sm:text-lg">
+            {user.role === "admin" ? "Full System Root" : "Standard User"}
+          </p>
         </div>
         <div className="rounded-2xl border border-slate-200/80 bg-white p-3.5 shadow-2xs">
           <p className="text-[11px] font-bold text-slate-500">System Availability</p>
-          <p className="mt-0.5 text-lg font-extrabold text-cyan-700">99.98% Uptime</p>
+          <p className="mt-0.5 text-base font-extrabold text-cyan-700 sm:text-lg">99.98% Uptime</p>
         </div>
       </div>
     </div>

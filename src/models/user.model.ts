@@ -8,6 +8,12 @@ export interface IUser extends Document {
   role: "admin" | "user";
   department: "sales" | "development" | "revenue" | "hr" | "general";
   isActive: boolean;
+  bio?: string;
+  phone?: string;
+  location?: string;
+  github?: string;
+  linkedin?: string;
+  twitter?: string;
   createdAt: Date;
   updatedAt: Date;
 }
@@ -43,8 +49,16 @@ const UserSchema = new Schema<IUser>(
       },
     },
     isActive: { type: Boolean, default: true },
+    bio: { type: String, default: "" },
+    phone: { type: String, default: "" },
+    location: { type: String, default: "" },
+    github: { type: String, default: "" },
+    linkedin: { type: String, default: "" },
+    twitter: { type: String, default: "" },
   },
   { timestamps: true }
 );
 
 export const User: Model<IUser> = mongoose.models.User || mongoose.model<IUser>("User", UserSchema);
+
+export default User;
