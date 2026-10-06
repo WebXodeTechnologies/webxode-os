@@ -90,7 +90,7 @@ export function HeroSection() {
             Webxode OS 2.0 Engine
           </span>
           <span className="h-1.5 w-1.5 rounded-full bg-indigo-500" />
-          <span className="text-slate-500 dark:text-slate-400">Command & Control Workspace</span>
+          <span className="text-black dark:text-white">Command & Control Workspace</span>
           <ChevronRight className="h-3.5 w-3.5 text-slate-400 dark:text-slate-500" />
         </div>
 

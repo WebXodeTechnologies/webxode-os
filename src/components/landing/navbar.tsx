@@ -104,7 +104,7 @@ export function Navbar() {
                 </span>
                 <span
                   className={`text-[10px] font-medium tracking-wider uppercase ${
-                    isDark ? "text-slate-400" : "text-slate-500"
+                    isDark ? "text-white" : "text-black"
                   }`}
                 >
                   Enterprise v2.0
