@@ -46,20 +46,33 @@ export default function AdminProfilePage() {
     fetch("/api/auth/me")
       .then((res) => (res.ok ? res.json() : null))
       .then((data) => {
-        if (data?.user) {
+        // Handle both standard { user: ... } and direct user object responses
+        const userData = data?.user || data;
+        if (userData) {
           setUser({
-            name: data.user.name || "Team Member",
-            email: data.user.email || "",
-            role: data.user.role || "user",
-            department: data.user.department || "development",
-            createdAt: data.user.createdAt || new Date().toISOString(),
-            bio: data.user.bio || "",
-            phone: data.user.phone || "",
-            location: data.user.location || "",
-            github: data.user.github || "",
-            linkedin: data.user.linkedin || "",
-            twitter: data.user.twitter || "",
+            name: userData.name || "Team Member",
+            email: userData.email || "",
+            role: userData.role || "user",
+            department: userData.department || "development",
+            createdAt: userData.createdAt || new Date().toISOString(),
+            bio: userData.bio || "",
+            phone: userData.phone || "",
+            location: userData.location || "",
+            github: userData.github || "",
+            linkedin: userData.linkedin || "",
+            twitter: userData.twitter || "",
           });
+
+          // Sync secondary states if present in user document
+          if (userData.security?.twoFactorEnabled !== undefined) {
+            setTwoFactorEnabled(userData.security.twoFactorEnabled);
+          }
+          if (userData.preferences?.emailAlerts !== undefined) {
+            setEmailAlerts(userData.preferences.emailAlerts);
+          }
+          if (userData.preferences?.darkAccents !== undefined) {
+            setDarkAccents(userData.preferences.darkAccents);
+          }
         }
       })
       .catch(() => {

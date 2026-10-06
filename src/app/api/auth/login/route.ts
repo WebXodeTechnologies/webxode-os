@@ -1,3 +1,4 @@
+// src/app/api/auth/login/route.ts
 import { NextResponse } from "next/server";
 import { connectDB } from "@/lib/db";
 import { User } from "@/models/user.model";
@@ -32,6 +33,19 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: "Invalid email or password" }, { status: 401 });
     }
 
+    // NEW: If 2FA is enabled, pause login and signal frontend to request 6-digit code
+    if (user.security?.twoFactorEnabled) {
+      return NextResponse.json(
+        {
+          requires2FA: true,
+          userId: user._id.toString(),
+          message: "Please enter your Google Authenticator 2FA code",
+        },
+        { status: 200 }
+      );
+    }
+
+    // Normal Login Flow (2FA disabled)
     const token = signToken({
       userId: user._id.toString(),
       email: user.email,

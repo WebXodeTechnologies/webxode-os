@@ -14,6 +14,15 @@ export interface IUser extends Document {
   github?: string;
   linkedin?: string;
   twitter?: string;
+  preferences?: {
+    darkAccents?: boolean;
+    emailAlerts?: boolean;
+  };
+  security?: {
+    twoFactorSecret: any;
+    twoFactorEnabled?: boolean;
+    passwordLastChanged?: Date;
+  };
   createdAt: Date;
   updatedAt: Date;
 }
@@ -55,6 +64,15 @@ const UserSchema = new Schema<IUser>(
     github: { type: String, default: "" },
     linkedin: { type: String, default: "" },
     twitter: { type: String, default: "" },
+    preferences: {
+      darkAccents: { type: Boolean, default: true },
+      emailAlerts: { type: Boolean, default: true },
+    },
+    security: {
+      twoFactorEnabled: { type: Boolean, default: false },
+      twoFactorSecret: { type: String, default: null },
+      passwordLastChanged: { type: Date, default: Date.now },
+    },
   },
   { timestamps: true }
 );
