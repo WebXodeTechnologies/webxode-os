@@ -33,7 +33,7 @@ export async function GET() {
             department: "Engineering",
           },
         },
-        { status: 200 },
+        { status: 200 }
       );
     }
 

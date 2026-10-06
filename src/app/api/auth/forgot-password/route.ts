@@ -15,7 +15,7 @@ export async function POST(req: Request) {
     if (newPassword.length < 6) {
       return NextResponse.json(
         { error: "Password must be at least 6 characters long" },
-        { status: 400 },
+        { status: 400 }
       );
     }
 
@@ -23,7 +23,7 @@ export async function POST(req: Request) {
     if (!user) {
       return NextResponse.json(
         { error: "No account found with this email address" },
-        { status: 404 },
+        { status: 404 }
       );
     }
 
@@ -33,7 +33,7 @@ export async function POST(req: Request) {
 
     return NextResponse.json(
       { success: true, message: "Password successfully reset" },
-      { status: 200 },
+      { status: 200 }
     );
   } catch (error: any) {
     return NextResponse.json({ error: error.message || "Internal Server Error" }, { status: 500 });

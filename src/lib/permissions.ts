@@ -45,6 +45,6 @@ export function canAccessRoute(role: string, department: string, pathname: strin
   const allowedRoutes = DEPARTMENT_ROUTES[department] || DEPARTMENT_ROUTES["general"];
 
   return allowedRoutes.some(
-    (route) => pathname === route || (route !== "/dashboard" && pathname.startsWith(route)),
+    (route) => pathname === route || (route !== "/dashboard" && pathname.startsWith(route))
   );
 }

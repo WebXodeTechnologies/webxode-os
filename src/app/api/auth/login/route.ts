@@ -23,7 +23,7 @@ export async function POST(req: Request) {
     if (!user.isActive) {
       return NextResponse.json(
         { error: "Your account is deactivated. Please contact your administrator." },
-        { status: 403 },
+        { status: 403 }
       );
     }
 
@@ -54,7 +54,7 @@ export async function POST(req: Request) {
           department: user.department,
         },
       },
-      { status: 200 },
+      { status: 200 }
     );
   } catch (error: any) {
     return NextResponse.json({ error: error.message || "Internal Server Error" }, { status: 500 });

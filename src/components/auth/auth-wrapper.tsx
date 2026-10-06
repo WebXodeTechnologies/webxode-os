@@ -28,7 +28,7 @@ interface AuthWrapperProps {
 
 export function AuthWrapper({ children, title, subtitle, activeTab }: AuthWrapperProps) {
   const [activeShowcaseTab, setActiveShowcaseTab] = useState<"workspace" | "insights" | "security">(
-    "workspace",
+    "workspace"
   );
 
   // Auto-cycle showcase tabs for smooth subtle animation
