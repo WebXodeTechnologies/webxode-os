@@ -1,6 +1,7 @@
 "use client";
 
 import { ReactNode, useEffect } from "react";
+import { usePathname } from "next/navigation";
 import Lenis from "lenis";
 
 interface LenisProviderProps {
@@ -8,7 +9,14 @@ interface LenisProviderProps {
 }
 
 export function LenisProvider({ children }: LenisProviderProps) {
+  const pathname = usePathname();
+
   useEffect(() => {
+    // Disable Lenis smooth scroll on dashboard workspace routes to allow native mouse wheel scrolling in internal tab containers
+    if (pathname?.startsWith("/dashboard")) {
+      return;
+    }
+
     const lenis = new Lenis({
       duration: 1.2,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
@@ -32,7 +40,7 @@ export function LenisProvider({ children }: LenisProviderProps) {
       cancelAnimationFrame(rafId);
       lenis.destroy();
     };
-  }, []);
+  }, [pathname]);
 
   return <>{children}</>;
 }

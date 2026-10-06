@@ -21,7 +21,7 @@ import {
 } from "lucide-react";
 import Image from "next/image";
 import { getDefaultAvatar } from "@/lib/avatars";
-import { toast } from "sonner";
+import { toast } from "@/lib/toast";
 
 interface WorkLog {
   id: string;

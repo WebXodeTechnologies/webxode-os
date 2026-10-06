@@ -6,7 +6,7 @@ import { useRouter } from "next/navigation";
 import { AuthWrapper } from "@/components/auth/auth-wrapper";
 import { PasswordInput } from "@/components/auth/password-input";
 import { Mail, ArrowRight, Loader2, AlertCircle, CheckCircle2, RefreshCw } from "lucide-react";
-import { toast } from "sonner";
+import { toast } from "@/lib/toast";
 
 export default function ForgotPasswordPage() {
   const router = useRouter();

@@ -1,8 +1,9 @@
+// src/app/(dashboard)/dashboard/profile/page.tsx
 "use client";
 
 import { useState, useEffect } from "react";
 import { Activity } from "lucide-react";
-import { toast } from "sonner";
+import { toast } from "@/lib/toast";
 import { UserProfile } from "@/components/profile/types";
 import { ProfileHeader } from "@/components/profile/profile-header";
 import { ProfileSidebar } from "@/components/profile/profile-sidebar";
@@ -132,64 +133,74 @@ export default function AdminProfilePage() {
   }
 
   return (
-    <div className="mx-auto w-full max-w-7xl space-y-6 px-0 pb-2 transition-all min-[1920px]:max-w-[115rem] min-[2560px]:max-w-[140rem] sm:space-y-8 sm:px-2 sm:pb-4 md:px-4 lg:space-y-8 xl:max-w-360 xl:px-6 2xl:max-w-[100rem] 2xl:px-8">
-      {/* Header Cover Banner & Admin Stats Strip */}
-      <ProfileHeader user={user} onEditClick={() => setActiveTab("general")} />
+    <div className="mx-auto flex h-full min-h-0 w-full max-w-7xl flex-1 flex-col space-y-4 px-3 pb-2 transition-all xl:max-w-360 xl:px-8">
+      {/* Header Cover Banner & Admin Stats Strip (Stays static at top) */}
+      <div className="shrink-0">
+        <ProfileHeader user={user} onEditClick={() => setActiveTab("general")} />
+      </div>
 
-      {/* Main Multi-Breakpoint Grid Layout across sm, md, lg (1024px laptop), xl, 2xl, 4xl */}
-      <div className="grid grid-cols-1 gap-6 xl:grid-cols-12 xl:gap-8">
-        {/* Navigation Sidebar (Mobile & Laptop Horizontal Pill Bar, Vertical Sidebar on XL+ Desktop) */}
-        <div className="min-[2560px]:col-span-2 xl:col-span-3 2xl:col-span-3">
+      {/* Main Multi-Breakpoint Grid Layout */}
+      <div className="grid min-h-0 flex-1 grid-cols-1 grid-rows-[auto_1fr] gap-6 xl:grid-cols-12 xl:grid-rows-none xl:gap-8">
+        {/* Navigation Sidebar (Sticky horizontal pill bar on mobile/laptop, pinned vertical sidebar on desktop) */}
+        <div
+          data-lenis-prevent
+          className="shrink-0 xl:col-span-3 xl:h-full xl:min-h-0 xl:overflow-y-auto 2xl:col-span-3"
+        >
           <ProfileSidebar activeTab={activeTab} onSelectTab={setActiveTab} />
         </div>
 
-        {/* Active Tab Content Card with Internal Vertical Scrollbar */}
-        <div className="max-h-150 scrollbar-thin scrollbar-thumb-slate-200 overflow-y-auto rounded-3xl border border-slate-200/80 bg-white p-4 shadow-sm hover:scrollbar-thumb-slate-300 min-[2560px]:col-span-10 min-[2560px]:p-12 sm:max-h-162.5 sm:p-6 lg:max-h-[calc(100vh-16rem)] lg:p-8 xl:col-span-9 xl:p-8 2xl:col-span-9 2xl:p-10">
-          {activeTab === "general" && (
-            <GeneralInfoTab
-              user={user}
-              onChangeUser={setUser}
-              onSave={handleSave}
-              saving={saving}
-            />
-          )}
+        {/* Active Tab Content Card with Internal Mouse Wheel Scrollbar */}
+        <div className="flex h-full min-h-0 w-full max-w-full flex-col overflow-hidden rounded-3xl border border-slate-200/80 bg-white shadow-sm xl:col-span-9">
+          <div
+            data-lenis-prevent
+            className="min-h-0 flex-1 touch-pan-y scrollbar-thin scrollbar-thumb-slate-200 overflow-y-auto overscroll-contain p-4 hover:scrollbar-thumb-slate-300 sm:p-6 xl:p-8"
+          >
+            {activeTab === "general" && (
+              <GeneralInfoTab
+                user={user}
+                onChangeUser={setUser}
+                onSave={handleSave}
+                saving={saving}
+              />
+            )}
 
-          {activeTab === "timeline" && <TimelineTab />}
+            {activeTab === "timeline" && <TimelineTab />}
 
-          {activeTab === "social" && (
-            <SocialTab user={user} onChangeUser={setUser} onSave={handleSave} saving={saving} />
-          )}
+            {activeTab === "social" && (
+              <SocialTab user={user} onChangeUser={setUser} onSave={handleSave} saving={saving} />
+            )}
 
-          {activeTab === "account" && (
-            <SecurityTab
-              twoFactorEnabled={twoFactorEnabled}
-              onToggleTwoFactor={() => {
-                setTwoFactorEnabled(!twoFactorEnabled);
-                toast.success(twoFactorEnabled ? "2FA Disabled" : "2FA Enabled");
-              }}
-            />
-          )}
+            {activeTab === "account" && (
+              <SecurityTab
+                twoFactorEnabled={twoFactorEnabled}
+                onToggleTwoFactor={() => {
+                  setTwoFactorEnabled(!twoFactorEnabled);
+                  toast.success(twoFactorEnabled ? "2FA Disabled" : "2FA Enabled");
+                }}
+              />
+            )}
 
-          {activeTab === "job" && <JobTab />}
+            {activeTab === "job" && <JobTab />}
 
-          {activeTab === "projects" && <ProjectsTab />}
+            {activeTab === "projects" && <ProjectsTab />}
 
-          {activeTab === "files" && <FilesTab />}
+            {activeTab === "files" && <FilesTab />}
 
-          {(activeTab === "timesheets" || activeTab === "timecards") && <TimesheetsTab />}
+            {(activeTab === "timesheets" || activeTab === "timecards") && <TimesheetsTab />}
 
-          {activeTab === "leave" && <LeaveTab />}
+            {activeTab === "leave" && <LeaveTab />}
 
-          {activeTab === "expenses" && <ExpensesTab />}
+            {activeTab === "expenses" && <ExpensesTab />}
 
-          {(activeTab === "preferences" || activeTab === "menu") && (
-            <PreferencesTab
-              darkAccents={darkAccents}
-              onToggleDarkAccents={() => setDarkAccents(!darkAccents)}
-              emailAlerts={emailAlerts}
-              onToggleEmailAlerts={() => setEmailAlerts(!emailAlerts)}
-            />
-          )}
+            {(activeTab === "preferences" || activeTab === "menu") && (
+              <PreferencesTab
+                darkAccents={darkAccents}
+                onToggleDarkAccents={() => setDarkAccents(!darkAccents)}
+                emailAlerts={emailAlerts}
+                onToggleEmailAlerts={() => setEmailAlerts(!emailAlerts)}
+              />
+            )}
+          </div>
         </div>
       </div>
     </div>

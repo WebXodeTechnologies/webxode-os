@@ -3,7 +3,7 @@
 
 import { useState } from "react";
 import { Sliders, Bell, Eye, Volume2, Layout, Save, Check } from "lucide-react";
-import { toast } from "sonner";
+import { toast } from "@/lib/toast";
 
 interface PreferencesTabProps {
   darkAccents: boolean;
