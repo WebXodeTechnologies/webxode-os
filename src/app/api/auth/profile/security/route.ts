@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import bcrypt from "bcryptjs";
 import { connectDB } from "@/lib/db";
 import { User } from "@/models/user.model";
-import { requireAuth } from "@/lib/rabc";
+import { requireAuth } from "@/lib/rbac";
 
 export async function PATCH(req: Request) {
   try {
