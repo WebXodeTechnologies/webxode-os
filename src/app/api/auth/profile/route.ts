@@ -1,8 +1,6 @@
-// src/app/api/auth/profile/route.ts
 import { NextResponse } from "next/server";
-import { connectDB } from "@/lib/db";
-import { User } from "@/models/user.model";
 import { requireAuth } from "@/lib/rbac";
+import { UserService } from "@/modules/users/user.service";
 
 export async function PATCH(req: Request) {
   try {
@@ -18,9 +16,8 @@ export async function PATCH(req: Request) {
       return NextResponse.json({ error: "Name is required" }, { status: 400 });
     }
 
-    // 3. Connect DB & Update User Document in MongoDB
-    await connectDB();
-    const updateData: Record<string, any> = {
+    // 3. Delegate update operation to the UserService
+    const updateData = {
       name: name.trim(),
       ...(department && { department }),
       ...(phone !== undefined && { phone }),
@@ -31,14 +28,7 @@ export async function PATCH(req: Request) {
       ...(twitter !== undefined && { twitter }),
     };
 
-    const updatedUser = await User.findByIdAndUpdate(user._id, updateData, {
-      new: true,
-      runValidators: true,
-    }).select("-passwordHash");
-
-    if (!updatedUser) {
-      return NextResponse.json({ error: "User profile record not found" }, { status: 404 });
-    }
+    const updatedUser = await UserService.updateProfile(user._id, updateData);
 
     return NextResponse.json({
       success: true,
