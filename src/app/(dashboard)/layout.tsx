@@ -10,8 +10,8 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
 
   return (
-    <div className="flex h-screen w-full overflow-hidden bg-[#f8fafc] font-sans text-slate-900 antialiased selection:bg-indigo-500 selection:text-white">
-      {/* React Hot Toast Provider configured for top-center position */}
+    <div className="fixed flex h-screen w-full overflow-auto bg-slate-50/80 font-sans text-slate-900 antialiased selection:bg-indigo-500 selection:text-white">
+      {/* React Hot Toast Provider */}
       <Toaster
         position="top-center"
         reverseOrder={false}
@@ -29,22 +29,10 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
             fontSize: "0.875rem",
             fontWeight: "600",
           },
-          success: {
-            iconTheme: {
-              primary: "#6366f1",
-              secondary: "#ffffff",
-            },
-          },
-          error: {
-            iconTheme: {
-              primary: "#ef4444",
-              secondary: "#ffffff",
-            },
-          },
         }}
       />
 
-      {/* Sidebar Component (Desktop Sticky + Mobile Drawer) */}
+      {/* Sidebar Component */}
       <Sidebar
         mobileOpen={mobileMenuOpen}
         onCloseMobile={() => setMobileMenuOpen(false)}
@@ -52,15 +40,13 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
         onToggleCollapse={() => setSidebarCollapsed(!sidebarCollapsed)}
       />
 
-      {/* Right Content Column (Pinned Navbar + Scrollable Main Viewport) */}
-      <div className="flex min-w-0 flex-1 flex-col overflow-hidden">
+      {/* Right Content Column with Smooth Scrollable Main Container */}
+      <div className="flex min-w-0 flex-1 flex-col">
         <Navbar onOpenMobileMenu={() => setMobileMenuOpen(true)} />
 
-        {/* Main Viewport Container (Scrolling handled by inner page containers) */}
-        <main data-lenis-prevent className="flex min-h-0 flex-1 flex-col p-4 sm:p-6 lg:p-8">
-          <div className="mx-auto flex min-h-0 w-full max-w-[105rem] flex-1 flex-col">
-            {children}
-          </div>
+        {/* Main Content Area */}
+        <main className="flex-1 p-4 focus:outline-none sm:p-6 lg:p-8">
+          <div className="mx-auto w-full max-w-[110rem] space-y-6">{children}</div>
         </main>
       </div>
     </div>
