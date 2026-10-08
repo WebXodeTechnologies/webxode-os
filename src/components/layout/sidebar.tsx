@@ -546,7 +546,7 @@ export function Sidebar({
     <>
       {/* Desktop Permanent Sidebar */}
       <aside
-        className={`hidden transition-all duration-300 ease-in-out lg:flex lg:h-full lg:flex-col ${
+        className={`sticky top-0 hidden transition-all duration-300 ease-in-out lg:flex lg:h-screen lg:flex-col ${
           collapsed ? "lg:w-20" : "lg:w-64 xl:w-72 2xl:w-80"
         }`}
       >
