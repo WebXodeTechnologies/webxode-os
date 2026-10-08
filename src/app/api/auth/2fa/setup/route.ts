@@ -3,7 +3,7 @@ import { generateSecret, generateURI } from "otplib";
 import QRCode from "qrcode";
 import { connectDB } from "@/lib/db";
 import { User } from "@/models/user.model";
-import { requireAuth } from "@/lib/rabc";
+import { requireAuth } from "@/lib/rbac";
 
 export async function POST() {
   try {
