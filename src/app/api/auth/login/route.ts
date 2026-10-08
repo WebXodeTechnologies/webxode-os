@@ -1,39 +1,27 @@
-// src/app/api/auth/login/route.ts
 import { NextResponse } from "next/server";
-import { connectDB } from "@/lib/db";
-import { User } from "@/models/user.model";
-import bcrypt from "bcryptjs";
+import { AuthService } from "@/modules/auth/auth.service";
+import { loginSchema } from "@/modules/auth/auth.validation";
 import { signToken, setAuthCookie } from "@/lib/auth";
 
 export async function POST(req: Request) {
   try {
-    await connectDB();
-    const { email, password } = await req.json();
+    const body = await req.json();
 
-    if (!email || !password) {
-      return NextResponse.json({ error: "Email and password are required" }, { status: 400 });
-    }
-
-    const cleanEmail = email.toLowerCase().trim();
-
-    const user = await User.findOne({ email: cleanEmail });
-    if (!user) {
-      return NextResponse.json({ error: "Invalid email or password" }, { status: 401 });
-    }
-
-    if (!user.isActive) {
+    // 1. Validate incoming login payload using Zod
+    const validationResult = loginSchema.safeParse(body);
+    if (!validationResult.success) {
       return NextResponse.json(
-        { error: "Your account is deactivated. Please contact your administrator." },
-        { status: 403 }
+        { error: validationResult.error.issues[0].message },
+        { status: 400 }
       );
     }
 
-    const isMatch = await bcrypt.compare(password, user.passwordHash);
-    if (!isMatch) {
-      return NextResponse.json({ error: "Invalid email or password" }, { status: 401 });
-    }
+    const { email, password } = validationResult.data;
 
-    // NEW: If 2FA is enabled, pause login and signal frontend to request 6-digit code
+    // 2. Authenticate using AuthService
+    const user = await AuthService.login(email, password);
+
+    // 3. If 2FA is enabled, pause login and signal frontend to request 6-digit code
     if (user.security?.twoFactorEnabled) {
       return NextResponse.json(
         {
@@ -45,7 +33,7 @@ export async function POST(req: Request) {
       );
     }
 
-    // Normal Login Flow (2FA disabled)
+    // 4. Normal Login Flow (2FA disabled)
     const token = signToken({
       userId: user._id.toString(),
       email: user.email,
@@ -71,6 +59,11 @@ export async function POST(req: Request) {
       { status: 200 }
     );
   } catch (error: any) {
-    return NextResponse.json({ error: error.message || "Internal Server Error" }, { status: 500 });
+    const status = error.message.includes("Invalid")
+      ? 401
+      : error.message.includes("deactivated")
+        ? 403
+        : 500;
+    return NextResponse.json({ error: error.message || "Internal Server Error" }, { status });
   }
 }

@@ -1,7 +1,4 @@
-// src/app/api/auth/me/route.ts
 import { NextResponse } from "next/server";
-import { connectDB } from "@/lib/db";
-import { User } from "@/models/user.model";
 import { requireAuth } from "@/lib/rbac";
 
 export async function GET() {
@@ -9,7 +6,6 @@ export async function GET() {
     const { error, user } = await requireAuth();
 
     if (error || !user) {
-      // Return unauthenticated response
       return error || NextResponse.json({ error: "Unauthorized session" }, { status: 401 });
     }
 
