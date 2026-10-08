@@ -1,44 +1,27 @@
-// src/app/api/auth/register/route.ts
 import { NextResponse } from "next/server";
-import { connectDB } from "@/lib/db";
-import { User } from "@/models/user.model";
-import bcrypt from "bcryptjs";
+import { AuthService } from "@/modules/auth/auth.service";
+import { registerSchema } from "@/modules/auth/auth.validation";
 import { signToken, setAuthCookie } from "@/lib/auth";
 
 export async function POST(req: Request) {
   try {
-    await connectDB();
-    const { name, email, password, role, department } = await req.json();
+    const body = await req.json();
 
-    if (!name || !email || !password) {
-      return NextResponse.json({ error: "Missing required fields" }, { status: 400 });
-    }
-
-    if (password.length < 6) {
+    // 1. Validate incoming payload using Zod
+    const validationResult = registerSchema.safeParse(body);
+    if (!validationResult.success) {
       return NextResponse.json(
-        { error: "Password must be at least 6 characters long" },
+        { error: validationResult.error.issues[0].message }, // Fixed from .errors to .issues
         { status: 400 }
       );
     }
 
-    const cleanEmail = email.toLowerCase().trim();
+    const { name, email, password, role, department } = validationResult.data;
 
-    const existingUser = await User.findOne({ email: cleanEmail });
-    if (existingUser) {
-      return NextResponse.json({ error: "User with this email already exists" }, { status: 409 });
-    }
+    // 2. Delegate registration logic to AuthService
+    const newUser: any = await AuthService.register({ name, email, password, role, department });
 
-    const salt = await bcrypt.genSalt(10);
-    const passwordHash = await bcrypt.hash(password, salt);
-
-    const newUser = await User.create({
-      name: name.trim(),
-      email: cleanEmail,
-      passwordHash,
-      role: role || "user",
-      department: department || "development",
-    });
-
+    // 3. Issue session token & cookie
     const token = signToken({
       userId: newUser._id.toString(),
       email: newUser.email,
@@ -64,6 +47,7 @@ export async function POST(req: Request) {
       { status: 201 }
     );
   } catch (error: any) {
-    return NextResponse.json({ error: error.message || "Internal Server Error" }, { status: 500 });
+    const status = error.message.includes("already exists") ? 409 : 500;
+    return NextResponse.json({ error: error.message || "Internal Server Error" }, { status });
   }
 }

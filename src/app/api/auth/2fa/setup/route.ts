@@ -1,43 +1,43 @@
 import { NextResponse } from "next/server";
-import { generateSecret, generateURI } from "otplib";
-import QRCode from "qrcode";
-import { connectDB } from "@/lib/db";
-import { User } from "@/models/user.model";
-import { requireAuth } from "@/lib/rbac";
+import { AuthService } from "@/modules/auth/auth.service";
+import { signToken, setAuthCookie } from "@/lib/auth";
 
-export async function POST() {
+export async function POST(req: Request) {
   try {
-    const { error, user } = await requireAuth();
-    if (error || !user) return error;
+    const { userId, token } = await req.json();
 
-    await connectDB();
-    const dbUser = await User.findById(user._id);
-    if (!dbUser) return NextResponse.json({ error: "User not found" }, { status: 404 });
+    if (!userId || !token) {
+      return NextResponse.json(
+        { error: "Missing user identification or 2FA token" },
+        { status: 400 }
+      );
+    }
 
-    // Generate a unique secret using otplib
-    const secret = generateSecret();
+    const user = await AuthService.verify2FA(userId, token);
 
-    // Save secret securely using dot-notation to bypass subdocument strict type rules
-    dbUser.set("security.twoFactorSecret", secret);
-    dbUser.set("security.twoFactorEnabled", false);
-    await dbUser.save();
-
-    // Create OTP auth URI for Google Authenticator apps
-    const otpauth = generateURI({
-      issuer: "WebxodeOS",
-      label: dbUser.email,
-      secret,
+    const authToken = signToken({
+      userId: user._id.toString(),
+      email: user.email,
+      role: user.role,
+      name: user.name,
+      department: user.department,
     });
 
-    // Generate QR code data URL to render on the frontend
-    const qrCodeUrl = await QRCode.toDataURL(otpauth);
+    await setAuthCookie(authToken);
 
     return NextResponse.json({
       success: true,
-      secret,
-      qrCodeUrl,
+      message: "2FA verification successful",
+      user: {
+        id: user._id,
+        name: user.name,
+        email: user.email,
+        role: user.role,
+        department: user.department,
+      },
     });
   } catch (error: any) {
-    return NextResponse.json({ error: error.message }, { status: 500 });
+    const status = error.message.includes("not found") ? 404 : 400;
+    return NextResponse.json({ error: error.message || "Internal Server Error" }, { status });
   }
 }

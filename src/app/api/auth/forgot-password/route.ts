@@ -1,11 +1,8 @@
 import { NextResponse } from "next/server";
-import { connectDB } from "@/lib/db";
-import { User } from "@/models/user.model";
-import bcrypt from "bcryptjs";
+import { AuthService } from "@/modules/auth/auth.service";
 
 export async function POST(req: Request) {
   try {
-    await connectDB();
     const { email, newPassword } = await req.json();
 
     if (!email || !newPassword) {
@@ -19,23 +16,14 @@ export async function POST(req: Request) {
       );
     }
 
-    const user = await User.findOne({ email: email.toLowerCase().trim() });
-    if (!user) {
-      return NextResponse.json(
-        { error: "No account found with this email address" },
-        { status: 404 }
-      );
-    }
-
-    const salt = await bcrypt.genSalt(10);
-    user.passwordHash = await bcrypt.hash(newPassword, salt);
-    await user.save();
+    await AuthService.resetPassword(email, newPassword);
 
     return NextResponse.json(
       { success: true, message: "Password successfully reset" },
       { status: 200 }
     );
   } catch (error: any) {
-    return NextResponse.json({ error: error.message || "Internal Server Error" }, { status: 500 });
+    const status = error.message.includes("No account") ? 404 : 500;
+    return NextResponse.json({ error: error.message || "Internal Server Error" }, { status });
   }
 }
