@@ -310,7 +310,7 @@ export function Navbar({ onOpenMobileMenu }: NavbarProps) {
 
   return (
     <>
-      <header className="sticky top-0 z-99 flex h-16 w-full items-center justify-between border-b border-slate-200/40 bg-white/75 px-4 py-10 shadow-xs backdrop-blur-2xl transition-all lg:h-20 lg:px-8">
+      <header className="sticky top-0 z-50 flex h-16 w-full items-center justify-between border-b border-slate-200/40 bg-white/75 px-4 shadow-xs backdrop-blur-2xl transition-all lg:h-20 lg:px-8">
         {/* Left Section: Mobile Menu Trigger & Breadcrumbs */}
         <div className="flex min-w-0 flex-1 shrink-0 items-center gap-2 sm:gap-3">
           {onOpenMobileMenu && (
