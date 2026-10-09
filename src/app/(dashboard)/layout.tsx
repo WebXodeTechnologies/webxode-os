@@ -41,11 +41,11 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
       />
 
       {/* Right Content Column with Smooth Scrollable Main Container */}
-      <div className="flex min-w-0 flex-1 flex-col">
+      <div className="flex flex-1 flex-col">
         <Navbar onOpenMobileMenu={() => setMobileMenuOpen(true)} />
 
         {/* Main Content Area */}
-        <main className="flex-1 p-4 focus:outline-none sm:p-6 lg:p-8">
+        <main className="flex-1 p-4 focus:outline-none sm:p-2 lg:p-4">
           <div className="mx-auto w-full max-w-[110rem] space-y-6">{children}</div>
         </main>
       </div>

@@ -310,9 +310,9 @@ export function Navbar({ onOpenMobileMenu }: NavbarProps) {
 
   return (
     <>
-      <header className="sticky top-0 z-30 flex h-16 w-full items-center justify-around border-b border-slate-200/80 bg-white/95 px-2 shadow-2xs backdrop-blur-xl transition-all sm:px-2 lg:h-20">
+      <header className="sticky top-0 z-99 flex h-16 w-full items-center justify-between border-b border-slate-200/40 bg-white/75 px-4 py-10 shadow-xs backdrop-blur-2xl transition-all lg:h-20 lg:px-8">
         {/* Left Section: Mobile Menu Trigger & Breadcrumbs */}
-        <div className="flex min-w-0 shrink-0 items-center gap-2 sm:gap-3">
+        <div className="flex min-w-0 flex-1 shrink-0 items-center gap-2 sm:gap-3">
           {onOpenMobileMenu && (
             <button
               onClick={onOpenMobileMenu}
@@ -346,12 +346,12 @@ export function Navbar({ onOpenMobileMenu }: NavbarProps) {
         </div>
 
         {/* Center Section: Responsive Command Search Bar */}
-        <div className="flex max-w-40 flex-1 justify-center sm:mx-3 md:mx-4 lg:max-w-40 xl:max-w-md">
+        <div className="flex shrink-0 justify-center px-2 sm:px-4">
           {/* Tablet & Desktop Expand Search */}
           <button
             type="button"
             onClick={() => setCommandOpen(true)}
-            className="group relative hidden h-9 w-full items-center justify-between rounded-2xl border border-slate-200/90 bg-slate-50/80 px-3 py-2 text-xs text-slate-500 shadow-2xs transition-all duration-200 hover:border-indigo-300 hover:bg-white hover:text-slate-800 hover:shadow-sm sm:flex sm:h-10 sm:px-3.5 sm:text-sm lg:h-11"
+            className="group relative hidden h-9 w-60 items-center justify-between rounded-full border border-slate-200/70 bg-slate-100/60 px-4 py-2 text-xs text-slate-500 shadow-xs transition-all duration-300 hover:border-indigo-300 hover:bg-white hover:text-slate-800 hover:shadow-md sm:flex sm:h-10 sm:text-sm md:w-[320px] lg:h-10.5 lg:w-110"
           >
             <div className="flex min-w-0 items-center gap-1">
               <Search className="h-4 w-4 shrink-0 text-slate-400 transition-colors group-hover:text-indigo-600" />
@@ -376,7 +376,7 @@ export function Navbar({ onOpenMobileMenu }: NavbarProps) {
         </div>
 
         {/* Right Section: Actions & Profile */}
-        <div className="flex shrink-0 items-center gap-3 sm:gap-3">
+        <div className="flex flex-1 shrink-0 items-center justify-end gap-3 sm:gap-5">
           {/* Agency Online Status Pill (Desktop only) */}
           <div className="hidden items-center gap-2 rounded-full border border-emerald-500/30 bg-emerald-50/90 px-2 py-1.5 text-xs font-bold text-emerald-700 shadow-2xs 2xl:flex">
             <span className="relative flex h-2.5 w-2.5">
