@@ -48,6 +48,7 @@ export function useSalesEngine() {
       ],
       discoveryNotes:
         "Custom B2B supply chain portal with automated GST calculation, inventory tracking, and multi-tenant user accounts.",
+      demoStatus: "Completed",
     },
     {
       id: "LEAD-302",
@@ -78,6 +79,7 @@ export function useSalesEngine() {
         },
         { id: "t3", title: "Proposal quotation sent", completed: false, dueDate: "2026-10-10" },
       ],
+      demoStatus: "Pending",
     },
   ]);
 

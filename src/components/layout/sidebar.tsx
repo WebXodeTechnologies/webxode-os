@@ -33,6 +33,11 @@ import {
   LogOut,
   ShieldCheck,
   X,
+  Target,
+  PhoneCall,
+  CalendarHeart,
+  TrendingUp,
+  Presentation,
 } from "lucide-react";
 import { toast } from "@/lib/toast";
 import { canAccessRoute } from "@/lib/permissions";
@@ -57,12 +62,24 @@ export const navigationGroups: NavSectionGroup[] = [
     items: [{ name: "Dashboard", href: "/dashboard", icon: LayoutDashboard }],
   },
   {
-    title: "Sales & Growth",
-    icon: Users2,
+    title: "Sales CRM",
+    icon: Target,
     items: [
-      { name: "Sales Pipeline", href: "/dashboard/sales", icon: Users2, badge: "12" },
-      { name: "Presales", href: "/dashboard/presales", icon: FileSpreadsheet, badge: "3" },
-      { name: "Estimates & Proposals", href: "/dashboard/estimates", icon: FileText },
+      { name: "Sales Overview", href: "/dashboard/sales", icon: LayoutDashboard },
+      { name: "All Leads", href: "/dashboard/sales/leads", icon: Users2, badge: "12" },
+      { name: "Outreach & Calls", href: "/dashboard/sales/outreach", icon: PhoneCall },
+      { name: "Follow-ups", href: "/dashboard/sales/follow-ups", icon: MessageSquare },
+      { name: "Appointments", href: "/dashboard/sales/appointments", icon: CalendarHeart },
+      { name: "Sales Reports", href: "/dashboard/sales/reports", icon: TrendingUp },
+    ],
+  },
+  {
+    title: "Presales & Proposals",
+    icon: Presentation,
+    items: [
+      { name: "Presales Overview", href: "/dashboard/presales", icon: FileSpreadsheet, badge: "3" },
+      { name: "Estimates & Pricing", href: "/dashboard/presales/estimates", icon: DollarSign },
+      { name: "Proposals & SOW", href: "/dashboard/presales/proposals", icon: FileText },
     ],
   },
   {
@@ -133,7 +150,8 @@ export function Sidebar({
   } | null>(null);
 
   const [openSections, setOpenSections] = useState<Record<string, boolean>>({
-    "Sales & Growth": true,
+    "Sales CRM": true,
+    "Presales & Proposals": true,
     "Delivery & Execution": true,
     "Revenue & Finance": true,
     "Operations & Intelligence": false,
