@@ -1,7 +1,10 @@
 import React from "react";
+import { getLeads, getSalesDashboardMetrics } from "@/server/actions/sales.actions";
+import { SalesPageClient } from "./SalesPageClient";
 
-const page = () => {
-  return <div>page</div>;
-};
+export default async function SalesPipelineMasterPage() {
+  const initialLeads = await getLeads();
+  const metricsData = await getSalesDashboardMetrics();
 
-export default page;
+  return <SalesPageClient initialLeads={initialLeads || []} metrics={metricsData.data} />;
+}
