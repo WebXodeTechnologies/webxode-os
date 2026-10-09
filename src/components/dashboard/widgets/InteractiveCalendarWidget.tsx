@@ -26,8 +26,8 @@ export function InteractiveCalendarWidget() {
   return (
     <WidgetCard>
       <WidgetHeader
-        title="Corporate Workspace Calendar & Events"
-        subtitle="Interactive month schedule, milestone deadlines, and client meetings"
+        title="Workspace Calendar & Events"
+        subtitle="Month schedule, milestone deadlines, and client meetings"
         badge="October 2026"
         badgeVariant="indigo"
       />

@@ -26,7 +26,7 @@ export interface DashboardPermissions {
 }
 
 export function getDashboardPermissions(role: string = "admin"): DashboardPermissions {
-  const normalized = role.toLowerCase().replace(/[- ]/g, "_");
+  const normalized = (role || "admin").toLowerCase().replace(/[\s\n]+/g, "_");
 
   switch (normalized) {
     case "admin":
