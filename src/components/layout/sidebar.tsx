@@ -9,44 +9,49 @@ import {
   LayoutDashboard,
   Users2,
   FileSpreadsheet,
+  FileText,
   Briefcase,
+  CheckSquare,
   UserCheck,
   DollarSign,
+  Receipt,
+  FolderKanban,
+  MessageSquare,
+  Building2,
+  BarChart3,
   Settings,
-  LogOut,
+  Calendar,
+  ListTodo,
+  Ticket,
+  Users,
+  LucideIcon,
+  PanelLeftOpen,
+  PanelLeftClose,
   ChevronRight,
   ChevronDown,
   Loader2,
-  Building2,
-  FolderKanban,
-  BarChart3,
-  X,
-  FileText,
-  CheckSquare,
-  MessageSquare,
-  Receipt,
+  LogOut,
   ShieldCheck,
-  PanelLeftClose,
-  PanelLeftOpen,
+  X,
 } from "lucide-react";
 import { toast } from "@/lib/toast";
 import { canAccessRoute } from "@/lib/permissions";
 import { getDefaultAvatar } from "@/lib/avatars";
 
-interface SubNavItem {
+export interface SubNavItem {
   name: string;
   href: string;
-  icon: React.ComponentType<{ className?: string }>;
+  icon: LucideIcon;
   badge?: string;
 }
 
-interface NavSectionGroup {
+export interface NavSectionGroup {
   title: string;
-  icon?: React.ComponentType<{ className?: string }>;
+  icon?: LucideIcon;
   items: SubNavItem[];
 }
 
-const navigationGroups: NavSectionGroup[] = [
+export const navigationGroups: NavSectionGroup[] = [
   {
     title: "Overview",
     items: [{ name: "Dashboard", href: "/dashboard", icon: LayoutDashboard }],
@@ -68,7 +73,7 @@ const navigationGroups: NavSectionGroup[] = [
         name: "Projects & Development",
         href: "/dashboard/projects",
         icon: Briefcase,
-        badge: ".",
+        badge: "2",
       },
       { name: "Task Manager (Kanban)", href: "/dashboard/tasks", icon: CheckSquare },
       { name: "Developers & Designers", href: "/dashboard/workforce", icon: UserCheck },
@@ -86,13 +91,12 @@ const navigationGroups: NavSectionGroup[] = [
     title: "Operations & Intelligence",
     icon: FolderKanban,
     items: [
+      { name: "Calendar & Events", href: "/dashboard/calendar", icon: Calendar },
+      { name: "Tasks", href: "/dashboard/todos", icon: ListTodo, badge: "8" },
+      { name: "Messages", href: "/dashboard/messages", icon: MessageSquare, badge: "5" },
+      { name: "Teams", href: "/dashboard/teams", icon: Users },
+      { name: "Tickets", href: "/dashboard/tickets", icon: Ticket, badge: "2" },
       { name: "SOW & SOP Templates", href: "/dashboard/sow-sop", icon: FileText },
-      {
-        name: "Notes, Tickets & Messages",
-        href: "/dashboard/tickets",
-        icon: MessageSquare,
-        badge: "5",
-      },
       { name: "Team Directory", href: "/dashboard/team", icon: Building2 },
       { name: "Reports & Analytics", href: "/dashboard/reports", icon: BarChart3 },
     ],
