@@ -21,6 +21,7 @@
     "cn": "^0.4.0",
     "cookie": "^1.1.1",
     "date-fns": "^4.4.0",
+    "framer-motion": "^14.0.0",
     "ioredis": "^6.0.0",
     "jose": "^6.2.12",
     "jsonwebtoken": "^9.0.3",

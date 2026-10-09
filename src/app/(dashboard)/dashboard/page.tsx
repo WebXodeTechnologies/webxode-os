@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import { useState } from "react";
 import { DashboardHeader } from "@/components/dashboard/common/DashboardHeader";
 import { AttentionCenter } from "@/components/dashboard/common/AttentionCenter";
 import { KpiGrid } from "@/components/dashboard/common/KpiGrid";
@@ -25,11 +25,11 @@ import { ClientOverviewWidget } from "@/components/dashboard/widgets/ClientOverv
 import { TeamOverviewWidget } from "@/components/dashboard/widgets/TeamOverviewWidget";
 import { ProductivityWidget } from "@/components/dashboard/widgets/ProductivityWidget";
 import { FinanceSnapshotWidget } from "@/components/dashboard/widgets/FinanceSnapshotWidget";
-import { RecentActivityWidget } from "@/components/dashboard/widgets/RecentActivityWidget";
 
 import { getRolePermissions, UserRole } from "@/lib/dashboardPermissions";
 import { ROLE_LAYOUT_CONFIGS } from "@/components/dashboard/role/DashboardLayoutConfig";
 import { ShieldCheck } from "lucide-react";
+import { ResourceAllocationWidget } from "@/components/dashboard/widgets/ResourceAllocationWidget";
 
 export default function DashboardPage() {
   const [currentRole, setCurrentRole] = useState<UserRole>("admin");
@@ -92,52 +92,63 @@ export default function DashboardPage() {
       {/* Header & Greeting */}
       <DashboardHeader userName="Akash" role={layoutConfig.displayName} />
 
-      {/* Attention Center (Surfaces urgent alerts before user searches) */}
+      {/* Attention Center */}
       {permissions.canViewAttentionCenter && <AttentionCenter />}
 
       {/* Role-Filtered KPI Cards Grid */}
       <KpiGrid permissions={permissions} />
 
-      {/* 3. Business Performance & Sales Pipeline */}
-      <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
-        {permissions.canViewBusinessPerformance && <BusinessPerformanceWidget />}
-        {permissions.canViewSales && <BusinessPipelineWidget />}
-      </div>
+      {/* Business Performance & Sales Pipeline */}
+      {(permissions.canViewBusinessPerformance || permissions.canViewSales) && (
+        <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
+          {permissions.canViewBusinessPerformance && <BusinessPerformanceWidget />}
+          {permissions.canViewSales && <BusinessPipelineWidget />}
+        </div>
+      )}
 
-      {/* 4. Calendar, Attendance, Notes */}
-      <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
-        {permissions.canViewProductivity && <InteractiveCalendarWidget />}
-        {permissions.canViewHR && <EmployeeClockInWidget />}
-        {permissions.canViewProductivity && <StickyNotesWidget />}
-      </div>
+      {/* Calendar, Attendance, Notes */}
+      {(permissions.canViewProductivity || permissions.canViewHR) && (
+        <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
+          {permissions.canViewProductivity && <InteractiveCalendarWidget />}
+          {permissions.canViewHR && <EmployeeClockInWidget />}
+          {permissions.canViewProductivity && <StickyNotesWidget />}
+        </div>
+      )}
 
-      {/* 5. Kanban View and Earnings Report */}
-      <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
-        {permissions.canViewProductivity && <TaskKanbanWidget />}
-        {permissions.canViewRevenue && <FinanceSnapshotWidget />}
-      </div>
+      {/* Kanban View and Financial Snapshot */}
+      {(permissions.canViewProductivity || permissions.canViewRevenue) && (
+        <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
+          {permissions.canViewProductivity && <TaskKanbanWidget />}
+          {permissions.canViewRevenue && <FinanceSnapshotWidget />}
+        </div>
+      )}
 
-      {/* 6. Income vs Expenses and Financial Cash Flow */}
-      <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
-        {permissions.canViewRevenue && <IncomeVsExpensesWidget />}
-        {permissions.canViewRevenue && <InvoiceOverviewWidget />}
-      </div>
+      {/* Income vs Expenses and Invoices (Strictly Finance / Admin) */}
+      {permissions.canViewRevenue && (
+        <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
+          <IncomeVsExpensesWidget />
+          <InvoiceOverviewWidget />
+        </div>
+      )}
 
-      {/* 7. Remaining Components (2-Col Layout) */}
+      {/* Operations, Projects, Support & Tasks */}
       <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
         {permissions.canViewProjects && <ProjectsTimelineSowWidget />}
         {permissions.canViewSupport && <TicketsSupportWidget />}
         {permissions.canViewSales && <ContractTemplatesWidget />}
         {permissions.canViewProductivity && <TodaysWorkWidget />}
         {permissions.canViewProductivity && <ProductivityWidget />}
+        {permissions.canViewProductivity && <ResourceAllocationWidget />}
       </div>
 
-      {/* 7. Remaining Components (3-Col Layout) */}
-      <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
-        {permissions.canViewHR && <TeamOverviewWidget />}
-        {permissions.canViewHR && <TeamChatWidget />}
-        {permissions.canViewClientOverview && <ClientOverviewWidget />}
-      </div>
+      {/* HR, Chat, & Client Overview */}
+      {(permissions.canViewHR || permissions.canViewClientOverview) && (
+        <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
+          {permissions.canViewHR && <TeamOverviewWidget />}
+          {permissions.canViewHR && <TeamChatWidget />}
+          {permissions.canViewClientOverview && <ClientOverviewWidget />}
+        </div>
+      )}
     </div>
   );
 }

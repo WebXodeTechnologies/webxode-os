@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { WidgetCard } from "../common/WidgetCard";
 import { WidgetHeader } from "../common/WidgetHeader";
 import { PipelineDonutChart } from "../charts/PipelineDonutChart";
+import { motion } from "framer-motion";
 
 interface PipelineStage {
   label: string;
@@ -76,24 +77,28 @@ export function BusinessPipelineWidget() {
         badge="₹12.4L Pipeline"
         badgeVariant="indigo"
         actions={
-          <div className="flex rounded-xl border border-slate-200/90 bg-slate-50 p-1 text-xs font-bold">
-            <button
-              type="button"
-              onClick={() => setViewMode("funnel")}
-              className={`rounded-lg px-3 py-1 transition ${
-                viewMode === "funnel" ? "bg-white text-slate-900 shadow-2xs" : "text-slate-500"
-              }`}
-            >
-              Funnel
-            </button>
+          <div className="flex rounded-xl border border-slate-200/90 bg-slate-100/80 p-1 text-xs font-bold">
             <button
               type="button"
               onClick={() => setViewMode("donut")}
-              className={`rounded-lg px-3 py-1 transition ${
-                viewMode === "donut" ? "bg-white text-slate-900 shadow-2xs" : "text-slate-500"
+              className={`rounded-lg px-3 py-1 transition-all ${
+                viewMode === "donut"
+                  ? "bg-white text-slate-900 shadow-xs"
+                  : "text-slate-500 hover:text-slate-800"
               }`}
             >
               Donut
+            </button>
+            <button
+              type="button"
+              onClick={() => setViewMode("funnel")}
+              className={`rounded-lg px-3 py-1 transition-all ${
+                viewMode === "funnel"
+                  ? "bg-white text-slate-900 shadow-xs"
+                  : "text-slate-500 hover:text-slate-800"
+              }`}
+            >
+              Funnel
             </button>
           </div>
         }
@@ -104,25 +109,28 @@ export function BusinessPipelineWidget() {
       ) : (
         <div className="space-y-3">
           {stages.map((stage, idx) => (
-            <div
+            <motion.div
               key={idx}
-              className="group flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-slate-100 bg-slate-50/60 p-3.5 transition hover:border-slate-200 hover:bg-white hover:shadow-xs"
+              whileHover={{ x: 3 }}
+              transition={{ type: "spring", stiffness: 400, damping: 25 }}
+              className="group flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-slate-100 bg-slate-50/60 p-3.5 transition hover:border-indigo-200 hover:bg-white hover:shadow-xs"
             >
               {/* Stage Name & Color Dot */}
               <div className="flex min-w-35 items-center gap-3">
-                <span className={`h-3 w-3 rounded-full ${stage.color}`}></span>
+                <span className={`h-3 w-3 rounded-full shadow-2xs ${stage.color}`}></span>
                 <span className="text-xs font-bold text-slate-900 sm:text-sm">{stage.label}</span>
               </div>
 
-              {/* Deal Count & Value */}
-              <div className="flex items-center gap-4 text-xs sm:text-sm">
-                <span className="font-semibold text-slate-600">{stage.value}</span>
+              {/* Deal Count, Value & Conversion rate */}
+              <div className="flex items-center gap-3 text-xs sm:text-sm">
+                <span className="font-medium text-slate-400">Conv: {stage.conversion}</span>
+                <span className="font-semibold text-slate-700">{stage.value}</span>
                 <span className="rounded-lg border border-slate-200/80 bg-white px-2.5 py-1 text-xs font-extrabold text-slate-900 shadow-2xs">
                   {stage.count} deals
                 </span>
                 <span className="font-bold text-emerald-600">{stage.trend}</span>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       )}
