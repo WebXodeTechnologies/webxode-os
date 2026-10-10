@@ -4,6 +4,9 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { LeadsTable } from "./LeadsTable";
 import { LeadActionModal } from "./LeadActionModal";
+import { TaskActionModal } from "./TaskActionModal";
+import { StatusUpdateModal } from "./StatusUpdateModal";
+import { ImportModal } from "./ImportModal";
 import { LeadItem } from "../LeadCard";
 import { LeadsStatsBlock } from "./LeadsStatsBlock";
 import { LeadsHeaderBlock } from "./LeadsHeaderBlock";
@@ -91,6 +94,10 @@ export function LeadsEngineClient() {
   const [isAddMenuOpen, setIsAddMenuOpen] = useState(false);
   const [sourceFilter, setSourceFilter] = useState<string>("All");
 
+  const [isTaskModalOpen, setIsTaskModalOpen] = useState(false);
+  const [isStatusModalOpen, setIsStatusModalOpen] = useState(false);
+  const [isImportModalOpen, setIsImportModalOpen] = useState(false);
+
   // Stats calculation
   const totalClients = leads.length;
   const activeContacts = leads.filter(
@@ -114,6 +121,20 @@ export function LeadsEngineClient() {
     setEditingLead(null);
     setIsModalOpen(true);
     setIsAddMenuOpen(false);
+  };
+
+  const handleOpenNewTask = () => {
+    setIsTaskModalOpen(true);
+    setIsAddMenuOpen(false);
+  };
+
+  const handleOpenUpdateStatus = () => {
+    setIsStatusModalOpen(true);
+    setIsAddMenuOpen(false);
+  };
+
+  const handleOpenImport = () => {
+    setIsImportModalOpen(true);
   };
 
   const handleEditLead = (lead: LeadItem) => {
@@ -160,6 +181,9 @@ export function LeadsEngineClient() {
         isAddMenuOpen={isAddMenuOpen}
         setIsAddMenuOpen={setIsAddMenuOpen}
         handleOpenNewLead={handleOpenNewLead}
+        handleOpenNewTask={handleOpenNewTask}
+        handleOpenUpdateStatus={handleOpenUpdateStatus}
+        handleOpenImport={handleOpenImport}
         sourceFilter={sourceFilter}
         setSourceFilter={setSourceFilter}
         sourceStats={sourceStats}
@@ -181,6 +205,38 @@ export function LeadsEngineClient() {
         onClose={() => setIsModalOpen(false)}
         onSave={handleSaveLead}
         initialData={editingLead}
+      />
+
+      {/* Task Modal */}
+      <TaskActionModal
+        isOpen={isTaskModalOpen}
+        onClose={() => setIsTaskModalOpen(false)}
+        onSave={(task) => {
+          // Here you would normally link the task to a lead or global tasks state
+          setIsTaskModalOpen(false);
+        }}
+        leads={leads}
+      />
+
+      {/* Status Update / Select Client Modal */}
+      <StatusUpdateModal
+        isOpen={isStatusModalOpen}
+        onClose={() => setIsStatusModalOpen(false)}
+        onSelect={(lead) => {
+          setIsStatusModalOpen(false);
+          handleEditLead(lead);
+        }}
+        leads={leads}
+      />
+
+      {/* Import Modal */}
+      <ImportModal
+        isOpen={isImportModalOpen}
+        onClose={() => setIsImportModalOpen(false)}
+        onImport={(data) => {
+          // Logic to append multiple clients
+          setIsImportModalOpen(false);
+        }}
       />
     </div>
   );
