@@ -36,6 +36,11 @@ import {
   Receipt,
   ArrowRight,
   UserPlus,
+  Target,
+  Presentation,
+  UserCheck,
+  Ticket,
+  LucideIcon,
 } from "lucide-react";
 import { toast } from "@/lib/toast";
 
@@ -160,25 +165,26 @@ const COMMAND_PALETTE_ITEMS: CommandItem[] = [
   },
 ];
 
-const BREADCRUMB_MAP: Record<string, { category: string; page: string }> = {
-  profile: { category: "Profile", page: "My Profile" },
-  sales: { category: "Sales & Growth", page: "Sales Pipeline" },
-  presales: { category: "Sales & Growth", page: "Presales & Leads" },
-  estimates: { category: "Sales & Growth", page: "Estimates & Proposals" },
-  projects: { category: "Delivery & Execution", page: "Projects & Dev" },
-  tasks: { category: "Delivery & Execution", page: "Task Kanban" },
-  workforce: { category: "Delivery & Execution", page: "Team Workforce" },
-  finance: { category: "Revenue & Finance", page: "Revenue Management" },
-  expenses: { category: "Revenue & Finance", page: "Expenses & Invoices" },
-  "sow-sop": { category: "Operations", page: "SOW & SOP Templates" },
-  tickets: { category: "Operations", page: "Notes & Tickets" },
-  team: { category: "Operations", page: "Team Directory" },
-  reports: { category: "Operations", page: "Analytics & Reports" },
-  settings: { category: "Administration", page: "Workspace Settings" },
+const BREADCRUMB_MAP: Record<string, { category: string; page: string; icon: LucideIcon }> = {
+  profile: { category: "Personal", page: "My Profile", icon: User },
+  sales: { category: "Sales & Growth", page: "Sales Pipeline", icon: Target },
+  presales: { category: "Sales & Growth", page: "Presales & Leads", icon: Presentation },
+  estimates: { category: "Sales & Growth", page: "Estimates & Proposals", icon: DollarSign },
+  projects: { category: "Delivery & Execution", page: "Projects & Dev", icon: Briefcase },
+  tasks: { category: "Delivery & Execution", page: "Task Kanban", icon: CheckSquare },
+  workforce: { category: "Delivery & Execution", page: "Team Workforce", icon: UserCheck },
+  finance: { category: "Revenue & Finance", page: "Revenue Management", icon: DollarSign },
+  expenses: { category: "Revenue & Finance", page: "Expenses & Invoices", icon: Receipt },
+  "sow-sop": { category: "Operations", page: "SOW & SOP Templates", icon: FileText },
+  tickets: { category: "Operations", page: "Notes & Tickets", icon: Ticket },
+  team: { category: "Operations", page: "Team Directory", icon: Building2 },
+  reports: { category: "Operations", page: "Analytics & Reports", icon: BarChart3 },
+  settings: { category: "Administration", page: "Workspace Settings", icon: Settings },
 };
 
 function getPageBreadcrumb(pathname: string | null) {
-  if (!pathname || pathname === "/dashboard") return { category: "Overview", page: "Dashboard" };
+  if (!pathname || pathname === "/dashboard")
+    return { category: "Overview", page: "Dashboard", icon: LayoutDashboard };
   const segments = pathname.split("/").filter(Boolean);
   const lastSeg = segments[segments.length - 1];
 
@@ -186,6 +192,7 @@ function getPageBreadcrumb(pathname: string | null) {
     BREADCRUMB_MAP[lastSeg] || {
       category: "Dashboard",
       page: lastSeg.charAt(0).toUpperCase() + lastSeg.slice(1),
+      icon: LayoutDashboard,
     }
   );
 }
@@ -307,10 +314,11 @@ export function Navbar({ onOpenMobileMenu }: NavbarProps) {
   }, [commandSearch]);
 
   const breadcrumb = getPageBreadcrumb(pathname);
+  const BreadcrumbIcon = breadcrumb.icon;
 
   return (
     <>
-      <header className="sticky top-0 z-50 flex h-16 w-full items-center justify-between border-b border-slate-200/40 bg-white/75 px-4 shadow-xs backdrop-blur-2xl transition-all lg:h-20 lg:px-8">
+      <header className="sticky top-0 z-50 flex h-16 w-full items-center justify-between border-b border-slate-200/80 bg-white/80 px-4 shadow-2xs backdrop-blur-2xl transition-all lg:h-20 lg:px-8">
         {/* Left Section: Mobile Menu Trigger & Breadcrumbs */}
         <div className="flex min-w-0 flex-1 shrink-0 items-center gap-2 sm:gap-3">
           {onOpenMobileMenu && (
@@ -326,7 +334,7 @@ export function Navbar({ onOpenMobileMenu }: NavbarProps) {
           {/* Breadcrumb Navigation for Tablet & Desktop */}
           <div className="hidden min-w-0 items-center gap-2 text-sm sm:flex">
             <div className="hidden h-8 w-8 shrink-0 items-center justify-center rounded-xl border border-indigo-100 bg-indigo-50/90 text-indigo-600 shadow-2xs md:flex lg:h-9 lg:w-9">
-              <LayoutDashboard className="h-4 w-4 lg:h-4.5 lg:w-4.5" />
+              <BreadcrumbIcon className="h-4 w-4 lg:h-4.5 lg:w-4.5" />
             </div>
             <div className="flex min-w-0 items-center gap-1 lg:gap-1">
               <span className="hidden shrink-0 rounded-lg border border-slate-200/90 bg-slate-100/90 px-2 py-1 text-xs font-bold tracking-wider text-slate-700 uppercase lg:inline-block">
