@@ -182,19 +182,64 @@ const BREADCRUMB_MAP: Record<string, { category: string; page: string; icon: Luc
   settings: { category: "Administration", page: "Workspace Settings", icon: Settings },
 };
 
-function getPageBreadcrumb(pathname: string | null) {
-  if (!pathname || pathname === "/dashboard")
-    return { category: "Overview", page: "Dashboard", icon: LayoutDashboard };
+interface BreadcrumbData {
+  category: string;
+  categoryHref: string;
+  page: string;
+  pageHref: string;
+  icon: LucideIcon;
+}
+
+function getPageBreadcrumb(pathname: string | null): BreadcrumbData {
+  if (!pathname || pathname === "/dashboard") {
+    return {
+      category: "DASHBOARD",
+      categoryHref: "/dashboard",
+      page: "OVERVIEW",
+      pageHref: "/dashboard",
+      icon: LayoutDashboard,
+    };
+  }
+
   const segments = pathname.split("/").filter(Boolean);
   const lastSeg = segments[segments.length - 1];
 
-  return (
-    BREADCRUMB_MAP[lastSeg] || {
-      category: "Dashboard",
-      page: lastSeg.charAt(0).toUpperCase() + lastSeg.slice(1),
-      icon: LayoutDashboard,
-    }
-  );
+  const isLeadRoute =
+    segments.includes("leads") ||
+    segments.includes("sales") ||
+    /^LEAD-/i.test(lastSeg) ||
+    /^LD-/i.test(lastSeg);
+
+  if (isLeadRoute && segments.length >= 3) {
+    const rawId = lastSeg.toUpperCase();
+    const leadCode = rawId.startsWith("LEAD-") || rawId.startsWith("LD-") ? rawId : `LEAD-${rawId}`;
+    return {
+      category: "DASHBOARD",
+      categoryHref: "/dashboard",
+      page: leadCode,
+      pageHref: pathname,
+      icon: Target,
+    };
+  }
+
+  const mapped = BREADCRUMB_MAP[lastSeg];
+  if (mapped) {
+    return {
+      category: "DASHBOARD",
+      categoryHref: "/dashboard",
+      page: mapped.page.toUpperCase(),
+      pageHref: pathname,
+      icon: mapped.icon,
+    };
+  }
+
+  return {
+    category: "DASHBOARD",
+    categoryHref: "/dashboard",
+    page: lastSeg.toUpperCase(),
+    pageHref: pathname,
+    icon: LayoutDashboard,
+  };
 }
 
 // ==========================================
@@ -332,25 +377,49 @@ export function Navbar({ onOpenMobileMenu }: NavbarProps) {
           )}
 
           {/* Breadcrumb Navigation for Tablet & Desktop */}
-          <div className="hidden min-w-0 items-center gap-2 text-sm sm:flex">
-            <div className="hidden h-8 w-8 shrink-0 items-center justify-center rounded-xl border border-indigo-100 bg-indigo-50/90 text-indigo-600 shadow-2xs md:flex lg:h-9 lg:w-9">
-              <BreadcrumbIcon className="h-4 w-4 lg:h-4.5 lg:w-4.5" />
-            </div>
-            <div className="flex min-w-0 items-center gap-1 lg:gap-1">
-              <span className="hidden shrink-0 rounded-lg border border-slate-200/90 bg-slate-100/90 px-2 py-1 text-xs font-bold tracking-wider text-slate-700 uppercase lg:inline-block">
+          <div className="hidden min-w-0 items-center gap-2.5 text-sm sm:flex">
+            <Link
+              href="/dashboard"
+              className="hidden h-9 w-9 shrink-0 items-center justify-center rounded-2xl border border-indigo-100 bg-indigo-50/90 text-indigo-600 shadow-2xs transition-all hover:scale-105 hover:bg-indigo-100 md:flex"
+              title="Dashboard Home"
+            >
+              <BreadcrumbIcon className="h-4.5 w-4.5" />
+            </Link>
+            <div className="flex min-w-0 items-center gap-2">
+              <Link
+                href={breadcrumb.categoryHref as any}
+                className="inline-flex shrink-0 items-center rounded-full border border-slate-200/90 bg-slate-100/90 px-3 py-1 text-xs font-black tracking-wider text-slate-700 uppercase shadow-2xs transition-all hover:border-indigo-300 hover:bg-indigo-50 hover:text-indigo-700"
+                title={`Navigate to ${breadcrumb.category}`}
+              >
                 {breadcrumb.category}
-              </span>
-              <ChevronRight className="hidden h-4 w-4 shrink-0 text-slate-400 lg:inline-block" />
-              <span className="max-w-32 truncate text-sm font-extrabold tracking-tight text-slate-900 md:max-w-40 lg:max-w-none lg:text-base">
+              </Link>
+              <ChevronRight className="h-4 w-4 shrink-0 text-slate-400" />
+              <Link
+                href={breadcrumb.pageHref as any}
+                className="max-w-36 truncate text-sm font-black tracking-tight text-slate-900 transition-colors hover:text-indigo-600 sm:max-w-56 md:max-w-64 lg:max-w-none lg:text-base"
+                title={`Current page: ${breadcrumb.page}`}
+              >
                 {breadcrumb.page}
-              </span>
+              </Link>
             </div>
           </div>
 
           {/* Mobile Current Page Header (< sm) */}
-          <span className="max-w-28 truncate text-sm font-extrabold text-slate-900 sm:hidden">
-            {breadcrumb.page}
-          </span>
+          <div className="flex min-w-0 items-center gap-1.5 sm:hidden">
+            <Link
+              href={breadcrumb.categoryHref as any}
+              className="inline-flex shrink-0 items-center rounded-full border border-slate-200/90 bg-slate-100 px-2.5 py-0.5 text-[11px] font-black tracking-wider text-slate-700 uppercase"
+            >
+              {breadcrumb.category}
+            </Link>
+            <ChevronRight className="h-3.5 w-3.5 shrink-0 text-slate-400" />
+            <Link
+              href={breadcrumb.pageHref as any}
+              className="max-w-28 truncate text-xs font-black text-slate-900 hover:text-indigo-600"
+            >
+              {breadcrumb.page}
+            </Link>
+          </div>
         </div>
 
         {/* Center Section: Responsive Command Search Bar */}

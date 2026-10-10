@@ -28,7 +28,9 @@ interface ClientTasksTabProps {
 export function ClientTasksTab({ lead }: ClientTasksTabProps) {
   const companyName = lead?.companyName || "Annai Agro Tradings";
 
-  const [activeStatus, setActiveStatus] = useState<"All" | "Pending" | "Closed" | "Expired">("Pending");
+  const [activeStatus, setActiveStatus] = useState<"All" | "Pending" | "Closed" | "Expired">(
+    "Pending"
+  );
   const [search, setSearch] = useState("");
   const [showAddTaskModal, setShowAddTaskModal] = useState(false);
 
@@ -130,7 +132,13 @@ export function ClientTasksTab({ lead }: ClientTasksTabProps) {
 
     setTasks((prev) => [added, ...prev]);
     setShowAddTaskModal(false);
-    setNewTask({ title: "", category: "Call", dueDate: "2026-10-18", priority: "Medium", assignee: "Akash S M" });
+    setNewTask({
+      title: "",
+      category: "Call",
+      dueDate: "2026-10-18",
+      priority: "Medium",
+      assignee: "Akash S M",
+    });
     toast.success("Task Created", {
       description: `Task "${added.title}" added to client schedule.`,
     });
@@ -187,7 +195,7 @@ export function ClientTasksTab({ lead }: ClientTasksTabProps) {
         </div>
 
         {/* LeadSquared KPI Bar */}
-        <div className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-4 border-t border-slate-100 pt-5">
+        <div className="mt-6 grid grid-cols-2 gap-3 border-t border-slate-100 pt-5 sm:grid-cols-4">
           <div
             onClick={() => setActiveStatus("All")}
             className="cursor-pointer rounded-2xl border border-slate-200/80 bg-slate-50/70 p-3.5 transition hover:bg-white hover:shadow-sm"
@@ -231,10 +239,10 @@ export function ClientTasksTab({ lead }: ClientTasksTabProps) {
                     ? st === "Expired"
                       ? "bg-rose-600 text-white shadow-2xs"
                       : st === "Pending"
-                      ? "bg-amber-500 text-white shadow-2xs"
-                      : st === "Closed"
-                      ? "bg-emerald-600 text-white shadow-2xs"
-                      : "bg-slate-900 text-white shadow-2xs"
+                        ? "bg-amber-500 text-white shadow-2xs"
+                        : st === "Closed"
+                          ? "bg-emerald-600 text-white shadow-2xs"
+                          : "bg-slate-900 text-white shadow-2xs"
                     : "border border-slate-200 bg-slate-50 text-slate-600 hover:bg-slate-100"
                 }`}
               >
@@ -276,11 +284,11 @@ export function ClientTasksTab({ lead }: ClientTasksTabProps) {
                   t.status === "Closed"
                     ? "border-slate-200/60 bg-slate-50/50 opacity-70"
                     : t.status === "Expired" || t.isExpired
-                    ? "border-rose-200 bg-rose-50/40"
-                    : "border-slate-200/80 bg-white shadow-2xs hover:border-indigo-200"
+                      ? "border-rose-200 bg-rose-50/40"
+                      : "border-slate-200/80 bg-white shadow-2xs hover:border-indigo-200"
                 }`}
               >
-                <div className="flex items-start gap-3.5 min-w-0">
+                <div className="flex min-w-0 items-start gap-3.5">
                   <button
                     type="button"
                     onClick={() => handleToggleTaskStatus(t.id)}
@@ -294,10 +302,12 @@ export function ClientTasksTab({ lead }: ClientTasksTabProps) {
                   </button>
                   <div className="min-w-0">
                     <div className="flex items-center gap-2">
-                      <span className="font-mono text-[10px] font-extrabold text-indigo-600">{t.id}</span>
+                      <span className="font-mono text-[10px] font-extrabold text-indigo-600">
+                        {t.id}
+                      </span>
                       <span
                         className={`text-sm font-extrabold ${
-                          t.status === "Closed" ? "line-through text-slate-400" : "text-slate-900"
+                          t.status === "Closed" ? "text-slate-400 line-through" : "text-slate-900"
                         }`}
                       >
                         {t.title}
@@ -315,14 +325,14 @@ export function ClientTasksTab({ lead }: ClientTasksTabProps) {
                   </div>
                 </div>
 
-                <div className="flex items-center justify-between sm:justify-end gap-3 shrink-0">
+                <div className="flex shrink-0 items-center justify-between gap-3 sm:justify-end">
                   <span
                     className={`rounded-full px-2.5 py-0.5 text-[10px] font-black ${
                       t.status === "Expired" || t.isExpired
-                        ? "bg-rose-100 text-rose-700 border border-rose-200"
+                        ? "border border-rose-200 bg-rose-100 text-rose-700"
                         : t.status === "Closed"
-                        ? "bg-emerald-100 text-emerald-700 border border-emerald-200"
-                        : "bg-amber-100 text-amber-700 border border-amber-200"
+                          ? "border border-emerald-200 bg-emerald-100 text-emerald-700"
+                          : "border border-amber-200 bg-amber-100 text-amber-700"
                     }`}
                   >
                     {t.status === "Expired" || t.isExpired ? "Expired" : t.status}
@@ -332,14 +342,14 @@ export function ClientTasksTab({ lead }: ClientTasksTabProps) {
                     <button
                       type="button"
                       onClick={() => handleToggleTaskStatus(t.id)}
-                      className="rounded-lg border border-slate-200 bg-white px-2.5 py-1 text-xs font-bold text-slate-700 hover:bg-slate-100 transition"
+                      className="rounded-lg border border-slate-200 bg-white px-2.5 py-1 text-xs font-bold text-slate-700 transition hover:bg-slate-100"
                     >
                       {t.status === "Closed" ? "Re-open" : "Complete"}
                     </button>
                     <button
                       type="button"
                       onClick={() => handleDeleteTask(t.id)}
-                      className="rounded-lg p-1.5 text-slate-400 hover:text-rose-600 transition"
+                      className="rounded-lg p-1.5 text-slate-400 transition hover:text-rose-600"
                       title="Delete task"
                     >
                       <Trash2 className="h-4 w-4" />
@@ -358,7 +368,10 @@ export function ClientTasksTab({ lead }: ClientTasksTabProps) {
           <div className="w-full max-w-md rounded-3xl border border-slate-200 bg-white p-6 shadow-2xl">
             <div className="mb-4 flex items-center justify-between">
               <h3 className="text-base font-extrabold text-slate-900">Add LeadSquared Task</h3>
-              <button onClick={() => setShowAddTaskModal(false)} className="text-slate-400 hover:text-slate-600">
+              <button
+                onClick={() => setShowAddTaskModal(false)}
+                className="text-slate-400 hover:text-slate-600"
+              >
                 <X className="h-5 w-5" />
               </button>
             </div>

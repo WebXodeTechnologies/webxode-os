@@ -142,8 +142,8 @@ export function ClientFilesTab({ lead }: ClientFilesTabProps) {
         </div>
 
         {/* Filter Bar */}
-        <div className="mt-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between border-t border-slate-100 pt-4">
-          <div className="flex scrollbar-none overflow-x-auto gap-2">
+        <div className="mt-6 flex flex-col gap-4 border-t border-slate-100 pt-4 sm:flex-row sm:items-center sm:justify-between">
+          <div className="flex scrollbar-none gap-2 overflow-x-auto">
             {["All", "SOW", "Agreements", "Notes", "Design"].map((cat) => (
               <button
                 key={cat}
@@ -180,8 +180,8 @@ export function ClientFilesTab({ lead }: ClientFilesTabProps) {
             key={f.id}
             className="flex items-center justify-between gap-4 rounded-2xl border border-slate-200/80 bg-white p-4 shadow-2xs transition hover:border-indigo-200 hover:shadow-sm"
           >
-            <div className="flex items-center gap-3.5 min-w-0">
-              <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-indigo-50 border border-indigo-100 font-extrabold text-indigo-700 text-xs">
+            <div className="flex min-w-0 items-center gap-3.5">
+              <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-indigo-100 bg-indigo-50 text-xs font-extrabold text-indigo-700">
                 {f.type}
               </div>
               <div className="min-w-0">
@@ -196,11 +196,11 @@ export function ClientFilesTab({ lead }: ClientFilesTabProps) {
               </div>
             </div>
 
-            <div className="flex items-center gap-1 shrink-0">
+            <div className="flex shrink-0 items-center gap-1">
               <button
                 type="button"
                 onClick={() => handleDownload(f.name)}
-                className="rounded-xl border border-slate-200 bg-white p-2 text-slate-600 hover:bg-slate-100 transition"
+                className="rounded-xl border border-slate-200 bg-white p-2 text-slate-600 transition hover:bg-slate-100"
                 title="Download file"
               >
                 <Download className="h-4 w-4" />
@@ -208,7 +208,7 @@ export function ClientFilesTab({ lead }: ClientFilesTabProps) {
               <button
                 type="button"
                 onClick={() => handleDeleteFile(f.id)}
-                className="rounded-xl p-2 text-slate-400 hover:text-rose-600 transition"
+                className="rounded-xl p-2 text-slate-400 transition hover:text-rose-600"
                 title="Delete file"
               >
                 <Trash2 className="h-4 w-4" />
@@ -224,7 +224,10 @@ export function ClientFilesTab({ lead }: ClientFilesTabProps) {
           <div className="w-full max-w-md rounded-3xl border border-slate-200 bg-white p-6 shadow-2xl">
             <div className="mb-4 flex items-center justify-between">
               <h3 className="text-base font-extrabold text-slate-900">Upload Client Document</h3>
-              <button onClick={() => setShowUploadModal(false)} className="text-slate-400 hover:text-slate-600">
+              <button
+                onClick={() => setShowUploadModal(false)}
+                className="text-slate-400 hover:text-slate-600"
+              >
                 <X className="h-5 w-5" />
               </button>
             </div>

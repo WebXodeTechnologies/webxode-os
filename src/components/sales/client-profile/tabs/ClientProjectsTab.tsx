@@ -119,7 +119,12 @@ export function ClientProjectsTab({ lead, onNavigateToTasks }: ClientProjectsTab
 
     setProjects((prev) => [added, ...prev]);
     setShowAddProjectModal(false);
-    setNewProject({ name: "", serviceCategory: "Web Dev", budget: "250000", deliveryDate: "2026-12-01" });
+    setNewProject({
+      name: "",
+      serviceCategory: "Web Dev",
+      budget: "250000",
+      deliveryDate: "2026-12-01",
+    });
     toast.success("Project Added", {
       description: `New ${added.serviceCategory} project created for ${companyName}.`,
     });
@@ -169,7 +174,7 @@ export function ClientProjectsTab({ lead, onNavigateToTasks }: ClientProjectsTab
 
         {/* Filter & Search Bar */}
         <div className="mt-6 flex flex-col gap-4 border-t border-slate-100 pt-4 sm:flex-row sm:items-center sm:justify-between">
-          <div className="flex scrollbar-none overflow-x-auto gap-2">
+          <div className="flex scrollbar-none gap-2 overflow-x-auto">
             {categories.map((cat) => (
               <button
                 key={cat}
@@ -203,7 +208,7 @@ export function ClientProjectsTab({ lead, onNavigateToTasks }: ClientProjectsTab
       <div className="overflow-hidden rounded-3xl border border-slate-200/80 bg-white shadow-xs">
         <div className="overflow-x-auto">
           <table className="w-full text-left text-xs">
-            <thead className="border-b border-slate-200/90 bg-slate-50/80 text-[11px] font-extrabold uppercase tracking-wider text-slate-500">
+            <thead className="border-b border-slate-200/90 bg-slate-50/80 text-[11px] font-extrabold tracking-wider text-slate-500 uppercase">
               <tr>
                 <th className="px-6 py-3.5">Project & Code</th>
                 <th className="px-6 py-3.5">Client & Company</th>
@@ -250,10 +255,10 @@ export function ClientProjectsTab({ lead, onNavigateToTasks }: ClientProjectsTab
                           p.status === "In Progress"
                             ? "border border-amber-200 bg-amber-50 text-amber-700"
                             : p.status === "Active"
-                            ? "border border-emerald-200 bg-emerald-50 text-emerald-700"
-                            : p.status === "Completed"
-                            ? "border border-blue-200 bg-blue-50 text-blue-700"
-                            : "border border-slate-200 bg-slate-100 text-slate-600"
+                              ? "border border-emerald-200 bg-emerald-50 text-emerald-700"
+                              : p.status === "Completed"
+                                ? "border border-blue-200 bg-blue-50 text-blue-700"
+                                : "border border-slate-200 bg-slate-100 text-slate-600"
                         }`}
                       >
                         {p.status}
@@ -278,7 +283,7 @@ export function ClientProjectsTab({ lead, onNavigateToTasks }: ClientProjectsTab
                       <button
                         type="button"
                         onClick={() => onNavigateToTasks?.(p.id)}
-                        className="rounded-xl border border-slate-200 bg-white px-3 py-1.5 text-xs font-bold text-slate-700 shadow-2xs hover:bg-slate-100 transition"
+                        className="rounded-xl border border-slate-200 bg-white px-3 py-1.5 text-xs font-bold text-slate-700 shadow-2xs transition hover:bg-slate-100"
                       >
                         View Tasks →
                       </button>
@@ -297,7 +302,10 @@ export function ClientProjectsTab({ lead, onNavigateToTasks }: ClientProjectsTab
           <div className="w-full max-w-md rounded-3xl border border-slate-200 bg-white p-6 shadow-2xl">
             <div className="mb-4 flex items-center justify-between">
               <h3 className="text-base font-extrabold text-slate-900">Add New Client Project</h3>
-              <button onClick={() => setShowAddProjectModal(false)} className="text-slate-400 hover:text-slate-600">
+              <button
+                onClick={() => setShowAddProjectModal(false)}
+                className="text-slate-400 hover:text-slate-600"
+              >
                 <X className="h-5 w-5" />
               </button>
             </div>
@@ -318,7 +326,9 @@ export function ClientProjectsTab({ lead, onNavigateToTasks }: ClientProjectsTab
                   <label className="text-xs font-bold text-slate-700">Service Category</label>
                   <select
                     value={newProject.serviceCategory}
-                    onChange={(e) => setNewProject({ ...newProject, serviceCategory: e.target.value })}
+                    onChange={(e) =>
+                      setNewProject({ ...newProject, serviceCategory: e.target.value })
+                    }
                     className="mt-1 w-full rounded-xl border border-slate-200 p-2.5 text-xs font-semibold outline-none focus:border-indigo-600"
                   >
                     <option value="Web Dev">Web Dev</option>

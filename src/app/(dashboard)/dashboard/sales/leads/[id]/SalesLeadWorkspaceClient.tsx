@@ -40,16 +40,10 @@ export function SalesLeadWorkspaceClient({
         {/* Main Column */}
         <div className="relative flex-1 scrollbar-thin scrollbar-thumb-slate-200 overflow-y-auto">
           <div className="mx-auto w-full max-w-7xl space-y-6 p-4 md:p-6 lg:p-8">
-            <ClientMainHeader
-              lead={initialLead}
-              activeTab={activeTab}
-              onTabChange={setActiveTab}
-            />
+            <ClientMainHeader lead={initialLead} activeTab={activeTab} onTabChange={setActiveTab} />
 
             <AnimatePresence mode="wait">
-              {activeTab === "Overview" && (
-                <ClientOverviewTab key="Overview" lead={initialLead} />
-              )}
+              {activeTab === "Overview" && <ClientOverviewTab key="Overview" lead={initialLead} />}
               {activeTab === "Projects" && (
                 <ClientProjectsTab
                   key="Projects"
@@ -57,18 +51,10 @@ export function SalesLeadWorkspaceClient({
                   onNavigateToTasks={() => setActiveTab("Tasks")}
                 />
               )}
-              {activeTab === "Tasks" && (
-                <ClientTasksTab key="Tasks" lead={initialLead} />
-              )}
-              {activeTab === "Invoices" && (
-                <ClientInvoicesTab key="Invoices" lead={initialLead} />
-              )}
-              {activeTab === "Payments" && (
-                <ClientPaymentsTab key="Payments" lead={initialLead} />
-              )}
-              {activeTab === "Orders" && (
-                <ClientOrdersTab key="Orders" lead={initialLead} />
-              )}
+              {activeTab === "Tasks" && <ClientTasksTab key="Tasks" lead={initialLead} />}
+              {activeTab === "Invoices" && <ClientInvoicesTab key="Invoices" lead={initialLead} />}
+              {activeTab === "Payments" && <ClientPaymentsTab key="Payments" lead={initialLead} />}
+              {activeTab === "Orders" && <ClientOrdersTab key="Orders" lead={initialLead} />}
               {activeTab === "Estimates" && (
                 <ClientEstimatesTab key="Estimates" lead={initialLead} />
               )}
@@ -82,12 +68,8 @@ export function SalesLeadWorkspaceClient({
                   onMoveToDev={() => setActiveTab("Projects")}
                 />
               )}
-              {activeTab === "Files" && (
-                <ClientFilesTab key="Files" lead={initialLead} />
-              )}
-              {activeTab === "Expenses" && (
-                <ClientExpensesTab key="Expenses" lead={initialLead} />
-              )}
+              {activeTab === "Files" && <ClientFilesTab key="Files" lead={initialLead} />}
+              {activeTab === "Expenses" && <ClientExpensesTab key="Expenses" lead={initialLead} />}
             </AnimatePresence>
           </div>
         </div>

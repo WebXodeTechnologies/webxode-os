@@ -136,27 +136,33 @@ export function ClientExpensesTab({ lead }: ClientExpensesTabProps) {
         </div>
 
         {/* Investment & Net Margin Metrics */}
-        <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-3 border-t border-slate-100 pt-5">
+        <div className="mt-6 grid grid-cols-1 gap-4 border-t border-slate-100 pt-5 sm:grid-cols-3">
           <div className="rounded-2xl border border-rose-200 bg-rose-50/70 p-4">
             <div className="text-xs font-bold text-rose-800">Total Project Expenses</div>
             <div className="mt-1 text-2xl font-black text-rose-700">
               ₹{totalExpenses.toLocaleString("en-IN")}
             </div>
-            <div className="mt-1 text-[11px] font-semibold text-rose-600">Cloud, DevOps & Infra costs</div>
+            <div className="mt-1 text-[11px] font-semibold text-rose-600">
+              Cloud, DevOps & Infra costs
+            </div>
           </div>
           <div className="rounded-2xl border border-emerald-200 bg-emerald-50/70 p-4">
             <div className="text-xs font-bold text-emerald-800">Net Project Margin</div>
             <div className="mt-1 text-2xl font-black text-emerald-700">
               ₹{netMargin.toLocaleString("en-IN")}
             </div>
-            <div className="mt-1 text-[11px] font-semibold text-emerald-600">{marginPercentage}% Net Profit Margin</div>
+            <div className="mt-1 text-[11px] font-semibold text-emerald-600">
+              {marginPercentage}% Net Profit Margin
+            </div>
           </div>
-          <div className="rounded-2xl border border-slate-200 bg-slate-900 text-white p-4">
+          <div className="rounded-2xl border border-slate-200 bg-slate-900 p-4 text-white">
             <div className="text-xs font-bold text-slate-300">Total Billed Revenue</div>
             <div className="mt-1 text-2xl font-black text-white">
               ₹{projectRevenue.toLocaleString("en-IN")}
             </div>
-            <div className="mt-1 text-[11px] font-semibold text-slate-400">Total client deal size</div>
+            <div className="mt-1 text-[11px] font-semibold text-slate-400">
+              Total client deal size
+            </div>
           </div>
         </div>
 
@@ -179,7 +185,7 @@ export function ClientExpensesTab({ lead }: ClientExpensesTabProps) {
       <div className="overflow-hidden rounded-3xl border border-slate-200/80 bg-white shadow-xs">
         <div className="overflow-x-auto">
           <table className="w-full text-left text-xs">
-            <thead className="border-b border-slate-200/90 bg-slate-50/80 text-[11px] font-extrabold uppercase tracking-wider text-slate-500">
+            <thead className="border-b border-slate-200/90 bg-slate-50/80 text-[11px] font-extrabold tracking-wider text-slate-500 uppercase">
               <tr>
                 <th className="px-6 py-3.5">Expense ID</th>
                 <th className="px-6 py-3.5">Item Description</th>
@@ -191,7 +197,7 @@ export function ClientExpensesTab({ lead }: ClientExpensesTabProps) {
             </thead>
             <tbody className="divide-y divide-slate-100 font-semibold text-slate-700">
               {filteredExpenses.map((exp) => (
-                <tr key={exp.id} className="hover:bg-slate-50/60 transition">
+                <tr key={exp.id} className="transition hover:bg-slate-50/60">
                   <td className="px-6 py-4 font-mono font-extrabold text-rose-600">{exp.id}</td>
                   <td className="px-6 py-4 font-extrabold text-slate-900">{exp.item}</td>
                   <td className="px-6 py-4">
@@ -201,7 +207,7 @@ export function ClientExpensesTab({ lead }: ClientExpensesTabProps) {
                   </td>
                   <td className="px-6 py-4 text-slate-500">{exp.date}</td>
                   <td className="px-6 py-4 text-slate-600">{exp.recordedBy}</td>
-                  <td className="px-6 py-4 text-right font-black text-rose-600 text-sm">
+                  <td className="px-6 py-4 text-right text-sm font-black text-rose-600">
                     ₹{exp.amount.toLocaleString("en-IN")}
                   </td>
                 </tr>
@@ -216,8 +222,13 @@ export function ClientExpensesTab({ lead }: ClientExpensesTabProps) {
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/50 p-4 backdrop-blur-xs">
           <div className="w-full max-w-md rounded-3xl border border-slate-200 bg-white p-6 shadow-2xl">
             <div className="mb-4 flex items-center justify-between">
-              <h3 className="text-base font-extrabold text-slate-900">Record Client Project Expense</h3>
-              <button onClick={() => setShowModal(false)} className="text-slate-400 hover:text-slate-600">
+              <h3 className="text-base font-extrabold text-slate-900">
+                Record Client Project Expense
+              </h3>
+              <button
+                onClick={() => setShowModal(false)}
+                className="text-slate-400 hover:text-slate-600"
+              >
                 <X className="h-5 w-5" />
               </button>
             </div>
