@@ -10,7 +10,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
 
   return (
-    <div className="fixed flex h-screen w-full overflow-auto bg-slate-50/80 font-sans text-slate-900 antialiased selection:bg-indigo-500 selection:text-white">
+    <div className="flex h-screen w-full overflow-hidden bg-slate-50/80 font-sans text-slate-900 antialiased selection:bg-indigo-500 selection:text-white">
       {/* React Hot Toast Provider */}
       <Toaster
         position="top-center"
@@ -40,12 +40,12 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
         onToggleCollapse={() => setSidebarCollapsed(!sidebarCollapsed)}
       />
 
-      {/* Right Content Column with Smooth Scrollable Main Container */}
-      <div className="flex flex-1 flex-col">
+      {/* Right Content Column */}
+      <div className="flex flex-1 flex-col overflow-hidden">
         <Navbar onOpenMobileMenu={() => setMobileMenuOpen(true)} />
 
         {/* Main Content Area */}
-        <main className="flex-1 p-4 focus:outline-none sm:p-2 lg:p-4">
+        <main className="flex-1 overflow-y-auto p-4 focus:outline-none sm:p-5 lg:p-6">
           <div className="mx-auto w-full max-w-[110rem] space-y-6">{children}</div>
         </main>
       </div>

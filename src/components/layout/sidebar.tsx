@@ -215,23 +215,23 @@ export function Sidebar({
       <div className="flex h-full min-h-0 flex-col justify-between border-r border-slate-200/80 bg-white text-slate-800 shadow-xs">
         {/* Brand Header */}
         <div
-          className={`flex h-20 shrink-0 items-center border-b border-slate-200/80 px-4 sm:px-5 ${
-            isCollapsed ? "justify-center px-2" : "justify-between"
+          className={`flex h-16 shrink-0 items-center border-b border-slate-200/80 px-3 lg:h-20 ${
+            isCollapsed ? "justify-center px-1.5" : "justify-between sm:px-5"
           }`}
         >
           {isCollapsed ? (
-            <div className="flex w-full items-center justify-between gap-1">
+            <div className="flex w-full items-center justify-center gap-1">
               <Link
                 href="/dashboard"
-                className="group relative flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl border border-slate-200/80 bg-slate-50 shadow-xs transition-all duration-200 hover:border-indigo-300 hover:bg-indigo-50/50"
+                className="group relative flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border border-slate-200/80 bg-slate-50 shadow-2xs transition-all duration-200 hover:border-indigo-300 hover:bg-indigo-50/50"
                 title="Webxode OS Dashboard"
               >
                 <Image
                   src="/logos/webxodelogocropped-removebg-preview.png"
                   alt="Webxode Logo"
-                  width={28}
-                  height={28}
-                  className="h-6 w-6 object-contain transition-transform group-hover:scale-105"
+                  width={24}
+                  height={24}
+                  className="h-5 w-5 object-contain transition-transform group-hover:scale-105"
                 />
               </Link>
               {onToggleCollapse && (
@@ -242,10 +242,10 @@ export function Sidebar({
                     e.stopPropagation();
                     onToggleCollapse();
                   }}
-                  className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border border-slate-200/80 bg-white text-slate-500 shadow-2xs transition-all hover:border-indigo-200 hover:bg-indigo-50 hover:text-indigo-600"
+                  className="flex h-8 w-8 shrink-0 items-center justify-center rounded-xl border border-slate-200/80 bg-white text-slate-500 shadow-2xs transition-all hover:border-indigo-200 hover:bg-indigo-50 hover:text-indigo-600"
                   title="Expand sidebar"
                 >
-                  <PanelLeftOpen className="h-4.5 w-4.5" />
+                  <PanelLeftOpen className="h-4 w-4" />
                 </button>
               )}
             </div>
@@ -313,7 +313,7 @@ export function Sidebar({
         </div>
 
         {/* Navigation Content with Internal Scrolling */}
-        <div className="min-h-0 flex-1 scrollbar-thin scrollbar-thumb-slate-200 space-y-4 overflow-y-auto px-3 py-4">
+        <div className="min-h-0 flex-1 scrollbar-none space-y-4 overflow-y-auto px-3 py-4 [&::-webkit-scrollbar]:hidden">
           {isCollapsed ? (
             /* Icon-Only Collapsed View */
             <div className="flex flex-col items-center space-y-2.5">
@@ -339,7 +339,7 @@ export function Sidebar({
                         }`}
                       >
                         {isActive && (
-                          <span className="absolute top-1/2 -left-2.5 h-6 w-1.5 -translate-y-1/2 rounded-r-full bg-indigo-600" />
+                          <span className="absolute top-1/2 left-0 h-6 w-1 -translate-y-1/2 rounded-r-full bg-indigo-600" />
                         )}
                         <Icon className={`h-5 w-5 ${isActive ? "text-indigo-600" : ""}`} />
                         {item.badge && (
