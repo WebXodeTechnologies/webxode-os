@@ -27,7 +27,6 @@ export interface LeadItem {
   demoStatus: string;
   lastInteraction: string;
   tasks: LeadTask[];
-  // New fields for extended table data
   address?: string;
   city?: string;
   state?: string;
@@ -36,6 +35,13 @@ export interface LeadItem {
   website?: string;
   currency?: string;
   currencySymbol?: string;
+  type?: "Organization" | "Person";
+  owner?: string;
+  managers?: string;
+  vatNumber?: string;
+  clientGroups?: string;
+  labels?: string;
+  disableOnlinePayment?: boolean;
 }
 
 interface LeadCardProps {
