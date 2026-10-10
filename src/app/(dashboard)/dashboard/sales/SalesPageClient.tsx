@@ -233,9 +233,6 @@ export function SalesPageClient({ initialLeads = [], metrics = null }: SalesPage
 
         <SalesLeadGrid leads={mappedLeads} onHandover={handlePresalesHandover} />
       </motion.div>
-      {/* <motion.div variants={item}>
-        <SalesActionableIntelligence metrics={activeMetricsData} />
-      </motion.div> */}
     </motion.div>
   );
 }
