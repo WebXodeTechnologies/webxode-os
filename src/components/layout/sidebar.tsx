@@ -38,6 +38,7 @@ import {
   CalendarHeart,
   TrendingUp,
   Presentation,
+  Cctv,
 } from "lucide-react";
 import { toast } from "@/lib/toast";
 import { canAccessRoute } from "@/lib/permissions";
@@ -67,10 +68,11 @@ export const navigationGroups: NavSectionGroup[] = [
     items: [
       { name: "Sales Overview", href: "/dashboard/sales", icon: LayoutDashboard },
       { name: "All Leads", href: "/dashboard/sales/leads", icon: Users2, badge: "12" },
-      { name: "Outreach & Calls", href: "/dashboard/sales/outreach", icon: PhoneCall },
+      { name: "Outreach & Calls", href: "/dashboard/sales/calls", icon: PhoneCall },
       { name: "Follow-ups", href: "/dashboard/sales/follow-ups", icon: MessageSquare },
       { name: "Appointments", href: "/dashboard/sales/appointments", icon: CalendarHeart },
       { name: "Sales Reports", href: "/dashboard/sales/reports", icon: TrendingUp },
+      { name: "Activity", href: "/dashboard/sales/activity", icon: Cctv },
     ],
   },
   {
