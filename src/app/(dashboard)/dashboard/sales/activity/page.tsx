@@ -1,13 +1,13 @@
 import React from "react";
 import { Metadata } from "next";
-import { ActivityPageClient } from "@/components/sales/activity/ActivityPageClient";
+import { SalesActivitiesClient } from "@/components/dashboard/sales/activities/SalesActivitiesClient";
 
 export const metadata: Metadata = {
-  title: "Sales Person Activity & Review Hub | WebXode OS",
+  title: "Salesperson Activity Audit Dashboard | WebXode OS",
   description:
-    "Track sales person call logging, task updates, mail status, client relationship health, and month-end performance review readiness.",
+    "Management audit dashboard for salesperson activity tracking, call logging, mail status, WhatsApp updates, demo walkthroughs, and stage changes.",
 };
 
 export default function SalesActivityPage() {
-  return <ActivityPageClient />;
+  return <SalesActivitiesClient />;
 }
