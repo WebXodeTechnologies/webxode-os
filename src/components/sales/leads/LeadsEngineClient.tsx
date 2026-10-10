@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 import { LeadsTable } from "./LeadsTable";
 import { LeadActionModal } from "./LeadActionModal";
@@ -87,6 +88,7 @@ const INITIAL_LEADS: LeadItem[] = [
 ];
 
 export function LeadsEngineClient() {
+  const router = useRouter();
   const [leads, setLeads] = useState<LeadItem[]>(INITIAL_LEADS);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [editingLead, setEditingLead] = useState<LeadItem | null>(null);
@@ -193,7 +195,7 @@ export function LeadsEngineClient() {
       <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.2 }}>
         <LeadsTable
           leads={filteredLeads}
-          onViewLead={(lead) => alert(`View details for ${lead.companyName}`)}
+          onViewLead={(lead) => router.push(`/dashboard/sales/leads/${lead.id}`)}
           onEditLead={handleEditLead}
           onDeleteLead={handleDeleteLead}
         />
