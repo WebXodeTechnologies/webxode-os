@@ -91,14 +91,20 @@ export function ClientPaymentsTab({ lead }: ClientPaymentsTabProps) {
       date: "Today",
       amount: amt,
       mode: newPayment.mode,
-      referenceNo: newPayment.referenceNo || `UTR-${Math.floor(100000000 + Math.random() * 900000000)}`,
+      referenceNo:
+        newPayment.referenceNo || `UTR-${Math.floor(100000000 + Math.random() * 900000000)}`,
       status: "Verified",
       icon: IconComp,
     };
 
     setPayments((prev) => [added, ...prev]);
     setShowAddModal(false);
-    setNewPayment({ invoiceId: "INV-2026-092", amount: "150000", mode: "Bank Transfer (NEFT/RTGS)", referenceNo: "" });
+    setNewPayment({
+      invoiceId: "INV-2026-092",
+      amount: "150000",
+      mode: "Bank Transfer (NEFT/RTGS)",
+      referenceNo: "",
+    });
     toast.success("Payment Collection Recorded", {
       description: `Recorded ₹${amt.toLocaleString("en-IN")} via ${added.mode}.`,
     });
@@ -147,24 +153,31 @@ export function ClientPaymentsTab({ lead }: ClientPaymentsTabProps) {
         </div>
 
         {/* Payment Modes Available & Stats */}
-        <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-3 border-t border-slate-100 pt-5">
+        <div className="mt-6 grid grid-cols-1 gap-4 border-t border-slate-100 pt-5 sm:grid-cols-3">
           <div className="rounded-2xl border border-emerald-200 bg-emerald-50/70 p-4">
             <div className="text-xs font-bold text-emerald-800">Total Cleared Receipts</div>
             <div className="mt-1 text-2xl font-black text-emerald-700">
               ₹{totalCollected.toLocaleString("en-IN")}
             </div>
-            <div className="mt-1 text-[11px] font-semibold text-emerald-600">3 Verified Settlements</div>
+            <div className="mt-1 text-[11px] font-semibold text-emerald-600">
+              3 Verified Settlements
+            </div>
           </div>
           <div className="rounded-2xl border border-indigo-200 bg-indigo-50/70 p-4">
             <div className="text-xs font-bold text-indigo-800">Primary Payment Channel</div>
             <div className="mt-1 text-lg font-black text-indigo-900">NEFT / RTGS & UPI</div>
-            <div className="mt-1 text-[11px] font-semibold text-indigo-600">INR Direct Settlement</div>
+            <div className="mt-1 text-[11px] font-semibold text-indigo-600">
+              INR Direct Settlement
+            </div>
           </div>
           <div className="rounded-2xl border border-slate-200 bg-slate-50 p-4">
             <div className="text-xs font-bold text-slate-600">Supported Modes</div>
             <div className="mt-2 flex flex-wrap gap-1.5">
               {["UPI", "Bank Transfer", "Stripe", "PayPal", "Cash", "Cheque"].map((m) => (
-                <span key={m} className="rounded-md border border-slate-200 bg-white px-2 py-0.5 text-[10px] font-extrabold text-slate-700">
+                <span
+                  key={m}
+                  className="rounded-md border border-slate-200 bg-white px-2 py-0.5 text-[10px] font-extrabold text-slate-700"
+                >
                   {m}
                 </span>
               ))}
@@ -191,7 +204,7 @@ export function ClientPaymentsTab({ lead }: ClientPaymentsTabProps) {
       <div className="overflow-hidden rounded-3xl border border-slate-200/80 bg-white shadow-xs">
         <div className="overflow-x-auto">
           <table className="w-full text-left text-xs">
-            <thead className="border-b border-slate-200/90 bg-slate-50/80 text-[11px] font-extrabold uppercase tracking-wider text-slate-500">
+            <thead className="border-b border-slate-200/90 bg-slate-50/80 text-[11px] font-extrabold tracking-wider text-slate-500 uppercase">
               <tr>
                 <th className="px-6 py-3.5">Transaction ID</th>
                 <th className="px-6 py-3.5">Invoice #</th>
@@ -206,7 +219,7 @@ export function ClientPaymentsTab({ lead }: ClientPaymentsTabProps) {
               {filteredPayments.map((p) => {
                 const IconComp = p.icon;
                 return (
-                  <tr key={p.id} className="hover:bg-slate-50/60 transition">
+                  <tr key={p.id} className="transition hover:bg-slate-50/60">
                     <td className="px-6 py-4 font-mono font-extrabold text-indigo-600">{p.id}</td>
                     <td className="px-6 py-4 font-extrabold text-slate-900">{p.invoiceId}</td>
                     <td className="px-6 py-4">
@@ -217,16 +230,18 @@ export function ClientPaymentsTab({ lead }: ClientPaymentsTabProps) {
                         <span className="font-extrabold text-slate-800">{p.mode}</span>
                       </div>
                     </td>
-                    <td className="px-6 py-4 font-mono text-slate-600 text-[11px]">{p.referenceNo}</td>
+                    <td className="px-6 py-4 font-mono text-[11px] text-slate-600">
+                      {p.referenceNo}
+                    </td>
                     <td className="px-6 py-4 text-slate-500">{p.date}</td>
-                    <td className="px-6 py-4 font-black text-emerald-600 text-sm">
+                    <td className="px-6 py-4 text-sm font-black text-emerald-600">
                       ₹{p.amount.toLocaleString("en-IN")}
                     </td>
                     <td className="px-6 py-4 text-right">
                       <button
                         type="button"
                         onClick={() => handleDownloadReceipt(p.id)}
-                        className="inline-flex items-center gap-1 rounded-xl border border-slate-200 bg-white px-2.5 py-1 text-xs font-bold text-slate-700 shadow-2xs hover:bg-slate-100 transition"
+                        className="inline-flex items-center gap-1 rounded-xl border border-slate-200 bg-white px-2.5 py-1 text-xs font-bold text-slate-700 shadow-2xs transition hover:bg-slate-100"
                       >
                         <Download className="h-3.5 w-3.5 text-slate-500" /> Receipt
                       </button>
@@ -245,7 +260,10 @@ export function ClientPaymentsTab({ lead }: ClientPaymentsTabProps) {
           <div className="w-full max-w-md rounded-3xl border border-slate-200 bg-white p-6 shadow-2xl">
             <div className="mb-4 flex items-center justify-between">
               <h3 className="text-base font-extrabold text-slate-900">Record Client Payment</h3>
-              <button onClick={() => setShowAddModal(false)} className="text-slate-400 hover:text-slate-600">
+              <button
+                onClick={() => setShowAddModal(false)}
+                className="text-slate-400 hover:text-slate-600"
+              >
                 <X className="h-5 w-5" />
               </button>
             </div>

@@ -33,8 +33,18 @@ export function ClientOrdersTab({ lead }: ClientOrdersTabProps) {
       deliveryDate: "02 Oct 2026",
       value: 450000,
       updates: [
-        { id: "u1", author: "Akash S M", text: "Final UAT sign-off completed by client CEO.", date: "02 Oct 2026" },
-        { id: "u2", author: "Priya R", text: "Deployed production build on AWS EC2 & RDS.", date: "28 Sep 2026" },
+        {
+          id: "u1",
+          author: "Akash S M",
+          text: "Final UAT sign-off completed by client CEO.",
+          date: "02 Oct 2026",
+        },
+        {
+          id: "u2",
+          author: "Priya R",
+          text: "Deployed production build on AWS EC2 & RDS.",
+          date: "28 Sep 2026",
+        },
       ],
     },
     {
@@ -46,7 +56,12 @@ export function ClientOrdersTab({ lead }: ClientOrdersTabProps) {
       deliveryDate: "15 Nov 2026",
       value: 320000,
       updates: [
-        { id: "u3", author: "Vikram Mehta", text: "React Native UI build completed. Testing API endpoints.", date: "08 Oct 2026" },
+        {
+          id: "u3",
+          author: "Vikram Mehta",
+          text: "React Native UI build completed. Testing API endpoints.",
+          date: "08 Oct 2026",
+        },
       ],
     },
   ]);
@@ -109,7 +124,10 @@ export function ClientOrdersTab({ lead }: ClientOrdersTabProps) {
       {/* Orders List */}
       <div className="space-y-6">
         {orders.map((ord) => (
-          <div key={ord.id} className="rounded-3xl border border-slate-200/80 bg-white p-6 shadow-xs space-y-4">
+          <div
+            key={ord.id}
+            className="space-y-4 rounded-3xl border border-slate-200/80 bg-white p-6 shadow-xs"
+          >
             <div className="flex flex-col justify-between gap-3 sm:flex-row sm:items-center">
               <div>
                 <div className="flex items-center gap-2">
@@ -127,13 +145,15 @@ export function ClientOrdersTab({ lead }: ClientOrdersTabProps) {
                 <span
                   className={`rounded-full px-3 py-1 text-xs font-black ${
                     ord.status === "Service Completed"
-                      ? "bg-emerald-100 text-emerald-800 border border-emerald-200"
-                      : "bg-amber-100 text-amber-800 border border-amber-200"
+                      ? "border border-emerald-200 bg-emerald-100 text-emerald-800"
+                      : "border border-amber-200 bg-amber-100 text-amber-800"
                   }`}
                 >
                   {ord.status}
                 </span>
-                <span className="font-black text-slate-900 text-sm">₹{ord.value.toLocaleString("en-IN")}</span>
+                <span className="text-sm font-black text-slate-900">
+                  ₹{ord.value.toLocaleString("en-IN")}
+                </span>
               </div>
             </div>
 
@@ -154,7 +174,7 @@ export function ClientOrdersTab({ lead }: ClientOrdersTabProps) {
             </div>
 
             {/* Post Updates Section */}
-            <div className="rounded-2xl border border-slate-100 bg-slate-50/70 p-4 space-y-3">
+            <div className="space-y-3 rounded-2xl border border-slate-100 bg-slate-50/70 p-4">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2 text-xs font-extrabold text-slate-700">
                   <MessageSquare className="h-4 w-4 text-indigo-600" />
@@ -162,8 +182,10 @@ export function ClientOrdersTab({ lead }: ClientOrdersTabProps) {
                 </div>
                 <button
                   type="button"
-                  onClick={() => setActiveUpdateOrderId(activeUpdateOrderId === ord.id ? null : ord.id)}
-                  className="flex items-center gap-1 rounded-xl border border-indigo-200 bg-white px-2.5 py-1 text-xs font-bold text-indigo-600 hover:bg-indigo-50 transition"
+                  onClick={() =>
+                    setActiveUpdateOrderId(activeUpdateOrderId === ord.id ? null : ord.id)
+                  }
+                  className="flex items-center gap-1 rounded-xl border border-indigo-200 bg-white px-2.5 py-1 text-xs font-bold text-indigo-600 transition hover:bg-indigo-50"
                 >
                   <Plus className="h-3.5 w-3.5" /> Post Update
                 </button>
@@ -171,7 +193,10 @@ export function ClientOrdersTab({ lead }: ClientOrdersTabProps) {
 
               {/* Add Update Inline Form */}
               {activeUpdateOrderId === ord.id && (
-                <form onSubmit={(e) => handlePostUpdateSubmit(e, ord.id)} className="space-y-2 pt-2">
+                <form
+                  onSubmit={(e) => handlePostUpdateSubmit(e, ord.id)}
+                  className="space-y-2 pt-2"
+                >
                   <textarea
                     required
                     rows={2}
@@ -201,8 +226,11 @@ export function ClientOrdersTab({ lead }: ClientOrdersTabProps) {
               {/* Update Logs */}
               <div className="space-y-2 pt-1">
                 {ord.updates.map((upd) => (
-                  <div key={upd.id} className="rounded-xl border border-slate-200/60 bg-white p-3 text-xs font-medium">
-                    <div className="flex items-center justify-between text-slate-500 text-[11px] mb-1 font-semibold">
+                  <div
+                    key={upd.id}
+                    className="rounded-xl border border-slate-200/60 bg-white p-3 text-xs font-medium"
+                  >
+                    <div className="mb-1 flex items-center justify-between text-[11px] font-semibold text-slate-500">
                       <span className="font-bold text-slate-900">{upd.author}</span>
                       <span>{upd.date}</span>
                     </div>

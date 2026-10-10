@@ -66,7 +66,11 @@ export function ClientInvoicesTab({ lead }: ClientInvoicesTabProps) {
   const [filterStatus, setFilterStatus] = useState("All");
   const [search, setSearch] = useState("");
   const [showCreateModal, setShowCreateModal] = useState(false);
-  const [newInvoice, setNewInvoice] = useState({ service: "", amount: "150000", dueDate: "2026-11-01" });
+  const [newInvoice, setNewInvoice] = useState({
+    service: "",
+    amount: "150000",
+    dueDate: "2026-11-01",
+  });
 
   const totalCollected = invoices.reduce((acc, inv) => acc + inv.paidAmount, 0);
   const totalInvoiced = invoices.reduce((acc, inv) => acc + inv.amount, 0);
@@ -86,7 +90,9 @@ export function ClientInvoicesTab({ lead }: ClientInvoicesTabProps) {
 
   const handleMarkAsPaid = (invId: string) => {
     setInvoices((prev) =>
-      prev.map((inv) => (inv.id === invId ? { ...inv, status: "Paid", paidAmount: inv.amount } : inv))
+      prev.map((inv) =>
+        inv.id === invId ? { ...inv, status: "Paid", paidAmount: inv.amount } : inv
+      )
     );
     toast.success("Invoice Updated", {
       description: `Invoice ${invId} marked as Fully Paid.`,
@@ -158,13 +164,15 @@ export function ClientInvoicesTab({ lead }: ClientInvoicesTabProps) {
         </div>
 
         {/* Financial Summary Cards */}
-        <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-3 border-t border-slate-100 pt-5">
+        <div className="mt-6 grid grid-cols-1 gap-4 border-t border-slate-100 pt-5 sm:grid-cols-3">
           <div className="rounded-2xl border border-emerald-200 bg-emerald-50/70 p-4">
             <div className="text-xs font-bold text-emerald-800">Total Collected</div>
             <div className="mt-1 text-2xl font-black text-emerald-700">
               ₹{totalCollected.toLocaleString("en-IN")}
             </div>
-            <div className="mt-1 text-[11px] font-semibold text-emerald-600">Successfully received</div>
+            <div className="mt-1 text-[11px] font-semibold text-emerald-600">
+              Successfully received
+            </div>
           </div>
           <div className="rounded-2xl border border-amber-200 bg-amber-50/70 p-4">
             <div className="text-xs font-bold text-amber-800">Total Pending Due</div>
@@ -173,7 +181,7 @@ export function ClientInvoicesTab({ lead }: ClientInvoicesTabProps) {
             </div>
             <div className="mt-1 text-[11px] font-semibold text-amber-600">Awaiting clearance</div>
           </div>
-          <div className="rounded-2xl border border-slate-200 bg-slate-900 text-white p-4">
+          <div className="rounded-2xl border border-slate-200 bg-slate-900 p-4 text-white">
             <div className="text-xs font-bold text-slate-300">Total Pipeline Invoiced</div>
             <div className="mt-1 text-2xl font-black text-white">
               ₹{totalInvoiced.toLocaleString("en-IN")}
@@ -218,7 +226,7 @@ export function ClientInvoicesTab({ lead }: ClientInvoicesTabProps) {
       <div className="overflow-hidden rounded-3xl border border-slate-200/80 bg-white shadow-xs">
         <div className="overflow-x-auto">
           <table className="w-full text-left text-xs">
-            <thead className="border-b border-slate-200/90 bg-slate-50/80 text-[11px] font-extrabold uppercase tracking-wider text-slate-500">
+            <thead className="border-b border-slate-200/90 bg-slate-50/80 text-[11px] font-extrabold tracking-wider text-slate-500 uppercase">
               <tr>
                 <th className="px-6 py-3.5">Invoice #</th>
                 <th className="px-6 py-3.5">Service Details</th>
@@ -230,7 +238,7 @@ export function ClientInvoicesTab({ lead }: ClientInvoicesTabProps) {
             </thead>
             <tbody className="divide-y divide-slate-100 font-semibold text-slate-700">
               {filteredInvoices.map((inv) => (
-                <tr key={inv.id} className="hover:bg-slate-50/60 transition">
+                <tr key={inv.id} className="transition hover:bg-slate-50/60">
                   <td className="px-6 py-4 font-mono font-extrabold text-indigo-600">{inv.id}</td>
                   <td className="px-6 py-4 font-extrabold text-slate-900">{inv.service}</td>
                   <td className="px-6 py-4 text-slate-500">
@@ -238,9 +246,11 @@ export function ClientInvoicesTab({ lead }: ClientInvoicesTabProps) {
                     <div className="text-[11px] font-bold text-rose-600">Due: {inv.dueDate}</div>
                   </td>
                   <td className="px-6 py-4">
-                    <div className="font-black text-slate-900">₹{inv.amount.toLocaleString("en-IN")}</div>
+                    <div className="font-black text-slate-900">
+                      ₹{inv.amount.toLocaleString("en-IN")}
+                    </div>
                     {inv.paidAmount > 0 && inv.paidAmount < inv.amount && (
-                      <div className="text-[10px] text-emerald-600 font-bold">
+                      <div className="text-[10px] font-bold text-emerald-600">
                         Paid: ₹{inv.paidAmount.toLocaleString("en-IN")}
                       </div>
                     )}
@@ -251,8 +261,8 @@ export function ClientInvoicesTab({ lead }: ClientInvoicesTabProps) {
                         inv.status === "Paid"
                           ? "bg-emerald-100 text-emerald-800"
                           : inv.status === "Partial"
-                          ? "bg-amber-100 text-amber-800"
-                          : "bg-rose-100 text-rose-800"
+                            ? "bg-amber-100 text-amber-800"
+                            : "bg-rose-100 text-rose-800"
                       }`}
                     >
                       {inv.status}
@@ -263,7 +273,7 @@ export function ClientInvoicesTab({ lead }: ClientInvoicesTabProps) {
                       <button
                         type="button"
                         onClick={() => handleSendReminder(inv.id)}
-                        className="flex items-center gap-1 rounded-xl border border-amber-200 bg-amber-50 px-2.5 py-1 text-xs font-bold text-amber-800 hover:bg-amber-100 transition"
+                        className="flex items-center gap-1 rounded-xl border border-amber-200 bg-amber-50 px-2.5 py-1 text-xs font-bold text-amber-800 transition hover:bg-amber-100"
                         title="Send reminder to client"
                       >
                         <Send className="h-3 w-3" /> Reminder
@@ -271,7 +281,7 @@ export function ClientInvoicesTab({ lead }: ClientInvoicesTabProps) {
                       <button
                         type="button"
                         onClick={() => handleDownloadInvoice(inv.id)}
-                        className="rounded-xl border border-slate-200 p-1.5 text-slate-600 hover:bg-slate-100 transition"
+                        className="rounded-xl border border-slate-200 p-1.5 text-slate-600 transition hover:bg-slate-100"
                         title="Download PDF"
                       >
                         <Download className="h-3.5 w-3.5" />
@@ -280,7 +290,7 @@ export function ClientInvoicesTab({ lead }: ClientInvoicesTabProps) {
                         <button
                           type="button"
                           onClick={() => handleMarkAsPaid(inv.id)}
-                          className="rounded-xl bg-emerald-600 px-2.5 py-1 text-xs font-bold text-white hover:bg-emerald-700 transition"
+                          className="rounded-xl bg-emerald-600 px-2.5 py-1 text-xs font-bold text-white transition hover:bg-emerald-700"
                         >
                           Mark Paid
                         </button>
@@ -300,7 +310,10 @@ export function ClientInvoicesTab({ lead }: ClientInvoicesTabProps) {
           <div className="w-full max-w-md rounded-3xl border border-slate-200 bg-white p-6 shadow-2xl">
             <div className="mb-4 flex items-center justify-between">
               <h3 className="text-base font-extrabold text-slate-900">Create Tax Invoice</h3>
-              <button onClick={() => setShowCreateModal(false)} className="text-slate-400 hover:text-slate-600">
+              <button
+                onClick={() => setShowCreateModal(false)}
+                className="text-slate-400 hover:text-slate-600"
+              >
                 <X className="h-5 w-5" />
               </button>
             </div>

@@ -132,7 +132,7 @@ export function ClientProposalsTab({ lead }: ClientProposalsTabProps) {
             className="flex flex-col justify-between gap-4 rounded-3xl border border-slate-200/80 bg-white p-6 shadow-xs md:flex-row md:items-center"
           >
             <div className="flex items-start gap-4">
-              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl bg-purple-50 border border-purple-100 text-purple-600">
+              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl border border-purple-100 bg-purple-50 text-purple-600">
                 <FileCheck2 className="h-5 w-5" />
               </div>
               <div>
@@ -141,7 +141,9 @@ export function ClientProposalsTab({ lead }: ClientProposalsTabProps) {
                   <h3 className="text-base font-extrabold text-slate-900">{p.title}</h3>
                 </div>
                 <div className="mt-1 flex flex-wrap items-center gap-3 text-xs font-semibold text-slate-500">
-                  <span className="rounded-md bg-slate-100 px-2 py-0.5 font-bold text-slate-700">{p.docType}</span>
+                  <span className="rounded-md bg-slate-100 px-2 py-0.5 font-bold text-slate-700">
+                    {p.docType}
+                  </span>
                   <span>Version: {p.version}</span>
                   <span>•</span>
                   <span>Updated: {p.lastUpdated}</span>
@@ -149,30 +151,32 @@ export function ClientProposalsTab({ lead }: ClientProposalsTabProps) {
               </div>
             </div>
 
-            <div className="flex flex-wrap items-center justify-between md:justify-end gap-3 shrink-0">
+            <div className="flex shrink-0 flex-wrap items-center justify-between gap-3 md:justify-end">
               <span
                 className={`rounded-full px-3 py-1 text-xs font-black ${
                   p.status === "Signed" || p.status === "Client Approved"
-                    ? "bg-emerald-100 text-emerald-800 border border-emerald-200"
-                    : "bg-amber-100 text-amber-800 border border-amber-200"
+                    ? "border border-emerald-200 bg-emerald-100 text-emerald-800"
+                    : "border border-amber-200 bg-amber-100 text-amber-800"
                 }`}
               >
                 {p.status}
               </span>
-              <span className="font-black text-slate-900 text-sm">₹{p.value.toLocaleString("en-IN")}</span>
+              <span className="text-sm font-black text-slate-900">
+                ₹{p.value.toLocaleString("en-IN")}
+              </span>
 
               <div className="flex items-center gap-1.5">
                 <button
                   type="button"
                   onClick={() => handleSendProposal(p.title)}
-                  className="flex items-center gap-1 rounded-xl border border-purple-200 bg-purple-50 px-3 py-1.5 text-xs font-bold text-purple-800 hover:bg-purple-100 transition"
+                  className="flex items-center gap-1 rounded-xl border border-purple-200 bg-purple-50 px-3 py-1.5 text-xs font-bold text-purple-800 transition hover:bg-purple-100"
                 >
                   <Send className="h-3.5 w-3.5" /> Send SLA
                 </button>
                 <button
                   type="button"
                   onClick={() => handleDownloadDoc(p.title)}
-                  className="rounded-xl border border-slate-200 p-1.5 text-slate-600 hover:bg-slate-100 transition"
+                  className="rounded-xl border border-slate-200 p-1.5 text-slate-600 transition hover:bg-slate-100"
                   title="Download PDF"
                 >
                   <Download className="h-4 w-4" />
@@ -189,7 +193,10 @@ export function ClientProposalsTab({ lead }: ClientProposalsTabProps) {
           <div className="w-full max-w-md rounded-3xl border border-slate-200 bg-white p-6 shadow-2xl">
             <div className="mb-4 flex items-center justify-between">
               <h3 className="text-base font-extrabold text-slate-900">Generate Proposal / SOW</h3>
-              <button onClick={() => setShowModal(false)} className="text-slate-400 hover:text-slate-600">
+              <button
+                onClick={() => setShowModal(false)}
+                className="text-slate-400 hover:text-slate-600"
+              >
                 <X className="h-5 w-5" />
               </button>
             </div>

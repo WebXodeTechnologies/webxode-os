@@ -63,9 +63,7 @@ export function ClientEstimatesTab({ lead }: ClientEstimatesTabProps) {
   };
 
   const handleConvertToProposal = (id: string) => {
-    setEstimates((prev) =>
-      prev.map((e) => (e.id === id ? { ...e, status: "Converted" } : e))
-    );
+    setEstimates((prev) => prev.map((e) => (e.id === id ? { ...e, status: "Converted" } : e)));
     toast.success("Converted to Proposal", {
       description: `Estimate ${id} successfully converted to formal SOW Proposal document.`,
     });
@@ -134,7 +132,10 @@ export function ClientEstimatesTab({ lead }: ClientEstimatesTabProps) {
       {/* Estimates Scope Breakdown Cards */}
       <div className="space-y-6">
         {estimates.map((est) => (
-          <div key={est.id} className="rounded-3xl border border-slate-200/80 bg-white p-6 shadow-xs space-y-4">
+          <div
+            key={est.id}
+            className="space-y-4 rounded-3xl border border-slate-200/80 bg-white p-6 shadow-xs"
+          >
             <div className="flex flex-col justify-between gap-3 md:flex-row md:items-center">
               <div>
                 <div className="flex items-center gap-2">
@@ -152,22 +153,24 @@ export function ClientEstimatesTab({ lead }: ClientEstimatesTabProps) {
                 <span
                   className={`rounded-full px-3 py-1 text-xs font-black ${
                     est.status === "Approved" || est.status === "Converted"
-                      ? "bg-emerald-100 text-emerald-800 border border-emerald-200"
-                      : "bg-amber-100 text-amber-800 border border-amber-200"
+                      ? "border border-emerald-200 bg-emerald-100 text-emerald-800"
+                      : "border border-amber-200 bg-amber-100 text-amber-800"
                   }`}
                 >
                   {est.status}
                 </span>
 
                 <div className="text-right">
-                  <div className="text-lg font-black text-slate-900">₹{est.estimatedCost.toLocaleString("en-IN")}</div>
+                  <div className="text-lg font-black text-slate-900">
+                    ₹{est.estimatedCost.toLocaleString("en-IN")}
+                  </div>
                 </div>
 
                 <div className="flex items-center gap-1">
                   <button
                     type="button"
                     onClick={() => handleSendEstimate(est.id)}
-                    className="flex items-center gap-1 rounded-xl border border-amber-200 bg-amber-50 px-3 py-1.5 text-xs font-bold text-amber-800 hover:bg-amber-100 transition"
+                    className="flex items-center gap-1 rounded-xl border border-amber-200 bg-amber-50 px-3 py-1.5 text-xs font-bold text-amber-800 transition hover:bg-amber-100"
                   >
                     <Send className="h-3.5 w-3.5" /> Send
                   </button>
@@ -175,7 +178,7 @@ export function ClientEstimatesTab({ lead }: ClientEstimatesTabProps) {
                     <button
                       type="button"
                       onClick={() => handleConvertToProposal(est.id)}
-                      className="flex items-center gap-1 rounded-xl bg-indigo-600 px-3 py-1.5 text-xs font-bold text-white hover:bg-indigo-700 transition"
+                      className="flex items-center gap-1 rounded-xl bg-indigo-600 px-3 py-1.5 text-xs font-bold text-white transition hover:bg-indigo-700"
                     >
                       Convert to SOW →
                     </button>
@@ -187,7 +190,7 @@ export function ClientEstimatesTab({ lead }: ClientEstimatesTabProps) {
             {/* Itemized Features Scope Table */}
             <div className="overflow-hidden rounded-2xl border border-slate-100 bg-slate-50/60">
               <table className="w-full text-left text-xs">
-                <thead className="border-b border-slate-200/80 bg-slate-100/70 text-[10px] font-extrabold uppercase tracking-wider text-slate-500">
+                <thead className="border-b border-slate-200/80 bg-slate-100/70 text-[10px] font-extrabold tracking-wider text-slate-500 uppercase">
                   <tr>
                     <th className="px-4 py-2.5">Scope Deliverable / Feature</th>
                     <th className="px-4 py-2.5">Est. Hours</th>
@@ -196,8 +199,8 @@ export function ClientEstimatesTab({ lead }: ClientEstimatesTabProps) {
                 </thead>
                 <tbody className="divide-y divide-slate-100 font-semibold text-slate-700">
                   {est.scopeItems.map((item, idx) => (
-                    <tr key={idx} className="hover:bg-white transition">
-                      <td className="px-4 py-2.5 text-slate-900 font-bold">{item.feature}</td>
+                    <tr key={idx} className="transition hover:bg-white">
+                      <td className="px-4 py-2.5 font-bold text-slate-900">{item.feature}</td>
                       <td className="px-4 py-2.5 text-slate-500">{item.hours} hrs</td>
                       <td className="px-4 py-2.5 text-right font-extrabold text-slate-900">
                         ₹{item.cost.toLocaleString("en-IN")}
@@ -217,7 +220,10 @@ export function ClientEstimatesTab({ lead }: ClientEstimatesTabProps) {
           <div className="w-full max-w-md rounded-3xl border border-slate-200 bg-white p-6 shadow-2xl">
             <div className="mb-4 flex items-center justify-between">
               <h3 className="text-base font-extrabold text-slate-900">Create Estimation Scope</h3>
-              <button onClick={() => setShowCreateModal(false)} className="text-slate-400 hover:text-slate-600">
+              <button
+                onClick={() => setShowCreateModal(false)}
+                className="text-slate-400 hover:text-slate-600"
+              >
                 <X className="h-5 w-5" />
               </button>
             </div>
