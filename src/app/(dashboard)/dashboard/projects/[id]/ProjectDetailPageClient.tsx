@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { toast } from "react-hot-toast";
 import { ProjectItem, SprintItem } from "@/modules/projects/project.types";
 import { deleteProject } from "@/server/actions/projects.actions";
@@ -11,6 +11,7 @@ import {
   ProjectCockpitTab,
 } from "@/components/projects/detail/ProjectDetailTabs";
 import { ProjectOverviewTab } from "@/components/projects/detail/ProjectOverviewTab";
+import { ProjectWorkflowTab } from "@/components/projects/workflow/ProjectWorkflowTab";
 import { ProjectSprintsCockpit } from "@/components/projects/detail/ProjectSprintsCockpit";
 import { ProjectFigmaTab } from "@/components/projects/detail/ProjectFigmaTab";
 import { ProjectCloudAwsTab } from "@/components/projects/detail/ProjectCloudAwsTab";
@@ -24,8 +25,18 @@ interface ProjectDetailPageClientProps {
 
 export function ProjectDetailPageClient({ initialProject, sprints }: ProjectDetailPageClientProps) {
   const router = useRouter();
+  const searchParams = useSearchParams();
+  const initialTabParam = searchParams.get("tab") as ProjectCockpitTab | null;
+
   const [project, setProject] = useState<ProjectItem>(initialProject);
-  const [activeTab, setActiveTab] = useState<ProjectCockpitTab>("overview");
+  const [activeTab, setActiveTab] = useState<ProjectCockpitTab>(
+    initialTabParam &&
+      ["overview", "workflow", "sprints", "design", "cloud", "security", "team"].includes(
+        initialTabParam
+      )
+      ? initialTabParam
+      : "overview"
+  );
 
   const projectId = project.id || project._id || project.projectCode;
 
@@ -127,6 +138,14 @@ export function ProjectDetailPageClient({ initialProject, sprints }: ProjectDeta
       {/* 3. Dynamic Tab Content */}
       {activeTab === "overview" && (
         <ProjectOverviewTab project={project} onUpdateProject={setProject} />
+      )}
+
+      {activeTab === "workflow" && (
+        <ProjectWorkflowTab
+          projectId={projectId}
+          projectCode={project.projectCode}
+          projectTitle={project.title}
+        />
       )}
 
       {activeTab === "sprints" && (

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Suspense } from "react";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { getProjectById, getSprints } from "@/server/actions/projects.actions";
@@ -32,5 +32,15 @@ export default async function ProjectDetailPage({ params }: ProjectDetailPagePro
 
   const sprints = await getSprints(project.id || project.projectCode);
 
-  return <ProjectDetailPageClient initialProject={project} sprints={sprints} />;
+  return (
+    <Suspense
+      fallback={
+        <div className="p-8 text-center text-xs font-bold text-slate-500">
+          Loading project workspace...
+        </div>
+      }
+    >
+      <ProjectDetailPageClient initialProject={project} sprints={sprints} />
+    </Suspense>
+  );
 }

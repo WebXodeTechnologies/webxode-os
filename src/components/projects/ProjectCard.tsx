@@ -19,6 +19,7 @@ import {
   Trash2,
   Server,
   Cloud,
+  GitFork,
 } from "lucide-react";
 import { motion } from "framer-motion";
 import { ProjectItem } from "@/modules/projects/project.types";
@@ -225,25 +226,53 @@ export function ProjectCard({ project, onEdit, onDelete, onQuickView }: ProjectC
             </span>
           </div>
         </div>
+
+        {/* Engaged Team Coordination & Role Allocation */}
+        <div className="mt-3.5 rounded-2xl border border-slate-100 bg-slate-50/60 p-3">
+          <div className="flex items-center justify-between text-xs">
+            <span className="font-bold text-slate-700">Engaged Team Roster</span>
+            <span className="rounded-full bg-indigo-50 px-2 py-0.5 text-[11px] font-bold text-indigo-700">
+              {project.teamMembers?.length || 7} Specialists
+            </span>
+          </div>
+
+          <div className="mt-2 flex flex-wrap items-center gap-1.5">
+            <span className="rounded-md border border-purple-200 bg-purple-50 px-2 py-0.5 text-[10px] font-bold text-purple-700">
+              PM: {project.projectManager.split(" ")[0]}
+            </span>
+            <span className="rounded-md border border-indigo-200 bg-indigo-50 px-2 py-0.5 text-[10px] font-bold text-indigo-700">
+              Lead: {project.techLead.split(" ")[0]}
+            </span>
+            <span className="rounded-md border border-pink-200 bg-pink-50 px-1.5 py-0.5 text-[10px] font-bold text-pink-700">
+              UI/UX
+            </span>
+            <span className="rounded-md border border-sky-200 bg-sky-50 px-1.5 py-0.5 text-[10px] font-bold text-sky-700">
+              Frontend
+            </span>
+            <span className="rounded-md border border-emerald-200 bg-emerald-50 px-1.5 py-0.5 text-[10px] font-bold text-emerald-700">
+              Backend
+            </span>
+            <span className="rounded-md border border-amber-200 bg-amber-50 px-1.5 py-0.5 text-[10px] font-bold text-amber-700">
+              DevOps
+            </span>
+            <span className="rounded-md border border-teal-200 bg-teal-50 px-1.5 py-0.5 text-[10px] font-bold text-teal-700">
+              QA
+            </span>
+          </div>
+        </div>
       </div>
 
-      {/* Footer / Team & Actions */}
-      <div className="mt-5 flex items-center justify-between border-t border-slate-100 pt-3.5">
-        <div className="flex items-center gap-2">
-          <div className="flex -space-x-1.5 overflow-hidden">
-            {project.teamMembers?.slice(0, 3).map((m, idx) => (
-              <div
-                key={idx}
-                title={`${m.name} (${m.role})`}
-                className="flex h-6 w-6 items-center justify-center rounded-full bg-slate-900 text-[10px] font-bold text-white ring-2 ring-white"
-              >
-                {m.name.charAt(0)}
-              </div>
-            ))}
-          </div>
-          <span className="text-[11px] font-semibold text-slate-500">
-            {project.projectManager.split(" ")[0]} (PM)
-          </span>
+      {/* Footer / Workflow & Cockpit Navigation Actions */}
+      <div className="mt-4 flex flex-wrap items-center justify-between gap-2 border-t border-slate-100 pt-3.5">
+        <div className="flex items-center gap-1.5">
+          <Link
+            href={`/dashboard/projects/${project.id || project._id || project.projectCode}?tab=workflow`}
+            className="flex items-center gap-1.5 rounded-xl border border-indigo-200 bg-indigo-50/80 px-2.5 py-1.5 text-xs font-bold text-indigo-700 shadow-2xs transition-all hover:bg-indigo-600 hover:text-white"
+            title="Open Workflow & Node Activity Graph"
+          >
+            <GitFork className="h-3.5 w-3.5" />
+            <span>Workflow Graph</span>
+          </Link>
         </div>
 
         <div className="flex items-center gap-1.5">
