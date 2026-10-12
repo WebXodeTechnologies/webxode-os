@@ -12,6 +12,7 @@ import {
   Clock,
   Layers,
   ChevronRight,
+  GitFork,
 } from "lucide-react";
 import { ProjectItem } from "@/modules/projects/project.types";
 
@@ -217,6 +218,15 @@ export function ProjectTableView({
                       >
                         <Trash2 className="h-3.5 w-3.5" />
                       </button>
+
+                      <Link
+                        href={`/dashboard/projects/${projectId}?tab=workflow`}
+                        className="flex items-center gap-1 rounded-xl border border-indigo-200 bg-indigo-50 px-2.5 py-1.5 text-xs font-bold text-indigo-700 transition-colors hover:bg-indigo-600 hover:text-white"
+                        title="Workflow & Activity Graph"
+                      >
+                        <GitFork className="h-3 w-3" />
+                        <span>Workflow</span>
+                      </Link>
 
                       <Link
                         href={`/dashboard/projects/${projectId}`}

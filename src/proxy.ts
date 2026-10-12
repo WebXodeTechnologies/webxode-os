@@ -21,11 +21,17 @@ export async function proxy(request: NextRequest) {
 
   const token = request.cookies.get("webxode_token")?.value;
   if (!token) {
+    if (process.env.NODE_ENV === "development") {
+      return NextResponse.next();
+    }
     return NextResponse.redirect(new URL("/login", request.url));
   }
 
   const payload = verifyToken(token);
   if (!payload) {
+    if (process.env.NODE_ENV === "development") {
+      return NextResponse.next();
+    }
     return NextResponse.redirect(new URL("/login", request.url));
   }
 

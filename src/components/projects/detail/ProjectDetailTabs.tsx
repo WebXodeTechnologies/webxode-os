@@ -1,9 +1,18 @@
 "use client";
 
 import React from "react";
-import { FileText, GitPullRequest, Palette, Cloud, ShieldCheck, Users } from "lucide-react";
+import {
+  FileText,
+  GitPullRequest,
+  Palette,
+  Cloud,
+  ShieldCheck,
+  Users,
+  GitFork,
+} from "lucide-react";
 
-export type ProjectCockpitTab = "overview" | "sprints" | "design" | "cloud" | "security" | "team";
+export type ProjectCockpitTab =
+  "overview" | "workflow" | "sprints" | "design" | "cloud" | "security" | "team";
 
 interface ProjectDetailTabsProps {
   activeTab: ProjectCockpitTab;
@@ -13,6 +22,7 @@ interface ProjectDetailTabsProps {
 export function ProjectDetailTabs({ activeTab, onTabChange }: ProjectDetailTabsProps) {
   const tabs: { id: ProjectCockpitTab; label: string; icon: React.ElementType }[] = [
     { id: "overview", label: "Overview & Milestones", icon: FileText },
+    { id: "workflow", label: "Workflow & Activity Graph", icon: GitFork },
     { id: "sprints", label: "Sprints & Execution", icon: GitPullRequest },
     { id: "design", label: "UI/UX & Figma", icon: Palette },
     { id: "cloud", label: "Cloud Environments", icon: Cloud },

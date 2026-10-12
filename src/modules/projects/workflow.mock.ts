@@ -1,0 +1,708 @@
+import { ProjectWorkflowData, WorkflowNode, TeamMemberWorkItem } from "./workflow.types";
+
+export const MOCK_WORKFLOW_TEAM: TeamMemberWorkItem[] = [
+  {
+    id: "tm_pm_1",
+    memberId: "usr_pm_1",
+    name: "Sarah Jenkins",
+    role: "Project Manager",
+    avatar:
+      "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=150&auto=format&fit=crop&q=80",
+    email: "sarah.j@webxode.com",
+    allocationPercent: 100,
+    currentTaskTitle: "Sprint 3 Milestone Review & Client Staging Demo Coordination",
+    currentNodeId: "node_8",
+    currentPhase: "QA, UAT & Launch",
+    progress: 85,
+    status: "active",
+    lastUpdated: "35 mins ago",
+    recentWorkLogs: [
+      {
+        id: "wl_pm_1",
+        date: "2026-10-12",
+        time: "11:45 AM",
+        summary:
+          "Coordinated Staging test matrix sign-off with client VP of Engineering Marcus Vance. Received preliminary clearance.",
+        deliverableUrl: "https://docs.webxode.com/signoffs/stage-3",
+        status: "in_progress",
+        reportedTo: "Executive Management",
+        isApproved: true,
+      },
+      {
+        id: "wl_pm_2",
+        date: "2026-10-11",
+        time: "04:30 PM",
+        summary:
+          "Audited sprint burndown: 42 of 50 story points completed on schedule. Identified no critical blockers.",
+        status: "completed",
+        reportedTo: "Tech Lead (David Chen)",
+        isApproved: true,
+      },
+    ],
+  },
+  {
+    id: "tm_lead_1",
+    memberId: "usr_lead_1",
+    name: "David Chen",
+    role: "Tech Lead",
+    avatar:
+      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&auto=format&fit=crop&q=80",
+    email: "david.c@webxode.com",
+    allocationPercent: 100,
+    currentTaskTitle: "Distributed Redis Lock & WebSocket Idempotency Verification",
+    currentNodeId: "node_6",
+    currentPhase: "Core Engineering & Dev",
+    progress: 90,
+    status: "reviewing",
+    lastUpdated: "12 mins ago",
+    recentWorkLogs: [
+      {
+        id: "wl_lead_1",
+        date: "2026-10-12",
+        time: "12:15 PM",
+        summary:
+          "Reviewed PR #348 by Alex Rivera for WebSocket canvas orderbook ticker. Approved with memory benchmark sign-off.",
+        deliverableUrl: "https://github.com/webxode/globallogistics-web/pull/348",
+        status: "completed",
+        reportedTo: "Sarah Jenkins (PM)",
+        isApproved: true,
+      },
+      {
+        id: "wl_lead_2",
+        date: "2026-10-11",
+        time: "03:10 PM",
+        summary:
+          "Completed stress-test analysis on Redis cluster failover under simulated 10k messages/sec.",
+        status: "completed",
+        reportedTo: "Sarah Jenkins (PM)",
+        isApproved: true,
+      },
+    ],
+  },
+  {
+    id: "tm_des_1",
+    memberId: "usr_des_1",
+    name: "Elena Rostova",
+    role: "UI/UX Designer",
+    avatar:
+      "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80",
+    email: "elena.r@webxode.com",
+    allocationPercent: 80,
+    currentTaskTitle: "Design System 3.0 Glass Tokens & Dark Mode High Contrast Audit",
+    currentNodeId: "node_2",
+    currentPhase: "UI/UX & Design System",
+    progress: 100,
+    status: "completed",
+    lastUpdated: "2 hours ago",
+    recentWorkLogs: [
+      {
+        id: "wl_des_1",
+        date: "2026-10-12",
+        time: "09:30 AM",
+        summary:
+          "Pushed 42 component variants to Figma Team Library. Exported JSON design tokens for Next.js Tailwind consumption.",
+        deliverableUrl: "https://figma.com/design/sample-logistics-tokens",
+        status: "completed",
+        reportedTo: "David Chen (Tech Lead)",
+        isApproved: true,
+      },
+      {
+        id: "wl_des_2",
+        date: "2026-10-10",
+        time: "02:20 PM",
+        summary:
+          "Delivered interactive mobile dispatch wireframes and click-through prototype in Figma.",
+        deliverableUrl: "https://figma.com/proto/sample-driver-nav",
+        status: "completed",
+        reportedTo: "Sarah Jenkins (PM)",
+        isApproved: true,
+      },
+    ],
+  },
+  {
+    id: "tm_fe_1",
+    memberId: "usr_fe_1",
+    name: "Alex Rivera",
+    role: "Frontend Developer",
+    avatar:
+      "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&auto=format&fit=crop&q=80",
+    email: "alex.r@webxode.com",
+    allocationPercent: 100,
+    currentTaskTitle: "Next.js 15 App Shell, Real-time Dashboard & Canvas Graph Visuals",
+    currentNodeId: "node_4",
+    currentPhase: "Core Engineering & Dev",
+    progress: 82,
+    status: "active",
+    lastUpdated: "18 mins ago",
+    recentWorkLogs: [
+      {
+        id: "wl_fe_1",
+        date: "2026-10-12",
+        time: "11:10 AM",
+        summary:
+          "Merged real-time WebSocket client hook into Next.js App Router with automatic reconnection backoff.",
+        deliverableUrl: "https://github.com/webxode/globallogistics-web/pull/348",
+        status: "review",
+        reportedTo: "David Chen (Tech Lead)",
+        isApproved: false,
+      },
+      {
+        id: "wl_fe_2",
+        date: "2026-10-11",
+        time: "05:00 PM",
+        summary:
+          "Implemented responsive Kanban lanes with smooth trackpad horizontal scroll and Framer Motion layout animations.",
+        status: "completed",
+        reportedTo: "David Chen (Tech Lead)",
+        isApproved: true,
+      },
+    ],
+  },
+  {
+    id: "tm_be_1",
+    memberId: "usr_be_1",
+    name: "Tariq Mansoor",
+    role: "Backend Developer",
+    avatar:
+      "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=150&auto=format&fit=crop&q=80",
+    email: "tariq.m@webxode.com",
+    allocationPercent: 100,
+    currentTaskTitle: "Multi-Tenant RBAC JWT Rotation & Database Sharding Models",
+    currentNodeId: "node_3",
+    currentPhase: "Core Engineering & Dev",
+    progress: 95,
+    status: "active",
+    lastUpdated: "45 mins ago",
+    recentWorkLogs: [
+      {
+        id: "wl_be_1",
+        date: "2026-10-12",
+        time: "10:00 AM",
+        summary:
+          "Implemented cryptographic refresh token revocation list backed by Redis with sub-1ms check latency.",
+        deliverableUrl: "https://github.com/webxode/logistics-routing-api/pull/84",
+        status: "review",
+        reportedTo: "David Chen (Tech Lead)",
+        isApproved: false,
+      },
+      {
+        id: "wl_be_2",
+        date: "2026-10-09",
+        time: "04:15 PM",
+        summary:
+          "Completed Prisma PostgreSQL schema migrations for waypoint audit trail and transaction ledgers.",
+        status: "completed",
+        reportedTo: "David Chen (Tech Lead)",
+        isApproved: true,
+      },
+    ],
+  },
+  {
+    id: "tm_ops_1",
+    memberId: "usr_ops_1",
+    name: "Viktor Vane",
+    role: "DevOps Engineer",
+    avatar:
+      "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&auto=format&fit=crop&q=80",
+    email: "viktor.v@webxode.com",
+    allocationPercent: 75,
+    currentTaskTitle: "AWS EKS Cluster Terraform & GitHub Actions CI Matrix Sharding",
+    currentNodeId: "node_5",
+    currentPhase: "Cloud & DevSecOps",
+    progress: 88,
+    status: "active",
+    lastUpdated: "1 hour ago",
+    recentWorkLogs: [
+      {
+        id: "wl_ops_1",
+        date: "2026-10-12",
+        time: "09:15 AM",
+        summary:
+          "Configured AWS EKS Flagger canary rollout deployment with Prometheus automatic 5xx rollback thresholds.",
+        deliverableUrl: "https://github.com/webxode/infra-terraform/pull/89",
+        status: "in_progress",
+        reportedTo: "David Chen (Tech Lead)",
+        isApproved: true,
+      },
+      {
+        id: "wl_ops_2",
+        date: "2026-10-08",
+        time: "02:40 PM",
+        summary:
+          "Provisioned encrypted S3 waybills bucket with KMS SSE and automated 90-day Glacier lifecycle policy.",
+        status: "completed",
+        reportedTo: "Sarah Jenkins (PM)",
+        isApproved: true,
+      },
+    ],
+  },
+  {
+    id: "tm_qa_1",
+    memberId: "usr_qa_1",
+    name: "Maya Lin",
+    role: "QA Engineer",
+    avatar:
+      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&auto=format&fit=crop&q=80",
+    email: "maya.l@webxode.com",
+    allocationPercent: 90,
+    currentTaskTitle: "Playwright E2E Parallel Test Matrix & Critical Regression Suites",
+    currentNodeId: "node_7",
+    currentPhase: "QA, UAT & Launch",
+    progress: 75,
+    status: "active",
+    lastUpdated: "50 mins ago",
+    recentWorkLogs: [
+      {
+        id: "wl_qa_1",
+        date: "2026-10-12",
+        time: "10:45 AM",
+        summary:
+          "Created 18 automated Playwright test specs covering multi-tenant RBAC edge cases and session timeouts.",
+        deliverableUrl: "https://github.com/webxode/globallogistics-web/pull/351",
+        status: "in_progress",
+        reportedTo: "David Chen (Tech Lead)",
+        isApproved: false,
+      },
+      {
+        id: "wl_qa_2",
+        date: "2026-10-09",
+        time: "01:20 PM",
+        summary:
+          "Configured Playwright 8-way parallel test sharding in GitHub Actions, slashing CI duration from 42m to 6m.",
+        status: "completed",
+        reportedTo: "Sarah Jenkins (PM)",
+        isApproved: true,
+      },
+    ],
+  },
+];
+
+export const MOCK_WORKFLOW_NODES: WorkflowNode[] = [
+  {
+    id: "node_1",
+    stage: "Architecture & Specs",
+    stageNumber: 1,
+    title: "System Architecture, SOW & Database Schema Blueprint",
+    description:
+      "Define distributed system boundaries, domain models, multi-tenant isolation strategy, and contract milestone commitments.",
+    roleTag: "Tech Lead",
+    owner: {
+      name: "David Chen",
+      role: "Tech Lead",
+      avatar: MOCK_WORKFLOW_TEAM[1].avatar,
+      email: MOCK_WORKFLOW_TEAM[1].email,
+    },
+    reviewer: {
+      name: "Sarah Jenkins",
+      role: "Project Manager",
+      avatar: MOCK_WORKFLOW_TEAM[0].avatar,
+    },
+    status: "completed",
+    progressPercent: 100,
+    dependencies: [],
+    estimatedHours: 40,
+    loggedHours: 38,
+    dueDate: "2026-08-30",
+    artifacts: [
+      {
+        type: "docs",
+        title: "Architecture RFC & Sequence Diagrams",
+        url: "https://docs.webxode.com/rfc-gl-arch",
+      },
+      {
+        type: "github_commit",
+        title: "Initial Repo Scaffold & Monorepo Configuration",
+        url: "https://github.com/webxode/globallogistics-web/commit/1a0ef",
+      },
+    ],
+    activityUpdates: [
+      {
+        id: "act_n1_1",
+        author: "David Chen",
+        role: "Tech Lead",
+        avatar: MOCK_WORKFLOW_TEAM[1].avatar,
+        timestamp: "Aug 28, 2026",
+        message: "Finalized RFC with Marcus Vance (client VP Eng). Approved for Phase 2 kickoff.",
+        progressAfter: 100,
+        statusAfter: "completed",
+        reviewedBy: "Sarah Jenkins",
+        isApproved: true,
+      },
+    ],
+  },
+  {
+    id: "node_2",
+    stage: "UI/UX & Design System",
+    stageNumber: 2,
+    title: "Figma Design System 3.0, Micro-Interactions & Prototyping",
+    description:
+      "Craft semantic tokens, glassmorphism cards, dispatch tables, and complete click-through interactive prototype in Figma.",
+    roleTag: "UI/UX Designer",
+    owner: {
+      name: "Elena Rostova",
+      role: "UI/UX Designer",
+      avatar: MOCK_WORKFLOW_TEAM[2].avatar,
+      email: MOCK_WORKFLOW_TEAM[2].email,
+    },
+    reviewer: {
+      name: "Sarah Jenkins",
+      role: "Project Manager",
+      avatar: MOCK_WORKFLOW_TEAM[0].avatar,
+    },
+    status: "completed",
+    progressPercent: 100,
+    dependencies: ["node_1"],
+    estimatedHours: 60,
+    loggedHours: 58,
+    dueDate: "2026-09-18",
+    artifacts: [
+      {
+        type: "figma",
+        title: "Figma Dispatch Portal UI Kit (42 screens)",
+        url: "https://figma.com/design/sample-logistics-ui-kit",
+      },
+      {
+        type: "figma",
+        title: "Driver App Micro-Flows Prototype",
+        url: "https://figma.com/proto/sample-driver-nav",
+      },
+    ],
+    activityUpdates: [
+      {
+        id: "act_n2_1",
+        author: "Elena Rostova",
+        role: "UI/UX Designer",
+        avatar: MOCK_WORKFLOW_TEAM[2].avatar,
+        timestamp: "Sep 16, 2026",
+        message:
+          "Design sign-off received from client executive team. Token synchronization script handed to frontend.",
+        progressAfter: 100,
+        statusAfter: "completed",
+        reviewedBy: "Sarah Jenkins",
+        isApproved: true,
+      },
+    ],
+  },
+  {
+    id: "node_3",
+    stage: "Core Engineering & Dev",
+    stageNumber: 3,
+    title: "Database Models, Prisma Migrations & RBAC Auth Engine",
+    description:
+      "Implement zero-downtime database migrations, Redis token revocation list, and multi-tenant authorization hooks.",
+    roleTag: "Backend Developer",
+    owner: {
+      name: "Tariq Mansoor",
+      role: "Backend Developer",
+      avatar: MOCK_WORKFLOW_TEAM[4].avatar,
+      email: MOCK_WORKFLOW_TEAM[4].email,
+    },
+    reviewer: {
+      name: "David Chen",
+      role: "Tech Lead",
+      avatar: MOCK_WORKFLOW_TEAM[1].avatar,
+    },
+    status: "review",
+    progressPercent: 95,
+    dependencies: ["node_1"],
+    estimatedHours: 80,
+    loggedHours: 76,
+    dueDate: "2026-10-15",
+    artifacts: [
+      {
+        type: "github_pr",
+        title: "PR #84: Auth & Redis sliding window tokens",
+        url: "https://github.com/webxode/logistics-routing-api/pull/84",
+      },
+      {
+        type: "github_commit",
+        title: "commit b43c91: Database audit tables",
+        url: "https://github.com/webxode/logistics-routing-api/commit/b43c91",
+      },
+    ],
+    activityUpdates: [
+      {
+        id: "act_n3_1",
+        author: "Tariq Mansoor",
+        role: "Backend Developer",
+        avatar: MOCK_WORKFLOW_TEAM[4].avatar,
+        timestamp: "Today at 10:00 AM",
+        message:
+          "PR #84 submitted for final review. Added comprehensive integration tests covering token blacklisting.",
+        progressAfter: 95,
+        statusAfter: "review",
+        reviewedBy: "David Chen",
+        isApproved: false,
+      },
+    ],
+  },
+  {
+    id: "node_4",
+    stage: "Core Engineering & Dev",
+    stageNumber: 3,
+    title: "Next.js 15 App Shell, Layout System & Interactive UI Components",
+    description:
+      "Build high-performance client pages with Next.js 15 App Router, Tailwind CSS, Framer Motion transitions, and state management.",
+    roleTag: "Frontend Developer",
+    owner: {
+      name: "Alex Rivera",
+      role: "Frontend Developer",
+      avatar: MOCK_WORKFLOW_TEAM[3].avatar,
+      email: MOCK_WORKFLOW_TEAM[3].email,
+    },
+    reviewer: {
+      name: "David Chen",
+      role: "Tech Lead",
+      avatar: MOCK_WORKFLOW_TEAM[1].avatar,
+    },
+    status: "in_progress",
+    progressPercent: 82,
+    dependencies: ["node_2", "node_3"],
+    estimatedHours: 90,
+    loggedHours: 74,
+    dueDate: "2026-10-20",
+    artifacts: [
+      {
+        type: "github_pr",
+        title: "PR #348: Real-time Canvas & Orderbook UI",
+        url: "https://github.com/webxode/globallogistics-web/pull/348",
+      },
+      {
+        type: "docs",
+        title: "Component Storybook Previews",
+        url: "https://storybook.webxode.internal/gl-tokens",
+      },
+    ],
+    activityUpdates: [
+      {
+        id: "act_n4_1",
+        author: "Alex Rivera",
+        role: "Frontend Developer",
+        avatar: MOCK_WORKFLOW_TEAM[3].avatar,
+        timestamp: "Today at 11:10 AM",
+        message:
+          "Integrated WebSocket backpressure throttler. Frame rate benchmarks stable at 60fps on canvas orderbook.",
+        progressAfter: 82,
+        statusAfter: "in_progress",
+        reviewedBy: "David Chen",
+        isApproved: false,
+      },
+    ],
+  },
+  {
+    id: "node_5",
+    stage: "Cloud & DevSecOps",
+    stageNumber: 4,
+    title: "Terraform AWS EKS Cluster, Docker Multi-Stage & Istio Service Mesh",
+    description:
+      "Automated infrastructure-as-code for AWS EKS, Istio traffic routing, KMS secrets manager, and Docker build pipeline.",
+    roleTag: "DevOps Engineer",
+    owner: {
+      name: "Viktor Vane",
+      role: "DevOps Engineer",
+      avatar: MOCK_WORKFLOW_TEAM[5].avatar,
+      email: MOCK_WORKFLOW_TEAM[5].email,
+    },
+    reviewer: {
+      name: "David Chen",
+      role: "Tech Lead",
+      avatar: MOCK_WORKFLOW_TEAM[1].avatar,
+    },
+    status: "in_progress",
+    progressPercent: 88,
+    dependencies: ["node_1"],
+    estimatedHours: 70,
+    loggedHours: 62,
+    dueDate: "2026-10-18",
+    artifacts: [
+      {
+        type: "cloud",
+        title: "AWS EKS Cluster (us-east-1)",
+        url: "https://console.aws.amazon.com/eks/home",
+      },
+      {
+        type: "github_pr",
+        title: "PR #89: Istio Canary Rollout Flagger CRD",
+        url: "https://github.com/webxode/infra-terraform/pull/89",
+      },
+    ],
+    activityUpdates: [
+      {
+        id: "act_n5_1",
+        author: "Viktor Vane",
+        role: "DevOps Engineer",
+        avatar: MOCK_WORKFLOW_TEAM[5].avatar,
+        timestamp: "Today at 09:15 AM",
+        message:
+          "Completed Flagger canary testing with synthetic traffic; automated 5xx rollback thresholds passed.",
+        progressAfter: 88,
+        statusAfter: "in_progress",
+        reviewedBy: "David Chen",
+        isApproved: true,
+      },
+    ],
+  },
+  {
+    id: "node_6",
+    stage: "Core Engineering & Dev",
+    stageNumber: 3,
+    title: "End-to-End API Gateway Integration & Live Fleet Telemetry",
+    description:
+      "Connect Next.js frontend with backend microservices over WebSocket channels and authenticated REST endpoints.",
+    roleTag: "Tech Lead",
+    owner: {
+      name: "David Chen",
+      role: "Tech Lead",
+      avatar: MOCK_WORKFLOW_TEAM[1].avatar,
+      email: MOCK_WORKFLOW_TEAM[1].email,
+    },
+    reviewer: {
+      name: "Sarah Jenkins",
+      role: "Project Manager",
+      avatar: MOCK_WORKFLOW_TEAM[0].avatar,
+    },
+    status: "in_progress",
+    progressPercent: 78,
+    dependencies: ["node_4", "node_5"],
+    estimatedHours: 50,
+    loggedHours: 39,
+    dueDate: "2026-10-24",
+    artifacts: [
+      {
+        type: "github_pr",
+        title: "PR #350: Live Telemetry Hook & WebSocket Ring Buffer",
+        url: "https://github.com/webxode/globallogistics-web/pull/350",
+      },
+    ],
+    activityUpdates: [
+      {
+        id: "act_n6_1",
+        author: "David Chen",
+        role: "Tech Lead",
+        avatar: MOCK_WORKFLOW_TEAM[1].avatar,
+        timestamp: "Yesterday at 04:30 PM",
+        message: "Fleet ping ingestion verified at 1,000 pings/sec with sub-10ms UI paint cycle.",
+        progressAfter: 78,
+        statusAfter: "in_progress",
+        reviewedBy: "Sarah Jenkins",
+        isApproved: true,
+      },
+    ],
+  },
+  {
+    id: "node_7",
+    stage: "QA, UAT & Launch",
+    stageNumber: 5,
+    title: "Playwright E2E Parallel Test Suite & DevSecOps Pen-Testing",
+    description:
+      "Automated cross-browser testing with Playwright, performance regression benchmarks, OWASP Top 10 security pen-testing.",
+    roleTag: "QA Engineer",
+    owner: {
+      name: "Maya Lin",
+      role: "QA Engineer",
+      avatar: MOCK_WORKFLOW_TEAM[6].avatar,
+      email: MOCK_WORKFLOW_TEAM[6].email,
+    },
+    reviewer: {
+      name: "David Chen",
+      role: "Tech Lead",
+      avatar: MOCK_WORKFLOW_TEAM[1].avatar,
+    },
+    status: "in_progress",
+    progressPercent: 75,
+    dependencies: ["node_6"],
+    estimatedHours: 60,
+    loggedHours: 45,
+    dueDate: "2026-11-05",
+    artifacts: [
+      {
+        type: "test",
+        title: "Playwright HTML Test Report (142 specs)",
+        url: "https://reports.webxode.internal/playwright/gl-run-94",
+      },
+      {
+        type: "github_pr",
+        title: "PR #351: E2E RBAC & Session Test Specs",
+        url: "https://github.com/webxode/globallogistics-web/pull/351",
+      },
+    ],
+    activityUpdates: [
+      {
+        id: "act_n7_1",
+        author: "Maya Lin",
+        role: "QA Engineer",
+        avatar: MOCK_WORKFLOW_TEAM[6].avatar,
+        timestamp: "Today at 10:45 AM",
+        message:
+          "Passed 136 of 142 automated specs; 6 edge cases on network disconnect undergoing patch verification.",
+        progressAfter: 75,
+        statusAfter: "in_progress",
+        reviewedBy: "David Chen",
+        isApproved: false,
+      },
+    ],
+  },
+  {
+    id: "node_8",
+    stage: "QA, UAT & Launch",
+    stageNumber: 5,
+    title: "Client Staging UAT Sign-Off & Zero-Downtime Production Cutover",
+    description:
+      "Executive client demonstration, UAT sign-off documentation, blue/green DNS cutover, and post-launch monitoring.",
+    roleTag: "Project Manager",
+    owner: {
+      name: "Sarah Jenkins",
+      role: "Project Manager",
+      avatar: MOCK_WORKFLOW_TEAM[0].avatar,
+      email: MOCK_WORKFLOW_TEAM[0].email,
+    },
+    reviewer: {
+      name: "Marcus Vance",
+      role: "Client VP Engineering",
+      avatar:
+        "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=150&auto=format&fit=crop&q=80",
+    },
+    status: "pending",
+    progressPercent: 30,
+    dependencies: ["node_7"],
+    estimatedHours: 40,
+    loggedHours: 12,
+    dueDate: "2026-11-30",
+    artifacts: [
+      {
+        type: "docs",
+        title: "Client Staging UAT Acceptance Protocol",
+        url: "https://docs.webxode.com/uat-globallogistics",
+      },
+    ],
+    activityUpdates: [
+      {
+        id: "act_n8_1",
+        author: "Sarah Jenkins",
+        role: "Project Manager",
+        avatar: MOCK_WORKFLOW_TEAM[0].avatar,
+        timestamp: "Oct 10, 2026",
+        message:
+          "Staging demo schedule finalized for Nov 10 with client engineering and ops directors.",
+        progressAfter: 30,
+        statusAfter: "pending",
+        reviewedBy: "Marcus Vance",
+        isApproved: false,
+      },
+    ],
+  },
+];
+
+export function getProjectWorkflowData(
+  projectId: string,
+  projectCode: string,
+  projectTitle: string
+): ProjectWorkflowData {
+  return {
+    projectId,
+    projectCode,
+    projectTitle,
+    nodes: MOCK_WORKFLOW_NODES,
+    teamMembers: MOCK_WORKFLOW_TEAM,
+  };
+}
