@@ -1,0 +1,279 @@
+"use client";
+
+import React from "react";
+import Link from "next/link";
+import {
+  ExternalLink,
+  GitBranch,
+  ShieldCheck,
+  Clock,
+  Calendar,
+  Users,
+  CheckCircle2,
+  AlertCircle,
+  Activity,
+  Layers,
+  ArrowRight,
+  MoreVertical,
+  Edit2,
+  Trash2,
+  Server,
+  Cloud,
+} from "lucide-react";
+import { motion } from "framer-motion";
+import { ProjectItem } from "@/modules/projects/project.types";
+
+interface ProjectCardProps {
+  project: ProjectItem;
+  onEdit: (project: ProjectItem) => void;
+  onDelete: (id: string) => void;
+  onQuickView: (project: ProjectItem) => void;
+}
+
+export function ProjectCard({ project, onEdit, onDelete, onQuickView }: ProjectCardProps) {
+  const hoursBurnPercent = project.budgetHours
+    ? Math.min(100, Math.round((project.consumedHours / project.budgetHours) * 100))
+    : 0;
+
+  const getStatusColor = (status: ProjectItem["status"]) => {
+    switch (status) {
+      case "On Track":
+        return {
+          bg: "bg-emerald-50 text-emerald-700 border-emerald-200/80",
+          dot: "bg-emerald-500",
+        };
+      case "At Risk":
+        return {
+          bg: "bg-amber-50 text-amber-700 border-amber-200/80",
+          dot: "bg-amber-500",
+        };
+      case "Delayed":
+        return {
+          bg: "bg-rose-50 text-rose-700 border-rose-200/80",
+          dot: "bg-rose-500",
+        };
+      case "Completed":
+        return {
+          bg: "bg-blue-50 text-blue-700 border-blue-200/80",
+          dot: "bg-blue-500",
+        };
+      default:
+        return {
+          bg: "bg-slate-50 text-slate-700 border-slate-200",
+          dot: "bg-slate-400",
+        };
+    }
+  };
+
+  const getPhaseBadge = (phase: ProjectItem["phase"]) => {
+    switch (phase) {
+      case "Discovery":
+        return "bg-cyan-50 text-cyan-700 border-cyan-200";
+      case "In Development":
+        return "bg-indigo-50 text-indigo-700 border-indigo-200";
+      case "QA & UAT":
+        return "bg-amber-50 text-amber-700 border-amber-200";
+      case "Staging":
+        return "bg-purple-50 text-purple-700 border-purple-200";
+      case "Production":
+        return "bg-emerald-50 text-emerald-700 border-emerald-200";
+      default:
+        return "bg-slate-50 text-slate-700 border-slate-200";
+    }
+  };
+
+  const statusConfig = getStatusColor(project.status);
+  const primaryRepo = project.repositories?.[0];
+
+  return (
+    <motion.div
+      whileHover={{ y: -3 }}
+      transition={{ duration: 0.2 }}
+      className="group relative flex flex-col justify-between overflow-hidden rounded-[2rem] border border-slate-200/80 bg-white p-6 shadow-2xs transition-all hover:border-slate-300 hover:shadow-md"
+    >
+      {/* Top Header */}
+      <div>
+        <div className="flex items-center justify-between gap-2">
+          <div className="flex flex-wrap items-center gap-2">
+            <span className="font-mono text-[11px] font-black tracking-wider text-slate-500">
+              {project.projectCode}
+            </span>
+            <span
+              className={`rounded-full border px-2.5 py-0.5 text-[10px] font-bold ${getPhaseBadge(
+                project.phase
+              )}`}
+            >
+              {project.phase}
+            </span>
+          </div>
+
+          <div className="flex items-center gap-1.5">
+            <span
+              className={`inline-flex items-center gap-1.5 rounded-full border px-2.5 py-0.5 text-[10px] font-bold ${statusConfig.bg}`}
+            >
+              <span className={`h-1.5 w-1.5 rounded-full ${statusConfig.dot} animate-pulse`} />
+              {project.status}
+            </span>
+          </div>
+        </div>
+
+        {/* Client & Title */}
+        <div className="mt-3">
+          <span className="text-[11px] font-bold tracking-wider text-indigo-600 uppercase">
+            {project.clientName}
+          </span>
+          <Link
+            href={`/dashboard/projects/${project.id || project._id || project.projectCode}`}
+            className="group/title block"
+          >
+            <h3 className="mt-0.5 line-clamp-1 text-base font-black text-slate-900 transition-colors group-hover/title:text-indigo-600">
+              {project.title}
+            </h3>
+          </Link>
+          <p className="mt-1 line-clamp-2 text-xs leading-relaxed text-slate-500">
+            {project.summary}
+          </p>
+        </div>
+
+        {/* Progress & Target Launch */}
+        <div className="mt-4 rounded-2xl border border-slate-100 bg-slate-50/80 p-3.5">
+          <div className="flex items-center justify-between text-xs">
+            <span className="font-bold text-slate-600">Completion</span>
+            <span className="font-black text-slate-900">{project.progress}%</span>
+          </div>
+          <div className="mt-1.5 h-1.5 w-full overflow-hidden rounded-full bg-slate-200">
+            <div
+              className={`h-full rounded-full transition-all duration-500 ${
+                project.progress >= 80
+                  ? "bg-emerald-500"
+                  : project.progress >= 40
+                    ? "bg-indigo-600"
+                    : "bg-cyan-500"
+              }`}
+              style={{ width: `${project.progress}%` }}
+            />
+          </div>
+
+          <div className="mt-2.5 flex items-center justify-between text-[11px] font-semibold text-slate-500">
+            <div className="flex items-center gap-1">
+              <Calendar className="h-3 w-3 text-slate-400" />
+              <span>Target Launch: {project.targetLaunchDate}</span>
+            </div>
+            <div className="flex items-center gap-1">
+              <Clock className="h-3 w-3 text-slate-400" />
+              <span>
+                {project.consumedHours}h / {project.budgetHours}h
+              </span>
+            </div>
+          </div>
+        </div>
+
+        {/* Tech Stack Badges */}
+        <div className="mt-3.5 flex flex-wrap gap-1.5">
+          {project.techStack?.slice(0, 4).map((tech) => (
+            <span
+              key={tech}
+              className="rounded-lg bg-slate-100 px-2 py-0.5 text-[10px] font-semibold text-slate-700"
+            >
+              {tech}
+            </span>
+          ))}
+          {project.techStack && project.techStack.length > 4 && (
+            <span className="rounded-lg bg-slate-100 px-1.5 py-0.5 text-[10px] font-bold text-slate-500">
+              +{project.techStack.length - 4}
+            </span>
+          )}
+        </div>
+
+        {/* Environments Fleet & Security Status */}
+        <div className="mt-3.5 flex items-center justify-between border-t border-slate-100 pt-3">
+          <div className="flex items-center gap-2">
+            <span className="text-[10px] font-bold tracking-wider text-slate-400 uppercase">
+              Envs:
+            </span>
+            <div className="flex items-center gap-1.5">
+              {project.environments?.map((env) => (
+                <span
+                  key={env.name}
+                  title={`${env.name}: ${env.status} (${env.cloudProvider})`}
+                  className={`flex items-center gap-1 rounded-md px-1.5 py-0.5 text-[9px] font-bold ${
+                    env.status === "Healthy"
+                      ? "border border-emerald-200/60 bg-emerald-50 text-emerald-700"
+                      : env.status === "Deploying"
+                        ? "border border-blue-200/60 bg-blue-50 text-blue-700"
+                        : "bg-slate-100 text-slate-600"
+                  }`}
+                >
+                  <span
+                    className={`h-1.5 w-1.5 rounded-full ${
+                      env.status === "Healthy" ? "bg-emerald-500" : "animate-pulse bg-blue-400"
+                    }`}
+                  />
+                  {env.name.split(" ")[0]}
+                </span>
+              ))}
+            </div>
+          </div>
+
+          <div className="flex items-center gap-1.5">
+            <span
+              className="flex items-center gap-1 rounded-md bg-indigo-50 px-2 py-0.5 text-[10px] font-bold text-indigo-700"
+              title={`Security Grade: ${project.devSecOps?.securityScore}, Open CVEs: ${project.devSecOps?.openCvesCount}`}
+            >
+              <ShieldCheck className="h-3 w-3 text-indigo-600" />
+              Sec {project.devSecOps?.securityScore || "A"}
+            </span>
+          </div>
+        </div>
+      </div>
+
+      {/* Footer / Team & Actions */}
+      <div className="mt-5 flex items-center justify-between border-t border-slate-100 pt-3.5">
+        <div className="flex items-center gap-2">
+          <div className="flex -space-x-1.5 overflow-hidden">
+            {project.teamMembers?.slice(0, 3).map((m, idx) => (
+              <div
+                key={idx}
+                title={`${m.name} (${m.role})`}
+                className="flex h-6 w-6 items-center justify-center rounded-full bg-slate-900 text-[10px] font-bold text-white ring-2 ring-white"
+              >
+                {m.name.charAt(0)}
+              </div>
+            ))}
+          </div>
+          <span className="text-[11px] font-semibold text-slate-500">
+            {project.projectManager.split(" ")[0]} (PM)
+          </span>
+        </div>
+
+        <div className="flex items-center gap-1.5">
+          <button
+            type="button"
+            onClick={() => onQuickView(project)}
+            className="cursor-pointer rounded-xl border border-slate-200 p-2 text-slate-500 transition-all hover:bg-slate-50 hover:text-slate-900"
+            title="Quick Preview"
+          >
+            <Activity className="h-3.5 w-3.5" />
+          </button>
+
+          <button
+            type="button"
+            onClick={() => onDelete(project.id || project._id || project.projectCode)}
+            className="cursor-pointer rounded-xl border border-slate-200 p-2 text-slate-400 transition-all hover:border-rose-200 hover:bg-rose-50 hover:text-rose-600"
+            title="Delete Project"
+          >
+            <Trash2 className="h-3.5 w-3.5" />
+          </button>
+
+          <Link
+            href={`/dashboard/projects/${project.id || project._id || project.projectCode}`}
+            className="flex items-center gap-1 rounded-xl bg-slate-900 px-3 py-1.5 text-xs font-bold text-white shadow-2xs transition-all hover:bg-indigo-600"
+          >
+            <span>Cockpit</span>
+            <ArrowRight className="h-3 w-3" />
+          </Link>
+        </div>
+      </div>
+    </motion.div>
+  );
+}
