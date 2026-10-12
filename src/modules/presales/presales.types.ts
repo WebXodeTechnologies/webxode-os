@@ -96,13 +96,27 @@ export interface NegotiationLog {
   status: "Pending" | "Approved" | "Counter-Offered" | "Rejected";
 }
 
+export type PresalesDocType =
+  | "SOW"
+  | "Checklist"
+  | "PRD"
+  | "BRD"
+  | "Architecture"
+  | "Quotation"
+  | "Proposal"
+  | "SRS"
+  | "Contract";
+
 export interface PresalesDocument {
   id: string;
   title: string;
-  type: "BRD" | "SRS" | "Architecture" | "Proposal" | "Quotation" | "SOW" | "Checklist";
+  type: PresalesDocType;
   version: string;
   updatedAt: string;
   size: string;
+  fileUrl?: string;
+  status?: "Draft" | "Review" | "Approved" | "Signed";
+  uploadedFromPc?: boolean;
 }
 
 export interface PresalesItem {
@@ -119,6 +133,8 @@ export interface PresalesItem {
   salesLeadSource?: string;
   salesAppointmentDate?: string;
   stage: "Requirement" | "Estimation" | "Proposal" | "Quotation" | "Negotiation" | "Approved";
+  estimateStatus?:
+    "Draft" | "Sent to Client" | "Client Reviewing" | "Approved" | "Revision Requested";
   priority: PresalesPriority;
   techStack: string[];
   estimatedValue: number;
