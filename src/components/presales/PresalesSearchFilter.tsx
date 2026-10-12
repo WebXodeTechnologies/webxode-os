@@ -36,7 +36,7 @@ export function PresalesSearchFilter({
           type="text"
           value={searchQuery}
           onChange={(e) => onSearchChange(e.target.value)}
-          placeholder="Search by client, project title, tech stack (e.g. Next.js, Python, AI)..."
+          placeholder="Search by client, service (Web, App, SaaS, Marketing), demo platform (Teams, Meet)..."
           className="h-11 w-full rounded-2xl border border-slate-200 bg-slate-50/70 pr-10 pl-11 text-xs font-semibold text-slate-800 placeholder-slate-400 transition-all focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-500/10 focus:outline-none"
         />
         {searchQuery && (

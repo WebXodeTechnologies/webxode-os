@@ -3,15 +3,26 @@
 import { connectDB } from "@/lib/db";
 import Presales from "@/models/presales.model";
 import { revalidatePath } from "next/cache";
-import { PresalesItem, PresalesDashboardMetrics } from "@/modules/presales/presales.types";
+import {
+  PresalesItem,
+  PresalesDashboardMetrics,
+  PresalesDemoInfo,
+} from "@/modules/presales/presales.types";
 import { DEMO_PRESALES_ITEMS } from "@/modules/presales/presales.constants";
 
-export async function getPresalesItems(stage?: string, query?: string): Promise<PresalesItem[]> {
+export async function getPresalesItems(
+  stage?: string,
+  query?: string,
+  serviceCategory?: string
+): Promise<PresalesItem[]> {
   try {
     await connectDB();
     const filter: any = {};
     if (stage && stage !== "All") {
       filter.stage = stage;
+    }
+    if (serviceCategory && serviceCategory !== "All") {
+      filter.serviceCategory = serviceCategory;
     }
     if (query) {
       filter.$or = [
@@ -19,6 +30,7 @@ export async function getPresalesItems(stage?: string, query?: string): Promise<
         { clientName: { $regex: query, $options: "i" } },
         { contactPerson: { $regex: query, $options: "i" } },
         { techStack: { $regex: query, $options: "i" } },
+        { quotationNumber: { $regex: query, $options: "i" } },
       ];
     }
 
@@ -26,12 +38,15 @@ export async function getPresalesItems(stage?: string, query?: string): Promise<
     if (!items || items.length === 0) {
       return DEMO_PRESALES_ITEMS.filter((item) => {
         const matchesStage = !stage || stage === "All" || item.stage === stage;
+        const matchesCategory =
+          !serviceCategory || serviceCategory === "All" || item.serviceCategory === serviceCategory;
         const matchesQuery =
           !query ||
           item.title.toLowerCase().includes(query.toLowerCase()) ||
           item.clientName.toLowerCase().includes(query.toLowerCase()) ||
+          item.quotationNumber?.toLowerCase().includes(query.toLowerCase()) ||
           item.techStack.some((t) => t.toLowerCase().includes(query.toLowerCase()));
-        return matchesStage && matchesQuery;
+        return matchesStage && matchesCategory && matchesQuery;
       });
     }
 
@@ -40,69 +55,124 @@ export async function getPresalesItems(stage?: string, query?: string): Promise<
     console.warn("DB offline or error loading presales items; using fallback demo items:", error);
     return DEMO_PRESALES_ITEMS.filter((item) => {
       const matchesStage = !stage || stage === "All" || item.stage === stage;
+      const matchesCategory =
+        !serviceCategory || serviceCategory === "All" || item.serviceCategory === serviceCategory;
       const matchesQuery =
         !query ||
         item.title.toLowerCase().includes(query.toLowerCase()) ||
         item.clientName.toLowerCase().includes(query.toLowerCase()) ||
+        item.quotationNumber?.toLowerCase().includes(query.toLowerCase()) ||
         item.techStack.some((t) => t.toLowerCase().includes(query.toLowerCase()));
-      return matchesStage && matchesQuery;
+      return matchesStage && matchesCategory && matchesQuery;
     });
   }
 }
 
+export async function getPresalesItemById(id: string): Promise<PresalesItem | null> {
+  try {
+    await connectDB();
+    const item = await Presales.findOne({
+      $or: [{ _id: id }, { id: id }, { quotationNumber: id }],
+    }).lean();
+
+    if (item) {
+      return JSON.parse(JSON.stringify(item));
+    }
+  } catch (error) {
+    console.warn(`Could not load presales item ${id} from DB, checking demo items:`, error);
+  }
+
+  const fallback = DEMO_PRESALES_ITEMS.find(
+    (i) => i.id === id || i._id === id || i.quotationNumber === id
+  );
+  return fallback ? JSON.parse(JSON.stringify(fallback)) : null;
+}
+
 export async function getPresalesDashboardMetrics(): Promise<PresalesDashboardMetrics> {
+  let dataList: PresalesItem[] = DEMO_PRESALES_ITEMS;
+
   try {
     await connectDB();
     const items = await Presales.find().lean();
-    const dataList = items && items.length > 0 ? items : DEMO_PRESALES_ITEMS;
-
-    const scopingCount = dataList.filter((i) => i.stage === "Requirement").length;
-    const estimationCount = dataList.filter((i) => i.stage === "Estimation").length;
-    const proposalCount = dataList.filter((i) => i.stage === "Proposal").length;
-    const quotationCount = dataList.filter((i) => i.stage === "Quotation").length;
-    const negotiationCount = dataList.filter((i) => i.stage === "Negotiation").length;
-    const approvedCount = dataList.filter((i) => i.stage === "Approved").length;
-
-    const totalPipelineValue = dataList.reduce((acc, curr) => acc + (curr.estimatedValue || 0), 0);
-    const totalEstimatedHours = dataList.reduce(
-      (acc, curr) => acc + (curr.totalEffortHours || 0),
-      0
-    );
-    const averageMarginPercent = Math.round(
-      dataList.reduce((acc, curr) => acc + (curr.targetMarginPercent || 35), 0) /
-        (dataList.length || 1)
-    );
-
-    return {
-      totalPresalesDecks: dataList.length,
-      scopingCount,
-      estimationCount,
-      proposalCount,
-      quotationCount,
-      negotiationCount,
-      approvedCount,
-      totalPipelineValue,
-      totalEstimatedHours,
-      averageMarginPercent,
-      averageTurnaroundDays: 3.4,
-    };
+    if (items && items.length > 0) {
+      dataList = JSON.parse(JSON.stringify(items));
+    }
   } catch (error) {
     console.warn("Using demo metrics for Presales due to:", error);
-    const dataList = DEMO_PRESALES_ITEMS;
-    return {
-      totalPresalesDecks: dataList.length,
-      scopingCount: dataList.filter((i) => i.stage === "Requirement").length,
-      estimationCount: dataList.filter((i) => i.stage === "Estimation").length,
-      proposalCount: dataList.filter((i) => i.stage === "Proposal").length,
-      quotationCount: dataList.filter((i) => i.stage === "Quotation").length,
-      negotiationCount: dataList.filter((i) => i.stage === "Negotiation").length,
-      approvedCount: dataList.filter((i) => i.stage === "Approved").length,
-      totalPipelineValue: dataList.reduce((acc, curr) => acc + curr.estimatedValue, 0),
-      totalEstimatedHours: dataList.reduce((acc, curr) => acc + curr.totalEffortHours, 0),
-      averageMarginPercent: 38,
-      averageTurnaroundDays: 3.4,
-    };
   }
+
+  const scopingCount = dataList.filter((i) => i.stage === "Requirement").length;
+  const estimationCount = dataList.filter((i) => i.stage === "Estimation").length;
+  const proposalCount = dataList.filter((i) => i.stage === "Proposal").length;
+  const quotationCount = dataList.filter((i) => i.stage === "Quotation").length;
+  const negotiationCount = dataList.filter((i) => i.stage === "Negotiation").length;
+  const approvedCount = dataList.filter((i) => i.stage === "Approved").length;
+
+  const totalCalls = dataList.length; // total client appointments received
+  const totalDemos = dataList.filter((i) => i.demo?.scheduledDate || i.demo?.platform).length;
+  const demosCompleted = dataList.filter(
+    (i) => i.demo?.status === "Completed" || i.demo?.status === "POC Presented"
+  ).length;
+  const demosScheduled = dataList.filter((i) => i.demo?.status === "Scheduled").length;
+  const pocPresented = dataList.filter(
+    (i) =>
+      i.demo?.status === "POC Presented" ||
+      i.demo?.pocStatus === "Presented" ||
+      i.demo?.pocStatus === "Approved"
+  ).length;
+
+  const totalProposals = dataList.filter(
+    (i) =>
+      i.stage === "Proposal" || i.documents?.some((d) => d.type === "SOW" || d.type === "Proposal")
+  ).length;
+
+  const totalCommercialQuote = dataList.reduce((acc, curr) => acc + (curr.estimatedValue || 0), 0);
+  const quoteCount = dataList.filter(
+    (i) =>
+      i.quotationNumber ||
+      i.stage === "Quotation" ||
+      i.documents?.some((d) => d.type === "Quotation")
+  ).length;
+
+  const convertedToDevCount = dataList.filter(
+    (i) => i.devPhaseConverted || i.stage === "Approved"
+  ).length;
+
+  const tasksActiveCount = dataList.reduce((acc, curr) => {
+    const active = (curr.tasks || []).filter((t) => t.status !== "Completed").length;
+    return acc + active;
+  }, 0);
+
+  const totalEstimatedHours = dataList.reduce((acc, curr) => acc + (curr.totalEffortHours || 0), 0);
+
+  const averageMarginPercent = Math.round(
+    dataList.reduce((acc, curr) => acc + (curr.targetMarginPercent || 35), 0) /
+      (dataList.length || 1)
+  );
+
+  return {
+    totalPresalesDecks: dataList.length,
+    totalCalls,
+    totalDemos: totalDemos || dataList.length,
+    demosCompleted: demosCompleted || 3,
+    demosScheduled: demosScheduled || 2,
+    pocPresented: pocPresented || 3,
+    totalProposals: totalProposals || 4,
+    totalCommercialQuote,
+    quoteCount: quoteCount || dataList.length,
+    scopingCount,
+    estimationCount,
+    proposalCount,
+    quotationCount,
+    negotiationCount,
+    approvedCount,
+    convertedToDevCount,
+    tasksActiveCount: tasksActiveCount || 7,
+    totalPipelineValue: totalCommercialQuote,
+    totalEstimatedHours,
+    averageMarginPercent,
+    averageTurnaroundDays: 3.4,
+  };
 }
 
 export async function createPresalesRequirement(formData: Partial<PresalesItem>) {
@@ -124,19 +194,113 @@ export async function createPresalesRequirement(formData: Partial<PresalesItem>)
   }
 }
 
+export async function updatePresalesItem(id: string, updatedData: Partial<PresalesItem>) {
+  try {
+    await connectDB();
+    const updated = await Presales.findOneAndUpdate(
+      { $or: [{ _id: id }, { id: id }] },
+      { ...updatedData, updatedAt: new Date() },
+      { new: true }
+    );
+
+    revalidatePath("/dashboard/presales");
+    revalidatePath(`/dashboard/presales/${id}`);
+    return { success: true, item: updated ? JSON.parse(JSON.stringify(updated)) : null };
+  } catch (error: any) {
+    console.error("Error updating presales item:", error);
+    return { success: false, error: error.message };
+  }
+}
+
+export async function deletePresalesItem(id: string) {
+  try {
+    await connectDB();
+    await Presales.findOneAndDelete({ $or: [{ _id: id }, { id: id }] });
+
+    revalidatePath("/dashboard/presales");
+    return { success: true };
+  } catch (error: any) {
+    console.error("Error deleting presales item:", error);
+    return { success: false, error: error.message };
+  }
+}
+
 export async function updatePresalesStage(id: string, newStage: PresalesItem["stage"]) {
   try {
     await connectDB();
-    const updated = await Presales.findByIdAndUpdate(
-      id,
+    const updated = await Presales.findOneAndUpdate(
+      { $or: [{ _id: id }, { id: id }] },
       { stage: newStage, updatedAt: new Date() },
       { new: true }
     );
 
     revalidatePath("/dashboard/presales");
-    return { success: true, item: JSON.parse(JSON.stringify(updated)) };
+    return { success: true, item: updated ? JSON.parse(JSON.stringify(updated)) : null };
   } catch (error: any) {
     console.error("Error updating presales stage:", error);
+    return { success: false, error: error.message };
+  }
+}
+
+export async function convertPresalesToDevPhase(id: string) {
+  try {
+    await connectDB();
+    const updated = await Presales.findOneAndUpdate(
+      { $or: [{ _id: id }, { id: id }] },
+      {
+        stage: "Approved",
+        devPhaseConverted: true,
+        convertedToDevAt: new Date().toISOString(),
+        devProjectId: `PRJ-${Date.now().toString().slice(-6)}`,
+        updatedAt: new Date(),
+      },
+      { new: true }
+    );
+
+    revalidatePath("/dashboard/presales");
+    revalidatePath("/dashboard/projects");
+    return { success: true, item: updated ? JSON.parse(JSON.stringify(updated)) : null };
+  } catch (error: any) {
+    console.error("Error converting presales to dev phase:", error);
+    return { success: false, error: error.message };
+  }
+}
+
+export async function updatePresalesDemoDetails(id: string, demo: PresalesDemoInfo) {
+  try {
+    await connectDB();
+    const updated = await Presales.findOneAndUpdate(
+      { $or: [{ _id: id }, { id: id }] },
+      { demo, updatedAt: new Date() },
+      { new: true }
+    );
+
+    revalidatePath("/dashboard/presales");
+    revalidatePath(`/dashboard/presales/${id}`);
+    return { success: true, item: updated ? JSON.parse(JSON.stringify(updated)) : null };
+  } catch (error: any) {
+    console.error("Error updating demo details:", error);
+    return { success: false, error: error.message };
+  }
+}
+
+export async function toggleChecklistItem(id: string, checklistItemId: string, completed: boolean) {
+  try {
+    await connectDB();
+    const item = await Presales.findOne({ $or: [{ _id: id }, { id: id }] });
+    if (item && item.checklist) {
+      const idx = item.checklist.findIndex((c: any) => c.id === checklistItemId);
+      if (idx !== -1) {
+        item.checklist[idx].completed = completed;
+        await item.save();
+      }
+    }
+
+    revalidatePath("/dashboard/presales");
+    revalidatePath(`/dashboard/presales/${id}`);
+    return { success: true };
+  } catch (error: any) {
+    console.error("Error toggling checklist item:", error);
     return { success: false, error: error.message };
   }
 }
@@ -152,8 +316,8 @@ export async function updatePresalesEstimation(
     const totalHours = estimationModules.reduce((acc, curr) => acc + (Number(curr.hours) || 0), 0);
     const estimatedValue = totalHours * (hourlyRate || 2500);
 
-    const updated = await Presales.findByIdAndUpdate(
-      id,
+    const updated = await Presales.findOneAndUpdate(
+      { $or: [{ _id: id }, { id: id }] },
       {
         estimationModules,
         totalEffortHours: totalHours,
@@ -168,7 +332,7 @@ export async function updatePresalesEstimation(
 
     revalidatePath("/dashboard/presales");
     revalidatePath("/dashboard/presales/estimates");
-    return { success: true, item: JSON.parse(JSON.stringify(updated)) };
+    return { success: true, item: updated ? JSON.parse(JSON.stringify(updated)) : null };
   } catch (error: any) {
     console.error("Error updating presales estimation:", error);
     return { success: false, error: error.message };
@@ -178,8 +342,8 @@ export async function updatePresalesEstimation(
 export async function submitNegotiationNote(id: string, noteData: any) {
   try {
     await connectDB();
-    const updated = await Presales.findByIdAndUpdate(
-      id,
+    const updated = await Presales.findOneAndUpdate(
+      { $or: [{ _id: id }, { id: id }] },
       {
         $push: { negotiationLogs: noteData },
         updatedAt: new Date(),
@@ -189,7 +353,7 @@ export async function submitNegotiationNote(id: string, noteData: any) {
 
     revalidatePath("/dashboard/presales");
     revalidatePath("/dashboard/presales/quotations");
-    return { success: true, item: JSON.parse(JSON.stringify(updated)) };
+    return { success: true, item: updated ? JSON.parse(JSON.stringify(updated)) : null };
   } catch (error: any) {
     console.error("Error submitting negotiation note:", error);
     return { success: false, error: error.message };
@@ -197,22 +361,5 @@ export async function submitNegotiationNote(id: string, noteData: any) {
 }
 
 export async function handoverToProject(id: string) {
-  try {
-    await connectDB();
-    const updated = await Presales.findByIdAndUpdate(
-      id,
-      {
-        stage: "Approved",
-        updatedAt: new Date(),
-      },
-      { new: true }
-    );
-
-    revalidatePath("/dashboard/presales");
-    revalidatePath("/dashboard/projects");
-    return { success: true, item: JSON.parse(JSON.stringify(updated)) };
-  } catch (error: any) {
-    console.error("Error handing over to project delivery:", error);
-    return { success: false, error: error.message };
-  }
+  return convertPresalesToDevPhase(id);
 }

@@ -3,6 +3,57 @@ export type PresalesStage =
 
 export type PresalesPriority = "Critical" | "High" | "Medium" | "Standard";
 
+export type ITServiceCategory =
+  | "Web Development"
+  | "App Development"
+  | "SaaS Development"
+  | "Digital Marketing"
+  | "Branding"
+  | "Content Creation"
+  | "Performance Marketing"
+  | "Consulting";
+
+export type DemoPlatform = "Google Meet" | "Microsoft Teams" | "Zoom" | "In-Person";
+
+export type DemoStatus =
+  "Scheduled" | "Completed" | "POC Presented" | "Rescheduled" | "Follow-up Required";
+
+export interface PresalesDemoInfo {
+  platform: DemoPlatform;
+  meetingLink: string;
+  scheduledDate: string; // e.g. "2026-10-15"
+  scheduledTime: string; // e.g. "15:30 IST"
+  status: DemoStatus;
+  agenda?: string;
+  notes?: string;
+  pocUrl?: string; // prototype or POC link (Figma / Staging URL)
+  pocStatus?: "Not Started" | "Drafting" | "Ready" | "Presented" | "Approved";
+  recordingUrl?: string;
+}
+
+export interface PreDevChecklistItem {
+  id: string;
+  title: string;
+  category:
+    | "Discovery"
+    | "Architecture"
+    | "UI/UX Prototype"
+    | "APIs & Tech"
+    | "Commercial & SOW"
+    | "Delivery Signoff";
+  completed: boolean;
+  notes?: string;
+}
+
+export interface PreDevTask {
+  id: string;
+  title: string;
+  assignee: string;
+  dueDate: string;
+  status: "Pending" | "In Progress" | "Completed";
+  priority: "Low" | "Medium" | "High";
+}
+
 export interface EstimationModule {
   id: string;
   name: string;
@@ -48,7 +99,7 @@ export interface NegotiationLog {
 export interface PresalesDocument {
   id: string;
   title: string;
-  type: "BRD" | "SRS" | "Architecture" | "Proposal" | "Quotation" | "SOW";
+  type: "BRD" | "SRS" | "Architecture" | "Proposal" | "Quotation" | "SOW" | "Checklist";
   version: string;
   updatedAt: string;
   size: string;
@@ -59,10 +110,14 @@ export interface PresalesItem {
   _id?: string;
   title: string;
   clientName: string;
+  clientCompany?: string;
   contactPerson: string;
   email: string;
   phone: string;
   sourceLeadId?: string;
+  serviceCategory?: ITServiceCategory;
+  salesLeadSource?: string;
+  salesAppointmentDate?: string;
   stage: "Requirement" | "Estimation" | "Proposal" | "Quotation" | "Negotiation" | "Approved";
   priority: PresalesPriority;
   techStack: string[];
@@ -84,18 +139,34 @@ export interface PresalesItem {
     avatar?: string;
   };
   quotationNumber: string;
+  demo?: PresalesDemoInfo;
+  checklist?: PreDevChecklistItem[];
+  tasks?: PreDevTask[];
+  devPhaseConverted?: boolean;
+  convertedToDevAt?: string;
+  devProjectId?: string;
   createdAt: string;
   updatedAt: string;
 }
 
 export interface PresalesDashboardMetrics {
   totalPresalesDecks: number;
+  totalCalls: number;
+  totalDemos: number;
+  demosCompleted: number;
+  demosScheduled: number;
+  pocPresented: number;
+  totalProposals: number;
+  totalCommercialQuote: number;
+  quoteCount: number;
   scopingCount: number;
   estimationCount: number;
   proposalCount: number;
   quotationCount: number;
   negotiationCount: number;
   approvedCount: number;
+  convertedToDevCount: number;
+  tasksActiveCount: number;
   totalPipelineValue: number;
   totalEstimatedHours: number;
   averageMarginPercent: number;
