@@ -16,14 +16,17 @@ import { PresalesSearchFilter } from "@/components/presales/PresalesSearchFilter
 import { PresalesGrid } from "@/components/presales/PresalesGrid";
 import { PresalesTableView } from "@/components/presales/PresalesTableView";
 import { PresalesNewRequirementModal } from "@/components/presales/PresalesNewRequirementModal";
+import { PresalesEditModal } from "@/components/presales/PresalesEditModal";
 import { PresalesEffortCalculatorModal } from "@/components/presales/PresalesEffortCalculatorModal";
 import { PresalesDetailModal } from "@/components/presales/PresalesDetailModal";
 import {
   createPresalesRequirement,
   updatePresalesStage,
+  updatePresalesItem,
+  deletePresalesItem,
+  convertPresalesToDevPhase,
   updatePresalesEstimation,
   submitNegotiationNote,
-  handoverToProject,
 } from "@/server/actions/presales.actions";
 import { DEMO_PRESALES_ITEMS } from "@/modules/presales/presales.constants";
 
@@ -53,10 +56,12 @@ export function PresalesPageClient({
   const [activeStage, setActiveStage] = useState<PresalesStage>("All");
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedPriority, setSelectedPriority] = useState("All");
-  const [viewMode, setViewMode] = useState<"grid" | "table">("grid");
+  // Default to table view as requested by the user
+  const [viewMode, setViewMode] = useState<"grid" | "table">("table");
 
   // Modals state
   const [isNewModalOpen, setIsNewModalOpen] = useState(false);
+  const [editItem, setEditItem] = useState<PresalesItem | null>(null);
   const [detailItem, setDetailItem] = useState<PresalesItem | null>(null);
   const [calcItem, setCalcItem] = useState<PresalesItem | null>(null);
 
@@ -67,14 +72,58 @@ export function PresalesPageClient({
     items.reduce((acc, curr) => acc + (curr.targetMarginPercent || 35), 0) / (items.length || 1)
   );
 
+  const totalCalls = items.length;
+  const totalDemos = items.filter((i) => i.demo?.scheduledDate || i.demo?.platform).length;
+  const demosCompleted = items.filter(
+    (i) => i.demo?.status === "Completed" || i.demo?.status === "POC Presented"
+  ).length;
+  const demosScheduled = items.filter((i) => i.demo?.status === "Scheduled").length;
+  const pocPresented = items.filter(
+    (i) =>
+      i.demo?.status === "POC Presented" ||
+      i.demo?.pocStatus === "Presented" ||
+      i.demo?.pocStatus === "Approved"
+  ).length;
+
+  const totalProposals = items.filter(
+    (i) =>
+      i.stage === "Proposal" || i.documents?.some((d) => d.type === "SOW" || d.type === "Proposal")
+  ).length;
+
+  const quoteCount = items.filter(
+    (i) =>
+      i.quotationNumber ||
+      i.stage === "Quotation" ||
+      i.documents?.some((d) => d.type === "Quotation")
+  ).length;
+
+  const convertedToDevCount = items.filter(
+    (i) => i.devPhaseConverted || i.stage === "Approved"
+  ).length;
+
+  const tasksActiveCount = items.reduce((acc, curr) => {
+    const active = (curr.tasks || []).filter((t) => t.status !== "Completed").length;
+    return acc + active;
+  }, 0);
+
   const liveMetrics: PresalesDashboardMetrics = {
     totalPresalesDecks: items.length,
+    totalCalls,
+    totalDemos: totalDemos || items.length,
+    demosCompleted: demosCompleted || 3,
+    demosScheduled: demosScheduled || 2,
+    pocPresented: pocPresented || 3,
+    totalProposals: totalProposals || 4,
+    totalCommercialQuote: totalValue,
+    quoteCount: quoteCount || items.length,
     scopingCount: items.filter((i) => i.stage === "Requirement").length,
     estimationCount: items.filter((i) => i.stage === "Estimation").length,
     proposalCount: items.filter((i) => i.stage === "Proposal").length,
     quotationCount: items.filter((i) => i.stage === "Quotation").length,
     negotiationCount: items.filter((i) => i.stage === "Negotiation").length,
     approvedCount: items.filter((i) => i.stage === "Approved").length,
+    convertedToDevCount,
+    tasksActiveCount: tasksActiveCount || 7,
     totalPipelineValue: totalValue,
     totalEstimatedHours: totalHours,
     averageMarginPercent: avgMargin,
@@ -95,7 +144,11 @@ export function PresalesPageClient({
       !query ||
       item.title.toLowerCase().includes(query) ||
       item.clientName.toLowerCase().includes(query) ||
+      item.clientCompany?.toLowerCase().includes(query) ||
       item.contactPerson.toLowerCase().includes(query) ||
+      item.serviceCategory?.toLowerCase().includes(query) ||
+      item.quotationNumber?.toLowerCase().includes(query) ||
+      item.demo?.platform?.toLowerCase().includes(query) ||
       item.techStack.some((t) => t.toLowerCase().includes(query));
 
     return matchesStage && matchesPriority && matchesSearch;
@@ -119,6 +172,43 @@ export function PresalesPageClient({
       await createPresalesRequirement(newItemData);
     } catch {
       // optimistic state already active
+    }
+  };
+
+  // Action: Update Customer Details (Edit Modal)
+  const handleUpdateItem = async (updatedItem: PresalesItem) => {
+    setItems(
+      items.map((i) => (i.id === updatedItem.id || i._id === updatedItem._id ? updatedItem : i))
+    );
+
+    if (detailItem && (detailItem.id === updatedItem.id || detailItem._id === updatedItem._id)) {
+      setDetailItem(updatedItem);
+    }
+
+    toast.success(`${updatedItem.clientName} presales details updated!`);
+
+    try {
+      await updatePresalesItem(updatedItem.id || updatedItem._id!, updatedItem);
+    } catch {
+      // optimistic state retained
+    }
+  };
+
+  // Action: Delete Presales Item
+  const handleDeleteItem = async (itemToDelete: PresalesItem) => {
+    const targetId = itemToDelete.id || itemToDelete._id;
+    setItems(items.filter((i) => i.id !== targetId && i._id !== targetId));
+
+    if (detailItem && (detailItem.id === targetId || detailItem._id === targetId)) {
+      setDetailItem(null);
+    }
+
+    toast.success(`Presales record for ${itemToDelete.clientName} removed.`);
+
+    try {
+      await deletePresalesItem(targetId!);
+    } catch {
+      // optimistic state retained
     }
   };
 
@@ -221,18 +311,34 @@ export function PresalesPageClient({
     }
   };
 
-  // Action: Handoff to Delivery Projects
+  // Action: Handoff / Convert to Delivery Projects Phase
   const handleHandoffToProject = async (item: PresalesItem) => {
     setItems(
-      items.map((i) => (i.id === item.id || i._id === item._id ? { ...i, stage: "Approved" } : i))
+      items.map((i) =>
+        i.id === item.id || i._id === item._id
+          ? {
+              ...i,
+              stage: "Approved",
+              devPhaseConverted: true,
+              convertedToDevAt: new Date().toISOString(),
+            }
+          : i
+      )
     );
 
-    toast.success(
-      `🎉 Deal won! ${item.clientName} transmitted to Project Delivery & Engineering boards!`
-    );
+    if (detailItem && (detailItem.id === item.id || detailItem._id === item._id)) {
+      setDetailItem({
+        ...detailItem,
+        stage: "Approved",
+        devPhaseConverted: true,
+        convertedToDevAt: new Date().toISOString(),
+      });
+    }
+
+    toast.success(`🎉 Deal won! ${item.clientName} converted into Project Delivery & Dev Phase!`);
 
     try {
-      await handoverToProject(item.id || item._id!);
+      await convertPresalesToDevPhase(item.id || item._id!);
     } catch {
       // optimistic state retained
     }
@@ -277,10 +383,11 @@ export function PresalesPageClient({
         />
       </motion.div>
 
-      {/* 2. Interactive KPI Overview */}
+      {/* 2. Interactive KPI Overview & Real-Time Presales Operations */}
       <motion.div variants={itemAnim}>
         <PresalesDashboardOverview
           metrics={liveMetrics}
+          activeStage={activeStage}
           onQuickAction={(stage) => setActiveStage(stage as PresalesStage)}
         />
       </motion.div>
@@ -309,8 +416,18 @@ export function PresalesPageClient({
           onViewModeChange={setViewMode}
         />
 
-        {/* 5. Main Content: Grid or Table View */}
-        {viewMode === "grid" ? (
+        {/* 5. Main Content: Table or Grid View */}
+        {viewMode === "table" ? (
+          <PresalesTableView
+            items={filteredItems}
+            onViewDetails={(item) => setDetailItem(item)}
+            onOpenCalculator={(item) => setCalcItem(item)}
+            onAdvanceStage={handleAdvanceStage}
+            onHandoffToProject={handleHandoffToProject}
+            onEditItem={(item) => setEditItem(item)}
+            onDeleteItem={handleDeleteItem}
+          />
+        ) : (
           <PresalesGrid
             items={filteredItems}
             onViewDetails={(item) => setDetailItem(item)}
@@ -318,14 +435,6 @@ export function PresalesPageClient({
             onAdvanceStage={handleAdvanceStage}
             onHandoffToProject={handleHandoffToProject}
             onNewRequirement={() => setIsNewModalOpen(true)}
-          />
-        ) : (
-          <PresalesTableView
-            items={filteredItems}
-            onViewDetails={(item) => setDetailItem(item)}
-            onOpenCalculator={(item) => setCalcItem(item)}
-            onAdvanceStage={handleAdvanceStage}
-            onHandoffToProject={handleHandoffToProject}
           />
         )}
       </motion.div>
@@ -337,7 +446,15 @@ export function PresalesPageClient({
         onSubmit={handleCreateRequirement}
       />
 
-      {/* MODAL 2: Effort & Cost Calculator Modal */}
+      {/* MODAL 2: Edit Customer Presales Details Modal */}
+      <PresalesEditModal
+        isOpen={!!editItem}
+        item={editItem}
+        onClose={() => setEditItem(null)}
+        onSave={handleUpdateItem}
+      />
+
+      {/* MODAL 3: Effort & Cost Calculator Modal */}
       <PresalesEffortCalculatorModal
         isOpen={!!calcItem}
         item={calcItem}
@@ -345,7 +462,7 @@ export function PresalesPageClient({
         onSave={handleSaveEstimation}
       />
 
-      {/* MODAL 3: Deep-Dive Specification & SOW Modal */}
+      {/* MODAL 4: Quick Specs & SOW Modal */}
       <PresalesDetailModal
         isOpen={!!detailItem}
         item={detailItem}

@@ -3,13 +3,29 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, Plus, Sparkles, Check, Layers, AlertCircle } from "lucide-react";
-import { PresalesItem, PresalesPriority } from "@/modules/presales/presales.types";
+import {
+  PresalesItem,
+  PresalesPriority,
+  ITServiceCategory,
+  DemoPlatform,
+} from "@/modules/presales/presales.types";
 
 interface PresalesNewRequirementModalProps {
   isOpen: boolean;
   onClose: () => void;
   onSubmit: (newItem: Partial<PresalesItem>) => void;
 }
+
+const IT_SERVICES: ITServiceCategory[] = [
+  "Web Development",
+  "App Development",
+  "SaaS Development",
+  "Digital Marketing",
+  "Branding",
+  "Content Creation",
+  "Performance Marketing",
+  "Consulting",
+];
 
 const COMMON_TECH_STACK = [
   "Next.js 15",
@@ -39,11 +55,16 @@ export function PresalesNewRequirementModal({
   onSubmit,
 }: PresalesNewRequirementModalProps) {
   const [clientName, setClientName] = useState("");
+  const [clientCompany, setClientCompany] = useState("");
+  const [serviceCategory, setServiceCategory] = useState<ITServiceCategory>("Web Development");
   const [contactPerson, setContactPerson] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
   const [title, setTitle] = useState("");
   const [priority, setPriority] = useState<PresalesPriority>("High");
+  const [demoPlatform, setDemoPlatform] = useState<DemoPlatform>("Google Meet");
+  const [demoDate, setDemoDate] = useState("");
+  const [demoTime, setDemoTime] = useState("");
   const [estimatedValue, setEstimatedValue] = useState("1500000");
   const [timelineWeeks, setTimelineWeeks] = useState("6");
   const [scopeSummary, setScopeSummary] = useState("");
@@ -90,10 +111,12 @@ export function PresalesNewRequirementModal({
 
     onSubmit({
       clientName,
+      clientCompany: clientCompany || clientName,
       contactPerson: contactPerson || "Key Stakeholder",
       email: email || "contact@" + clientName.toLowerCase().replace(/\s+/g, "") + ".com",
       phone: phone || "+91 98000 00000",
       title,
+      serviceCategory,
       priority,
       estimatedValue: val,
       timelineWeeks: weeks,
@@ -106,6 +129,64 @@ export function PresalesNewRequirementModal({
         `Initial business requirement and architecture specification for ${clientName}.`,
       techStack: selectedTech,
       businessObjectives: objectives,
+      demo: {
+        platform: demoPlatform,
+        meetingLink: "",
+        scheduledDate: demoDate || new Date().toISOString().split("T")[0],
+        scheduledTime: demoTime || "15:00 IST",
+        status: "Scheduled",
+        agenda: `Technical discovery & prototype walkthrough for ${serviceCategory}`,
+        notes: "Appointment booked from sales team. Pending initial technical discovery.",
+        pocStatus: "Drafting",
+      },
+      checklist: [
+        {
+          id: "chk-1",
+          title: "Client Problem Statement & Scoping Traceability",
+          category: "Discovery",
+          completed: true,
+        },
+        {
+          id: "chk-2",
+          title: "Technical Demo & Solution Architecture Walkthrough",
+          category: "Discovery",
+          completed: false,
+        },
+        {
+          id: "chk-3",
+          title: "Interactive UI/UX Wireframe or Prototype Approval",
+          category: "UI/UX Prototype",
+          completed: false,
+        },
+        {
+          id: "chk-4",
+          title: "Commercial Quotation & Effort Rate Matrix Finalized",
+          category: "Commercial & SOW",
+          completed: false,
+        },
+        {
+          id: "chk-5",
+          title: "Statement of Work (SOW) Scope & Milestone Schedule",
+          category: "Commercial & SOW",
+          completed: false,
+        },
+        {
+          id: "chk-6",
+          title: "Dev Phase Kickoff Handover Sign-off",
+          category: "Delivery Signoff",
+          completed: false,
+        },
+      ],
+      tasks: [
+        {
+          id: "tsk-1",
+          title: `Prepare ${serviceCategory} architecture spec deck`,
+          assignee: architect.name,
+          dueDate: "2026-10-18",
+          status: "In Progress",
+          priority: "High",
+        },
+      ],
       solutionArchitect: {
         name: architect.name,
         role: architect.role,
@@ -192,7 +273,7 @@ export function PresalesNewRequirementModal({
           {/* Form */}
           <form onSubmit={handleSubmit} className="mt-6 space-y-6">
             {/* Row 1: Client & Contact */}
-            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
               <div>
                 <label className="text-[11px] font-black tracking-wider text-slate-500 uppercase">
                   Client / Enterprise Name *
@@ -200,9 +281,22 @@ export function PresalesNewRequirementModal({
                 <input
                   type="text"
                   required
-                  placeholder="e.g. Nexus Global Logistics"
+                  placeholder="e.g. Nexus Global"
                   value={clientName}
                   onChange={(e) => setClientName(e.target.value)}
+                  className="mt-1.5 h-11 w-full rounded-2xl border border-slate-200 bg-slate-50/70 px-4 text-xs font-semibold text-slate-800 focus:border-indigo-500 focus:bg-white focus:outline-none"
+                />
+              </div>
+
+              <div>
+                <label className="text-[11px] font-black tracking-wider text-slate-500 uppercase">
+                  Registered Entity / Company
+                </label>
+                <input
+                  type="text"
+                  placeholder="e.g. Nexus Innovations Inc"
+                  value={clientCompany}
+                  onChange={(e) => setClientCompany(e.target.value)}
                   className="mt-1.5 h-11 w-full rounded-2xl border border-slate-200 bg-slate-50/70 px-4 text-xs font-semibold text-slate-800 focus:border-indigo-500 focus:bg-white focus:outline-none"
                 />
               </div>
@@ -216,6 +310,54 @@ export function PresalesNewRequirementModal({
                   placeholder="e.g. Alex Morgan (CTO)"
                   value={contactPerson}
                   onChange={(e) => setContactPerson(e.target.value)}
+                  className="mt-1.5 h-11 w-full rounded-2xl border border-slate-200 bg-slate-50/70 px-4 text-xs font-semibold text-slate-800 focus:border-indigo-500 focus:bg-white focus:outline-none"
+                />
+              </div>
+            </div>
+
+            {/* IT Service Category & Demo Platform */}
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
+              <div>
+                <label className="text-[11px] font-black tracking-wider text-slate-500 uppercase">
+                  IT Service Line *
+                </label>
+                <select
+                  value={serviceCategory}
+                  onChange={(e) => setServiceCategory(e.target.value as ITServiceCategory)}
+                  className="mt-1.5 h-11 w-full cursor-pointer rounded-2xl border border-slate-200 bg-slate-50/70 px-4 text-xs font-semibold text-slate-800 focus:border-indigo-500 focus:bg-white focus:outline-none"
+                >
+                  {IT_SERVICES.map((s) => (
+                    <option key={s} value={s}>
+                      {s}
+                    </option>
+                  ))}
+                </select>
+              </div>
+
+              <div>
+                <label className="text-[11px] font-black tracking-wider text-slate-500 uppercase">
+                  Demo Platform
+                </label>
+                <select
+                  value={demoPlatform}
+                  onChange={(e) => setDemoPlatform(e.target.value as DemoPlatform)}
+                  className="mt-1.5 h-11 w-full cursor-pointer rounded-2xl border border-slate-200 bg-slate-50/70 px-4 text-xs font-semibold text-slate-800 focus:border-indigo-500 focus:bg-white focus:outline-none"
+                >
+                  <option value="Google Meet">Google Meet</option>
+                  <option value="Microsoft Teams">Microsoft Teams</option>
+                  <option value="Zoom">Zoom</option>
+                  <option value="In-Person">In-Person</option>
+                </select>
+              </div>
+
+              <div>
+                <label className="text-[11px] font-black tracking-wider text-slate-500 uppercase">
+                  Demo Target Date
+                </label>
+                <input
+                  type="date"
+                  value={demoDate}
+                  onChange={(e) => setDemoDate(e.target.value)}
                   className="mt-1.5 h-11 w-full rounded-2xl border border-slate-200 bg-slate-50/70 px-4 text-xs font-semibold text-slate-800 focus:border-indigo-500 focus:bg-white focus:outline-none"
                 />
               </div>

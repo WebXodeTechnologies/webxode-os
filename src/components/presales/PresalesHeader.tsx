@@ -44,9 +44,9 @@ export function PresalesHeader({
           </h1>
 
           <p className="max-w-xl text-sm leading-relaxed font-medium text-slate-600">
-            Technical requirement scoping, modular effort estimation, formal SOW proposal drafting,
-            and commercial quotation negotiations. Bridge qualified sales deals directly into
-            production-ready execution.
+            Client appointments from sales, live technical demos & POC prototypes via Google Meet &
+            Teams, SOW documents, commercial quotes, and pre-development checklists before
+            engineering phase handoff.
           </p>
 
           <div className="flex flex-wrap items-center gap-4 pt-1">
