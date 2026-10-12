@@ -360,6 +360,78 @@ export async function submitNegotiationNote(id: string, noteData: any) {
   }
 }
 
+export async function updateEstimateApproval(
+  id: string,
+  estimateStatus:
+    "Draft" | "Sent to Client" | "Client Reviewing" | "Approved" | "Revision Requested"
+) {
+  try {
+    await connectDB();
+    const nextStage = estimateStatus === "Approved" ? "Proposal" : "Estimation";
+    const updated = await Presales.findOneAndUpdate(
+      { $or: [{ _id: id }, { id: id }] },
+      {
+        estimateStatus,
+        stage: nextStage,
+        updatedAt: new Date(),
+      },
+      { new: true }
+    );
+
+    revalidatePath("/dashboard/presales");
+    revalidatePath("/dashboard/presales/estimates");
+    revalidatePath("/dashboard/presales/proposals");
+    return { success: true, item: updated ? JSON.parse(JSON.stringify(updated)) : null };
+  } catch (error: any) {
+    console.error("Error updating estimate approval:", error);
+    return { success: false, error: error.message };
+  }
+}
+
+export async function uploadClientDocument(id: string, docData: any) {
+  try {
+    await connectDB();
+    const updated = await Presales.findOneAndUpdate(
+      { $or: [{ _id: id }, { id: id }] },
+      {
+        $push: { documents: docData },
+        updatedAt: new Date(),
+      },
+      { new: true }
+    );
+
+    revalidatePath("/dashboard/presales");
+    revalidatePath("/dashboard/presales/proposals");
+    revalidatePath(`/dashboard/presales/${id}`);
+    return { success: true, item: updated ? JSON.parse(JSON.stringify(updated)) : null };
+  } catch (error: any) {
+    console.error("Error uploading client document:", error);
+    return { success: false, error: error.message };
+  }
+}
+
+export async function deleteClientDocument(id: string, docId: string) {
+  try {
+    await connectDB();
+    const updated = await Presales.findOneAndUpdate(
+      { $or: [{ _id: id }, { id: id }] },
+      {
+        $pull: { documents: { id: docId } },
+        updatedAt: new Date(),
+      },
+      { new: true }
+    );
+
+    revalidatePath("/dashboard/presales");
+    revalidatePath("/dashboard/presales/proposals");
+    revalidatePath(`/dashboard/presales/${id}`);
+    return { success: true, item: updated ? JSON.parse(JSON.stringify(updated)) : null };
+  } catch (error: any) {
+    console.error("Error deleting client document:", error);
+    return { success: false, error: error.message };
+  }
+}
+
 export async function handoverToProject(id: string) {
   return convertPresalesToDevPhase(id);
 }

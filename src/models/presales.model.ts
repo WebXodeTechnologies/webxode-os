@@ -46,7 +46,11 @@ export interface IPresalesDocument extends Document {
     version: string;
     updatedAt: string;
     size: string;
+    fileUrl?: string;
+    status?: string;
+    uploadedFromPc?: boolean;
   }[];
+  estimateStatus?: string;
   negotiationLogs: {
     id: string;
     author: string;
@@ -168,8 +172,16 @@ const PresalesSchema = new Schema<IPresalesDocument>(
         version: { type: String },
         updatedAt: { type: String },
         size: { type: String },
+        fileUrl: { type: String },
+        status: { type: String, default: "Draft" },
+        uploadedFromPc: { type: Boolean, default: false },
       },
     ],
+    estimateStatus: {
+      type: String,
+      enum: ["Draft", "Sent to Client", "Client Reviewing", "Approved", "Revision Requested"],
+      default: "Draft",
+    },
     negotiationLogs: [
       {
         id: { type: String },
