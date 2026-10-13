@@ -66,9 +66,5 @@
     "prettier-plugin-tailwindcss": "^0.8.1",
     "tailwindcss": "^4",
     "typescript": "^6.0.3"
-  },
-  "overrides": {
-    "ajv": "^8.20.0",
-    "json-schema-traverse": "^1.0.0"
   }
 }
