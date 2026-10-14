@@ -1611,6 +1611,6 @@ It is not just an internal dashboard.
 
 It is intended to become:
 
-> **The operating system for Webxode Technologies.**
+> **The operating system for Webxode Technologies. ❤️ **
 
-**Design • Develop • Deliver**
+**Design • Develop • Deliver ✨ **
